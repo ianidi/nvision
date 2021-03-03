@@ -1,5 +1,5 @@
-import React from "react";
-var classNames = require("classnames");
+import React from 'react';
+var classNames = require('classnames');
 
 const Company = ({ row }) => {
   return (
@@ -25,7 +25,7 @@ const DeviceStatus = ({ cell: { value } }) => {
           out: value === false,
         })}
       >
-        {value === true ? "online" : "offline"}
+        {value === true ? 'online' : 'offline'}
       </span>
 
       <style jsx>{`
