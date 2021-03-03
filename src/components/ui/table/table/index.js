@@ -1,26 +1,26 @@
-import React from "react";
-import styled from "styled-components";
-import { useForm } from "react-form";
-import { useTable, useResizeColumns, useFlexLayout, useRowSelect, useSortBy, usePagination } from "react-table";
-import { Overlay } from "react-bootstrap";
-import TablePagination from "@material-ui/core/TablePagination";
-import Checkbox from "@material-ui/core/Checkbox";
-import IconButton from "@material-ui/core/IconButton";
-import { Button } from "@yandex/ui/Button/desktop/bundle";
-import Menu from "@material-ui/core/Menu";
-import MenuItem from "@material-ui/core/MenuItem";
-import MoreVertIcon from "@material-ui/icons/MoreVert";
-import { Textinput } from "@yandex/ui/Textinput/desktop/bundle";
-import Field from "./field";
-import Spinner from "./spinner";
-import makeData from "./makeData";
-var classNames = require("classnames");
+import React from 'react';
+import styled from 'styled-components';
+import { useForm } from 'react-form';
+import { useTable, useResizeColumns, useFlexLayout, useRowSelect, useSortBy, usePagination } from 'react-table';
+import { Overlay } from 'react-bootstrap';
+import TablePagination from '@material-ui/core/TablePagination';
+import Checkbox from '@material-ui/core/Checkbox';
+import IconButton from '@material-ui/core/IconButton';
+import { Button } from '@yandex/ui/Button/desktop/bundle';
+import Menu from '@material-ui/core/Menu';
+import MenuItem from '@material-ui/core/MenuItem';
+import MoreVertIcon from '@material-ui/icons/MoreVert';
+import { Textinput } from '@yandex/ui/Textinput/desktop/bundle';
+import Field from './field';
+import Spinner from './spinner';
+import makeData from './makeData';
+var classNames = require('classnames');
 
 const Styles = styled.div`
   /* padding: 1rem; */
-  ${"" /* These styles are suggested for the table fill all available space in its containing element */}
+  ${'' /* These styles are suggested for the table fill all available space in its containing element */}
   display: block;
-  ${"" /* These styles are required for a horizontaly scrollable table overflow */}
+  ${'' /* These styles are required for a horizontaly scrollable table overflow */}
   overflow: auto;
   border-radius: 10px;
   box-shadow: 0 0 16px 0 rgba(242, 242, 247, 1);
@@ -33,7 +33,7 @@ const Styles = styled.div`
     background: #fff;
 
     .thead {
-      ${"" /* These styles are required for a scrollable body to align with the header properly */}
+      ${'' /* These styles are required for a scrollable body to align with the header properly */}
       overflow-y: auto;
       overflow-x: hidden;
     }
@@ -107,7 +107,7 @@ const Styles = styled.div`
       margin: 0;
       padding: 0.5rem;
 
-      ${"" /* In this example we use an absolutely position resizer,
+      ${'' /* In this example we use an absolutely position resizer,
    so this is required. */}
       position: relative;
 
@@ -125,7 +125,7 @@ const Styles = styled.div`
         position: absolute;
         top: 0;
         z-index: 1;
-        ${"" /* prevents from scrolling while dragging on touch devices */}
+        ${'' /* prevents from scrolling while dragging on touch devices */}
         touch-action :none;
 
         &.isResizing {
@@ -139,7 +139,7 @@ const Styles = styled.div`
       margin: 0;
       padding: 0.5rem;
 
-      ${"" /* In this example we use an absolutely position resizer,
+      ${'' /* In this example we use an absolutely position resizer,
    so this is required. */}
       position: relative;
 
@@ -155,7 +155,7 @@ const Styles = styled.div`
         position: absolute;
         top: 0;
         z-index: 1;
-        ${"" /* prevents from scrolling while dragging on touch devices */}
+        ${'' /* prevents from scrolling while dragging on touch devices */}
         touch-action :none;
 
         &.isResizing {
@@ -208,13 +208,13 @@ const headerProps = (props, { column }) => [...getStyles(props, column.align)]; 
 
 const cellProps = (props, { cell }) => getStyles(props, cell.column.align);
 
-const getStyles = (props, align = "left") => [
+const getStyles = (props, align = 'left') => [
   props,
   {
     style: {
-      justifyContent: align === "right" ? "flex-end" : "flex-start",
+      justifyContent: align === 'right' ? 'flex-end' : 'flex-start',
       // alignItems: "flex-start",
-      display: "flex",
+      display: 'flex',
     },
   },
 ];
@@ -239,7 +239,7 @@ const IndeterminateCheckbox = React.forwardRef(({ indeterminate, ...rest }, ref)
         style={{ padding: 0, marginRight: 10 }}
         checked={checked}
         onChange={handleChange}
-        inputProps={{ "aria-label": "primary checkbox" }}
+        inputProps={{ 'aria-label': 'primary checkbox' }}
         ref={resolvedRef}
         indeterminate={indeterminate}
         {...rest}
@@ -281,7 +281,7 @@ function DotMenu({ options, row }) {
         PaperProps={{
           style: {
             maxHeight: ITEM_HEIGHT * 4.5,
-            width: "20ch",
+            width: '20ch',
           },
         }}
       >
@@ -311,7 +311,7 @@ const Filter = ({ column }) => {
   } = useForm({
     onSubmit: async (values, instance) => {
       await sendToFakeServer(values);
-      console.log("Huzzah!");
+      console.log('Huzzah!');
     },
   });
 
@@ -458,7 +458,7 @@ function TableComponent({ columns, data, fetchData, loading, pageCount: controll
       if (checkbox) {
         hooks.allColumns.push((columns) => [
           {
-            id: "selection",
+            id: 'selection',
             disableResizing: true,
             minWidth: 45,
             width: 45,
@@ -491,7 +491,7 @@ function TableComponent({ columns, data, fetchData, loading, pageCount: controll
         //Dot menu
         hooks.allColumns.push((columns) => [
           {
-            id: "dotmenu",
+            id: 'dotmenu',
             disableResizing: true,
             minWidth: 64,
             width: 64,
@@ -538,12 +538,12 @@ function TableComponent({ columns, data, fetchData, loading, pageCount: controll
                   {...column.getHeaderProps(headerProps)}
                   className={classNames({
                     th_head: true,
-                    th_control: column.id === "dotmenu" || column.id === "selection",
+                    th_control: column.id === 'dotmenu' || column.id === 'selection',
                   })}
                 >
-                  {column.render("Header")}
+                  {column.render('Header')}
 
-                  {column.id !== "dotmenu" && column.id !== "selection" && column.disableSortBy !== true && (
+                  {column.id !== 'dotmenu' && column.id !== 'selection' && column.disableSortBy !== true && (
                     <div className="d-flex align-items-center">
                       <Filter column={column} />
                       <div onClick={() => column.toggleSortBy(column.isSortedDesc === false)}>
@@ -578,7 +578,7 @@ function TableComponent({ columns, data, fetchData, loading, pageCount: controll
                   )}
 
                   {/* Use column.getResizerProps to hook up the events correctly */}
-                  {column.canResize && <div {...column.getResizerProps()} className={`resizer ${column.isResizing ? "isResizing" : ""}`} />}
+                  {column.canResize && <div {...column.getResizerProps()} className={`resizer ${column.isResizing ? 'isResizing' : ''}`} />}
                 </div>
               ))}
             </div>
@@ -599,9 +599,9 @@ function TableComponent({ columns, data, fetchData, loading, pageCount: controll
                   return (
                     <div
                       {...cell.getCellProps(cellProps)}
-                      className={classNames({ td_body: true, td_control: cell.column.id === "dotmenu" || cell.column.id === "selection" })}
+                      className={classNames({ td_body: true, td_control: cell.column.id === 'dotmenu' || cell.column.id === 'selection' })}
                     >
-                      {cell.render("Cell")}
+                      {cell.render('Cell')}
                     </div>
                   );
                 })}
@@ -636,7 +636,7 @@ function TableComponent({ columns, data, fetchData, loading, pageCount: controll
                   gotoPage(newPage);
                 }}
                 placeholder="Go to page"
-                style={{ width: "150px", marginLeft: 6, marginRight: 6 }}
+                style={{ width: '150px', marginLeft: 6, marginRight: 6 }}
               />
             </div>
           </div>
@@ -779,7 +779,7 @@ export const Table = ({ columns, checkbox, menuOptions, query }) => {
       />
     </Styles>
   );
-}
+};
 
 // <Select
 //               baseline
