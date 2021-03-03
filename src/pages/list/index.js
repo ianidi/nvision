@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react';
-import Table from '../../components/ui/table';
+import { Table } from '../../components/ui/table';
 
 
 export const List = () => {
@@ -26,32 +26,34 @@ export const List = () => {
     []
   );
 
-  return <React.Fragment><Table
-    columns={columns}
-    menuOptions={[
-      {
-        onSelect: (row) => {
-        // history.push(`/manager/${path}/view/${row.original.OfferID}`);
+  return <React.Fragment>
+    <Table
+      columns={columns}
+      menuOptions={[
+        {
+          onSelect: (row) => {
+            // history.push(`/manager/${path}/view/${row.original.OfferID}`);
+          },
+          label: 'View',
         },
-        label: 'View',
-      },
-      {
-        onSelect: (row) => {},
-        label: 'Remove',
-      },
-    ]}
-    query={async () => {
-    // try {
-    //   const { data, error } = await ManagerOfferList();
+        {
+          onSelect: (row) => {},
+          label: 'Remove',
+        },
+      ]}
+      query={async () => {
+        // try {
+        //   const { data, error } = await ManagerOfferList();
 
-      //   if (!error) {
-      //     return { data: data.ManagerOfferList, error };
-      //   }
+        //   if (!error) {
+        //     return { data: data.ManagerOfferList, error };
+        //   }
 
-    //   return { data: [], error };
-    // } catch (err) {
-    //   return { data: [], error: "NETWORK_ERROR" };
-    // }
-    }}
-  /></React.Fragment>;
+        //   return { data: [], error };
+        // } catch (err) {
+        //   return { data: [], error: "NETWORK_ERROR" };
+        // }
+      }}
+    />
+  </React.Fragment>;
 };

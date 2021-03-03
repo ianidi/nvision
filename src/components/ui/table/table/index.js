@@ -11,8 +11,8 @@ import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import { Textinput } from '@yandex/ui/Textinput/desktop/bundle';
-import Field from './field';
-import Spinner from './spinner';
+
+import { Spinner } from '../../spinner';
 import makeData from './makeData';
 var classNames = require('classnames');
 
@@ -355,7 +355,7 @@ const Filter = ({ column }) => {
             <Form>
               <div className="d-flex flex-column form">
                 <div className="field">
-                  <Field.Input field="Filter" label={`Filter by ${column.Header}`} />
+                  Filter by ${column.Header}
                 </div>
 
                 <div className="button">

@@ -1,31 +1,31 @@
-import React from "react";
+import React from 'react';
 
-export const Spinner = ({ loading, color, size }) => {
+export const Spinner = ({ loading = false, color, size }) => {
 
-    if (!color) {
-      color = "#fff";
-    }
+  if (!color) {
+    color = '#fff';
+  }
 
-    if (!size) {
-      size = 30;
-    }
+  if (!size) {
+    size = 30;
+  }
 
-    if (loading !== true) {
-      return null;
-    }
+  if (loading !== true) {
+    return null;
+  }
 
-    return (
-      <React.Fragment>
-        <div className="spinner-container">
-          <div className="spinner">
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-          </div>
+  return (
+    <React.Fragment>
+      <div className="spinner-container">
+        <div className="spinner">
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
         </div>
+      </div>
 
-        <style jsx>{`
+      <style jsx>{`
           .spinner-container {
             display: flex;
             justify-content: center;
@@ -70,6 +70,6 @@ export const Spinner = ({ loading, color, size }) => {
             }
           }
         `}</style>
-      </React.Fragment>
-    );
-  }
+    </React.Fragment>
+  );
+};
