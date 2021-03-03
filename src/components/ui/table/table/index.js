@@ -407,7 +407,7 @@ const Filter = ({ column }) => {
   );
 };
 
-function Table({ columns, data, fetchData, loading, pageCount: controlledPageCount, checkbox, menuOptions }) {
+function TableComponent({ columns, data, fetchData, loading, pageCount: controlledPageCount, checkbox, menuOptions }) {
   const defaultColumn = React.useMemo(
     () => ({
       // When using the useFlexLayout:
@@ -714,7 +714,7 @@ function Table({ columns, data, fetchData, loading, pageCount: controlledPageCou
 // Let's simulate a large dataset on the server (outside of our component)
 const serverData = makeData(10000);
 
-function App({ columns, checkbox, menuOptions, query }) {
+export const Table = ({ columns, checkbox, menuOptions, query }) => {
   const columnsMemo = React.useMemo(() => columns, []);
 
   // const data = React.useMemo(() => makeData(20), []);
@@ -768,7 +768,7 @@ function App({ columns, checkbox, menuOptions, query }) {
 
   return (
     <Styles>
-      <Table
+      <TableComponent
         columns={columnsMemo}
         data={data}
         fetchData={fetchData}
@@ -780,8 +780,6 @@ function App({ columns, checkbox, menuOptions, query }) {
     </Styles>
   );
 }
-
-export default App;
 
 // <Select
 //               baseline
