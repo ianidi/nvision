@@ -7,20 +7,40 @@ export const List = () => {
   const columns = useMemo(
     () => [
       {
-        Header: 'OfferID',
+        Header: 'ФИО сотрудника',
         accessor: 'OfferID',
       },
       {
-        Header: 'MemberID',
+        Header: 'Наименование',
         accessor: 'MemberID',
       },
       {
-        Header: 'InvestID',
+        Header: 'Вендор',
         accessor: 'InvestID',
       },
       {
-        Header: 'Status',
+        Header: 'Тип',
         accessor: 'Status',
+      },
+      {
+        Header: 'Затраты',
+        accessor: 'a',
+      },
+      {
+        Header: 'Дата начала',
+        accessor: 's',
+      },
+      {
+        Header: 'Бессрочный',
+        accessor: 'd',
+      },
+      {
+        Header: 'Дата окончания',
+        accessor: 'f',
+      },
+      {
+        Header: 'Статус',
+        accessor: 'g',
       },
     ],
     []

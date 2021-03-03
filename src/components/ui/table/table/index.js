@@ -545,7 +545,7 @@ function TableComponent({ columns, data, fetchData, loading, pageCount: controll
 
                   {column.id !== 'dotmenu' && column.id !== 'selection' && column.disableSortBy !== true && (
                     <div className="d-flex align-items-center">
-                      <Filter column={column} />
+                      {/*<Filter column={column} />*/}
                       <div onClick={() => column.toggleSortBy(column.isSortedDesc === false)}>
                         <svg
                           className={classNames({
