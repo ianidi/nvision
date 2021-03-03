@@ -53,6 +53,7 @@ export const List = () => {
         // } catch (err) {
         //   return { data: [], error: "NETWORK_ERROR" };
         // }
+        return { data: [], error: "" };
       }}
     />
   </React.Fragment>;

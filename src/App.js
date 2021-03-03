@@ -5,10 +5,9 @@ import { List } from './pages';
 function App() {
   return (
     <div className="App">
-      de
+      <List />
     </div>
   );
 }
 
 export default hot(App);
-//<List />
