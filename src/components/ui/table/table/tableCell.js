@@ -1,4 +1,5 @@
 import React from 'react';
+import { Datetime as DatetimeComponent } from "../../date"
 var classNames = require('classnames');
 
 const Company = ({ row }) => {
@@ -47,7 +48,53 @@ const DeviceStatus = ({ cell: { value } }) => {
   );
 };
 
-export default {
+
+const Status = ({ cell: { value } }) => {
+  return (
+    <React.Fragment>
+      <span
+        className={classNames({
+          status: true,
+          active: value == true,
+          noactive: value == false,
+        })}
+      >
+        {value === true ? 'Действует' : 'Истек'}
+      </span>
+
+      <style jsx>{`
+        .status {
+          font-size: 14px;
+        }
+        .status.active {
+          color: #009A50;
+        }
+        .status.noactive {
+          color: #f73d34;
+        }
+      `}</style>
+    </React.Fragment>
+  );
+};
+
+const Datetime = ({ cell: { value } }) => {
+  return (
+    <React.Fragment>
+      <span className="date">
+        <DatetimeComponent date={value} />
+      </span>
+
+      <style jsx>{`
+        .date {
+        }
+      `}</style>
+    </React.Fragment>
+  );
+};
+
+export const TableCell = {
   Company,
   DeviceStatus,
+  Status,
+  Datetime
 };

@@ -74,8 +74,8 @@ const Styles = styled.div`
     .tr_body {
       position: relative;
       align-items: center;
-      padding-top: 18px;
-      padding-bottom: 18px;
+      padding-top: 6px;
+      padding-bottom: 6px;
       padding-left: 8px;
       padding-right: 20px;
       /* border-bottom: 1px solid #f1f2f4; */
@@ -83,8 +83,9 @@ const Styles = styled.div`
       border-top-right-radius: 6px;
       -webkit-transition: box-shadow 250ms ease;
       transition: box-shadow 250ms ease;
-      color: #555a61;
+      color: #151515;
       font-size: 14px;
+      border-bottom: 1px solid #E0E0E0;
     }
 
     .tr_body:hover,

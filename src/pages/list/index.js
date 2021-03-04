@@ -1,5 +1,6 @@
 import React, { useMemo } from 'react';
 import { Table } from '../../components/ui/table';
+import { TableCell } from '../../components/ui/table';
 
 
 export const List = () => {
@@ -12,15 +13,15 @@ export const List = () => {
       },
       {
         Header: 'Наименование',
-        accessor: 'MemberID',
+        accessor: 'title',
       },
       {
         Header: 'Вендор',
-        accessor: 'InvestID',
+        accessor: 'vendor',
       },
       {
         Header: 'Тип',
-        accessor: 'Status',
+        accessor: 'type',
       },
       {
         Header: 'Затраты',
@@ -28,7 +29,8 @@ export const List = () => {
       },
       {
         Header: 'Дата начала',
-        accessor: 's',
+        accessor: 'validFrom',
+        Cell: TableCell.Datetime,
       },
       {
         Header: 'Бессрочный',
@@ -36,11 +38,13 @@ export const List = () => {
       },
       {
         Header: 'Дата окончания',
-        accessor: 'f',
+        accessor: 'validTo',
+        Cell: TableCell.Datetime,
       },
       {
         Header: 'Статус',
-        accessor: 'g',
+        accessor: 'status',
+        Cell: TableCell.Status,
       },
     ],
     []
