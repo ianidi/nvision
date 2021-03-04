@@ -11,6 +11,7 @@ const range = (len) => {
 const newPerson = () => {
   const statusChance = Math.random();
   return {
+    OfferID: faker.name.findName(),
     name: faker.name.findName(),
     firstName: faker.name.firstName(),
     lastName: faker.name.lastName(),

@@ -717,10 +717,10 @@ const serverData = makeData(10000);
 export const Table = ({ columns, checkbox, menuOptions, query }) => {
   const columnsMemo = React.useMemo(() => columns, []);
 
-  // const data = React.useMemo(() => makeData(20), []);
+   const data = React.useMemo(() => makeData(20), []);
 
   // We'll start our table without any data
-  const [data, setData] = React.useState([]);
+  // const [data, setData] = React.useState([]);
   const [queryError, setQueryError] = React.useState(false);
   const [loading, setLoading] = React.useState(false);
   const [pageCount, setPageCount] = React.useState(0);
@@ -746,7 +746,7 @@ export const Table = ({ columns, checkbox, menuOptions, query }) => {
         return;
       }
 
-      setData(data);
+      // setData(data);
     }
 
     // // We'll even set a delay to simulate a server here
