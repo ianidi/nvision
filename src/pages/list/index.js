@@ -25,16 +25,12 @@ export const List = () => {
       },
       {
         Header: 'Затраты',
-        accessor: 'a',
+        accessor: 'spendings',
       },
       {
         Header: 'Дата начала',
         accessor: 'validFrom',
         Cell: TableCell.Datetime,
-      },
-      {
-        Header: 'Бессрочный',
-        accessor: 'd',
       },
       {
         Header: 'Дата окончания',
@@ -53,18 +49,18 @@ export const List = () => {
   return <React.Fragment>
     <Table
       columns={columns}
-      menuOptions={[
-        {
-          onSelect: (row) => {
-            // history.push(`/manager/${path}/view/${row.original.OfferID}`);
-          },
-          label: 'View',
-        },
-        {
-          onSelect: (row) => {},
-          label: 'Remove',
-        },
-      ]}
+      // menuOptions={[
+      //   {
+      //     onSelect: (row) => {
+      //       // history.push(`/manager/${path}/view/${row.original.OfferID}`);
+      //     },
+      //     label: 'View',
+      //   },
+      //   {
+      //     onSelect: (row) => {},
+      //     label: 'Remove',
+      //   },
+      // ]}
       query={async () => {
         // try {
         //   const { data, error } = await ManagerOfferList();
@@ -79,6 +75,7 @@ export const List = () => {
         // }
         return { data: [], error: "" };
       }}
+      checkbox
     />
   </React.Fragment>;
 };

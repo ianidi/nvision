@@ -28,6 +28,7 @@ const newPerson = () => {
     validFrom: faker.date.recent(),
     validTo: faker.date.recent(),
     status: statusChance > 0.66 ? true : false,
+    spendings: statusChance > 0.66 ? true : false,
     device_status: statusChance > 0.66 ? true : false,
     id: faker.random.number(),
     device_number: faker.random.number(),
