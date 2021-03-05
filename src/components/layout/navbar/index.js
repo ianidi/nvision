@@ -10,22 +10,9 @@ var classNames = require("classnames");
 export const Navbar = ({ drawer }) => {
   return (
     <React.Fragment>
-      <div className="navbar">
-        <div
-          className={classNames({
-            logo: true,
-            sidebar_drawer: drawer,
-          })}
-        >
-          <IconDrawer style={{ width: 24, height: 18 }} />
-        </div>
-              <div className="bottom__container">
-                <div className="menuLink__container">
-                </div>
-
-                <div className="signout">Sign out</div>
-              </div>
-        </div>
+      <div className="nav">
+      nav
+      </div>
     </React.Fragment>
   );
 }
