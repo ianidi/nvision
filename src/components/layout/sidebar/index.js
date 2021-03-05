@@ -74,8 +74,11 @@ export const Sidebar = ({ drawer }) => {
           height: 100%;
           // box-shadow: 10px 10px 20px #f2f2f7;
           box-shadow: 10px 10px 20px #f6f8fc;
-          padding-left: 50px;
-          padding-right: 30px;
+          display: flex;
+          flex-direction: column;
+          // justify-content: center;
+          padding-left: 16px;
+          padding-right: 16px;
         }
         .logo {
           display: flex;
@@ -204,7 +207,6 @@ function MenuLink({ /*icon,*/ title, to, count }) {
           sidebar: true
         })}
         onClick={memuClickHandler}
-        onClick={memuClickHandler}
       >
         <div
           className={classNames({
@@ -213,49 +215,12 @@ function MenuLink({ /*icon,*/ title, to, count }) {
           })}
         >
           {/*<div className="icon">{icon}</div>*/}
-          <div
-            className={classNames({
-              menu__title: true,
-              sidebar: true
-            })}
-          >
+          <div className="menu__title">
             {title}
           </div>
           {count && <div className="count">{count}</div>}
         </div>
       </div>
-
-      <style jsx>{`
-        .icon {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          width: 20px;
-          height: 16px;
-        }
-        .menu__title {
-          margin-left: 24px;
-        }
-        .count {
-          margin-left: 10px;
-          padding: 3px 10px;
-          border-radius: 9px;
-          font-size: 13px;
-          font-weight: 600;
-          color: #fff;
-          background: #f73d34;
-        }
-        @media screen and (max-width: 1480px) {
-          .menu__title {
-            margin-top: 0;
-            margin-left: 0;
-          }
-          .count {
-            margin-top: 6px;
-            margin-left: 0;
-          }
-        }
-      `}</style>
     </React.Fragment>
   );
 }
