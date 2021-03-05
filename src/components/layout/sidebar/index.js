@@ -49,10 +49,7 @@ export const Sidebar = ({ drawer }) => {
             {menu.map((header, index) => (
               <div
                 key={index}
-                className={classNames({
-                  menu__container: true,
-                  sidebar: true
-                })}
+                className="menu__container"
               >
                 <MenuHeader {...header} />
                 {header.links.map((link, index_2) => (
@@ -62,12 +59,7 @@ export const Sidebar = ({ drawer }) => {
             ))}
 
               <div className="bottom__container">
-                <div
-                  className={classNames({
-                    menuLink__container: true,
-                    sidebar: true
-                  })}
-                >
+                <div className="menuLink__container">
                 </div>
 
                 <div className="signout">Sign out</div>
@@ -82,15 +74,6 @@ export const Sidebar = ({ drawer }) => {
           height: 100%;
           // box-shadow: 10px 10px 20px #f2f2f7;
           box-shadow: 10px 10px 20px #f6f8fc;
-        }
-        .sidebar__container.sidebar_dashboard {
-          display: flex;
-          flex-direction: column;
-          // justify-content: center;
-          padding-left: 16px;
-          padding-right: 16px;
-        }
-        .sidebar__container.sidebar_manager {
           padding-left: 50px;
           padding-right: 30px;
         }
@@ -102,7 +85,7 @@ export const Sidebar = ({ drawer }) => {
           cursor: pointer;
           margin: 0 auto;
         }
-        .menu__container.sidebar_manager {
+        .menu__container {
           display: flex;
           flex-direction: column;
           align-items: flex-start;
@@ -135,11 +118,11 @@ export const Sidebar = ({ drawer }) => {
           cursor: pointer;
         }
         @media screen and (max-width: 1480px) {
-          .sidebar__container.sidebar_manager {
+          .sidebar__container {
             padding-left: 0;
             padding-right: 0;
           }
-          .menu__container.sidebar_manager {
+          .menu__container {
             display: block;
           }
           .bottom__container {
@@ -157,13 +140,13 @@ export const Sidebar = ({ drawer }) => {
           }
         }
         @media screen and (max-width: 991px) {
-          .sidebar__container.sidebar_manager {
+          .sidebar__container {
             display: none;
           }
           .logo.sidebar_drawer {
             display: none;
           }
-          .sidebar__container.sidebar_manager.sidebar_drawer {
+          .sidebar__container.sidebar_drawer {
             display: flex;
           }
         }
@@ -250,11 +233,7 @@ function MenuLink({ /*icon,*/ title, to, count }) {
           width: 20px;
           height: 16px;
         }
-        .menu__title.sidebar_dashboard {
-          margin-top: 0;
-          margin-left: 24px;
-        }
-        .menu__title.sidebar_manager {
+        .menu__title {
           margin-left: 24px;
         }
         .count {
@@ -267,7 +246,7 @@ function MenuLink({ /*icon,*/ title, to, count }) {
           background: #f73d34;
         }
         @media screen and (max-width: 1480px) {
-          .menu__title.sidebar_manager {
+          .menu__title {
             margin-top: 0;
             margin-left: 0;
           }
