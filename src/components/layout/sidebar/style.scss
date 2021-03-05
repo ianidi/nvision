@@ -1,0 +1,60 @@
+.menuLink__container {
+  display: flex;
+  cursor: pointer;
+}
+
+.menuLink__container.sidebar_dashboard {
+  // flex-direction: column;
+  // justify-content: center;
+  color: #8893a7;
+  padding-top: 16px;
+  padding-bottom: 16px;
+  padding-left: 20px;
+  padding-right: 20px;
+  border-radius: 8px;
+}
+
+.menuLink__container.sidebar_manager {
+  justify-content: flex-start;
+  color: #000118;
+  margin-top: 20px;
+}
+
+.menuLink {
+  display: flex;
+  align-items: center;
+  // flex-direction: column;
+  font-size: 17px;
+  font-weight: 500;
+  cursor: pointer;
+  user-select: none;
+}
+
+.menuLink.sidebar_manager {
+  flex-direction: row;
+}
+
+.menuLink_active.sidebar_dashboard {
+  color: #303878;
+  background: #f5f8fe;
+}
+
+.menuLink_active.sidebar_manager {
+  color: #1580f9;
+  background: transparent;
+}
+
+@media screen and (max-width: 1480px) {
+  .menuLink.sidebar_manager {
+    flex-direction: column;
+  }
+  .menuLink_active.sidebar_manager {
+    background: #f3f5fb;
+  }
+  .menuLink__container.sidebar_manager {
+    justify-content: center;
+    padding-top: 45px;
+    padding-bottom: 45px;
+    margin-top: 0;
+  }
+}
