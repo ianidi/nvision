@@ -2,7 +2,7 @@ import React from "react";
 import { useHistory, useRouteMatch } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { closeDrawer } from "../../../store/uiSlice";
-import { ReactComponent as IconDrawer } from '../../../assets/icons/drawer.svg';
+import { ReactComponent as IconBack } from '../../../assets/icons/back.svg';
 import "./style.scss";
 
 var classNames = require("classnames");
@@ -11,7 +11,10 @@ export const Navbar = ({ drawer }) => {
   return (
     <React.Fragment>
       <div className="nav">
-      nav
+        <div className="nav__back">
+          <IconBack style={{ width: 8, height: 14, marginRight: 10 }} />
+          База сертификатов
+        </div>
       </div>
     </React.Fragment>
   );

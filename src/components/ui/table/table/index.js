@@ -38,8 +38,13 @@ const Styles = styled.div`
       overflow-x: hidden;
     }
 
+    .table-title {
+      padding: 20px;
+      font-size: 24px;
+      font-weight: 700;
+    }
+
     .table-head {
-      padding-top: 18px;
       padding-bottom: 18px;
       padding-left: 8px;
       padding-right: 20px;
@@ -526,6 +531,7 @@ function TableComponent({ columns, data, fetchData, loading, pageCount: controll
   return (
     <React.Fragment>
       <div {...getTableProps()} className="table">
+        <div className="table-title">Сертификаты</div>
         <div className="table-head">
           {headerGroups.map((headerGroup) => (
             <div

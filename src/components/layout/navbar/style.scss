@@ -14,12 +14,21 @@
   background: #F4F4F4;
 }
 @media screen and (max-width: 1480px) {
-  .nav {
-    min-height: 50px;
-  }
+  // .nav {
+  //   min-height: 50px;
+  // }
 }
 @media screen and (max-width: 991px) {
   // .nav {
   //   display: none;
   // }
+}
+
+.nav__back {
+  display: flex;
+  align-items: center;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  user-select: none;
 }
