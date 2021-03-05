@@ -10,18 +10,22 @@ export const List = () => {
       {
         Header: 'ФИО сотрудника',
         accessor: 'OfferID',
+        disableSortBy: true,
       },
       {
         Header: 'Наименование',
         accessor: 'title',
+        disableSortBy: true,
       },
       {
         Header: 'Вендор',
         accessor: 'vendor',
+        disableSortBy: true,
       },
       {
         Header: 'Тип',
         accessor: 'type',
+        disableSortBy: true,
       },
       {
         Header: 'Затраты',
@@ -30,16 +34,19 @@ export const List = () => {
       {
         Header: 'Дата начала',
         accessor: 'validFrom',
+        disableSortBy: true,
         Cell: TableCell.Datetime,
       },
       {
         Header: 'Дата окончания',
         accessor: 'validTo',
+        disableSortBy: true,
         Cell: TableCell.Datetime,
       },
       {
         Header: 'Статус',
         accessor: 'status',
+        disableSortBy: true,
         Cell: TableCell.Status,
       },
     ],

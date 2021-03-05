@@ -2,7 +2,7 @@ import 'react-hot-loader'
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './assets/fonts/nunito/style.css';
-import './index.css';
+import './index.scss';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
