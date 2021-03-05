@@ -8,6 +8,7 @@ import reportWebVitals from './reportWebVitals';
 
 import { AppContainer } from 'react-hot-loader';
 import { Provider } from 'react-redux';
+import { BrowserRouter } from "react-router-dom";
 
 import { ChakraProvider } from "@chakra-ui/react"
 import { createMuiTheme, ThemeProvider as ThemeProviderMaterial } from '@material-ui/core/styles';
@@ -49,23 +50,25 @@ ReactDOM.render(
   <AppContainer>
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
-        <ChakraProvider>
-          <ThemeProviderMaterial theme={themeMaterial}>
-            <ToastContainer
-              position="top-right"
-              autoClose={3000}
-              hideProgressBar
-              newestOnTop={false}
-              closeOnClick={false}
-              rtl={false}
-              pauseOnFocusLoss
-              draggable={false}
-              pauseOnHover
-              closeButton={false}
-            />
-            <App />
-          </ThemeProviderMaterial>
-        </ChakraProvider>
+      <BrowserRouter>
+          <ChakraProvider>
+            <ThemeProviderMaterial theme={themeMaterial}>
+              <ToastContainer
+                position="top-right"
+                autoClose={3000}
+                hideProgressBar
+                newestOnTop={false}
+                closeOnClick={false}
+                rtl={false}
+                pauseOnFocusLoss
+                draggable={false}
+                pauseOnHover
+                closeButton={false}
+              />
+              <App />
+            </ThemeProviderMaterial>
+          </ChakraProvider>
+        </BrowserRouter>
       </PersistGate>
     </Provider>
   </AppContainer>,
