@@ -67,93 +67,6 @@ export const Sidebar = ({ drawer }) => {
           </OverlayScrollbarsComponent>
         </div>
       </div>
-
-      <style jsx>{`
-        .sidebar__container {
-          background: #fff;
-          height: 100%;
-          // box-shadow: 10px 10px 20px #f2f2f7;
-          box-shadow: 10px 10px 20px #f6f8fc;
-          display: flex;
-          flex-direction: column;
-          // justify-content: center;
-          padding-left: 16px;
-          padding-right: 16px;
-        }
-        .logo {
-          display: flex;
-          padding-top: 20px;
-          padding-bottom: 20px;
-          padding-right: 20px;
-          cursor: pointer;
-          margin: 0 auto;
-        }
-        .menu__container {
-          display: flex;
-          flex-direction: column;
-          align-items: flex-start;
-          min-width: 140px;
-        }
-        .bottom__container {
-          display: flex;
-          flex-direction: column;
-          align-items: flex-start;
-          margin-top: 30px;
-        }
-        .signout {
-          margin-top: 20px;
-          margin-bottom: 50px;
-          margin-left: 44px;
-          color: #737373;
-          font-size: 15px;
-          font-weight: 600;
-          cursor: pointer;
-          user-select: none;
-        }
-        .flag__container {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          padding-top: 1px;
-          width: 21px;
-          height: 15px;
-          margin-right: 24px;
-          cursor: pointer;
-        }
-        @media screen and (max-width: 1480px) {
-          .sidebar__container {
-            padding-left: 0;
-            padding-right: 0;
-          }
-          .menu__container {
-            display: block;
-          }
-          .bottom__container {
-            align-items: center;
-          }
-          .flag__container {
-            margin-right: 0;
-            margin-bottom: 12px;
-          }
-          .signout {
-            margin-left: 0;
-          }
-          .logo {
-            padding-right: 0;
-          }
-        }
-        @media screen and (max-width: 991px) {
-          .sidebar__container {
-            display: none;
-          }
-          .logo.sidebar_drawer {
-            display: none;
-          }
-          .sidebar__container.sidebar_drawer {
-            display: flex;
-          }
-        }
-      `}</style>
     </React.Fragment>
   );
 }
@@ -162,22 +75,6 @@ function MenuHeader({ title }) {
   return (
     <React.Fragment>
       <div className="menuHeader">{title}</div>
-      <style jsx>{`
-        .menuHeader {
-          margin-top: 50px;
-          margin-left: 44px;
-          color: #b6bfc6;
-          font-size: 13px;
-          font-weight: 500;
-          text-transform: uppercase;
-          user-select: none;
-        }
-        @media screen and (max-width: 1480px) {
-          .menuHeader {
-            display: none;
-          }
-        }
-      `}</style>
     </React.Fragment>
   );
 }
@@ -203,15 +100,13 @@ function MenuLink({ /*icon,*/ title, to, count }) {
       <div
         className={classNames({
           menuLink__container: true,
-          menuLink_active: isActive !== null,
-          sidebar: true
+          menuLink_active: isActive !== null
         })}
         onClick={memuClickHandler}
       >
         <div
           className={classNames({
-            menuLink: true,
-            sidebar: true
+            menuLink: true
           })}
         >
           {/*<div className="icon">{icon}</div>*/}
