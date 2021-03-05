@@ -39,7 +39,7 @@ export const Sidebar = ({ drawer }) => {
             sidebar_drawer: drawer,
           })}
         >
-        <div className="icon"><IconDrawer style={{ width: 24, height: 18 }} /></div>
+          <IconDrawer style={{ width: 24, height: 18 }} />
         </div>
         <div>
           <OverlayScrollbarsComponent

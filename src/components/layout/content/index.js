@@ -17,7 +17,8 @@ export const Content = ({ children }) => {
 
   return (
     <React.Fragment>
-      <div className="content">
+    <div className="content__wrapper">
+        <div className="content">
             <div
               className="burger__wrapper"
               onClick={() => {
@@ -37,57 +38,9 @@ export const Content = ({ children }) => {
             {/*<Drawer isOpen={drawerOpen} autoFocus onClose={() => dispatch(closeDrawer())} size={SIZE.auto} anchor={ANCHOR.left}>
               <Sidebar drawer />
             </Drawer>*/}
-        {children}
+          {children}
+        </div>
       </div>
-
-      <style jsx>{`
-        .content {
-          width: 100%;
-          display: flex;
-          flex-direction: column;
-          min-height: 100vh;
-          padding-top: 80px;
-          padding-bottom: 130px;
-          padding-left: 50px;
-          padding-right: 50px;
-          min-height: 100vh;
-        }
-        .bg_dark {
-          // background: #eff1f8;
-          // background: #f8faff;
-          background: #fcfdff;
-        }
-        .burger__wrapper {
-          display: none;
-        }
-        @media screen and (max-width: 991px) {
-          .content {
-            padding-left: 20px;
-            padding-right: 20px;
-          }
-          .burger__wrapper {
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            align-self: flex-start;
-            margin-top: 30px;
-            margin-bottom: 40px;
-          }
-          .menu-button {
-            padding: 0;
-            width: 24px;
-            height: 24px;
-            cursor: pointer;
-            background-color: transparent;
-            border: none;
-            outline: none;
-          }
-          .menu-button__icon {
-            pointer-events: none;
-          }
-        }
-      `}</style>
     </React.Fragment>
   );
 }
