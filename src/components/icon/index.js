@@ -6,7 +6,7 @@ export const Icon = ({ name, ...otherProps }) => {
 
   useEffect(() => {
     /* Use dynamic import to get corresponding icon as a module */
-    import(`./icons/${name}.svg`)
+    import(`../../assets/icons/${name}.svg`)
       .then((module) => {
         /* Persist data in state */
         setIconModule(module);

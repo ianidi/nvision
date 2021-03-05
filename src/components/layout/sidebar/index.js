@@ -3,7 +3,7 @@ import { useHistory, useRouteMatch } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { closeDrawer } from "../../../store/uiSlice";
 import { OverlayScrollbarsComponent } from "overlayscrollbars-react";
-// import Icon from "../icon";
+import { ReactComponent as IconHome } from '../../../assets/icons/home.svg';
 import "./style.scss";
 
 var classNames = require("classnames");
@@ -15,9 +15,9 @@ export const Sidebar = ({ drawer }) => {
         title: "Main",
         links: [
           {
-            // icon: <Icon.Dashboard style={{ width: 15, height: 15 }} />,
-            title: "Overview",
-            to: `/overview`,
+            icon: <IconHome style={{ width: 15, height: 15 }} />,
+            title: "Главная",
+            to: `/`,
           },
         ],
       },
@@ -79,7 +79,7 @@ function MenuHeader({ title }) {
   );
 }
 
-function MenuLink({ /*icon,*/ title, to, count }) {
+function MenuLink({ icon, title, to, count }) {
   const history = useHistory();
   const dispatch = useDispatch();
 
@@ -109,7 +109,7 @@ function MenuLink({ /*icon,*/ title, to, count }) {
             menuLink: true
           })}
         >
-          {/*<div className="icon">{icon}</div>*/}
+          <div className="icon">{icon}</div>
           <div className="menu__title">
             {title}
           </div>
