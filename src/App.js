@@ -3,7 +3,7 @@ import { hot } from 'react-hot-loader/root';
 import { Switch, Route } from "react-router-dom";
 import { PrivateRoute } from "./components/router";
 
-import { Sidebar, Content } from "./components/layout";
+import { Navbar, Sidebar, Content } from "./components/layout";
 import { List } from './pages';
 
 function App() {
@@ -11,6 +11,7 @@ function App() {
     <React.Fragment>
       <div data-scroll-lock-scrollable>
         <div className="layout">
+          <Navbar />
           <Sidebar />
           <Content>
             <Switch>
