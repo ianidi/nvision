@@ -11,10 +11,10 @@ function App() {
     <React.Fragment>
       <div data-scroll-lock-scrollable>
         <div className="layout">
-          <div className="sidebar">
+          <div className="sidebar__wrapper">
             <Sidebar />
           </div>
-          <div className="content">
+          <div className="content__wrapper">
             <Content>
               <Switch>
                 <Route exact path="/">
