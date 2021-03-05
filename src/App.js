@@ -12,20 +12,18 @@ function App() {
       <div data-scroll-lock-scrollable>
         <div className="layout">
           <Sidebar />
-          <div className="content__wrapper">
-            <Content>
-              <Switch>
-                <Route exact path="/">
-                  <List />
-                </Route>
-                <Route exact path="/verify/:Action/:Method/:Hash/:Code">
-                  <List />
-                </Route>
-                <Route path="/signup" component={List} />
-                <PrivateRoute path="/overview" component={List} />
-              </Switch>
-            </Content>
-          </div>
+          <Content>
+            <Switch>
+              <Route exact path="/">
+                <List />
+              </Route>
+              <Route exact path="/verify/:Action/:Method/:Hash/:Code">
+                <List />
+              </Route>
+              <Route path="/signup" component={List} />
+              <PrivateRoute path="/overview" component={List} />
+            </Switch>
+          </Content>
         </div>
       </div>
     </React.Fragment>
