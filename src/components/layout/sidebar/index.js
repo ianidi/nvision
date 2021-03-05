@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import { closeDrawer } from "../../../store/uiSlice";
 import { OverlayScrollbarsComponent } from "overlayscrollbars-react";
 import { ReactComponent as IconHome } from '../../../assets/icons/home.svg';
+import { ReactComponent as IconDrawer } from '../../../assets/icons/drawer.svg';
 import "./style.scss";
 
 var classNames = require("classnames");
@@ -37,7 +38,9 @@ export const Sidebar = ({ drawer }) => {
             logo: true,
             sidebar_drawer: drawer,
           })}
-        />
+        >
+        <div className="icon"><IconDrawer style={{ width: 24, height: 18 }} /></div>
+        </div>
         <div>
           <OverlayScrollbarsComponent
             options={{
