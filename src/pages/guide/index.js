@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react';
-import { ReactComponent as IconArrow } from '../../../assets/icons/arrow.svg';
+import { ReactComponent as IconArrow } from '../../assets/icons/arrow.svg';
 import './style.scss'
 
 export const Guide = () => {
@@ -32,7 +32,7 @@ export const Guide = () => {
 
   return <React.Fragment>
     <div className="items">
-      {items.map((item, index) => (<div key={index} className="item"><div>{item.title}</div><div><IconArrow />,</div></div>))}
+      {items.map((item, index) => (<div key={index} className="item"><div>{item.title}</div><div><IconArrow /></div></div>))}
     </div>
   </React.Fragment>;
 };
