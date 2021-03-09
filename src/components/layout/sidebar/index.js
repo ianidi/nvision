@@ -42,13 +42,7 @@ export const Sidebar = ({ drawer }) => {
           <IconDrawer style={{ width: 24, height: 18 }} />
         </div>
         <div>
-          <OverlayScrollbarsComponent
-            options={{
-              scrollbars: { autoHide: "never" },
-            }}
-            style={{ maxHeight: "90vh" }}
-            className="os-theme-thin-dark"
-          >
+
             {menu.map((header, index) => (
               <div
                 key={index}
@@ -59,15 +53,7 @@ export const Sidebar = ({ drawer }) => {
                   <MenuLink key={index_2} {...link} />
                 ))}
               </div>
-            ))}
-
-              <div className="bottom__container">
-                <div className="menuLink__container">
-                </div>
-
-                <div className="signout">Sign out</div>
-              </div>
-          </OverlayScrollbarsComponent>
+            ))}      
         </div>
       </div>
     </React.Fragment>
@@ -122,3 +108,13 @@ function MenuLink({ icon, title, to, count }) {
     </React.Fragment>
   );
 }
+
+
+// <OverlayScrollbarsComponent
+//               options={{
+//                 scrollbars: { autoHide: "never" },
+//               }}
+//               style={{ maxHeight: "90vh" }}
+//               className="os-theme-thin-dark"
+//             >
+//           </OverlayScrollbarsComponent>
