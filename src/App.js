@@ -5,6 +5,7 @@ import { PrivateRoute } from "./components/router";
 
 import { Navbar, Sidebar, Content } from "./components/layout";
 import { List } from './pages';
+import { Guide } from './pages';
 
 function App() {
   return (
@@ -17,6 +18,9 @@ function App() {
             <Switch>
               <Route exact path="/">
                 <List />
+              </Route>
+              <Route exact path="/guide">
+                <Guide />
               </Route>
               <Route exact path="/verify/:Action/:Method/:Hash/:Code">
                 <List />
