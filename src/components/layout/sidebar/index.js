@@ -56,10 +56,10 @@ export const Sidebar = ({ drawer }) => {
           <IconDrawer style={{ width: 24, height: 18 }} />
         </div>
         <div>
-                {menu.map((link, index_2) => (
-                  <MenuLink key={index_2} {...link} />
-                ))}
-              </div>
+          {menu.map((link, index_2) => (
+            <MenuLink key={index_2} {...link} />
+          ))}
+        </div>
       </div>
     </React.Fragment>
   );

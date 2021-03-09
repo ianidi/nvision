@@ -29,8 +29,7 @@ export const Guide = () => {
     []
   );
 
-  return
-  <React.Fragment>
+  return <React.Fragment>
     
   </React.Fragment>;
 };
