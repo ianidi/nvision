@@ -4,6 +4,10 @@ import { useDispatch } from "react-redux";
 import { closeDrawer } from "../../../store/uiSlice";
 import { OverlayScrollbarsComponent } from "overlayscrollbars-react";
 import { ReactComponent as IconHome } from '../../../assets/icons/home.svg';
+import { ReactComponent as IconMember } from '../../../assets/icons/member.svg';
+import { ReactComponent as IconEmployee } from '../../../assets/icons/employee.svg';
+import { ReactComponent as IconCertificate } from '../../../assets/icons/certificate.svg';
+import { ReactComponent as IconGuide } from '../../../assets/icons/guide.svg';
 import { ReactComponent as IconDrawer } from '../../../assets/icons/drawer.svg';
 import "./style.scss";
 
@@ -12,17 +16,27 @@ var classNames = require("classnames");
 export const Sidebar = ({ drawer }) => {
 
   let menu = [
-      {
-        title: "Main",
-        links: [
           {
-            icon: <IconHome style={{ width: 15, height: 15 }} />,
-            title: "Главная",
+            icon: <IconHome />,
             to: `/`,
           },
-        ],
-      },
-    ];
+          {
+            icon: <IconMember />,
+            to: `/a`,
+          },
+          {
+            icon: <IconEmployee />,
+            to: `/a`,
+          },
+          {
+            icon: <IconCertificate />,
+            to: `/a`,
+          },
+          {
+            icon: <IconGuide />,
+            to: `/guide`,
+          },
+        ]
 
   return (
     <React.Fragment>
@@ -42,28 +56,11 @@ export const Sidebar = ({ drawer }) => {
           <IconDrawer style={{ width: 24, height: 18 }} />
         </div>
         <div>
-
-            {menu.map((header, index) => (
-              <div
-                key={index}
-                className="menu__container"
-              >
-                <MenuHeader {...header} />
-                {header.links.map((link, index_2) => (
+                {menu.map((link, index_2) => (
                   <MenuLink key={index_2} {...link} />
                 ))}
               </div>
-            ))}      
-        </div>
       </div>
-    </React.Fragment>
-  );
-}
-
-function MenuHeader({ title }) {
-  return (
-    <React.Fragment>
-      <div className="menuHeader">{title}</div>
     </React.Fragment>
   );
 }
@@ -99,9 +96,9 @@ function MenuLink({ icon, title, to, count }) {
           })}
         >
           <div className="icon">{icon}</div>
-          <div className="menu__title">
+          {/*<div className="menu__title">
             {title}
-          </div>
+        </div>*/}
           {count && <div className="count">{count}</div>}
         </div>
       </div>
