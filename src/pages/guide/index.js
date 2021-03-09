@@ -3,7 +3,7 @@ import React, { useMemo } from 'react';
 
 export const Guide = () => {
 
-  const guide = useMemo(
+  const items = useMemo(
     () => [
       {
         title: 'Справочник “Вендоры”',
@@ -29,5 +29,8 @@ export const Guide = () => {
     []
   );
 
-  return <React.Fragment></React.Fragment>;
+  return
+  <React.Fragment>
+    
+  </React.Fragment>;
 };
