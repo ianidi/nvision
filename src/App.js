@@ -5,7 +5,7 @@ import { PrivateRoute } from "./components/router";
 
 import { Navbar, Sidebar, Content } from "./components/layout";
 import { List } from './pages';
-import { Profile } from './profile';
+import { Profile } from './pages';
 import { Guide } from './pages';
 
 function App() {

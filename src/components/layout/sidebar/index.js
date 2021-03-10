@@ -22,7 +22,7 @@ export const Sidebar = ({ drawer }) => {
           },
           {
             icon: <IconMember />,
-            to: `/a`,
+            to: `/profile`,
           },
           {
             icon: <IconEmployee />,
