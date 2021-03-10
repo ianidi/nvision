@@ -132,14 +132,15 @@
 }
 
 .faq__container {
-  cursor: pointer;
-  background: #fff;
   padding: 20px;
   margin-bottom: 20px;
   font-size: 24px;
   font-weight: 700;
   border-radius: 16px;
   width: 100%;
+  background: #fff;
+  box-shadow: 0px 0px 5px rgba(19, 19, 19, 0.25);
+  cursor: pointer;
 }
 
 .faq__container:hover .faq__question {
