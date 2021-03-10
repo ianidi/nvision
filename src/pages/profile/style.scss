@@ -1,3 +1,12 @@
+.profile__wrapper {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+}
+
 .profile {
   display: -webkit-box;
   display: -webkit-flex;
@@ -13,6 +22,10 @@
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
+}
+
+.list {
+  width: 100%;
 }
 
 .avatar {
@@ -33,6 +46,8 @@
 }
 
 .avatar__img {
+  width: 120px;
+  height: 120px;
   border-radius: 100%;
   background-image: url("https://uploads-ssl.webflow.com/603f5ff8489ddc72cf67784b/60488abe44526752727d0f58_Ellipse%201.png");
   background-position: 50% 50%;
@@ -114,4 +129,56 @@
 
 .buttons {
   margin-top: 30px;
+}
+
+.faq__container {
+  cursor: pointer;
+  border-bottom: 1px solid rgb(226, 230, 232);
+  width: 100%;
+}
+.faq__container:hover .faq__question {
+  color: rgb(34, 34, 34);
+}
+.faq_closed {
+  box-sizing: border-box;
+  display: flex;
+  -webkit-box-pack: justify;
+  justify-content: space-between;
+  -webkit-box-align: center;
+  align-items: center;
+  height: 80px;
+}
+.faq_closed svg {
+  min-width: 24px;
+  transition: transform 0.4s ease 0s;
+}
+.faq__question {
+  letter-spacing: 0px;
+  font-weight: 500;
+  font-size: 18px;
+  color: rgb(77, 77, 77);
+  padding-right: 15px;
+  transition: color 0.4s ease 0s;
+}
+.faq_open {
+  box-sizing: border-box;
+  display: flex;
+  -webkit-box-pack: justify;
+  justify-content: space-between;
+  -webkit-box-align: center;
+  align-items: center;
+  height: 80px;
+}
+.faq_open svg {
+  transform: rotate(45deg);
+}
+.faq_open svg {
+  min-width: 24px;
+  transition: transform 0.4s ease 0s;
+}
+.faq__answer {
+  color: rgb(34, 34, 34);
+  font-size: 16px;
+  line-height: 24px;
+  padding: 5px 0px 51px;
 }
