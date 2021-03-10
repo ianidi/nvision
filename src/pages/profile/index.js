@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Collapse } from "react-collapse";
+import { Dropzone } from '../../components/ui/upload';
 import { ReactComponent as IconPhone } from '../../assets/icons/phone.svg';
 import { ReactComponent as IconEmail } from '../../assets/icons/email.svg';
 import './style.scss'
@@ -65,6 +66,7 @@ function CollapseItem({ title, content }) {
         <div>
           <Collapse isOpened={open} initialStyle={open ? { height: "auto", overflow: "initial" } : { height: "0px", overflow: "hidden" }}>
             <div className="faq__answer">{content}</div>
+            <Dropzone />
           </Collapse>
         </div>
       </div>
