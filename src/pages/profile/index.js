@@ -37,7 +37,7 @@ export const Profile = () => {
   </div>
 
   <div className="list">
-    <CollapseItem title="do" content="s" />
+    <CollapseItem title="Сертификаты" content="s" />
   </div>
 
   </div>
@@ -58,8 +58,8 @@ function CollapseItem({ title, content }) {
       <div className="faq__container" onClick={toggle}>
         <div className={classNames({ faq_open: open, faq_closed: !open })}>
           <h3 className="faq__question">{title}</h3>
-          <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path d="M13 13v11h-2V13H0v-2h11V0h2v11h11v2H13z" fill="#959BA6" fill-rule="evenodd"></path>
+          <svg width="20" height="11" viewBox="0 0 20 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M2.35 11L10 4.20108L17.65 11L20 8.90688L10 0L0 8.90688L2.35 11Z" fill="#151515"/>
           </svg>
         </div>
         <div>
