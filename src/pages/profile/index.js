@@ -4,35 +4,30 @@ import './style.scss'
 
 export const Profile = () => {
 
-  const items = useMemo(
-    () => [
-      {
-        title: 'Справочник “Вендоры”',
-        path: 'vendor',
-      },
-      {
-        title: 'Справочник “Типы сертификатов”',
-        path: 'vendor',
-      },
-      {
-        title: 'Справочник “Специальности”',
-        path: 'vendor',
-      },
-      {
-        title: 'Справочник “Виды удостоверений”',
-        path: 'vendor',
-      },
-      {
-        title: 'Справочник “Типы учёных степеней”',
-        path: 'vendor',
-      },
-    ],
-    []
-  );
-
   return <React.Fragment>
-    <div className="items">
-      {items.map((item, index) => (<div key={index} className="item"><div>{item.title}</div><div><IconArrow /></div></div>))}
-    </div>
+  <div className="profile">
+  <div className="avatar">
+      <div className="avatar__img"></div>
+  </div>
+  <div className="person">
+      <div className="person__name">Сафонова Ирина Владимировна</div>
+      <div className="person__position">Руководитель направления обучения и развития</div>
+      <div className="person__department">Департамент по управлению закупками и работе с партнерами; Блок по управлению персоналом.</div>
+      <div className="person__director">Руководитель: Гурленов Андрей Владимирович</div>
+  </div>
+  <div className="line"></div>
+  <div className="contact">
+      <div className="contact__item">
+          <div className="contact__info">(885) 2186</div>
+      </div>
+  </div>
+  <div className="contact">
+      <div className="contact__item">
+          <div className="contact__info">VVinokurov@nvg.ru</div>
+      </div>
+  </div>
+    <div className="line"></div>
+    <div className="buttons"></div>
+  </div>
   </React.Fragment>;
 };
