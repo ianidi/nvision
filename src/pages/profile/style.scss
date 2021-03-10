@@ -60,7 +60,7 @@
 .person__name {
   margin-bottom: 20px;
   font-size: 24px;
-  font-weight: 600;
+  font-weight: 500;
   text-align: center;
 }
 
@@ -68,10 +68,11 @@
   margin-bottom: 20px;
   font-size: 16px;
   text-align: center;
+  font-weight: 500;
 }
 
 .person__department {
-  margin-bottom: 20px;
+  margin-bottom: 30px;
   font-size: 13px;
   text-align: center;
 }
@@ -79,6 +80,7 @@
 .person__director {
   font-size: 16px;
   text-align: center;
+  font-weight: 500;
 }
 
 .line {
@@ -89,7 +91,7 @@
 
 .contact {
   padding-top: 20px;
-  padding-bottom: 20px;
+  padding-bottom: 10px;
 }
 
 .contact__item {

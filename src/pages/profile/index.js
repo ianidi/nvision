@@ -1,5 +1,6 @@
 import React, { useMemo } from 'react';
-import { ReactComponent as IconArrow } from '../../assets/icons/arrow.svg';
+import { ReactComponent as IconPhone } from '../../assets/icons/phone.svg';
+import { ReactComponent as IconEmail } from '../../assets/icons/email.svg';
 import './style.scss'
 
 export const Profile = () => {
@@ -13,14 +14,16 @@ export const Profile = () => {
       <div className="person__name">Сафонова Ирина Владимировна</div>
       <div className="person__position">Руководитель направления обучения и развития</div>
       <div className="person__department">Департамент по управлению закупками и работе с партнерами; Блок по управлению персоналом.</div>
-      <div className="person__director">Руководитель: Гурленов Андрей Владимирович</div>
+      <div className="person__director">Руководитель:<br />Гурленов Андрей Владимирович</div>
   </div>
   <div className="line"></div>
   <div className="contact">
       <div className="contact__item">
+          <IconPhone />
           <div className="contact__info">(885) 2186</div>
       </div>
       <div className="contact__item">
+          <IconEmail />
           <div className="contact__info">VVinokurov@nvg.ru</div>
       </div>
   </div>
