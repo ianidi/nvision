@@ -5,6 +5,7 @@ import { PrivateRoute } from "./components/router";
 
 import { Navbar, Sidebar, Content } from "./components/layout";
 import { List } from './pages';
+import { Profile } from './profile';
 import { Guide } from './pages';
 
 function App() {
@@ -18,6 +19,9 @@ function App() {
             <Switch>
               <Route exact path="/">
                 <List />
+              </Route>
+              <Route exact path="/profile">
+                <Profile />
               </Route>
               <Route exact path="/guide">
                 <Guide />
