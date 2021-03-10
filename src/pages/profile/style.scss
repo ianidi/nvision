@@ -133,9 +133,15 @@
 
 .faq__container {
   cursor: pointer;
-  border-bottom: 1px solid rgb(226, 230, 232);
+  background: #fff;
+  padding: 20px;
+  margin-bottom: 20px;
+  font-size: 24px;
+  font-weight: 700;
+  border-radius: 16px;
   width: 100%;
 }
+
 .faq__container:hover .faq__question {
   color: rgb(34, 34, 34);
 }
@@ -181,4 +187,24 @@
   font-size: 16px;
   line-height: 24px;
   padding: 5px 0px 51px;
+}
+
+.items {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #fff;
+  padding: 20px;
+  margin-bottom: 20px;
+  font-size: 24px;
+  font-weight: 700;
+  border-radius: 16px;
+  max-width: 600px;
+  width: 100%;
+  cursor: pointer;
 }
