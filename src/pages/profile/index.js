@@ -20,8 +20,6 @@ export const Profile = () => {
       <div className="contact__item">
           <div className="contact__info">(885) 2186</div>
       </div>
-  </div>
-  <div className="contact">
       <div className="contact__item">
           <div className="contact__info">VVinokurov@nvg.ru</div>
       </div>
