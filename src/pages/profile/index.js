@@ -6,92 +6,86 @@ import TableCell from '@material-ui/core/TableCell';
 import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
-import Paper from '@material-ui/core/Paper';
 import { Collapse } from "react-collapse";
 import { Dropzone } from '../../components/ui/upload';
 import { ReactComponent as IconPhone } from '../../assets/icons/phone.svg';
 import { ReactComponent as IconEmail } from '../../assets/icons/email.svg';
+
+import { ReactComponent as IconView } from '../../assets/icons/view.svg';
+import { ReactComponent as IconDownload } from '../../assets/icons/download.svg';
+import { ReactComponent as IconRemove } from '../../assets/icons/remove.svg';
 import './style.scss'
 
 var classNames = require("classnames");
-
 
 const useStyles = makeStyles({
   table: {
     minWidth: 650,
   },
   tableKey: {
-    color: "rgba(255, 255, 255, 0.5)",
-    borderBottom: "0.1rem solid rgba(0, 0, 0, 0.2)",
-    fontSize: 18,
-    fontWeight: "bold",
+    color: "#7F7F7F",
+    fontWeight: "normal",
+    // borderBottom: "0.1rem solid rgba(0, 0, 0, 0.2)",
+    fontSize: 14,
     textAlign: "left",
   },
   tableLine: {
     // borderBottom: "0.1rem solid rgba(0, 0, 0, 0.1)",
-    borderBottom: "0.1rem solid red",
+    // borderBottom: "0.1rem solid red",
   },
   tableCell: {
-    borderBottom: "0.1rem solid rgba(0, 0, 0, 0.1)",
-    color: "rgba(255, 255, 255, 0.4)",
-    fontSize: 16,
+    // borderBottom: "0.1rem solid rgba(0, 0, 0, 0.1)",
+    color: "#151515",
+    fontSize: 14,
     textAlign: "left",
   },
 });
 
-function createData(id, baseCurrency, baseCurrencyOpenPrice, baseCurrencyCurrentPrice, depositCurrency, timeLeft, tokens) {
-  return { id, baseCurrency, baseCurrencyOpenPrice, baseCurrencyCurrentPrice, depositCurrency, timeLeft, tokens };
+function createData(title, vendor, type, startDate, endDate, status) {
+  return { title, vendor, type, startDate, endDate, status };
 }
 
-function SentiMentComponent({bear, bull}) {
+function Status() {
   return (
-    <div className="sentiment">
-      {bear > 0 && `${bear}%`}
-      <div className="sentiment-bear" style={{width: `${bear}%`}}></div>
-      <div className="sentiment-bull" style={{width: `${bull}%`}}></div>
-      {bull > 0 && `${bull}%`}
+    <div className="status">
+      <div className="icon"><IconView /></div>
+      <div className="icon"><IconDownload /></div>
+      <div className="icon"><IconRemove /></div>
     </div>
   )
 }
 
 const rows = [
-  createData( 1, "BTC", "48,514", "48,299", "SOL", "00:00", {bear: 0, bull: 100}),
+  createData("Специалист по MS Excel", "Microsoft", "Type", "Да", "01.09.2020", "Да", "31.08.2020", "Действует"),
 ];
-
 
 function TableComponent() {
   const classes = useStyles();
 
   return (
-    <TableContainer component={Paper} style={{background: "#191f2b", marginTop: "30px", borderRadius: "10px", padding: "0 7px", paddingBottom: "10px", border: "0.1rem solid rgba(255, 255, 255, 0.2)"}}>
+    <TableContainer style={{marginTop: "0px", padding: "0px", paddingBottom: "0px"}}>
       <Table className={classes.table} size="small" aria-label="a dense table">
         <TableHead>
           <TableRow>
-            <TableCell className={classes.tableKey}>#</TableCell>
-            <TableCell className={classes.tableKey} align="right">Base currency</TableCell>
-            <TableCell className={classes.tableKey} align="right">Open price</TableCell>
-            <TableCell className={classes.tableKey} align="right">Current price</TableCell>
-            <TableCell className={classes.tableKey} align="right">Deposit currency</TableCell>
-            <TableCell className={classes.tableKey} align="right">Date created</TableCell>
-            <TableCell className={classes.tableKey} align="right">Time created</TableCell>
-            <TableCell className={classes.tableKey} align="right">Time left</TableCell>
-            <TableCell className={classes.tableKey} align="right">Sentiment</TableCell>
-            <TableCell className={classes.tableKey} align="right">Status</TableCell>
+            <TableCell className={classes.tableKey}>Наименование</TableCell>
+            <TableCell className={classes.tableKey}>Вендор</TableCell>
+            <TableCell className={classes.tableKey}>Тип</TableCell>
+            <TableCell className={classes.tableKey}>Затраты</TableCell>
+            <TableCell className={classes.tableKey}>Дата начала</TableCell>
+            <TableCell className={classes.tableKey}>Дата окончания</TableCell>
+            <TableCell className={classes.tableKey}></TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
           {rows.map((row) => (
-            <TableRow key={row.id} className={classes.tableLine} style={{borderBottom: '0.1rem solid red'}}>
-              <TableCell className={classes.tableCell} component="th" scope="row">{row.id}</TableCell>
-              <TableCell className={classes.tableCell} align="right">{row.baseCurrency}</TableCell>
-              <TableCell className={classes.tableCell} align="right">{row.baseCurrencyOpenPrice}</TableCell>
-              <TableCell className={classes.tableCell} align="right">{row.baseCurrencyCurrentPrice}</TableCell>
-              <TableCell className={classes.tableCell} align="right">{row.depositCurrency}</TableCell>
-              <TableCell className={classes.tableCell} align="right">01.03.2021</TableCell>
-              <TableCell className={classes.tableCell} align="right">19:00</TableCell>
-              <TableCell className={classes.tableCell} align="right">{row.timeLeft}</TableCell>
-              <TableCell className={classes.tableCell} align="right"><SentiMentComponent bear={row.tokens.bear} bull={row.tokens.bull} /></TableCell>
-              <TableCell className={classes.tableCell} align="right">Closed</TableCell>
+            <TableRow key={row.id} className={classes.tableLine}>
+              <TableCell className={classes.tableCell} component="th" scope="row">{row.title}</TableCell>
+              <TableCell className={classes.tableCell}>{row.vendor}</TableCell>
+              <TableCell className={classes.tableCell}>{row.type}</TableCell>
+              <TableCell className={classes.tableCell}>{row.startDate}</TableCell>
+              <TableCell className={classes.tableCell}>{row.endDate}</TableCell>
+              <TableCell className={classes.tableCell}>{row.status}</TableCell>
+              <TableCell className={classes.tableCell}><Status /></TableCell>
             </TableRow>
           ))}
         </TableBody>
@@ -101,7 +95,6 @@ function TableComponent() {
 }
 
 export const Profile = () => {
-
   return <React.Fragment>
   <div className="profile__wrapper">
 
