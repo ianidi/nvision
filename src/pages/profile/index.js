@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+
 import { makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -6,6 +7,7 @@ import TableCell from '@material-ui/core/TableCell';
 import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
+
 import { Collapse } from "react-collapse";
 import { Dropzone } from '../../components/ui/upload';
 import { ReactComponent as IconPhone } from '../../assets/icons/phone.svg';
@@ -25,16 +27,10 @@ const useStyles = makeStyles({
   tableKey: {
     color: "#7F7F7F",
     fontWeight: "normal",
-    // borderBottom: "0.1rem solid rgba(0, 0, 0, 0.2)",
     fontSize: 14,
     textAlign: "left",
   },
-  tableLine: {
-    // borderBottom: "0.1rem solid rgba(0, 0, 0, 0.1)",
-    // borderBottom: "0.1rem solid red",
-  },
   tableCell: {
-    // borderBottom: "0.1rem solid rgba(0, 0, 0, 0.1)",
     color: "#151515",
     fontSize: 14,
     textAlign: "left",
