@@ -63,7 +63,7 @@ function TableComponent() {
   const classes = useStyles();
 
   return (
-    <TableContainer style={{marginTop: "0px", padding: "0px", paddingBottom: "0px"}}>
+    <TableContainer style={{marginTop: "10px", marginBottom: "20px", userSelect: "none"}}>
       <Table className={classes.table} size="small" aria-label="a dense table">
         <TableHead>
           <TableRow>
@@ -125,6 +125,9 @@ export const Profile = () => {
 
   <div className="list">
     <CollapseItem title="Сертификаты" content="s" />
+    <CollapseItem title="Дипломы" content="s" />
+    <CollapseItem title="Учёные степени" content="s" />
+    <CollapseItem title="Удостоверения" content="s" />
   </div>
 
   </div>
@@ -142,16 +145,18 @@ function CollapseItem({ title, content }) {
 
   return (
     <React.Fragment>
-      <div className="faq__container" onClick={toggle}>
+      <div className="faq__container">
         <div className={classNames({ faq_open: open, faq_closed: !open })}>
           <h3 className="faq__question">{title}</h3>
-          <svg width="20" height="11" viewBox="0 0 20 11" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M2.35 11L10 4.20108L17.65 11L20 8.90688L10 0L0 8.90688L2.35 11Z" fill="#151515"/>
-          </svg>
+          <div className="toggle" onClick={toggle}>
+            <svg width="20" height="11" viewBox="0 0 20 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M2.35 11L10 4.20108L17.65 11L20 8.90688L10 0L0 8.90688L2.35 11Z" fill="#151515"/>
+            </svg>
+          </div>
         </div>
         <div>
           <Collapse isOpened={open} initialStyle={open ? { height: "auto", overflow: "initial" } : { height: "0px", overflow: "hidden" }}>
-            <div className="faq__answer">{content}</div>
+            {/*<div className="faq__answer">{content}</div>*/}
             <TableComponent />
             <Dropzone />
           </Collapse>

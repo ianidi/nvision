@@ -1,35 +1,7 @@
 import React from 'react';
 import {useDropzone} from 'react-dropzone';
-import styled from 'styled-components';
-
-const getColor = (props) => {
-  if (props.isDragAccept) {
-      return '#00e676';
-  }
-  if (props.isDragReject) {
-      return '#ff1744';
-  }
-  if (props.isDragActive) {
-      return '#2196f3';
-  }
-  return '#eeeeee';
-}
-
-const Container = styled.div`
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 20px;
-  border-width: 2px;
-  border-radius: 2px;
-  border-color: ${props => getColor(props)};
-  border-style: dashed;
-  background-color: #fafafa;
-  color: #bdbdbd;
-  outline: none;
-  transition: border .24s ease-in-out;
-`;
+import { ReactComponent as IconUpload } from '../../../../assets/icons/upload.svg';
+import "./style.scss"
 
 export const Dropzone = () => {
   const {
@@ -41,32 +13,10 @@ export const Dropzone = () => {
   } = useDropzone({accept: 'image/*'});
   
   return (
-    <div className="container">
-      <Container {...getRootProps({isDragActive, isDragAccept, isDragReject})}>
+      <div className="dropzone" {...getRootProps({isDragActive, isDragAccept, isDragReject})}>
         <input {...getInputProps()} />
-        <p>Drag 'n' drop some files here, or click to select files</p>
-      </Container>
-    </div>
+        <IconUpload />
+        <div className="dropzone__text">Добавьте сертификат или перетащите сюда скан документа (pdf, jpg, doc, docx)</div>
+      </div>
   );
 }
-
-// import React, {useCallback} from 'react'
-// import {useDropzone} from 'react-dropzone'
-
-// export const Dropzone = () => {
-//   const onDrop = useCallback(acceptedFiles => {
-//     // Do something with the files
-//   }, [])
-//   const {getRootProps, getInputProps, isDragActive} = useDropzone({onDrop})
-
-//   return (
-//     <div {...getRootProps()}>
-//       <input {...getInputProps()} />
-//       {
-//         isDragActive ?
-//           <p>Drop the files here ...</p> :
-//           <p>Drag 'n' drop some files here, or click to select files</p>
-//       }
-//     </div>
-//   )
-// }
