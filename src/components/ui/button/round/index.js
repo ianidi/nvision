@@ -7,7 +7,7 @@ export const Round = ({title, icon, style}) => {
     <React.Fragment>
       <div className="button" style={{...style}}>
         {title}
-        {icon ? icon : ""}
+        {icon ? <div className="icon">{icon}</div> : ""}
       </div>
 
       <style jsx>{`
