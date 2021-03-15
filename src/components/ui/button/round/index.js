@@ -1,11 +1,11 @@
 import React from 'react';
 import './style.scss'
 
-export const Round = ({title, icon}) => {
+export const Round = ({title, icon, style}) => {
 
   return (
     <React.Fragment>
-      <div className="button">
+      <div className="button" style={{...style}}>
         {title}
         {icon ? icon : ""}
       </div>
