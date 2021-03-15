@@ -1,0 +1,26 @@
+.card {
+  background: #FFFFFF;
+  border-radius: 16px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 20px;
+  padding-bottom: 60px;
+}
+.head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+.icon {
+  margin-right: 20px;
+  cursor: pointer;
+}
+.title {
+  font-size: 24px;
+  font-weight: 700;
+}
+.navigation {
+  font-size: 16px;
+  color: #7F7F7F;
+}

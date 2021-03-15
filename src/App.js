@@ -6,6 +6,7 @@ import { PrivateRoute } from "./components/router";
 import { Navbar, Sidebar, Content } from "./components/layout";
 import { List } from './pages';
 import { Profile } from './pages';
+import { Employee } from './pages';
 import { Guide } from './pages';
 
 function App() {
@@ -22,6 +23,9 @@ function App() {
               </Route>
               <Route exact path="/profile">
                 <Profile />
+              </Route>
+              <Route exact path="/employee">
+                <Employee />
               </Route>
               <Route exact path="/guide">
                 <Guide />
