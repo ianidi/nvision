@@ -57,7 +57,7 @@ const rows = [
   createData("Специалист по MS Excel", "Microsoft", "Type", "Да", "01.09.2020", "Да", "31.08.2020", "Действует"),
 ];
 
-function TableComponent() {
+function TableCert() {
   const classes = useStyles();
 
   return (
@@ -125,14 +125,13 @@ export const Profile = () => {
   </div>
 
   <div className="list">
-    <CollapseItem title="Сертификаты" content="s" />
+    <CollapseItem title="Сертификаты" content={<React.Fragment><TableCert /><Dropzone /></React.Fragment>} />
     <CollapseItem title="Дипломы" content="s" />
     <CollapseItem title="Учёные степени" content="s" />
     <CollapseItem title="Удостоверения" content="s" />
   </div>
 
   </div>
-  
   </React.Fragment>;
 };
 
@@ -157,9 +156,7 @@ function CollapseItem({ title, content }) {
         </div>
         <div>
           <Collapse isOpened={open} initialStyle={open ? { height: "auto", overflow: "initial" } : { height: "0px", overflow: "hidden" }}>
-            {/*<div className="faq__answer">{content}</div>*/}
-            <TableComponent />
-            <Dropzone />
+            {content}
           </Collapse>
         </div>
       </div>
