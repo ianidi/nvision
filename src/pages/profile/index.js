@@ -92,6 +92,91 @@ function TableCert() {
   );
 }
 
+function TableDiploma() {
+  const classes = useStyles();
+
+  return (
+    <TableContainer style={{marginTop: "10px", marginBottom: "20px", userSelect: "none"}}>
+      <Table className={classes.table} size="small" aria-label="a dense table">
+        <TableHead>
+          <TableRow>
+            <TableCell className={classes.tableKey}>Специальность</TableCell>
+            <TableCell className={classes.tableKey}></TableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {rows.map((row) => (
+            <TableRow key={row.id} className={classes.tableLine}>
+              <TableCell className={classes.tableCell} component="th" scope="row">{row.title}</TableCell>
+              <TableCell className={classes.tableCell}><Status /></TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
+    </TableContainer>
+  );
+}
+
+function TableDegree() {
+  const classes = useStyles();
+
+  return (
+    <TableContainer style={{marginTop: "10px", marginBottom: "20px", userSelect: "none"}}>
+      <Table className={classes.table} size="small" aria-label="a dense table">
+        <TableHead>
+          <TableRow>
+            <TableCell className={classes.tableKey}>Ученая степень</TableCell>
+            <TableCell className={classes.tableKey}>Научная область</TableCell>
+            <TableCell className={classes.tableKey}></TableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {rows.map((row) => (
+            <TableRow key={row.id} className={classes.tableLine}>
+              <TableCell className={classes.tableCell} component="th" scope="row">{row.title}</TableCell>
+              <TableCell className={classes.tableCell}>{row.vendor}</TableCell>
+              <TableCell className={classes.tableCell}><Status /></TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
+    </TableContainer>
+  );
+}
+
+function TableCredential() {
+  const classes = useStyles();
+
+  return (
+    <TableContainer style={{marginTop: "10px", marginBottom: "20px", userSelect: "none"}}>
+      <Table className={classes.table} size="small" aria-label="a dense table">
+        <TableHead>
+          <TableRow>
+            <TableCell className={classes.tableKey}>Вид</TableCell>
+            <TableCell className={classes.tableKey}>Дата начала</TableCell>
+            <TableCell className={classes.tableKey}>Бессрочный</TableCell>
+            <TableCell className={classes.tableKey}>Дата окончания</TableCell>
+            <TableCell className={classes.tableKey}>Статус</TableCell>
+            <TableCell className={classes.tableKey}></TableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {rows.map((row) => (
+            <TableRow key={row.id} className={classes.tableLine}>
+              <TableCell className={classes.tableCell} component="th" scope="row">{row.title}</TableCell>
+              <TableCell className={classes.tableCell}>{row.startDate}</TableCell>
+              <TableCell className={classes.tableCell}>{row.vendor}</TableCell>
+              <TableCell className={classes.tableCell}>{row.endDate}</TableCell>
+              <TableCell className={classes.tableCell}>{row.status}</TableCell>
+              <TableCell className={classes.tableCell}><Status /></TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
+    </TableContainer>
+  );
+}
+
 export const Profile = () => {
   return <React.Fragment>
   <div className="profile__wrapper">
@@ -126,11 +211,11 @@ export const Profile = () => {
 
   <div className="list">
     <CollapseItem title="Сертификаты" content={<React.Fragment><TableCert /><Dropzone /></React.Fragment>} />
-    <CollapseItem title="Дипломы" content="s" />
-    <CollapseItem title="Учёные степени" content="s" />
-    <CollapseItem title="Удостоверения" content="s" />
+    <CollapseItem title="Дипломы" content={<React.Fragment><TableDiploma /><Dropzone /></React.Fragment>} />
+    <CollapseItem title="Учёные степени" content={<React.Fragment><TableDegree /><Dropzone /></React.Fragment>} />
+    <CollapseItem title="Удостоверения" content={<React.Fragment><TableCredential /><Dropzone /></React.Fragment>} />
   </div>
-
+  
   </div>
   </React.Fragment>;
 };
