@@ -91,13 +91,7 @@
 }
 
 .contact__item {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-  -ms-flex-align: center;
   align-items: center;
   font-size: 14px;
   margin-bottom: 10px;
@@ -116,7 +110,7 @@
   cursor: pointer;
 }
 
-.faq__container {
+.card {
   padding: 20px;
   margin-bottom: 20px;
   font-size: 24px;
@@ -125,34 +119,34 @@
   background: #fff;
   box-shadow: 0px 0px 5px rgba(19, 19, 19, 0.25);
 }
-.faq_closed {
+.card_closed {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-.faq_closed svg {
+.card_closed svg {
   min-width: 20px;
   transition: transform 0.4s ease 0s;
 }
-.faq__question {
+.title {
   padding-right: 15px;
   font-weight: 700;
   font-size: 24px;
   transition: all 0.4s ease 0s;
 }
-.faq_open {
+.card_open {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-.faq_open svg {
+.card_open svg {
   transform: rotate(180deg);
 }
-.faq_open svg {
+.card_open svg {
   min-width: 20px;
   transition: transform 0.4s ease 0s;
 }
-.faq__answer {
+.card__answer {
   color: rgb(34, 34, 34);
   font-size: 16px;
   line-height: 24px;

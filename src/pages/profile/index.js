@@ -145,9 +145,9 @@ function CollapseItem({ title, content }) {
 
   return (
     <React.Fragment>
-      <div className="faq__container">
-        <div className={classNames({ faq_open: open, faq_closed: !open })}>
-          <h3 className="faq__question">{title}</h3>
+      <div className="card">
+        <div className={classNames({ card_open: open, card_closed: !open })}>
+          <h3 className="title">{title}</h3>
           <div className="toggle" onClick={toggle}>
             <svg width="20" height="11" viewBox="0 0 20 11" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M2.35 11L10 4.20108L17.65 11L20 8.90688L10 0L0 8.90688L2.35 11Z" fill="#151515"/>
@@ -160,6 +160,6 @@ function CollapseItem({ title, content }) {
           </Collapse>
         </div>
       </div>
-      </React.Fragment>
+    </React.Fragment>
     );
   }
