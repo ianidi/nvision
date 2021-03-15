@@ -1,5 +1,5 @@
 import React from 'react';
-import './style.scss'
+import './style.scoped.scss'
 
 export const Excel = ({title, icon, style}) => {
   return (

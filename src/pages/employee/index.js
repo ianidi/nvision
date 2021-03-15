@@ -1,5 +1,5 @@
 import React from 'react';
-import { Round } from '../../components/ui/button';
+import { Excel } from '../../components/ui/button';
 import { ReactComponent as IconArrowNav } from '../../assets/icons/arrow_nav.svg';
 import { ReactComponent as IconArrowDownloadExcel } from '../../assets/icons/arrow_download_excel.svg';
 import './style.scss'
@@ -13,7 +13,7 @@ export const Employee = () => {
           <div className="d-flex align-items-center navigation"><div className="icon"><IconArrowNav /></div>Все сотрудники</div>
         </div>
         <div>
-          <Round title="Выгрузить в Excel" icon={<IconArrowDownloadExcel />} />
+          <Excel title="Выгрузить в Excel" icon={<IconArrowDownloadExcel />} />
         </div>
       </div>
     </div>
