@@ -10,9 +10,10 @@ import TableRow from '@material-ui/core/TableRow';
 
 import { Collapse } from "react-collapse";
 import { Dropzone } from '../../components/ui/upload';
+import { Round } from '../../components/ui/button';
 import { ReactComponent as IconPhone } from '../../assets/icons/phone.svg';
+import { ReactComponent as IconArrowRight } from '../../assets/icons/arrow_right.svg';
 import { ReactComponent as IconEmail } from '../../assets/icons/email.svg';
-
 import { ReactComponent as IconView } from '../../assets/icons/view.svg';
 import { ReactComponent as IconDownload } from '../../assets/icons/download.svg';
 import { ReactComponent as IconRemove } from '../../assets/icons/remove.svg';
@@ -116,7 +117,9 @@ export const Profile = () => {
         </div>
     </div>
       <div className="line"></div>
-      <div className="buttons"></div>
+      <div className="buttons">
+        <Round title="Отправить запрос о ПД" icon={<IconArrowRight />} />
+      </div>
   </div>
 
   <div className="list">
