@@ -26,11 +26,11 @@ export const Sidebar = ({ drawer }) => {
           },
           {
             icon: <IconEmployee />,
-            to: `/a`,
+            to: `/employee`,
           },
           {
             icon: <IconCertificate />,
-            to: `/a`,
+            to: `/cert`,
           },
           {
             icon: <IconGuide />,
