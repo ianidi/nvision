@@ -13,7 +13,7 @@ export const Employee = () => {
           <div className="d-flex align-items-center navigation"><div className="icon"><IconArrowNav /></div>Все сотрудники</div>
         </div>
         <div>
-          <Round title="Выгрузить в Excel" icon={<IconArrowDownloadExcel />} className="excel" />
+          <Round title="Выгрузить в Excel" icon={<IconArrowDownloadExcel />} />
         </div>
       </div>
     </div>

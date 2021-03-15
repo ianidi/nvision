@@ -2,7 +2,6 @@ import React from 'react';
 import './style.scss'
 
 export const Excel = ({title, icon, style}) => {
-
   return (
     <React.Fragment>
       <div className="button" style={{...style}}>
