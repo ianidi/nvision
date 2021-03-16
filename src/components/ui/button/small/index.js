@@ -1,10 +1,10 @@
 import React from 'react';
 import './style.scoped.scss'
 
-export const Excel = ({title, icon, style}) => {
+export const Small = ({title, icon, style, color="#000"}) => {
   return (
     <React.Fragment>
-      <div className="button" style={{...style}}>
+      <div className="button" style={{...style, color}}>
         {title}
         {icon ? <div className="icon">{icon}</div> : ""}
       </div>

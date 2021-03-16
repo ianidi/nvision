@@ -8,7 +8,7 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 
-import { Excel } from '../../components/ui/button';
+import { Small } from '../../components/ui/button';
 import { ReactComponent as IconArrowNav } from '../../assets/icons/arrow_nav.svg';
 import { ReactComponent as IconArrowDownloadExcel } from '../../assets/icons/arrow_download_excel.svg';
 import './style.scoped.scss'
@@ -48,7 +48,7 @@ export const Employee = () => {
           <div className="d-flex align-items-center navigation"><div className="icon"><IconArrowNav /></div>Все сотрудники</div>
         </div>
         <div>
-          <Excel title="Выгрузить в Excel" icon={<IconArrowDownloadExcel />} />
+          <Small title="Выгрузить в Excel" icon={<IconArrowDownloadExcel />} color="#009A50" />
         </div>
       </div>
 

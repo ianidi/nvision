@@ -13,8 +13,13 @@ import MoreVertIcon from '@material-ui/icons/MoreVert';
 import { Textinput } from '@yandex/ui/Textinput/desktop/bundle';
 import "./style.scoped.scss"
 
+import { ReactComponent as IconArrowDownloadExcel } from '../../../../assets/icons/arrow_download_excel.svg';
+import { ReactComponent as IconClear } from '../../../../assets/icons/clear.svg';
+import { ReactComponent as IconArrowDownloadBlack } from '../../../../assets/icons/arrow_download_black.svg';
+
 import { Datepicker } from '../../date';
 import { Search } from '../../input';
+import { Small } from '../../button';
 
 import { Spinner } from '../../spinner';
 import makeData from './makeData';
@@ -43,7 +48,6 @@ const Styles = styled.div`
     }
 
     .table-title {
-      padding: 20px;
       font-size: 24px;
       font-weight: 700;
     }
@@ -535,20 +539,28 @@ function TableComponent({ columns, data, fetchData, loading, pageCount: controll
   return (
     <React.Fragment>
       <div {...getTableProps()} className="table">
-        <div className="table-title">Сертификаты</div>
 
+      <div className="head d-flex align-items-center justify-content-between">
+        <div className="table-title">Сертификаты</div>
+        <div className="d-flex align-items-center">
+
+          <Small title="Выгрузить в Excel" icon={<IconArrowDownloadExcel />} color="#009A50" />
+          <Small title="Очистить все фильтры" icon={<IconClear />} color="#EE262A" style={{marginLeft: 20, marginRight: 20}} />
+          <Small title="Скачать файлы" icon={<IconArrowDownloadBlack />} color="#151515" />
+        </div>
+      </div>
 
 
         <div className="d-flex align-items-center table__search">
         <Search title="Введите ФИО сотрудника" />
         <Datepicker
         callback={()=>{}}
-        // value={birthday} justify-content-space-between
+        // value={birthday}
         placeholder="Дата начала"
       />
       <Datepicker
       callback={()=>{}}
-      // value={birthday} justify-content-space-between
+      // value={birthday}
       placeholder="Дата конца"
     />
         </div>
