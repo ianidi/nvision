@@ -1,26 +1,12 @@
-.button {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  min-height: 40px;
-  max-width: 255px;
-  width: 100%;
+.input {
+  min-height: 42px;
+  border: 1px solid #E0E0E0;
+  border-radius: 4px;
+  padding: 11px 10px;
+  color: #7F7F7F;
   font-size: 14px;
-  font-weight: 500;
-  color: #151515;
-  background: #FFFFFF;
-  box-shadow: 0px 0px 5px rgba(19, 19, 19, 0.25);
-  border-radius: 50px;
-  padding-left: 30px;
-  padding-right: 10px;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  transition: all 300ms;
-  cursor: pointer;
-  user-select: none;
-}
-.button:hover {
-  box-shadow: 0px 0px 7px rgba(19, 19, 19, 0.3);
+  outline: none;
+  margin-right: 8px;
 }
 .icon {
   margin-left: 20px;

@@ -11,6 +11,10 @@ import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import { Textinput } from '@yandex/ui/Textinput/desktop/bundle';
+import "./style.scoped.scss"
+
+import { Datepicker } from '../../date';
+import { Search } from '../../input';
 
 import { Spinner } from '../../spinner';
 import makeData from './makeData';
@@ -532,6 +536,25 @@ function TableComponent({ columns, data, fetchData, loading, pageCount: controll
     <React.Fragment>
       <div {...getTableProps()} className="table">
         <div className="table-title">Сертификаты</div>
+
+
+
+        <div className="d-flex align-items-center table__search">
+        <Search title="Введите ФИО сотрудника" />
+        <Datepicker
+        callback={()=>{}}
+        // value={birthday} justify-content-space-between
+        placeholder="Дата начала"
+      />
+      <Datepicker
+      callback={()=>{}}
+      // value={birthday} justify-content-space-between
+      placeholder="Дата конца"
+    />
+        </div>
+
+
+
         <div className="table-head">
           {headerGroups.map((headerGroup) => (
             <div
