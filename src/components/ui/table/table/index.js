@@ -18,7 +18,7 @@ import { ReactComponent as IconClear } from '../../../../assets/icons/clear.svg'
 import { ReactComponent as IconArrowDownloadBlack } from '../../../../assets/icons/arrow_download_black.svg';
 
 import { Datepicker } from '../../date';
-import { Search } from '../../input';
+import { Search, Select } from '../../input';
 import { Small } from '../../button';
 
 import { Spinner } from '../../spinner';
@@ -552,17 +552,18 @@ function TableComponent({ columns, data, fetchData, loading, pageCount: controll
 
 
         <div className="d-flex align-items-center table__search">
-        <Search title="Введите ФИО сотрудника" />
-        <Datepicker
-        callback={()=>{}}
-        // value={birthday}
-        placeholder="Дата начала"
-      />
-      <Datepicker
-      callback={()=>{}}
-      // value={birthday}
-      placeholder="Дата конца"
-    />
+          <Search title="Введите ФИО сотрудника" />
+          <Datepicker
+          callback={()=>{}}
+          // value={birthday}
+          placeholder="Дата начала"
+          />
+          <Datepicker
+            callback={()=>{}}
+            // value={birthday}
+            placeholder="Дата конца"
+          />
+          <Select />
         </div>
 
 
