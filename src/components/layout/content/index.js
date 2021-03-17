@@ -1,5 +1,5 @@
 import React from "react";
-import "./style.scss"
+import "./style.scoped.scss"
 // import { useRouteMatch } from "react-router-dom";
 // import { useSelector, useDispatch } from "react-redux";
 // import { toggleDrawer, closeDrawer, selectDrawerOpen } from "../../store/uiSlice";

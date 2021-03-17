@@ -1,7 +1,7 @@
 import React from 'react';
 import {useDropzone} from 'react-dropzone';
 import { ReactComponent as IconUpload } from '../../../../assets/icons/upload.svg';
-import "./style.scss"
+import "./style.scoped.scss"
 
 export const Dropzone = () => {
   const {

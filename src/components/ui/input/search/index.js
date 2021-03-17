@@ -1,11 +1,13 @@
 import React from 'react';
 import './style.scoped.scss'
 
+import { ReactComponent as IconSearch } from '../../../../assets/icons/search.svg';
+
 export const Search = ({title, icon, style}) => {
   return (
     <React.Fragment>
-      <div className="input" style={{...style}}>
-        {icon ? <div className="icon">{icon}</div> : ""}
+      <div className="d-flex justify-content-center input" style={{...style}}>
+        <div className="icon"><IconSearch /></div>
         {title}
       </div>
 

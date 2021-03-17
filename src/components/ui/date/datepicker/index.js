@@ -137,7 +137,7 @@ export const Datepicker = (props) => {
       renderInput={renderCustomInput}
       locale={myCustomLocale}
       shouldHighlightWeekends
-      maximumDate={utils().getToday()}
+      // maximumDate={utils().getToday()}
       calendarPopperPosition="bottom"
       colorPrimary="#2fa8ec"
       colorPrimaryLight="#2fa8ec"

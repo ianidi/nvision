@@ -9,7 +9,7 @@ import { ReactComponent as IconEmployee } from '../../../assets/icons/employee.s
 import { ReactComponent as IconCertificate } from '../../../assets/icons/certificate.svg';
 import { ReactComponent as IconGuide } from '../../../assets/icons/guide.svg';
 import { ReactComponent as IconDrawer } from '../../../assets/icons/drawer.svg';
-import "./style.scss";
+import "./style.scoped.scss";
 
 var classNames = require("classnames");
 

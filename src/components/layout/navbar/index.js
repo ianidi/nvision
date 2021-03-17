@@ -3,7 +3,7 @@ import { useHistory, useRouteMatch } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { closeDrawer } from "../../../store/uiSlice";
 import { ReactComponent as IconBack } from '../../../assets/icons/back.svg';
-import "./style.scss";
+import "./style.scoped.scss";
 
 var classNames = require("classnames");
 

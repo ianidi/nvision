@@ -13,6 +13,7 @@ import { Link, useParams } from "react-router-dom";
 import Pagination from "@material-ui/lab/Pagination";
 import PaginationItem from "@material-ui/lab/PaginationItem";
 
+import { Search } from '../../components/ui/input';
 import { Small } from '../../components/ui/button';
 import { ReactComponent as IconArrowNav } from '../../assets/icons/arrow_nav.svg';
 import { ReactComponent as IconArrowDownloadExcel } from '../../assets/icons/arrow_download_excel.svg';
@@ -63,7 +64,7 @@ export const Employee = () => {
         </div>
         <div className="list">
           <div className="d-flex align-items-center">
-            <input />
+            <Search title="Поиск" />
           </div>
           <div>
             <TableEmployee />
