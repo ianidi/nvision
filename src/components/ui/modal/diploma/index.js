@@ -7,10 +7,9 @@ import {
 import { withZIndex } from '@yandex/ui/withZIndex'
 
 import Uploady from "@rpldy/uploady";
-import { asUploadButton } from "@rpldy/upload-button";
 
 import { TextInput, Select } from '../../../ui/input';
-import { Button } from '../../../ui/button';
+import { Button, Upload } from '../../../ui/button';
 import { ReactComponent as IconModalClose } from '../../../../assets/icons/modal_close.svg';
 import './style.scoped.scss';
 
@@ -44,7 +43,7 @@ export const ModalDiploma = ({visible, setVisible}) => {
       />
 
       <Uploady destination={{ url: "https://my-server/upload" }}>
-        <DivUploadButton/>
+        <Upload />
       </Uploady>
 
       <div className="d-flex justify-content-end">
@@ -54,10 +53,3 @@ export const ModalDiploma = ({visible, setVisible}) => {
   </Modal>
 </React.Fragment>
 }
-
-const DivUploadButton = asUploadButton(forwardRef(
-    (props, ref) =>
-        <div {...props} style={{ cursor: "pointer" }}>
-            DIV Upload Button
-        </div>
-));
