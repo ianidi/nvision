@@ -5,7 +5,6 @@ import './style.scoped.scss'
 import { ReactComponent as IconAttachment } from '../../../../assets/icons/attachment.svg';
 
 export const Upload = asUploadButton(forwardRef((props, ref) => {
-  console.log(ref)
        return (
         <React.Fragment>
           <div {...props}>

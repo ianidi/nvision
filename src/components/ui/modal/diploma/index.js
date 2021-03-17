@@ -46,7 +46,7 @@ export const ModalDiploma = ({visible, setVisible}) => {
         <Upload />
       </Uploady>
 
-      <div className="d-flex justify-content-end">
+      <div className="d-flex justify-content-end" style={{marginTop: 20}}>
         <Button title="Отправить" onClick={() => setVisible(false)} />
       </div>
     </div>
