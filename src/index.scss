@@ -14,3 +14,8 @@ body {
   align-items: center;
   min-height: 100vh;
 }
+.Modal_theme_normal .Modal-Content {
+  background-color: transparent !important;
+  width: 100% !important;
+  max-width: 500px !important;
+}
