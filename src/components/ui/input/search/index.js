@@ -6,9 +6,9 @@ import { ReactComponent as IconSearch } from '../../../../assets/icons/search.sv
 export const Search = ({title, icon, style}) => {
   return (
     <React.Fragment>
-      <div className="d-flex justify-content-center input" style={{...style}}>
+      <div className="d-flex align-items-center justify-content-center input" style={{...style}}>
         <div className="icon"><IconSearch /></div>
-        {title}
+        <input type="text" className="input__field" placeholder={title} />
       </div>
 
       <style jsx>{`
