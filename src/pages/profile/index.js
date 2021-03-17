@@ -11,6 +11,7 @@ import TableRow from '@material-ui/core/TableRow';
 import { Collapse } from "react-collapse";
 import { Dropzone } from '../../components/ui/upload';
 import { Round } from '../../components/ui/button';
+import { PD } from '../../components/ui/modal';
 import { ReactComponent as IconArrowRight } from '../../assets/icons/arrow_right.svg';
 import { ReactComponent as IconArrowDownload } from '../../assets/icons/arrow_download.svg';
 import { ReactComponent as IconPhone } from '../../assets/icons/phone.svg';
@@ -178,7 +179,11 @@ function TableCredential() {
 }
 
 export const Profile = () => {
+  const [visible, setVisible] = useState(false);
+
   return <React.Fragment>
+  <PD visible={visible} setVisible={setVisible} />
+
   <div className="profile__wrapper">
 
   <div className="profile">
@@ -204,7 +209,7 @@ export const Profile = () => {
     </div>
       <div className="line"></div>
       <div className="buttons">
-        <Round title="Отправить запрос о ПД" icon={<IconArrowRight />} style={{ marginBottom: 20 }} />
+        <Round title="Отправить запрос о ПД" icon={<IconArrowRight />} style={{ marginBottom: 20 }} onClick={() => setVisible(true)} />
         <Round title="Скачать все файлы" icon={<IconArrowDownload />} />
       </div>
   </div>
