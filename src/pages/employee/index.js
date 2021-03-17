@@ -14,7 +14,7 @@ import Pagination from "@material-ui/lab/Pagination";
 import PaginationItem from "@material-ui/lab/PaginationItem";
 
 import { Search } from '../../components/ui/input';
-import { Small } from '../../components/ui/button';
+import { Button, Small } from '../../components/ui/button';
 import { ReactComponent as IconArrowNav } from '../../assets/icons/arrow_nav.svg';
 import { ReactComponent as IconArrowDownloadExcel } from '../../assets/icons/arrow_download_excel.svg';
 import './style.scoped.scss'
@@ -65,6 +65,7 @@ export const Employee = () => {
         <div className="list">
           <div className="d-flex align-items-center">
             <Search title="Поиск" />
+            <Button title="Найти" color="#E6BE00" />
           </div>
           <div>
             <TableEmployee />
