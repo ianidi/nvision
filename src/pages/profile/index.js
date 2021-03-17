@@ -9,7 +9,7 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 
 import { Collapse } from "react-collapse";
-import { Dropzone } from '../../components/ui/upload';
+// import { Dropzone } from '../../components/ui/upload';
 import { Round } from '../../components/ui/button';
 import { PD } from '../../components/ui/modal';
 import { ReactComponent as IconArrowRight } from '../../assets/icons/arrow_right.svg';
@@ -19,6 +19,7 @@ import { ReactComponent as IconEmail } from '../../assets/icons/email.svg';
 import { ReactComponent as IconView } from '../../assets/icons/view.svg';
 import { ReactComponent as IconDownload } from '../../assets/icons/download.svg';
 import { ReactComponent as IconRemove } from '../../assets/icons/remove.svg';
+import { ReactComponent as IconUpload } from '../../assets/icons/upload.svg';
 import './style.scoped.scss'
 
 var classNames = require("classnames");
@@ -58,123 +59,159 @@ const rows = [
   createData("Специалист по MS Excel", "Microsoft", "Type", "Да", "01.09.2020", "Да", "31.08.2020", "Действует"),
 ];
 
-function TableCert() {
+function Cert() {
   const classes = useStyles();
 
-  return (
-    <TableContainer style={{marginTop: "10px", marginBottom: "20px", userSelect: "none"}}>
-      <Table className={classes.table} size="small" aria-label="a dense table">
-        <TableHead>
-          <TableRow>
-            <TableCell className={classes.tableKey}>Наименование</TableCell>
-            <TableCell className={classes.tableKey}>Вендор</TableCell>
-            <TableCell className={classes.tableKey}>Тип</TableCell>
-            <TableCell className={classes.tableKey}>Затраты</TableCell>
-            <TableCell className={classes.tableKey}>Дата начала</TableCell>
-            <TableCell className={classes.tableKey}>Дата окончания</TableCell>
-            <TableCell className={classes.tableKey}></TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {rows.map((row) => (
-            <TableRow key={row.id} className={classes.tableLine}>
-              <TableCell className={classes.tableCell} component="th" scope="row">{row.title}</TableCell>
-              <TableCell className={classes.tableCell}>{row.vendor}</TableCell>
-              <TableCell className={classes.tableCell}>{row.type}</TableCell>
-              <TableCell className={classes.tableCell}>{row.startDate}</TableCell>
-              <TableCell className={classes.tableCell}>{row.endDate}</TableCell>
-              <TableCell className={classes.tableCell}>{row.status}</TableCell>
-              <TableCell className={classes.tableCell}><Status /></TableCell>
+  const [visible, setVisible] = useState(false);
+
+  return (<React.Fragment>
+  <PD visible={visible} setVisible={setVisible} />
+      <TableContainer style={{marginTop: "10px", marginBottom: "20px", userSelect: "none"}}>
+        <Table className={classes.table} size="small" aria-label="a dense table">
+          <TableHead>
+            <TableRow>
+              <TableCell className={classes.tableKey}>Наименование</TableCell>
+              <TableCell className={classes.tableKey}>Вендор</TableCell>
+              <TableCell className={classes.tableKey}>Тип</TableCell>
+              <TableCell className={classes.tableKey}>Затраты</TableCell>
+              <TableCell className={classes.tableKey}>Дата начала</TableCell>
+              <TableCell className={classes.tableKey}>Дата окончания</TableCell>
+              <TableCell className={classes.tableKey}></TableCell>
             </TableRow>
-          ))}
-        </TableBody>
-      </Table>
-    </TableContainer>
+          </TableHead>
+          <TableBody>
+            {rows.map((row) => (
+              <TableRow key={row.id} className={classes.tableLine}>
+                <TableCell className={classes.tableCell} component="th" scope="row">{row.title}</TableCell>
+                <TableCell className={classes.tableCell}>{row.vendor}</TableCell>
+                <TableCell className={classes.tableCell}>{row.type}</TableCell>
+                <TableCell className={classes.tableCell}>{row.startDate}</TableCell>
+                <TableCell className={classes.tableCell}>{row.endDate}</TableCell>
+                <TableCell className={classes.tableCell}>{row.status}</TableCell>
+                <TableCell className={classes.tableCell}><Status /></TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
+
+      <div className="upload" onClick={() => setVisible(true)}>
+        <IconUpload />
+        <div className="upload__text">Добавьте сертификат</div>
+      </div>
+    </React.Fragment>
   );
 }
 
-function TableDiploma() {
+function Diploma() {
   const classes = useStyles();
 
-  return (
-    <TableContainer style={{marginTop: "10px", marginBottom: "20px", userSelect: "none"}}>
-      <Table className={classes.table} size="small" aria-label="a dense table">
-        <TableHead>
-          <TableRow>
-            <TableCell className={classes.tableKey}>Специальность</TableCell>
-            <TableCell className={classes.tableKey}></TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {rows.map((row) => (
-            <TableRow key={row.id} className={classes.tableLine}>
-              <TableCell className={classes.tableCell} component="th" scope="row">{row.title}</TableCell>
-              <TableCell className={classes.tableCell}><Status /></TableCell>
+  const [visible, setVisible] = useState(false);
+
+  return (<React.Fragment>
+  <PD visible={visible} setVisible={setVisible} />
+      <TableContainer style={{marginTop: "10px", marginBottom: "20px", userSelect: "none"}}>
+        <Table className={classes.table} size="small" aria-label="a dense table">
+          <TableHead>
+            <TableRow>
+              <TableCell className={classes.tableKey}>Специальность</TableCell>
+              <TableCell className={classes.tableKey}></TableCell>
             </TableRow>
-          ))}
-        </TableBody>
-      </Table>
-    </TableContainer>
+          </TableHead>
+          <TableBody>
+            {rows.map((row) => (
+              <TableRow key={row.id} className={classes.tableLine}>
+                <TableCell className={classes.tableCell} component="th" scope="row">{row.title}</TableCell>
+                <TableCell className={classes.tableCell}><Status /></TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
+
+      <div className="upload" onClick={() => setVisible(true)}>
+        <IconUpload />
+        <div className="upload__text">Добавьте сертификат</div>
+      </div>
+    </React.Fragment>
   );
 }
 
-function TableDegree() {
+function Degree() {
   const classes = useStyles();
 
-  return (
-    <TableContainer style={{marginTop: "10px", marginBottom: "20px", userSelect: "none"}}>
-      <Table className={classes.table} size="small" aria-label="a dense table">
-        <TableHead>
-          <TableRow>
-            <TableCell className={classes.tableKey}>Ученая степень</TableCell>
-            <TableCell className={classes.tableKey}>Научная область</TableCell>
-            <TableCell className={classes.tableKey}></TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {rows.map((row) => (
-            <TableRow key={row.id} className={classes.tableLine}>
-              <TableCell className={classes.tableCell} component="th" scope="row">{row.title}</TableCell>
-              <TableCell className={classes.tableCell}>{row.vendor}</TableCell>
-              <TableCell className={classes.tableCell}><Status /></TableCell>
+  const [visible, setVisible] = useState(false);
+
+  return (<React.Fragment>
+  <PD visible={visible} setVisible={setVisible} />
+      <TableContainer style={{marginTop: "10px", marginBottom: "20px", userSelect: "none"}}>
+        <Table className={classes.table} size="small" aria-label="a dense table">
+          <TableHead>
+            <TableRow>
+              <TableCell className={classes.tableKey}>Ученая степень</TableCell>
+              <TableCell className={classes.tableKey}>Научная область</TableCell>
+              <TableCell className={classes.tableKey}></TableCell>
             </TableRow>
-          ))}
-        </TableBody>
-      </Table>
-    </TableContainer>
+          </TableHead>
+          <TableBody>
+            {rows.map((row) => (
+              <TableRow key={row.id} className={classes.tableLine}>
+                <TableCell className={classes.tableCell} component="th" scope="row">{row.title}</TableCell>
+                <TableCell className={classes.tableCell}>{row.vendor}</TableCell>
+                <TableCell className={classes.tableCell}><Status /></TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
+
+      <div className="upload" onClick={() => setVisible(true)}>
+        <IconUpload />
+        <div className="upload__text">Добавьте сертификат</div>
+      </div>
+    </React.Fragment>
   );
 }
 
-function TableCredential() {
+function Credential() {
   const classes = useStyles();
 
-  return (
-    <TableContainer style={{marginTop: "10px", marginBottom: "20px", userSelect: "none"}}>
-      <Table className={classes.table} size="small" aria-label="a dense table">
-        <TableHead>
-          <TableRow>
-            <TableCell className={classes.tableKey}>Вид</TableCell>
-            <TableCell className={classes.tableKey}>Дата начала</TableCell>
-            <TableCell className={classes.tableKey}>Бессрочный</TableCell>
-            <TableCell className={classes.tableKey}>Дата окончания</TableCell>
-            <TableCell className={classes.tableKey}>Статус</TableCell>
-            <TableCell className={classes.tableKey}></TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {rows.map((row) => (
-            <TableRow key={row.id} className={classes.tableLine}>
-              <TableCell className={classes.tableCell} component="th" scope="row">{row.title}</TableCell>
-              <TableCell className={classes.tableCell}>{row.startDate}</TableCell>
-              <TableCell className={classes.tableCell}>{row.vendor}</TableCell>
-              <TableCell className={classes.tableCell}>{row.endDate}</TableCell>
-              <TableCell className={classes.tableCell}>{row.status}</TableCell>
-              <TableCell className={classes.tableCell}><Status /></TableCell>
+  const [visible, setVisible] = useState(false);
+
+  return (<React.Fragment>
+  <PD visible={visible} setVisible={setVisible} />
+      <TableContainer style={{marginTop: "10px", marginBottom: "20px", userSelect: "none"}}>
+        <Table className={classes.table} size="small" aria-label="a dense table">
+          <TableHead>
+            <TableRow>
+              <TableCell className={classes.tableKey}>Вид</TableCell>
+              <TableCell className={classes.tableKey}>Дата начала</TableCell>
+              <TableCell className={classes.tableKey}>Бессрочный</TableCell>
+              <TableCell className={classes.tableKey}>Дата окончания</TableCell>
+              <TableCell className={classes.tableKey}>Статус</TableCell>
+              <TableCell className={classes.tableKey}></TableCell>
             </TableRow>
-          ))}
-        </TableBody>
-      </Table>
-    </TableContainer>
+          </TableHead>
+          <TableBody>
+            {rows.map((row) => (
+              <TableRow key={row.id} className={classes.tableLine}>
+                <TableCell className={classes.tableCell} component="th" scope="row">{row.title}</TableCell>
+                <TableCell className={classes.tableCell}>{row.startDate}</TableCell>
+                <TableCell className={classes.tableCell}>{row.vendor}</TableCell>
+                <TableCell className={classes.tableCell}>{row.endDate}</TableCell>
+                <TableCell className={classes.tableCell}>{row.status}</TableCell>
+                <TableCell className={classes.tableCell}><Status /></TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
+
+      <div className="upload" onClick={() => setVisible(true)}>
+        <IconUpload />
+        <div className="upload__text">Добавьте сертификат</div>
+      </div>
+    </React.Fragment>
   );
 }
 
@@ -215,10 +252,10 @@ export const Profile = () => {
   </div>
 
   <div className="list">
-    <CollapseItem title="Сертификаты" content={<React.Fragment><TableCert /><Dropzone /></React.Fragment>} />
-    <CollapseItem title="Дипломы" content={<React.Fragment><TableDiploma /><Dropzone /></React.Fragment>} />
-    <CollapseItem title="Учёные степени" content={<React.Fragment><TableDegree /><Dropzone /></React.Fragment>} />
-    <CollapseItem title="Удостоверения" content={<React.Fragment><TableCredential /><Dropzone /></React.Fragment>} />
+    <CollapseItem title="Сертификаты" content={<Cert />} />
+    <CollapseItem title="Дипломы" content={<Diploma />} />
+    <CollapseItem title="Учёные степени" content={<Degree />} />
+    <CollapseItem title="Удостоверения" content={<Credential />} />
   </div>
   
   </div>

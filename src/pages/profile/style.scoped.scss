@@ -184,3 +184,23 @@
   margin-right: 7px;
   cursor: pointer;
 }
+
+.upload {
+  display: flex;
+  align-items: center;
+  padding: 10px 20px;
+  font-size: 14px;
+  font-style: italic;
+  border-width: 1px;
+  border-radius: 8px;
+  border-color: #7f7f7f;
+  border-style: dashed;
+  background-color: #fafafa;
+  color: #7f7f7f;
+  cursor: pointer;
+  outline: none;
+}
+
+.upload__text {
+  margin-left: 14px;
+}
