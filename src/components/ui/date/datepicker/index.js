@@ -116,7 +116,6 @@ export const Datepicker = (props) => {
   const [selectedDay, setSelectedDay] = useState(defaultValue);
 
   const renderCustomInput = ({ ref }) => (
-    <div className="input__container">
       <input
         readOnly
         ref={ref}
@@ -124,7 +123,6 @@ export const Datepicker = (props) => {
         value={selectedDay ? `${selectedDay.day}/${selectedDay.month}/${selectedDay.year}` : ""}
         className="input input_datepicker"
       />
-    </div>
   );
 
   return (
