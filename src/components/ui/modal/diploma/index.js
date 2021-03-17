@@ -16,7 +16,7 @@ const Modal = compose(
   withZIndex,
 )(ModalDesktop)
 
-export const ModalPD = ({visible, setVisible}) => {
+export const ModalDiploma = ({visible, setVisible}) => {
   return <React.Fragment>
   <Modal
   theme="normal"

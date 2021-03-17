@@ -11,7 +11,7 @@ import TableRow from '@material-ui/core/TableRow';
 import { Collapse } from "react-collapse";
 // import { Dropzone } from '../../components/ui/upload';
 import { Round } from '../../components/ui/button';
-import { PD } from '../../components/ui/modal';
+import { ModalCert, ModalDiploma, ModalDegree, ModalCredential, ModalPD } from '../../components/ui/modal';
 import { ReactComponent as IconArrowRight } from '../../assets/icons/arrow_right.svg';
 import { ReactComponent as IconArrowDownload } from '../../assets/icons/arrow_download.svg';
 import { ReactComponent as IconPhone } from '../../assets/icons/phone.svg';
@@ -65,7 +65,7 @@ function Cert() {
   const [visible, setVisible] = useState(false);
 
   return (<React.Fragment>
-  <PD visible={visible} setVisible={setVisible} />
+    <ModalCert visible={visible} setVisible={setVisible} />
       <TableContainer style={{marginTop: "10px", marginBottom: "20px", userSelect: "none"}}>
         <Table className={classes.table} size="small" aria-label="a dense table">
           <TableHead>
@@ -109,7 +109,7 @@ function Diploma() {
   const [visible, setVisible] = useState(false);
 
   return (<React.Fragment>
-  <PD visible={visible} setVisible={setVisible} />
+    <ModalDiploma visible={visible} setVisible={setVisible} />
       <TableContainer style={{marginTop: "10px", marginBottom: "20px", userSelect: "none"}}>
         <Table className={classes.table} size="small" aria-label="a dense table">
           <TableHead>
@@ -143,7 +143,7 @@ function Degree() {
   const [visible, setVisible] = useState(false);
 
   return (<React.Fragment>
-  <PD visible={visible} setVisible={setVisible} />
+    <ModalDegree visible={visible} setVisible={setVisible} />
       <TableContainer style={{marginTop: "10px", marginBottom: "20px", userSelect: "none"}}>
         <Table className={classes.table} size="small" aria-label="a dense table">
           <TableHead>
@@ -179,7 +179,7 @@ function Credential() {
   const [visible, setVisible] = useState(false);
 
   return (<React.Fragment>
-  <PD visible={visible} setVisible={setVisible} />
+    <ModalCredential visible={visible} setVisible={setVisible} />
       <TableContainer style={{marginTop: "10px", marginBottom: "20px", userSelect: "none"}}>
         <Table className={classes.table} size="small" aria-label="a dense table">
           <TableHead>
@@ -219,7 +219,7 @@ export const Profile = () => {
   const [visible, setVisible] = useState(false);
 
   return <React.Fragment>
-  <PD visible={visible} setVisible={setVisible} />
+  <ModalPD visible={visible} setVisible={setVisible} />
 
   <div className="profile__wrapper">
 

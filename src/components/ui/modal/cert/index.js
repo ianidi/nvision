@@ -6,8 +6,8 @@ import {
 } from '@yandex/ui/Modal/desktop'
 import { withZIndex } from '@yandex/ui/withZIndex'
 
-import { TextInput } from '../../../ui/input';
-import { Button } from '../../../ui/button';
+import { TextInput } from '../../input';
+import { Button } from '../../button';
 import { ReactComponent as IconModalClose } from '../../../../assets/icons/modal_close.svg';
 import './style.scoped.scss';
 
@@ -16,7 +16,7 @@ const Modal = compose(
   withZIndex,
 )(ModalDesktop)
 
-export const ModalPD = ({visible, setVisible}) => {
+export const ModalCert = ({visible, setVisible}) => {
   return <React.Fragment>
   <Modal
   theme="normal"
