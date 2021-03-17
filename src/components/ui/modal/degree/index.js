@@ -79,35 +79,16 @@ export const ModalDegree = ({visible, setVisible}) => {
       <Select
         // value={options[0].value}
         options={options}
-        label="Выберите вид"
-        placeholder="Выберите вид"
+        label="Выберите учёную степень"
+        placeholder="Выберите учёную степень"
         name="a"
         setValue={()=>{}}
         style={{marginBottom: 20}}
       />
 
       <div className="d-flex align-items-center justify-content-between" style={{marginBottom: 10}}>
-          <Datepicker
-          callback={()=>{}}
-          placeholder="Дата начала"
-          />
-          <Datepicker
-            callback={()=>{}}
-            placeholder="Дата окончания"
-          />
+        <TextInput title="Укажите научную область" style={{marginBottom: 20}} />
       </div>
-
-      <FormControlLabel
-          value="end"
-          control={<Checkbox       className={classes.root}
-      disableRipple
-      color="default"
-      checkedIcon={<span className={clsx(classes.icon, classes.checkedIcon)} />}
-      icon={<span className={classes.icon} />}
-      inputProps={{ 'aria-label': 'decorative checkbox' }} />}
-          label="Бессрочный"
-          labelPlacement="end"
-        />
 
       <Uploady destination={{ url: "https://my-server/upload" }}>
         <Upload />
