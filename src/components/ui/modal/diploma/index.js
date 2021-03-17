@@ -1,10 +1,13 @@
-import React from 'react';
+import React, { forwardRef } from "react";
 import { compose } from '@bem-react/core'
 import {
   Modal as ModalDesktop,
   withThemeNormal,
 } from '@yandex/ui/Modal/desktop'
 import { withZIndex } from '@yandex/ui/withZIndex'
+
+import Uploady from "@rpldy/uploady";
+import { asUploadButton } from "@rpldy/upload-button";
 
 import { TextInput, Select } from '../../../ui/input';
 import { Button } from '../../../ui/button';
@@ -31,13 +34,18 @@ export const ModalDiploma = ({visible, setVisible}) => {
       <div className="modal__title">Добавить диплом</div>
 
       <Select
-        value={options[0].value}
+        // value={options[0].value}
         options={options}
         label="Выберите специальность"
         placeholder="Выберите специальность"
         name="a"
         setValue={()=>{}}
+        style={{marginBottom: 20}}
       />
+
+      <Uploady destination={{ url: "https://my-server/upload" }}>
+        <DivUploadButton/>
+      </Uploady>
 
       <div className="d-flex justify-content-end">
         <Button title="Отправить" onClick={() => setVisible(false)} />
@@ -46,3 +54,10 @@ export const ModalDiploma = ({visible, setVisible}) => {
   </Modal>
 </React.Fragment>
 }
+
+const DivUploadButton = asUploadButton(forwardRef(
+    (props, ref) =>
+        <div {...props} style={{ cursor: "pointer" }}>
+            DIV Upload Button
+        </div>
+));

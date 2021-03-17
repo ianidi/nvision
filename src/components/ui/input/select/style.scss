@@ -61,19 +61,19 @@
 }
 
 .select__control {
-  min-height: 56px !important;
+  min-height: 46px !important;
   padding-left: 6px !important;
   padding-right: 6px !important;
-  background-color: #ecf1f7 !important;
+  background-color: #fff !important;
   -webkit-transition: all 300ms !important;
   transition: all 300ms !important;
   color: #a7a7a7 !important;
-  box-shadow: none !important;
+  box-shadow: 0px 0px 5px rgba(19, 19, 19, 0.25) !important;
   border: 1px solid transparent !important;
 }
 
 .select__control:hover {
-  background-color: #e4ebf3 !important;
+  background-color: #fff !important;
 }
 
 .select__container.select__container_error .select__control {

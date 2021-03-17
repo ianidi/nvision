@@ -39,7 +39,7 @@ const Option = (props) => {
   );
 };
 
-export const Select = ({ value, options, label, placeholder, name, setValue, isSearchable, hasError, async, query }) => {
+export const Select = ({ value, options, label, placeholder, name, setValue, isSearchable, hasError, async, query, style }) => {
   const [selectedOption, setSelectedOption] = React.useState(
     value && options ? { value, label: options.find((item) => item.value === value).label } : null
   );
@@ -56,42 +56,47 @@ export const Select = ({ value, options, label, placeholder, name, setValue, isS
   return (
     <React.Fragment>
       {async ? (
-        <AsyncSelect
-          value={selectedOption}
-          onChange={handleChange}
-          // onInputChange={handleInputChange}
-          //default value
-          cacheOptions
-          defaultOptions
-          loadOptions={promiseOptions}
-          id={`id-${name}`}
-          instanceId={`id-${name}`}
-          inputId={`id-${name}`}
-          components={{
-            SingleValue,
-            Option,
-          }}
-          placeholder={label ? label : placeholder}
-          className={classNames({ select__container: true, select__container_error: hasError })}
-          classNamePrefix="select"
-        />
+        <div style={{...style}}>
+          <AsyncSelect
+            value={selectedOption}
+            onChange={handleChange}
+            // onInputChange={handleInputChange}
+            //default value
+            cacheOptions
+            defaultOptions
+            loadOptions={promiseOptions}
+            id={`id-${name}`}
+            instanceId={`id-${name}`}
+            inputId={`id-${name}`}
+            components={{
+              SingleValue,
+              Option,
+            }}
+            placeholder={label ? label : placeholder}
+            className={classNames({ select__container: true, select__container_error: hasError })}
+            classNamePrefix="select"
+            style={{...style}}
+          />
+        </div>
       ) : (
-        <ReactSelect
-          value={selectedOption}
-          onChange={handleChange}
-          id={`id-${name}`}
-          instanceId={`id-${name}`}
-          inputId={`id-${name}`}
-          components={{
-            SingleValue,
-            Option,
-          }}
-          options={options}
-          placeholder={label ? label : placeholder}
-          isSearchable={isSearchable === true ? true : false}
-          className={classNames({ select__container: true, select__container_error: hasError })}
-          classNamePrefix="select"
-        />
+        <div style={{...style}}>
+          <ReactSelect
+            value={selectedOption}
+            onChange={handleChange}
+            id={`id-${name}`}
+            instanceId={`id-${name}`}
+            inputId={`id-${name}`}
+            components={{
+              SingleValue,
+              Option,
+            }}
+            options={options}
+            placeholder={label ? label : placeholder}
+            isSearchable={isSearchable === true ? true : false}
+            className={classNames({ select__container: true, select__container_error: hasError })}
+            classNamePrefix="select"
+          />
+        </div>
       )}
     </React.Fragment>
   );
