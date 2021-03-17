@@ -13,7 +13,7 @@ import { Link, useParams } from "react-router-dom";
 import Pagination from "@material-ui/lab/Pagination";
 import PaginationItem from "@material-ui/lab/PaginationItem";
 
-import { Search } from '../../components/ui/input';
+import { Filter, Search } from '../../components/ui/input';
 import { Button, Small } from '../../components/ui/button';
 import { ReactComponent as IconArrowNav } from '../../assets/icons/arrow_nav.svg';
 import { ReactComponent as IconArrowDownloadExcel } from '../../assets/icons/arrow_download_excel.svg';
@@ -59,13 +59,17 @@ export const Employee = () => {
       </div>
 
       <div className="d-flex justify-content-space-between">
-        <div className="filter">
+        <div className="d-flex flex-column filter">
           
+          <Filter title="Фильтр" />
+          <div className="d-flex justify-content-center">
+            <Button title="Применить" />
+          </div>
         </div>
         <div className="list">
           <div className="d-flex align-items-center">
             <Search title="Поиск" />
-            <Button title="Найти" color="#E6BE00" />
+            <Button title="Найти" />
           </div>
           <div>
             <TableEmployee />

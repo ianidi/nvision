@@ -18,7 +18,7 @@ import { ReactComponent as IconEmail } from '../../assets/icons/email.svg';
 import { ReactComponent as IconView } from '../../assets/icons/view.svg';
 import { ReactComponent as IconDownload } from '../../assets/icons/download.svg';
 import { ReactComponent as IconRemove } from '../../assets/icons/remove.svg';
-import './style.scss'
+import './style.scoped.scss'
 
 var classNames = require("classnames");
 
