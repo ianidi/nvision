@@ -8,6 +8,7 @@ import { withZIndex } from '@yandex/ui/withZIndex'
 import './style.scoped.scss'
 
 import { ReactComponent as IconModalClose } from '../../../../assets/icons/modal_close.svg';
+import { TextInput } from '../../../ui/input';
 
 const Modal = compose(
   withThemeNormal,
@@ -24,6 +25,7 @@ zIndexGroupLevel={2000}
 <div className="modal__content">
 <div className="modal__close" onClick={() => setVisible(false)}><IconModalClose /></div>
 <div className="modal__title">Запрос о ПД</div>
+<TextInput title="Email" />
 </div>
 </Modal></React.Fragment>
 }
