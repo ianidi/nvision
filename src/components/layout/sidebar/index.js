@@ -26,7 +26,7 @@ export const Sidebar = ({ drawer }) => {
           },
           {
             icon: <IconEmployee />,
-            to: `/employee`,
+            to: `/employee/1`,
           },
           {
             icon: <IconCertificate />,

@@ -8,14 +8,10 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 
-import { useTheme } from '@material-ui/core/styles';
-import TablePagination from '@material-ui/core/TablePagination';
-import TableFooter from '@material-ui/core/TableFooter';
-import IconButton from '@material-ui/core/IconButton';
-import FirstPageIcon from '@material-ui/icons/FirstPage';
-import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft';
-import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
-import LastPageIcon from '@material-ui/icons/LastPage';
+import Box from "@material-ui/core/Box";
+import { Link, useParams } from "react-router-dom";
+import Pagination from "@material-ui/lab/Pagination";
+import PaginationItem from "@material-ui/lab/PaginationItem";
 
 import { Small } from '../../components/ui/button';
 import { ReactComponent as IconArrowNav } from '../../assets/icons/arrow_nav.svg';
@@ -38,62 +34,7 @@ const useStyles = makeStyles((theme) => ({
     fontSize: 14,
     textAlign: "left",
   },
-  root: {
-    flexShrink: 0,
-    marginLeft: theme.spacing(2.5),
-  },
 }));
-
-function TablePaginationActions(props) {
-  const classes = useStyles();
-  const theme = useTheme();
-  const { count, page, rowsPerPage, onChangePage } = props;
-
-  const handleFirstPageButtonClick = (event) => {
-    onChangePage(event, 0);
-  };
-
-  const handleBackButtonClick = (event) => {
-    onChangePage(event, page - 1);
-  };
-
-  const handleNextButtonClick = (event) => {
-    onChangePage(event, page + 1);
-  };
-
-  const handleLastPageButtonClick = (event) => {
-    onChangePage(event, Math.max(0, Math.ceil(count / rowsPerPage) - 1));
-  };
-
-  return (
-    <div className={classes.root}>
-      <IconButton
-        onClick={handleFirstPageButtonClick}
-        disabled={page === 0}
-        aria-label="first page"
-      >
-        {theme.direction === 'rtl' ? <LastPageIcon /> : <FirstPageIcon />}
-      </IconButton>
-      <IconButton onClick={handleBackButtonClick} disabled={page === 0} aria-label="previous page">
-        {theme.direction === 'rtl' ? <KeyboardArrowRight /> : <KeyboardArrowLeft />}
-      </IconButton>
-      <IconButton
-        onClick={handleNextButtonClick}
-        disabled={page >= Math.ceil(count / rowsPerPage) - 1}
-        aria-label="next page"
-      >
-        {theme.direction === 'rtl' ? <KeyboardArrowLeft /> : <KeyboardArrowRight />}
-      </IconButton>
-      <IconButton
-        onClick={handleLastPageButtonClick}
-        disabled={page >= Math.ceil(count / rowsPerPage) - 1}
-        aria-label="last page"
-      >
-        {theme.direction === 'rtl' ? <FirstPageIcon /> : <LastPageIcon />}
-      </IconButton>
-    </div>
-  );
-}
 
 function createData(title, vendor, type, startDate, endDate, status) {
   return { title, vendor, type, startDate, endDate, status };
@@ -135,19 +76,11 @@ export const Employee = () => {
 
 function TableEmployee() {
   const classes = useStyles();
-  const [page, setPage] = React.useState(0);
-  const [rowsPerPage, setRowsPerPage] = React.useState(5);
 
-  const emptyRows = rowsPerPage - Math.min(rowsPerPage, rows.length - page * rowsPerPage);
+  const PATH = "/employee";
+  const ROWS_PER_PAGE = 15;
 
-  const handleChangePage = (event, newPage) => {
-    setPage(newPage);
-  };
-
-  const handleChangeRowsPerPage = (event) => {
-    setRowsPerPage(parseInt(event.target.value, 10));
-    setPage(0);
-  };
+  const { pageNumber = 1 } = useParams();
 
   return (
     <TableContainer style={{marginTop: "10px", marginBottom: "20px", userSelect: "none"}}>
@@ -166,25 +99,34 @@ function TableEmployee() {
             </TableRow>
           ))}
         </TableBody>
-        <TableFooter>
-        <TableRow>
-          <TablePagination
-            rowsPerPageOptions={[5, 10, 25, { label: 'All', value: -1 }]}
-            colSpan={3}
-            count={rows.length}
-            rowsPerPage={rowsPerPage}
-            page={page}
-            SelectProps={{
-              inputProps: { 'aria-label': 'rows per page' },
-              native: true,
-            }}
-            onChangePage={handleChangePage}
-            onChangeRowsPerPage={handleChangeRowsPerPage}
-            ActionsComponent={TablePaginationActions}
+        </Table>
+        
+        <Box
+          display="flex"
+          justifyContent="center"
+          flex={1}
+          padding={1}
+        >
+        <Pagination
+        page={Number(pageNumber)}
+        count={Math.ceil(rows.length / ROWS_PER_PAGE)}
+        shape="round"
+        color="#E6BE00"
+        showFirstButton
+        showLastButton
+        boundaryCount={2}
+        renderItem={(item) => (
+          <PaginationItem
+          type={"start-ellipsis"}
+            component={Link}
+            selected
+            to={`${PATH}/${item.page}`}
+            {...item}
           />
-        </TableRow>
-      </TableFooter>
-      </Table>
+        )}
+      />
+      </Box>
+
     </TableContainer>
   );
 }

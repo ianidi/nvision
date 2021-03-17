@@ -24,7 +24,7 @@ function App() {
               <Route exact path="/profile">
                 <Profile />
               </Route>
-              <Route exact path="/employee">
+              <Route exact path="/employee/:pageNumber">
                 <Employee />
               </Route>
               <Route exact path="/guide">
