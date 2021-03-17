@@ -1,11 +1,11 @@
 import React from 'react';
 import './style.scoped.scss'
 
-export const Button = ({title, icon, style}) => {
+export const Button = ({title, icon, style, onClick}) => {
 
   return (
     <React.Fragment>
-      <div className="button" style={{...style}}>
+      <div className="button" style={{...style}} onClick={onClick}>
         {title}
       </div>
 
