@@ -28,6 +28,7 @@
     "babel-preset-react-app": "^10.0.0",
     "bootstrap": "^4.6.0",
     "classnames": "^2.2.6",
+    "clsx": "^1.1.1",
     "craco-plugin-scoped-css": "^1.1.1",
     "date-fns": "^2.19.0",
     "faker": "^5.4.0",
