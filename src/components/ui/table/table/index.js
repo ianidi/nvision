@@ -6,7 +6,7 @@ import { Overlay } from 'react-bootstrap';
 import TablePagination from '@material-ui/core/TablePagination';
 import Checkbox from '@material-ui/core/Checkbox';
 import IconButton from '@material-ui/core/IconButton';
-import { Button } from '@yandex/ui/Button/desktop/bundle';
+// import { Button } from '@yandex/ui/Button/desktop/bundle';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
@@ -19,7 +19,7 @@ import { ReactComponent as IconArrowDownloadBlack } from '../../../../assets/ico
 
 import { Datepicker } from '../../date';
 import { Search, Select } from '../../input';
-import { Small } from '../../button';
+import { Button, Small } from '../../button';
 
 import { Spinner } from '../../spinner';
 import makeData from './makeData';
@@ -372,11 +372,11 @@ const Filter = ({ column }) => {
                   Filter by ${column.Header}
                 </div>
 
-                <div className="button">
+                {/*<div className="button">
                   <Button disabled={!canSubmit} type="submit" view="default" size="l" width="max">
                     <div className="button__title">Filter</div>
                   </Button>
-                </div>
+                </div>*/}
               </div>
             </Form>
           </div>
@@ -552,7 +552,7 @@ function TableComponent({ columns, data, fetchData, loading, pageCount: controll
 
 
         <div className="d-flex align-items-center table__search">
-          <Search title="Введите ФИО сотрудника" />
+          <Search title="Введите ФИО сотрудника" style={{maxWidth: 350}} />
           <Datepicker
           callback={()=>{}}
           // value={birthday}
@@ -564,6 +564,7 @@ function TableComponent({ columns, data, fetchData, loading, pageCount: controll
             placeholder="Дата конца"
           />
           <Select />
+          <Button title="Найти" />
         </div>
 
 
