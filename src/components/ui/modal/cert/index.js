@@ -26,7 +26,7 @@ export const ModalCert = ({visible, setVisible}) => {
   >
   <div className="modal__content">
     <div className="modal__close" onClick={() => setVisible(false)}><IconModalClose /></div>
-      <div className="modal__title">Запрос о ПД</div>
+      <div className="modal__title">Добавить сертификат</div>
       <TextInput title="Email" style={{marginBottom: 20}} />
       <div className="description" style={{marginBottom: 20}}>Согласие на использование персональных данных</div>
       <div className="description" style={{marginBottom: 40}}>Просим вас предоставить согласие на использование ваших персональных данных в тендерах: данные о дипломах, сертификатах, удостоверениях, учёных степенях.</div>

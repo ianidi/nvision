@@ -6,7 +6,7 @@ import {
 } from '@yandex/ui/Modal/desktop'
 import { withZIndex } from '@yandex/ui/withZIndex'
 
-import { TextInput } from '../../../ui/input';
+import { TextInput, Select } from '../../../ui/input';
 import { Button } from '../../../ui/button';
 import { ReactComponent as IconModalClose } from '../../../../assets/icons/modal_close.svg';
 import './style.scoped.scss';
@@ -15,6 +15,8 @@ const Modal = compose(
   withThemeNormal,
   withZIndex,
 )(ModalDesktop)
+
+const options = [{label: 'Значение 1', value: 'a'}, {label: 'Значение 2', value: 'b'}]
 
 export const ModalDiploma = ({visible, setVisible}) => {
   return <React.Fragment>
@@ -26,11 +28,18 @@ export const ModalDiploma = ({visible, setVisible}) => {
   >
   <div className="modal__content">
     <div className="modal__close" onClick={() => setVisible(false)}><IconModalClose /></div>
-      <div className="modal__title">Запрос о ПД</div>
-      <TextInput title="Email" style={{marginBottom: 20}} />
-      <div className="description" style={{marginBottom: 20}}>Согласие на использование персональных данных</div>
-      <div className="description" style={{marginBottom: 40}}>Просим вас предоставить согласие на использование ваших персональных данных в тендерах: данные о дипломах, сертификатах, удостоверениях, учёных степенях.</div>
-      <div className="d-flex justify-content-center">
+      <div className="modal__title">Добавить диплом</div>
+
+      <Select
+        value={options[0].value}
+        options={options}
+        label="Выберите специальность"
+        placeholder="Выберите специальность"
+        name="a"
+        setValue={()=>{}}
+      />
+
+      <div className="d-flex justify-content-end">
         <Button title="Отправить" onClick={() => setVisible(false)} />
       </div>
     </div>

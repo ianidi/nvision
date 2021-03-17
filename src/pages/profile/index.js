@@ -131,7 +131,7 @@ function Diploma() {
 
       <div className="upload" onClick={() => setVisible(true)}>
         <IconUpload />
-        <div className="upload__text">Добавьте сертификат</div>
+        <div className="upload__text">Добавьте диплом</div>
       </div>
     </React.Fragment>
   );
@@ -167,7 +167,7 @@ function Degree() {
 
       <div className="upload" onClick={() => setVisible(true)}>
         <IconUpload />
-        <div className="upload__text">Добавьте сертификат</div>
+        <div className="upload__text">Добавьте ученую степень</div>
       </div>
     </React.Fragment>
   );
@@ -209,7 +209,7 @@ function Credential() {
 
       <div className="upload" onClick={() => setVisible(true)}>
         <IconUpload />
-        <div className="upload__text">Добавьте сертификат</div>
+        <div className="upload__text">Добавьте удостоверение</div>
       </div>
     </React.Fragment>
   );
