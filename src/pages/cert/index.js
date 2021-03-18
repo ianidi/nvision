@@ -64,7 +64,7 @@ function Status() {
 
 export const Cert = () => {
   return <React.Fragment>
-    <div className="card">
+    <div className="area">
       <div className="head">
         <div className="d-flex align-items-center">
           <div className="title">Сертификаты</div>
