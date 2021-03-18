@@ -121,25 +121,29 @@ export const Datepicker = (props) => {
         ref={ref}
         placeholder={props.placeholder}
         value={selectedDay ? `${selectedDay.day}/${selectedDay.month}/${selectedDay.year}` : ""}
-        className="input input_datepicker"
+        className="input datepicker__input"
       />
   );
 
   return (
-    <DatePicker
-      value={selectedDay}
-      onChange={(value) => {
-        props.callback(value);
-        setSelectedDay(value);
-      }}
-      renderInput={renderCustomInput}
-      locale={myCustomLocale}
-      shouldHighlightWeekends
-      // maximumDate={utils().getToday()}
-      calendarPopperPosition="bottom"
-      colorPrimary="#2fa8ec"
-      colorPrimaryLight="#2fa8ec"
-      calendarClassName="datepicker"
-    />
+    <React.Fragment>
+      <div className="datepicker__wrapper">
+        <DatePicker
+          value={selectedDay}
+          onChange={(value) => {
+            props.callback(value);
+            setSelectedDay(value);
+          }}
+          renderInput={renderCustomInput}
+          locale={myCustomLocale}
+          shouldHighlightWeekends
+          // maximumDate={utils().getToday()}
+          calendarPopperPosition="bottom"
+          colorPrimary="#2fa8ec"
+          colorPrimaryLight="#2fa8ec"
+          calendarClassName="datepicker"
+        />
+      </div>
+    </React.Fragment>
   );
 };
