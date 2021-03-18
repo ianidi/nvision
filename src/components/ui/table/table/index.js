@@ -10,7 +10,7 @@ import IconButton from '@material-ui/core/IconButton';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
-import { Textinput } from '@yandex/ui/Textinput/desktop/bundle';
+// import { Textinput } from '@yandex/ui/Textinput/desktop/bundle';
 import "./style.scoped.scss"
 
 import { ReactComponent as IconArrowDownloadExcel } from '../../../../assets/icons/arrow_download_excel.svg';
@@ -18,7 +18,7 @@ import { ReactComponent as IconClear } from '../../../../assets/icons/clear.svg'
 import { ReactComponent as IconArrowDownloadBlack } from '../../../../assets/icons/arrow_download_black.svg';
 
 import { Datepicker } from '../../date';
-import { Search, Select } from '../../input';
+import { TextInput } from '../../input';
 import { Button, Small } from '../../button';
 
 import { Spinner } from '../../spinner';
@@ -553,7 +553,7 @@ function TableComponent({ columns, data, fetchData, loading, pageCount: controll
 
         <div className="d-flex align-items-center justify-content-between table__search">
           <div style={{width: '20%'}}>
-            <Search title="Введите ФИО сотрудника" />
+            <TextInput title="Введите ФИО сотрудника" search />
           </div>
           <div style={{width: '15%'}}>
             <Datepicker
@@ -681,7 +681,7 @@ function TableComponent({ columns, data, fetchData, loading, pageCount: controll
                   gotoPage(newPage);
                 }}
               />
-              <Textinput
+              {/*<Textinput
                 size="s"
                 view="default"
                 // value={pageIndex + 1}
@@ -691,7 +691,7 @@ function TableComponent({ columns, data, fetchData, loading, pageCount: controll
                 }}
                 placeholder="Go to page"
                 style={{ width: '150px', marginLeft: 6, marginRight: 6 }}
-              />
+              />*/}
             </div>
           </div>
           <div>

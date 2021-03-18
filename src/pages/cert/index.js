@@ -23,7 +23,7 @@ import { ReactComponent as IconView } from '../../assets/icons/view.svg';
 import { ReactComponent as IconDownload } from '../../assets/icons/download.svg';
 
 import { Datepicker } from '../../components/ui/date';
-import { Search, Select } from '../../components/ui/input';
+import { TextInput } from '../../components/ui/input';
 import { Button, Small } from '../../components/ui/button';
 
 import './style.scoped.scss'
@@ -78,7 +78,7 @@ export const Cert = () => {
 
         <div className="d-flex align-items-center justify-content-between table__search">
           <div style={{width: '25%'}}>
-            <Search title="Введите ФИО сотрудника" />
+            <TextInput title="Введите ФИО сотрудника" search />
           </div>
           <div style={{width: '10%'}}>
             <Datepicker
