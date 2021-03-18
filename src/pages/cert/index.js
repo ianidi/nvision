@@ -15,7 +15,7 @@ import { Link, useParams } from "react-router-dom";
 import Pagination from "@material-ui/lab/Pagination";
 import PaginationItem from "@material-ui/lab/PaginationItem";
 
-import { exportExcel } from '../../service';
+import { exportExcel, saveFile } from '../../service';
 
 import { ReactComponent as IconArrowDownloadExcel } from '../../assets/icons/arrow_download_excel.svg';
 import { ReactComponent as IconClear } from '../../assets/icons/clear.svg';
@@ -59,7 +59,7 @@ function Action() {
   return (
     <div className="d-flex align-items-center">
       <div className="icon"><IconView /></div>
-      <div className="icon"><IconDownload /></div>
+      <div className="icon" onClick={()=>saveFile({title: "file.pdf", url: "http://localhost:3000/file.zip"})}><IconDownload /></div>
     </div>
   )
 }
@@ -74,7 +74,7 @@ export const Cert = () => {
         <div className="d-flex align-items-center">
           <Small title="Выгрузить в Excel" icon={<IconArrowDownloadExcel />} color="#009A50" onClick={()=>exportExcel({title: "cert", data: rows})} />
           <Small title="Очистить все фильтры" icon={<IconClear />} color="#EE262A" style={{marginLeft: 20, marginRight: 20}} />
-          <Small title="Скачать файлы" icon={<IconArrowDownloadBlack />} color="#151515" />
+          <Small title="Скачать файлы" icon={<IconArrowDownloadBlack />} color="#151515" onClick={()=>saveFile({title: "files.zip", url: "http://localhost:3000/file.zip"})} />
         </div>
       </div>
 
@@ -179,86 +179,3 @@ function TableEmployee() {
     </TableContainer>
   );
 }
-
-// export const List = () => {
-
-//   const columns = useMemo(
-//     () => [
-//       {
-//         Header: 'ФИО сотрудника',
-//         accessor: 'OfferID',
-//         disableSortBy: false,
-//       },
-//       {
-//         Header: 'Наименование',
-//         accessor: 'title',
-//         disableSortBy: false,
-//       },
-//       {
-//         Header: 'Вендор',
-//         accessor: 'vendor',
-//         disableSortBy: false,
-//       },
-//       {
-//         Header: 'Тип',
-//         accessor: 'type',
-//         disableSortBy: false,
-//       },
-//       {
-//         Header: 'Дата начала',
-//         accessor: 'validFrom',
-//         disableSortBy: false,
-//         Cell: TableCell.Datetime,
-//       },
-//       {
-//         Header: 'Дата окончания',
-//         accessor: 'validTo',
-//         disableSortBy: false,
-//         Cell: TableCell.Datetime,
-//       },
-//       {
-//         Header: 'Статус',
-//         accessor: 'status',
-//         disableSortBy: false,
-//         Cell: TableCell.Status,
-//       },
-//     ],
-//     []
-//   );
-
-//   return <React.Fragment>
-
-
-
-//     <Table
-//       columns={columns}
-//       // menuOptions={[
-//       //   {
-//       //     onSelect: (row) => {
-//       //       // history.push(`/manager/${path}/view/${row.original.OfferID}`);
-//       //     },
-//       //     label: 'View',
-//       //   },
-//       //   {
-//       //     onSelect: (row) => {},
-//       //     label: 'Remove',
-//       //   },
-//       // ]}
-//       query={async () => {
-//         // try {
-//         //   const { data, error } = await ManagerOfferList();
-
-//         //   if (!error) {
-//         //     return { data: data.ManagerOfferList, error };
-//         //   }
-
-//         //   return { data: [], error };
-//         // } catch (err) {
-//         //   return { data: [], error: "NETWORK_ERROR" };
-//         // }
-//         return { data: [], error: "" };
-//       }}
-//       checkbox
-//     />
-//   </React.Fragment>;
-// };

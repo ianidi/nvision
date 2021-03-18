@@ -9,6 +9,9 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 
 import { Collapse } from "react-collapse";
+
+import { saveFile } from '../../service';
+
 // import { Dropzone } from '../../components/ui/upload';
 import { Round } from '../../components/ui/button';
 import { ModalCert, ModalDiploma, ModalDegree, ModalCredential, ModalPD } from '../../components/ui/modal';
@@ -49,7 +52,7 @@ function Status() {
   return (
     <div className="d-flex align-items-center">
       <div className="icon"><IconView /></div>
-      <div className="icon"><IconDownload /></div>
+      <div className="icon" onClick={()=>saveFile({title: "file.pdf", url: "http://localhost:3000/file.zip"})}><IconDownload /></div>
       <div className="icon"><IconRemove /></div>
     </div>
   )
@@ -247,7 +250,7 @@ export const Profile = () => {
       <div className="line"></div>
       <div className="buttons">
         <Round title="Отправить запрос о ПД" icon={<IconArrowRight />} style={{ marginBottom: 20 }} onClick={() => setVisible(true)} />
-        <Round title="Скачать все файлы" icon={<IconArrowDownload />} />
+        <Round title="Скачать все файлы" icon={<IconArrowDownload />} onClick={()=>saveFile({title: "files.zip", url: "http://localhost:3000/file.zip"})} />
       </div>
   </div>
 
