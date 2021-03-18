@@ -129,7 +129,7 @@ export const Datepicker = (props) => {
 
   return (
     <React.Fragment>
-      <div className="datepicker__wrapper">
+      <div className="datepicker__wrapper" style={{...props.style}}>
         <DatePicker
           value={selectedDay}
           onChange={(value) => {

@@ -90,10 +90,12 @@ export const ModalCredential = ({visible, setVisible}) => {
           <Datepicker
           callback={()=>{}}
           placeholder="Дата начала"
+          style={{width: '48%'}}
           />
           <Datepicker
             callback={()=>{}}
             placeholder="Дата окончания"
+            style={{width: '48%'}}
           />
       </div>
 
