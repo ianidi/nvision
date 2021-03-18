@@ -30,7 +30,7 @@ export const Sidebar = ({ drawer }) => {
           },
           {
             icon: <IconCertificate />,
-            to: `/cert`,
+            to: `/cert/1`,
           },
           {
             icon: <IconGuide />,

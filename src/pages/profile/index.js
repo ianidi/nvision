@@ -47,7 +47,7 @@ function createData(title, vendor, type, startDate, endDate, status) {
 
 function Status() {
   return (
-    <div className="status">
+    <div className="d-flex align-items-center">
       <div className="icon"><IconView /></div>
       <div className="icon"><IconDownload /></div>
       <div className="icon"><IconRemove /></div>

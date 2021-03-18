@@ -4,7 +4,7 @@ import { Switch, Route } from "react-router-dom";
 import { PrivateRoute } from "./components/router";
 
 import { Navbar, Sidebar, Content } from "./components/layout";
-import { List } from './pages';
+import { Cert } from './pages';
 import { Profile } from './pages';
 import { Employee } from './pages';
 import { Guide } from './pages';
@@ -18,8 +18,8 @@ function App() {
           <Sidebar />
           <Content>
             <Switch>
-              <Route exact path="/">
-                <List />
+              <Route exact path="/cert/:pageNumber">
+                <Cert />
               </Route>
               <Route exact path="/profile">
                 <Profile />
@@ -30,11 +30,7 @@ function App() {
               <Route exact path="/guide">
                 <Guide />
               </Route>
-              <Route exact path="/verify/:Action/:Method/:Hash/:Code">
-                <List />
-              </Route>
-              <Route path="/signup" component={List} />
-              <PrivateRoute path="/overview" component={List} />
+              <PrivateRoute path="/overview" component={Cert} />
             </Switch>
           </Content>
         </div>

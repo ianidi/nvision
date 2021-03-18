@@ -2,7 +2,7 @@
   flex-grow: 1;
   min-height: 42px;
   border: 1px solid #E0E0E0;
-  // box-shadow: 0px 0px 5px rgba(19, 19, 19, 0.25);
+  box-shadow: 0px 0px 5px rgba(19, 19, 19, 0.25);
   border-radius: 4px;
   padding-left: 12px;
   padding-right: 12px;
@@ -15,6 +15,9 @@
   width: 100%;
   min-height: 42px;
   outline: none;
+}
+.input__field::placeholder {
+  color: #7F7F7F;
 }
 .icon {
   margin-right: 5px;

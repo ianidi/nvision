@@ -551,20 +551,30 @@ function TableComponent({ columns, data, fetchData, loading, pageCount: controll
       </div>
 
 
-        <div className="d-flex align-items-center table__search">
-          <Search title="Введите ФИО сотрудника" style={{maxWidth: 350}} />
-          <Datepicker
-          callback={()=>{}}
-          // value={birthday}
-          placeholder="Дата начала"
-          />
-          <Datepicker
+        <div className="d-flex align-items-center justify-content-between table__search">
+          <div style={{width: '20%'}}>
+            <Search title="Введите ФИО сотрудника" />
+          </div>
+          <div style={{width: '15%'}}>
+            <Datepicker
             callback={()=>{}}
             // value={birthday}
-            placeholder="Дата конца"
-          />
-          <Select />
-          <Button title="Найти" />
+            placeholder="Дата начала"
+            />
+          </div>
+          <div style={{width: '15%'}}>
+            <Datepicker
+              callback={()=>{}}
+              // value={birthday}
+              placeholder="Дата конца"
+            />
+          </div>
+          <div style={{width: '40%'}}>
+            Наименование Вендор Тип Статус
+          </div>
+          <div style={{width: '10%'}}>
+            <Button title="Найти" />
+          </div>
         </div>
 
 
@@ -588,7 +598,7 @@ function TableComponent({ columns, data, fetchData, loading, pageCount: controll
                   {column.render('Header')}
 
                   {column.id !== 'dotmenu' && column.id !== 'selection' && column.disableSortBy !== true && (
-                    <div className="d-flex align-items-center">
+                    <div className="d-flex align-items-center" style={{marginLeft: 4}}>
                       {/*<Filter column={column} />*/}
                       <div onClick={() => column.toggleSortBy(column.isSortedDesc === false)}>
                         <svg
