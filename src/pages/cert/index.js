@@ -247,6 +247,7 @@ function TableEmployee() {
                 tabIndex={-1}
                 key={row.name}
                 selected={isItemSelected}
+                className={classes.tableLine}
               >
                 <TableCell padding="checkbox">
                   <Checkbox
@@ -304,19 +305,3 @@ function TableEmployee() {
     </TableContainer>
   );
 }
-
-
-// <TableBody>
-// {rows.map((row) => (
-//   <TableRow key={row.id} className={classes.tableLine}>
-//     <TableCell className={classes.tableCell} component="th" scope="row">{row.title}</TableCell>
-//     <TableCell className={classes.tableCell}>{row.vendor}</TableCell>
-//     <TableCell className={classes.tableCell}>{row.type}</TableCell>
-//     <TableCell className={classes.tableCell}>{row.type}</TableCell>
-//     <TableCell className={classes.tableCell}>{row.endDate}</TableCell>
-//     <TableCell className={classes.tableCell}>{row.startDate}</TableCell>
-//     <TableCell className={classes.tableCell}>{row.status}</TableCell>
-//     <TableCell className={classes.tableCell}><Action /></TableCell>
-//   </TableRow>
-// ))}
-// </TableBody>
