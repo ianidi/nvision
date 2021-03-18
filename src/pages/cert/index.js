@@ -53,7 +53,7 @@ const rows = [
   createData("Специалист по MS Excel", "Microsoft", "Type", "Да", "01.09.2020", "Да", "31.08.2020", "Действует"),
 ];
 
-function Status() {
+function Action() {
   return (
     <div className="d-flex align-items-center">
       <div className="icon"><IconView /></div>
@@ -142,7 +142,7 @@ function TableEmployee() {
               <TableCell className={classes.tableCell}>{row.endDate}</TableCell>
               <TableCell className={classes.tableCell}>{row.startDate}</TableCell>
               <TableCell className={classes.tableCell}>{row.status}</TableCell>
-              <TableCell className={classes.tableCell}><Status /></TableCell>
+              <TableCell className={classes.tableCell}><Action /></TableCell>
             </TableRow>
           ))}
         </TableBody>
