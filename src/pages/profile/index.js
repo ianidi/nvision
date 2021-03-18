@@ -272,7 +272,7 @@ function CollapseItem({ title, content }) {
 
   return (
     <React.Fragment>
-      <div className="card">
+      <div className="area">
         <div className={classNames({ card_open: open, card_closed: !open })}>
           <h3 className="title">{title}</h3>
           <div className="toggle" onClick={toggle}>
