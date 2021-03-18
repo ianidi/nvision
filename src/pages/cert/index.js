@@ -9,6 +9,7 @@ import TableCell from '@material-ui/core/TableCell';
 import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
+import TableSortLabel from '@material-ui/core/TableSortLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 
 import Box from "@material-ui/core/Box";
@@ -56,6 +57,16 @@ const rows = [
   createData("Специалист по MS Excel", "Microsoft", "Type", "Да", "01.09.2020", "Да", "31.08.2020", "Действует"),
 ];
 
+const headCells = [
+  { id: 'name', disablePadding: true, label: 'ФИО сотрудника' },
+  { id: 'title', disablePadding: false, label: 'Наименование' },
+  { id: 'vendor', disablePadding: false, label: 'Вендор' },
+  { id: 'type', disablePadding: false, label: 'Тип' },
+  { id: 'startDate', disablePadding: false, label: 'Дата начала' },
+  { id: 'endDate', disablePadding: false, label: 'Дата окончания' },
+  { id: 'status', disablePadding: false, label: 'Статус' },
+  { id: 'protein', disablePadding: false, label: '' },
+];
 
 function descendingComparator(a, b, orderBy) {
   if (b[orderBy] < a[orderBy]) {
@@ -155,6 +166,10 @@ function TableEmployee() {
     setOrderBy(property);
   };
 
+  const createSortHandler = (property) => (event) => {
+    handleRequestSort(event, property);
+  };
+
   const handleSelectAllClick = (event) => {
     if (event.target.checked) {
       const newSelecteds = rows.map((n) => n.name);
@@ -202,7 +217,6 @@ function TableEmployee() {
   const emptyRows = rowsPerPage - Math.min(rowsPerPage, rows.length - page * rowsPerPage);
 
 
-
   const PATH = "/cert";
   const ROWS_PER_PAGE = 15;
 
@@ -210,7 +224,7 @@ function TableEmployee() {
 
   return (
     <TableContainer style={{marginTop: "10px", marginBottom: "20px", userSelect: "none"}}>
-      <Table className={classes.table} size="small" aria-label="a dense table">
+      <Table className={classes.table} size="small" aria-label="таблица">
         <TableHead>
           <TableRow>
             <TableCell padding="checkbox">
@@ -218,17 +232,37 @@ function TableEmployee() {
                 indeterminate={selected.length > 0 && selected.length < rows.length}
                 checked={rows.length > 0 && selected.length === rows.length}
                 onChange={handleSelectAllClick}
-                inputProps={{ 'aria-label': 'select all' }}
+                inputProps={{ 'aria-label': 'выбрать все' }}
               />
             </TableCell>
-            <TableCell className={classes.tableKey}>ФИО сотрудника</TableCell>
-            <TableCell className={classes.tableKey}>Наименование</TableCell>
-            <TableCell className={classes.tableKey}>Вендор</TableCell>
-            <TableCell className={classes.tableKey}>Тип</TableCell>
-            <TableCell className={classes.tableKey}>Дата начала</TableCell>
-            <TableCell className={classes.tableKey}>Дата окончания</TableCell>
-            <TableCell className={classes.tableKey}>Статус</TableCell>
-            <TableCell className={classes.tableKey}></TableCell>
+
+
+            {headCells.map((headCell) => (
+              <TableCell
+                key={headCell.id}
+                align={'left'}
+                padding={headCell.disablePadding ? 'none' : 'default'}
+                sortDirection={orderBy === headCell.id ? order : false}
+                className={classes.tableKey}
+              >
+                <TableSortLabel
+                  active={orderBy === headCell.id}
+                  direction={orderBy === headCell.id ? order : 'asc'}
+                  onClick={createSortHandler(headCell.id)}
+                >
+                  {headCell.label}
+                  {/*orderBy === headCell.id ? (
+                    <span className={classes.visuallyHidden}>
+                      {order === 'desc' ? 'sorted descending' : 'sorted ascending'}
+                    </span>
+                  ) : null*/}
+                </TableSortLabel>
+              </TableCell>
+            ))}
+
+
+            
+
           </TableRow>
         </TableHead>
         <TableBody>
