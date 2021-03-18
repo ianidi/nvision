@@ -70,7 +70,7 @@ export const Employee = () => {
         </div>
         <div className="list">
           <div className="d-flex align-items-center">
-            <TextInput title="Поиск" search />
+            <TextInput title="Поиск" search style={{marginRight: 20}} />
             <Button title="Найти" />
           </div>
           <div>
