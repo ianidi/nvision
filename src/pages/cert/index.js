@@ -49,12 +49,13 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function createData(title, vendor, type, startDate, endDate, status) {
-  return { title, vendor, type, startDate, endDate, status };
+function createData(name, title, vendor, type, startDate, endDate, status) {
+  return { name, title, vendor, type, startDate, endDate, status };
 }
 
 const rows = [
-  createData("Специалист по MS Excel", "Microsoft", "Type", "Да", "01.09.2020", "Да", "31.08.2020", "Действует"),
+  createData("First Name", "Специалист по MS Excel", "Microsoft", "Type", "01.09.2020", "31.08.2020", "Действует"),
+  createData("Last Name", "Специалист по MS Excel", "Microsoft", "Type", "02.09.2020", "30.08.2020", "Действует"),
 ];
 
 const headCells = [
@@ -65,7 +66,7 @@ const headCells = [
   { id: 'startDate', disablePadding: false, label: 'Дата начала' },
   { id: 'endDate', disablePadding: false, label: 'Дата окончания' },
   { id: 'status', disablePadding: false, label: 'Статус' },
-  { id: 'protein', disablePadding: false, label: '' },
+  { id: 'action', disablePadding: false, label: '' },
 ];
 
 function descendingComparator(a, b, orderBy) {
@@ -290,12 +291,12 @@ function TableEmployee() {
                     onClick={(event) => handleClick(event, row.name)}
                   />
                 </TableCell>
-                    <TableCell className={classes.tableCell} component="th" scope="row" padding="none">{row.title}</TableCell>
+                    <TableCell className={classes.tableCell} component="th" scope="row" padding="none">{row.name}</TableCell>
+                    <TableCell className={classes.tableCell}>{row.title}</TableCell>
                     <TableCell className={classes.tableCell}>{row.vendor}</TableCell>
                     <TableCell className={classes.tableCell}>{row.type}</TableCell>
-                    <TableCell className={classes.tableCell}>{row.type}</TableCell>
-                    <TableCell className={classes.tableCell}>{row.endDate}</TableCell>
                     <TableCell className={classes.tableCell}>{row.startDate}</TableCell>
+                    <TableCell className={classes.tableCell}>{row.endDate}</TableCell>
                     <TableCell className={classes.tableCell}>{row.status}</TableCell>
                     <TableCell className={classes.tableCell}><Action /></TableCell>
               </TableRow>
