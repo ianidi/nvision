@@ -6,7 +6,7 @@ export const Small = ({title, icon, style, color="#000"}) => {
     <React.Fragment>
       <div className="button" style={{...style, color}}>
         {title}
-        {icon ? <div className="icon">{icon}</div> : ""}
+        {icon ? <div className="button__icon">{icon}</div> : ""}
       </div>
 
       <style jsx>{`

@@ -17,6 +17,7 @@ import { Filter, TextInput } from '../../components/ui/input';
 import { Button, Small } from '../../components/ui/button';
 import { ReactComponent as IconArrowNav } from '../../assets/icons/arrow_nav.svg';
 import { ReactComponent as IconArrowDownloadExcel } from '../../assets/icons/arrow_download_excel.svg';
+import { ReactComponent as IconArrowRightSmall } from '../../assets/icons/arrow_right_small.svg';
 import './style.scoped.scss'
 
 
@@ -53,7 +54,8 @@ export const Employee = () => {
           <div className="title">Мои сотрудники</div>
           <div className="d-flex align-items-center navigation"><div className="icon"><IconArrowNav /></div>Все сотрудники</div>
         </div>
-        <div>
+        <div className="d-flex align-items-center">
+          <Small title="Отправить запрос о ПД" icon={<IconArrowRightSmall />} color="#151515" style={{marginRight: 20}} />
           <Small title="Выгрузить в Excel" icon={<IconArrowDownloadExcel />} color="#009A50" />
         </div>
       </div>
