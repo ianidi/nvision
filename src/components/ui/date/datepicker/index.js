@@ -3,6 +3,8 @@ import DatePicker, { utils } from "react-modern-calendar-datepicker";
 import { parse } from "date-fns";
 import './style.scss'
 
+import { ReactComponent as IconCalendar } from '../../../../assets/icons/calendar.svg';
+
 export const Datepicker = (props) => {
   let defaultValue = null;
 
@@ -143,6 +145,7 @@ export const Datepicker = (props) => {
           colorPrimaryLight="#2fa8ec"
           calendarClassName="datepicker"
         />
+        <div className="datepicker__icon"><IconCalendar /></div>
       </div>
     </React.Fragment>
   );

@@ -1,5 +1,17 @@
 .datepicker__wrapper {
+  position: relative;
+}
 
+.datepicker__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 10px;
+  width: 18px;
+  z-index: 110;
 }
 
 .datepicker__input {
@@ -22,7 +34,7 @@
   width: 100%;
   position: relative;
   display: inline-block;
-  z-index: 400;
+  z-index: 100;
 }
 
 .DatePicker__input {
