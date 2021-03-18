@@ -91,10 +91,12 @@ export const ModalCert = ({visible, setVisible}) => {
           <Datepicker
           callback={()=>{}}
           placeholder="Дата начала"
+          style={{width: '48%'}}
           />
           <Datepicker
             callback={()=>{}}
             placeholder="Дата окончания"
+            style={{width: '48%'}}
           />
       </div>
 
@@ -148,7 +150,7 @@ export const ModalCert = ({visible, setVisible}) => {
         <Upload />
       </Uploady>
 
-      <div className="d-flex justify-content-center" style={{marginTop: 20}}>
+      <div className="d-flex justify-content-end" style={{marginTop: 20}}>
         <Button title="Отправить" onClick={() => setVisible(false)} />
       </div>
     </div>
