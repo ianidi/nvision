@@ -77,17 +77,17 @@ export const Cert = () => {
       </div>
 
         <div className="d-flex align-items-center justify-content-between table__search">
-          <div style={{width: '20%'}}>
+          <div style={{width: '25%'}}>
             <Search title="Введите ФИО сотрудника" />
           </div>
-          <div style={{width: '15%'}}>
+          <div style={{width: '10%'}}>
             <Datepicker
             callback={()=>{}}
             // value={birthday}
             placeholder="Дата начала"
             />
           </div>
-          <div style={{width: '15%'}}>
+          <div style={{width: '10%'}}>
             <Datepicker
               callback={()=>{}}
               // value={birthday}
