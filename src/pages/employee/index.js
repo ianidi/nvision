@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import { makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
@@ -15,6 +15,8 @@ import PaginationItem from "@material-ui/lab/PaginationItem";
 
 import { Filter, TextInput } from '../../components/ui/input';
 import { Button, Small } from '../../components/ui/button';
+import { ModalPD } from '../../components/ui/modal';
+
 import { ReactComponent as IconArrowNav } from '../../assets/icons/arrow_nav.svg';
 import { ReactComponent as IconArrowDownloadExcel } from '../../assets/icons/arrow_download_excel.svg';
 import { ReactComponent as IconArrowRightSmall } from '../../assets/icons/arrow_right_small.svg';
@@ -47,7 +49,10 @@ const rows = [
 ];
 
 export const Employee = () => {
+  const [visible, setVisible] = useState(false);
+
   return <React.Fragment>
+  <ModalPD visible={visible} setVisible={setVisible} />
     <div className="area">
       <div className="head">
         <div className="d-flex align-items-center">
@@ -55,7 +60,7 @@ export const Employee = () => {
           <div className="d-flex align-items-center navigation"><div className="icon"><IconArrowNav /></div>Все сотрудники</div>
         </div>
         <div className="d-flex align-items-center">
-          <Small title="Отправить запрос о ПД" icon={<IconArrowRightSmall />} color="#151515" style={{marginRight: 20}} />
+          <Small title="Отправить запрос о ПД" icon={<IconArrowRightSmall />} color="#151515" style={{marginRight: 20}} onClick={()=>setVisible(true)} />
           <Small title="Выгрузить в Excel" icon={<IconArrowDownloadExcel />} color="#009A50" />
         </div>
       </div>
