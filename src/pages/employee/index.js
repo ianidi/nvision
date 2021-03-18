@@ -17,6 +17,8 @@ import { Filter, TextInput } from '../../components/ui/input';
 import { Button, Small } from '../../components/ui/button';
 import { ModalPD } from '../../components/ui/modal';
 
+import { exportExcel } from '../../service';
+
 import { ReactComponent as IconArrowNav } from '../../assets/icons/arrow_nav.svg';
 import { ReactComponent as IconArrowDownloadExcel } from '../../assets/icons/arrow_download_excel.svg';
 import { ReactComponent as IconArrowRightSmall } from '../../assets/icons/arrow_right_small.svg';
@@ -48,6 +50,13 @@ const rows = [
   createData("Специалист по MS Excel", "Microsoft", "Type", "Да", "01.09.2020", "Да", "31.08.2020", "Действует"),
 ];
 
+const json = {
+  "squadName": "Super hero squad",
+  "homeTown": "Metro City",
+  "formed": 2016,
+  "secretBase": "Super tower"
+}
+
 export const Employee = () => {
   const [visible, setVisible] = useState(false);
 
@@ -61,7 +70,7 @@ export const Employee = () => {
         </div>
         <div className="d-flex align-items-center">
           <Small title="Отправить запрос о ПД" icon={<IconArrowRightSmall />} color="#151515" style={{marginRight: 20}} onClick={()=>setVisible(true)} />
-          <Small title="Выгрузить в Excel" icon={<IconArrowDownloadExcel />} color="#009A50" />
+          <Small title="Выгрузить в Excel" icon={<IconArrowDownloadExcel />} color="#009A50" onClick={()=>exportExcel({title: "employee", data: rows})} />
         </div>
       </div>
 

@@ -15,6 +15,8 @@ import { Link, useParams } from "react-router-dom";
 import Pagination from "@material-ui/lab/Pagination";
 import PaginationItem from "@material-ui/lab/PaginationItem";
 
+import { exportExcel } from '../../service';
+
 import { ReactComponent as IconArrowDownloadExcel } from '../../assets/icons/arrow_download_excel.svg';
 import { ReactComponent as IconClear } from '../../assets/icons/clear.svg';
 import { ReactComponent as IconArrowDownloadBlack } from '../../assets/icons/arrow_download_black.svg';
@@ -70,7 +72,7 @@ export const Cert = () => {
           <div className="title">Сертификаты</div>
         </div>
         <div className="d-flex align-items-center">
-          <Small title="Выгрузить в Excel" icon={<IconArrowDownloadExcel />} color="#009A50" />
+          <Small title="Выгрузить в Excel" icon={<IconArrowDownloadExcel />} color="#009A50" onClick={()=>exportExcel({title: "cert", data: rows})} />
           <Small title="Очистить все фильтры" icon={<IconClear />} color="#EE262A" style={{marginLeft: 20, marginRight: 20}} />
           <Small title="Скачать файлы" icon={<IconArrowDownloadBlack />} color="#151515" />
         </div>
