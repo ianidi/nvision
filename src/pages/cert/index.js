@@ -160,18 +160,19 @@ export const Cert = () => {
               onClickOutside={() => setIsPopoverOpen(false)}
               positions={["bottom", "left", "right"]} // preferred positions by priority
               content={({ position, childRect, popoverRect }) => (
-                <ArrowContainer // if you'd like an arrow, you can import the ArrowContainer!
-                  position={position}
-                  childRect={targetRect}
-                  popoverRect={popoverRect}
-                  arrowColor={"blue"}
-                  arrowSize={10}
-                  arrowStyle={{ opacity: 0.7 }}
-                  className="popover-arrow-container"
-                  arrowClassName="popover-arrow"
-                >
-                  <div className="popover__container">Hi! I'm popover content.</div>
-                </ArrowContainer>
+                <div className="popover__container">Hi! I'm popover content.</div>
+                // <ArrowContainer // if you'd like an arrow, you can import the ArrowContainer!
+                //   position={position}
+                //   // childRect={targetRect}
+                //   popoverRect={popoverRect}
+                //   arrowColor={"blue"}
+                //   arrowSize={10}
+                //   arrowStyle={{ opacity: 0.7 }}
+                //   className="popover-arrow-container"
+                //   arrowClassName="popover-arrow"
+                // >
+
+                // </ArrowContainer>
               )}
             >
               <div onClick={() => setIsPopoverOpen(!isPopoverOpen)}>Наименование</div>
