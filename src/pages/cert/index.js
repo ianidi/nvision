@@ -1,4 +1,6 @@
 import React from 'react';
+import { useDispatch } from "react-redux";
+import { open } from "../../store/modalSlice";
 
 import { makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
@@ -103,6 +105,8 @@ function Action() {
 }
 
 export const Cert = () => {
+  const dispatch = useDispatch();
+
   return <React.Fragment>
     <div className="area">
       <div className="head">
@@ -134,7 +138,7 @@ export const Cert = () => {
               placeholder="Дата конца"
             />
           </div>
-          <div style={{width: '40%'}}>
+          <div style={{width: '40%'}}  onClick={() => dispatch(open("filter"))}>
             Наименование Вендор Тип Статус
           </div>
           <div style={{width: '10%'}}>
