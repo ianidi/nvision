@@ -1,4 +1,6 @@
 import React from 'react';
+import { OverlayScrollbarsComponent } from "overlayscrollbars-react";
+
 import { useDispatch } from "react-redux";
 import { close } from "../../../../store/modalSlice";
 
@@ -17,7 +19,21 @@ export const ModalFilter = () => {
     <div className="modal__close" onClick={() => dispatch(close())}><IconModalClose /></div>
       <div className="modal__title">Фильтры</div>
       
-      
+      <OverlayScrollbarsComponent
+        options={{
+          scrollbars: { autoHide: "never" },
+        }}
+        style={{ maxHeight: "300px" }}
+        className="os-theme-thin-dark"
+      >
+      <div className="modal__title">Фильтры</div>
+      <div className="modal__title">Фильтры</div>
+      <div className="modal__title">Фильтры</div>
+      <div className="modal__title">Фильтры</div>
+      <div className="modal__title">Фильтры</div>
+      <div className="modal__title">Фильтры</div>
+      <div className="modal__title">Фильтры</div>
+      </OverlayScrollbarsComponent>
 
       <div className="d-flex justify-content-center">
         <Button title="Отправить" onClick={() => dispatch(close())} />
