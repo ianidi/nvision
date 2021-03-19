@@ -12,14 +12,14 @@ export const modalSlice = createSlice({
       state.open = true;
       state.title = action.payload;
 
-      disablePageScroll();
+      // disablePageScroll();
     },
     close: (state) => {
       state.open = false;
       // state.title = null; had to preserve the old title to make modal disappear animation work
 
-      enablePageScroll();
-      clearQueueScrollLocks();
+      // enablePageScroll();
+      // clearQueueScrollLocks();
     },
   },
 });
