@@ -1,6 +1,7 @@
 import 'react-hot-loader'
 import React from 'react';
 import ReactDOM from 'react-dom';
+import 'normalize.css';
 import './assets/fonts/nunito/style.css';
 import './index.scss';
 import App from './App';
@@ -10,7 +11,6 @@ import { AppContainer } from 'react-hot-loader';
 import { Provider } from 'react-redux';
 import { BrowserRouter } from "react-router-dom";
 
-import { ChakraProvider } from "@chakra-ui/react"
 import { createMuiTheme, ThemeProvider as ThemeProviderMaterial } from '@material-ui/core/styles';
 import { ToastContainer } from 'react-toastify';
 import { PersistGate } from 'redux-persist/integration/react';
@@ -51,7 +51,6 @@ ReactDOM.render(
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
       <BrowserRouter>
-          <ChakraProvider>
             <ThemeProviderMaterial theme={themeMaterial}>
               <ToastContainer
                 position="top-right"
@@ -67,7 +66,6 @@ ReactDOM.render(
               />
               <App />
             </ThemeProviderMaterial>
-          </ChakraProvider>
         </BrowserRouter>
       </PersistGate>
     </Provider>

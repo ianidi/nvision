@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { useDispatch } from "react-redux";
+import { open } from "../../store/modalSlice";
 
 import { makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
@@ -64,11 +66,9 @@ const rows = [
 
 function Cert() {
   const classes = useStyles();
-
-  const [visible, setVisible] = useState(false);
+  const dispatch = useDispatch();
 
   return (<React.Fragment>
-    <ModalCert visible={visible} setVisible={setVisible} />
       <TableContainer style={{marginTop: "10px", marginBottom: "20px", userSelect: "none"}}>
         <Table className={classes.table} size="small" aria-label="a dense table">
           <TableHead>
@@ -98,7 +98,7 @@ function Cert() {
         </Table>
       </TableContainer>
 
-      <div className="upload" onClick={() => setVisible(true)}>
+      <div className="upload" onClick={() => dispatch(open("profile/cert"))}>
         <IconUpload />
         <div className="upload__text">Добавьте сертификат</div>
       </div>
@@ -108,11 +108,9 @@ function Cert() {
 
 function Diploma() {
   const classes = useStyles();
-
-  const [visible, setVisible] = useState(false);
+  const dispatch = useDispatch();
 
   return (<React.Fragment>
-    <ModalDiploma visible={visible} setVisible={setVisible} />
       <TableContainer style={{marginTop: "10px", marginBottom: "20px", userSelect: "none"}}>
         <Table className={classes.table} size="small" aria-label="a dense table">
           <TableHead>
@@ -132,7 +130,7 @@ function Diploma() {
         </Table>
       </TableContainer>
 
-      <div className="upload" onClick={() => setVisible(true)}>
+      <div className="upload" onClick={() => dispatch(open("profile/diploma"))}>
         <IconUpload />
         <div className="upload__text">Добавьте диплом</div>
       </div>
@@ -142,6 +140,7 @@ function Diploma() {
 
 function Degree() {
   const classes = useStyles();
+  const dispatch = useDispatch();
 
   const [visible, setVisible] = useState(false);
 
@@ -178,6 +177,7 @@ function Degree() {
 
 function Credential() {
   const classes = useStyles();
+  const dispatch = useDispatch();
 
   const [visible, setVisible] = useState(false);
 
@@ -220,6 +220,7 @@ function Credential() {
 
 export const Profile = () => {
   const [visible, setVisible] = useState(false);
+  const dispatch = useDispatch();
 
   return <React.Fragment>
   <ModalPD visible={visible} setVisible={setVisible} />
