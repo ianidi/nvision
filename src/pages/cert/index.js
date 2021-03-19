@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useDispatch } from "react-redux";
 import { open } from "../../store/modalSlice";
+
+import { Popover } from 'react-tiny-popover'
 
 import { makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
@@ -106,6 +108,7 @@ function Action() {
 
 export const Cert = () => {
   const dispatch = useDispatch();
+  const [isPopoverOpen, setIsPopoverOpen] = useState(false);
 
   return <React.Fragment>
     <div className="area">
@@ -138,8 +141,13 @@ export const Cert = () => {
               placeholder="Дата конца"
             />
           </div>
-          <div style={{width: '40%'}}  onClick={() => dispatch(open("filter"))}>
-            Наименование Вендор Тип Статус
+          <div className="d-flex align-items-center" style={{width: '40%'}}>
+          <Popover
+            isOpen={isPopoverOpen}
+            positions={['top', 'bottom', 'left', 'right']} // preferred positions by priority
+            content={<div>Hi! I'm popover content.</div>}
+          ><div onClick={() => setIsPopoverOpen(!isPopoverOpen)}>Наименование</div></Popover>
+            Вендор Тип Статус
           </div>
           <div style={{width: '10%'}}>
             <Button title="Найти" />

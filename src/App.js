@@ -12,7 +12,7 @@ import { Cert } from './pages';
 import { Profile } from './pages';
 import { Employee } from './pages';
 import { Guide } from './pages';
-import { ModalCert, ModalCredential, ModalDegree, ModalDiploma, ModalPD, ModalFilter } from './components/ui/modal';
+import { ModalCert, ModalCredential, ModalDegree, ModalDiploma, ModalPD } from './components/ui/modal';
 
 function App() {
   const modalOpen = useSelector(selectOpen);
@@ -28,7 +28,6 @@ function App() {
           {modalTitle === "degree" && <ModalDegree />}
           {modalTitle === "credential" && <ModalCredential />}
           {modalTitle === "pd" && <ModalPD />}
-          {modalTitle === "filter" && <ModalFilter />}
         </Modal>
         <div className="layout">
           <Navbar />

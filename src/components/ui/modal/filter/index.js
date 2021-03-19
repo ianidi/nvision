@@ -26,13 +26,13 @@ export const ModalFilter = () => {
         style={{ maxHeight: "300px" }}
         className="os-theme-thin-dark"
       >
-      <div className="modal__title">Фильтры</div>
-      <div className="modal__title">Фильтры</div>
-      <div className="modal__title">Фильтры</div>
-      <div className="modal__title">Фильтры</div>
-      <div className="modal__title">Фильтры</div>
-      <div className="modal__title">Фильтры</div>
-      <div className="modal__title">Фильтры</div>
+        <div className="modal__title">Фильтры</div>
+        <div className="modal__title">Фильтры</div>
+        <div className="modal__title">Фильтры</div>
+        <div className="modal__title">Фильтры</div>
+        <div className="modal__title">Фильтры</div>
+        <div className="modal__title">Фильтры</div>
+        <div className="modal__title">Фильтры</div>
       </OverlayScrollbarsComponent>
 
       <div className="d-flex justify-content-center">
