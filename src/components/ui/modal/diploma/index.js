@@ -1,9 +1,9 @@
 import React from "react";
 import { useDispatch } from "react-redux";
+import { close } from "../../../../store/modalSlice";
 
 import Uploady from "@rpldy/uploady";
 
-import { close } from "../../../../store/modalSlice";
 import { Select } from '../../../ui/input';
 import { Button, Upload } from '../../../ui/button';
 import { ReactComponent as IconModalClose } from '../../../../assets/icons/modal_close.svg';

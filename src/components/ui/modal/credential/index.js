@@ -1,10 +1,6 @@
-import React, { forwardRef } from "react";
-import { compose } from '@bem-react/core'
-import {
-  Modal as ModalDesktop,
-  withThemeNormal,
-} from '@yandex/ui/Modal/desktop'
-import { withZIndex } from '@yandex/ui/withZIndex'
+import React from "react";
+import { useDispatch } from "react-redux";
+import { close } from "../../../../store/modalSlice";
 
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
@@ -13,16 +9,11 @@ import Checkbox from '@material-ui/core/Checkbox';
 
 import Uploady from "@rpldy/uploady";
 
-import { TextInput, Select } from '../../../ui/input';
+import { Select } from '../../../ui/input';
 import { Button, Upload } from '../../../ui/button';
 import { Datepicker } from '../../../ui/date';
 import { ReactComponent as IconModalClose } from '../../../../assets/icons/modal_close.svg';
 import './style.scoped.scss';
-
-const Modal = compose(
-  withThemeNormal,
-  withZIndex,
-)(ModalDesktop);
 
 const useStyles = makeStyles({
   root: {
@@ -64,16 +55,11 @@ const options = [{label: 'Значение 1', value: 'a'}, {label: 'Значе�
 
 export const ModalCredential = ({visible, setVisible}) => {
   const classes = useStyles();
+  const dispatch = useDispatch();
 
   return <React.Fragment>
-  <Modal
-  theme="normal"
-  onClose={() => setVisible(false)}
-  visible={visible}
-  zIndexGroupLevel={2000}
-  >
   <div className="modal__content">
-    <div className="modal__close" onClick={() => setVisible(false)}><IconModalClose /></div>
+    <div className="modal__close" onClick={() => dispatch(close())}><IconModalClose /></div>
       <div className="modal__title">Добавить удостоверение</div>
 
       <Select
@@ -116,9 +102,8 @@ export const ModalCredential = ({visible, setVisible}) => {
       </Uploady>
 
       <div className="d-flex justify-content-end" style={{marginTop: 20}}>
-        <Button title="Отправить" onClick={() => setVisible(false)} />
+        <Button title="Отправить" onClick={() => dispatch(close())} />
       </div>
     </div>
-  </Modal>
 </React.Fragment>
 }

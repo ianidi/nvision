@@ -17,7 +17,7 @@ import { Cert } from './pages';
 import { Profile } from './pages';
 import { Employee } from './pages';
 import { Guide } from './pages';
-import { ModalDiploma } from './components/ui/modal';
+import { ModalCert, ModalDiploma } from './components/ui/modal';
 
 var classNames = require("classnames");
 
@@ -36,6 +36,7 @@ function App() {
       <div data-scroll-lock-scrollable>
 
       <Modal theme="normal" onClose={() => dispatch(close())} visible={modalOpen} zindexgrouplevel={2000}>
+      {modalTitle === "profile/cert" && <ModalCert />}
       {modalTitle === "profile/diploma" && <ModalDiploma />}
       </Modal>
 
