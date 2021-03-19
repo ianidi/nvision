@@ -17,10 +17,10 @@ import { PersistGate } from 'redux-persist/integration/react';
 
 import { store, persistor } from './store';
 
-// import { configureRootTheme } from "@yandex/ui/Theme";
-// import { theme as YandexUITheme } from "./theme/default";
+import { configureRootTheme } from "@yandex/ui/Theme";
+import { theme as YandexUITheme } from "@yandex/ui/Theme/presets/default";
 
-// configureRootTheme({ theme: YandexUITheme });
+configureRootTheme({ theme: YandexUITheme });
 
 const themeMaterial = createMuiTheme({
   palette: {
