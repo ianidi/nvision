@@ -17,7 +17,7 @@ import { Cert } from './pages';
 import { Profile } from './pages';
 import { Employee } from './pages';
 import { Guide } from './pages';
-import { ModalCert, ModalCredential, ModalDegree, ModalDiploma } from './components/ui/modal';
+import { ModalCert, ModalCredential, ModalDegree, ModalDiploma, ModalPD } from './components/ui/modal';
 
 var classNames = require("classnames");
 
@@ -40,6 +40,7 @@ function App() {
       {modalTitle === "diploma" && <ModalDiploma />}
       {modalTitle === "degree" && <ModalDegree />}
       {modalTitle === "credential" && <ModalCredential />}
+      {modalTitle === "pd" && <ModalPD />}
       </Modal>
 
         <div className="layout">
