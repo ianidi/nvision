@@ -98,7 +98,7 @@ function Cert() {
         </Table>
       </TableContainer>
 
-      <div className="upload" onClick={() => dispatch(open("profile/cert"))}>
+      <div className="upload" onClick={() => dispatch(open("cert"))}>
         <IconUpload />
         <div className="upload__text">Добавьте сертификат</div>
       </div>
@@ -130,7 +130,7 @@ function Diploma() {
         </Table>
       </TableContainer>
 
-      <div className="upload" onClick={() => dispatch(open("profile/diploma"))}>
+      <div className="upload" onClick={() => dispatch(open("diploma"))}>
         <IconUpload />
         <div className="upload__text">Добавьте диплом</div>
       </div>
@@ -142,10 +142,7 @@ function Degree() {
   const classes = useStyles();
   const dispatch = useDispatch();
 
-  const [visible, setVisible] = useState(false);
-
   return (<React.Fragment>
-    <ModalDegree visible={visible} setVisible={setVisible} />
       <TableContainer style={{marginTop: "10px", marginBottom: "20px", userSelect: "none"}}>
         <Table className={classes.table} size="small" aria-label="a dense table">
           <TableHead>
@@ -167,7 +164,7 @@ function Degree() {
         </Table>
       </TableContainer>
 
-      <div className="upload" onClick={() => setVisible(true)}>
+      <div className="upload" onClick={() => dispatch(open("degree"))}>
         <IconUpload />
         <div className="upload__text">Добавьте ученую степень</div>
       </div>
@@ -179,10 +176,7 @@ function Credential() {
   const classes = useStyles();
   const dispatch = useDispatch();
 
-  const [visible, setVisible] = useState(false);
-
   return (<React.Fragment>
-    <ModalCredential visible={visible} setVisible={setVisible} />
       <TableContainer style={{marginTop: "10px", marginBottom: "20px", userSelect: "none"}}>
         <Table className={classes.table} size="small" aria-label="a dense table">
           <TableHead>
@@ -210,7 +204,7 @@ function Credential() {
         </Table>
       </TableContainer>
 
-      <div className="upload" onClick={() => setVisible(true)}>
+      <div className="upload" onClick={() => dispatch(open("credential"))}>
         <IconUpload />
         <div className="upload__text">Добавьте удостоверение</div>
       </div>
@@ -219,12 +213,9 @@ function Credential() {
 }
 
 export const Profile = () => {
-  const [visible, setVisible] = useState(false);
   const dispatch = useDispatch();
 
   return <React.Fragment>
-  <ModalPD visible={visible} setVisible={setVisible} />
-
   <div className="profile__wrapper">
 
   <div className="profile">
@@ -250,7 +241,7 @@ export const Profile = () => {
     </div>
       <div className="line"></div>
       <div className="buttons">
-        <Round title="Отправить запрос о ПД" icon={<IconArrowRight />} style={{ marginBottom: 20 }} onClick={() => setVisible(true)} />
+        <Round title="Отправить запрос о ПД" icon={<IconArrowRight />} style={{ marginBottom: 20 }} onClick={() => dispatch(open("pd"))} />
         <Round title="Скачать все файлы" icon={<IconArrowDownload />} onClick={()=>saveFile({title: "files.zip", url: "http://localhost:3000/file.zip"})} />
       </div>
   </div>

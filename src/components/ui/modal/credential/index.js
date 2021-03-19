@@ -53,7 +53,7 @@ const useStyles = makeStyles({
 
 const options = [{label: 'Значение 1', value: 'a'}, {label: 'Значение 2', value: 'b'}]
 
-export const ModalCredential = ({visible, setVisible}) => {
+export const ModalCredential = () => {
   const classes = useStyles();
   const dispatch = useDispatch();
 
