@@ -144,8 +144,8 @@ export const Cert = () => {
           <div className="d-flex align-items-center" style={{width: '40%'}}>
           <Popover
             isOpen={isPopoverOpen}
-            positions={['top', 'bottom', 'left', 'right']} // preferred positions by priority
-            content={<div>Hi! I'm popover content.</div>}
+            positions={['bottom', 'left', 'right']} // preferred positions by priority
+            content={<div className="popover__container">Hi! I'm popover content.</div>}
           ><div onClick={() => setIsPopoverOpen(!isPopoverOpen)}>Наименование</div></Popover>
             Вендор Тип Статус
           </div>
