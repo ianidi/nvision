@@ -5,12 +5,7 @@ import { Switch, Route } from "react-router-dom";
 import { PrivateRoute } from "./components/router";
 
 import { close, selectOpen, selectTitle } from "./store/modalSlice";
-import { compose } from '@bem-react/core'
-import {
-  Modal as ModalDesktop,
-  withThemeNormal,
-} from '@yandex/ui/Modal/desktop'
-import { withZIndex } from '@yandex/ui/withZIndex'
+import { Modal } from '@yandex/ui/Modal/desktop'
 
 import { Navbar, Sidebar, Content } from "./components/layout";
 import { Cert } from './pages';
@@ -18,13 +13,6 @@ import { Profile } from './pages';
 import { Employee } from './pages';
 import { Guide } from './pages';
 import { ModalCert, ModalCredential, ModalDegree, ModalDiploma, ModalPD } from './components/ui/modal';
-
-var classNames = require("classnames");
-
-const Modal = compose(
-  withThemeNormal,
-  withZIndex,
-)(ModalDesktop);
 
 function App() {
   const modalOpen = useSelector(selectOpen);
@@ -34,15 +22,13 @@ function App() {
   return (
     <React.Fragment>
       <div data-scroll-lock-scrollable>
-
-      <Modal theme="normal" onClose={() => dispatch(close())} visible={modalOpen} zindexgrouplevel={2000}>
-        {modalTitle === "cert" && <ModalCert />}
-        {modalTitle === "diploma" && <ModalDiploma />}
-        {modalTitle === "degree" && <ModalDegree />}
-        {modalTitle === "credential" && <ModalCredential />}
-        {modalTitle === "pd" && <ModalPD />}
-      </Modal>
-
+        <Modal theme="normal" onClose={() => dispatch(close())} visible={modalOpen} zindexgrouplevel={20}>
+          {modalTitle === "cert" && <ModalCert />}
+          {modalTitle === "diploma" && <ModalDiploma />}
+          {modalTitle === "degree" && <ModalDegree />}
+          {modalTitle === "credential" && <ModalCredential />}
+          {modalTitle === "pd" && <ModalPD />}
+        </Modal>
         <div className="layout">
           <Navbar />
           <Sidebar />
