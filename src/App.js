@@ -36,11 +36,11 @@ function App() {
       <div data-scroll-lock-scrollable>
 
       <Modal theme="normal" onClose={() => dispatch(close())} visible={modalOpen} zindexgrouplevel={2000}>
-      {modalTitle === "cert" && <ModalCert />}
-      {modalTitle === "diploma" && <ModalDiploma />}
-      {modalTitle === "degree" && <ModalDegree />}
-      {modalTitle === "credential" && <ModalCredential />}
-      {modalTitle === "pd" && <ModalPD />}
+        {modalTitle === "cert" && <ModalCert />}
+        {modalTitle === "diploma" && <ModalDiploma />}
+        {modalTitle === "degree" && <ModalDegree />}
+        {modalTitle === "credential" && <ModalCredential />}
+        {modalTitle === "pd" && <ModalPD />}
       </Modal>
 
         <div className="layout">
