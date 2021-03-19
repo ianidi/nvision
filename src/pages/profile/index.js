@@ -1,31 +1,31 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { open } from "../../store/modalSlice";
 
-import { makeStyles } from '@material-ui/core/styles';
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableContainer from '@material-ui/core/TableContainer';
-import TableHead from '@material-ui/core/TableHead';
-import TableRow from '@material-ui/core/TableRow';
+import { makeStyles } from "@material-ui/core/styles";
+import Table from "@material-ui/core/Table";
+import TableBody from "@material-ui/core/TableBody";
+import TableCell from "@material-ui/core/TableCell";
+import TableContainer from "@material-ui/core/TableContainer";
+import TableHead from "@material-ui/core/TableHead";
+import TableRow from "@material-ui/core/TableRow";
 
 import { Collapse } from "react-collapse";
 
-import { saveFile } from '../../service';
+import { saveFile } from "../../service";
 
 // import { Dropzone } from '../../components/ui/upload';
-import { Round } from '../../components/ui/button';
-import { ModalCert, ModalDiploma, ModalDegree, ModalCredential, ModalPD } from '../../components/ui/modal';
-import { ReactComponent as IconArrowRight } from '../../assets/icons/arrow_right.svg';
-import { ReactComponent as IconArrowDownload } from '../../assets/icons/arrow_download.svg';
-import { ReactComponent as IconPhone } from '../../assets/icons/phone.svg';
-import { ReactComponent as IconEmail } from '../../assets/icons/email.svg';
-import { ReactComponent as IconView } from '../../assets/icons/view.svg';
-import { ReactComponent as IconDownload } from '../../assets/icons/download.svg';
-import { ReactComponent as IconRemove } from '../../assets/icons/remove.svg';
-import { ReactComponent as IconUpload } from '../../assets/icons/upload.svg';
-import './style.scoped.scss'
+import { Round } from "../../components/ui/button";
+import { ModalCert, ModalDiploma, ModalDegree, ModalCredential, ModalPD } from "../../components/ui/modal";
+import { ReactComponent as IconArrowRight } from "../../assets/icons/arrow_right.svg";
+import { ReactComponent as IconArrowDownload } from "../../assets/icons/arrow_download.svg";
+import { ReactComponent as IconPhone } from "../../assets/icons/phone.svg";
+import { ReactComponent as IconEmail } from "../../assets/icons/email.svg";
+import { ReactComponent as IconView } from "../../assets/icons/view.svg";
+import { ReactComponent as IconDownload } from "../../assets/icons/download.svg";
+import { ReactComponent as IconRemove } from "../../assets/icons/remove.svg";
+import { ReactComponent as IconUpload } from "../../assets/icons/upload.svg";
+import "./style.scoped.scss";
 
 var classNames = require("classnames");
 
@@ -53,23 +53,28 @@ function createData(title, vendor, type, startDate, endDate, status) {
 function Status() {
   return (
     <div className="d-flex align-items-center">
-      <div className="icon"><IconView /></div>
-      <div className="icon" onClick={()=>saveFile({title: "file.pdf", url: "http://localhost:3000/file.zip"})}><IconDownload /></div>
-      <div className="icon"><IconRemove /></div>
+      <div className="icon">
+        <IconView />
+      </div>
+      <div className="icon" onClick={() => saveFile({ title: "file.pdf", url: "http://localhost:3000/file.zip" })}>
+        <IconDownload />
+      </div>
+      <div className="icon">
+        <IconRemove />
+      </div>
     </div>
-  )
+  );
 }
 
-const rows = [
-  createData("Специалист по MS Excel", "Microsoft", "Type", "Да", "01.09.2020", "Да", "31.08.2020", "Действует"),
-];
+const rows = [createData("Специалист по MS Excel", "Microsoft", "Type", "Да", "01.09.2020", "Да", "31.08.2020", "Действует")];
 
 function Cert() {
   const classes = useStyles();
   const dispatch = useDispatch();
 
-  return (<React.Fragment>
-      <TableContainer style={{marginTop: "10px", marginBottom: "20px", userSelect: "none"}}>
+  return (
+    <React.Fragment>
+      <TableContainer style={{ marginTop: "10px", marginBottom: "20px", userSelect: "none" }}>
         <Table className={classes.table} size="small" aria-label="a dense table">
           <TableHead>
             <TableRow>
@@ -79,19 +84,23 @@ function Cert() {
               <TableCell className={classes.tableKey}>Затраты</TableCell>
               <TableCell className={classes.tableKey}>Дата начала</TableCell>
               <TableCell className={classes.tableKey}>Дата окончания</TableCell>
-              <TableCell className={classes.tableKey}></TableCell>
+              <TableCell className={classes.tableKey} />
             </TableRow>
           </TableHead>
           <TableBody>
             {rows.map((row) => (
               <TableRow key={row.id} className={classes.tableLine}>
-                <TableCell className={classes.tableCell} component="th" scope="row">{row.title}</TableCell>
+                <TableCell className={classes.tableCell} component="th" scope="row">
+                  {row.title}
+                </TableCell>
                 <TableCell className={classes.tableCell}>{row.vendor}</TableCell>
                 <TableCell className={classes.tableCell}>{row.type}</TableCell>
                 <TableCell className={classes.tableCell}>{row.startDate}</TableCell>
                 <TableCell className={classes.tableCell}>{row.endDate}</TableCell>
                 <TableCell className={classes.tableCell}>{row.status}</TableCell>
-                <TableCell className={classes.tableCell}><Status /></TableCell>
+                <TableCell className={classes.tableCell}>
+                  <Status />
+                </TableCell>
               </TableRow>
             ))}
           </TableBody>
@@ -110,20 +119,25 @@ function Diploma() {
   const classes = useStyles();
   const dispatch = useDispatch();
 
-  return (<React.Fragment>
-      <TableContainer style={{marginTop: "10px", marginBottom: "20px", userSelect: "none"}}>
+  return (
+    <React.Fragment>
+      <TableContainer style={{ marginTop: "10px", marginBottom: "20px", userSelect: "none" }}>
         <Table className={classes.table} size="small" aria-label="a dense table">
           <TableHead>
             <TableRow>
               <TableCell className={classes.tableKey}>Специальность</TableCell>
-              <TableCell className={classes.tableKey}></TableCell>
+              <TableCell className={classes.tableKey} />
             </TableRow>
           </TableHead>
           <TableBody>
             {rows.map((row) => (
               <TableRow key={row.id} className={classes.tableLine}>
-                <TableCell className={classes.tableCell} component="th" scope="row">{row.title}</TableCell>
-                <TableCell className={classes.tableCell}><Status /></TableCell>
+                <TableCell className={classes.tableCell} component="th" scope="row">
+                  {row.title}
+                </TableCell>
+                <TableCell className={classes.tableCell}>
+                  <Status />
+                </TableCell>
               </TableRow>
             ))}
           </TableBody>
@@ -142,22 +156,27 @@ function Degree() {
   const classes = useStyles();
   const dispatch = useDispatch();
 
-  return (<React.Fragment>
-      <TableContainer style={{marginTop: "10px", marginBottom: "20px", userSelect: "none"}}>
+  return (
+    <React.Fragment>
+      <TableContainer style={{ marginTop: "10px", marginBottom: "20px", userSelect: "none" }}>
         <Table className={classes.table} size="small" aria-label="a dense table">
           <TableHead>
             <TableRow>
               <TableCell className={classes.tableKey}>Ученая степень</TableCell>
               <TableCell className={classes.tableKey}>Научная область</TableCell>
-              <TableCell className={classes.tableKey}></TableCell>
+              <TableCell className={classes.tableKey} />
             </TableRow>
           </TableHead>
           <TableBody>
             {rows.map((row) => (
               <TableRow key={row.id} className={classes.tableLine}>
-                <TableCell className={classes.tableCell} component="th" scope="row">{row.title}</TableCell>
+                <TableCell className={classes.tableCell} component="th" scope="row">
+                  {row.title}
+                </TableCell>
                 <TableCell className={classes.tableCell}>{row.vendor}</TableCell>
-                <TableCell className={classes.tableCell}><Status /></TableCell>
+                <TableCell className={classes.tableCell}>
+                  <Status />
+                </TableCell>
               </TableRow>
             ))}
           </TableBody>
@@ -176,8 +195,9 @@ function Credential() {
   const classes = useStyles();
   const dispatch = useDispatch();
 
-  return (<React.Fragment>
-      <TableContainer style={{marginTop: "10px", marginBottom: "20px", userSelect: "none"}}>
+  return (
+    <React.Fragment>
+      <TableContainer style={{ marginTop: "10px", marginBottom: "20px", userSelect: "none" }}>
         <Table className={classes.table} size="small" aria-label="a dense table">
           <TableHead>
             <TableRow>
@@ -186,18 +206,22 @@ function Credential() {
               <TableCell className={classes.tableKey}>Бессрочный</TableCell>
               <TableCell className={classes.tableKey}>Дата окончания</TableCell>
               <TableCell className={classes.tableKey}>Статус</TableCell>
-              <TableCell className={classes.tableKey}></TableCell>
+              <TableCell className={classes.tableKey} />
             </TableRow>
           </TableHead>
           <TableBody>
             {rows.map((row) => (
               <TableRow key={row.id} className={classes.tableLine}>
-                <TableCell className={classes.tableCell} component="th" scope="row">{row.title}</TableCell>
+                <TableCell className={classes.tableCell} component="th" scope="row">
+                  {row.title}
+                </TableCell>
                 <TableCell className={classes.tableCell}>{row.startDate}</TableCell>
                 <TableCell className={classes.tableCell}>{row.vendor}</TableCell>
                 <TableCell className={classes.tableCell}>{row.endDate}</TableCell>
                 <TableCell className={classes.tableCell}>{row.status}</TableCell>
-                <TableCell className={classes.tableCell}><Status /></TableCell>
+                <TableCell className={classes.tableCell}>
+                  <Status />
+                </TableCell>
               </TableRow>
             ))}
           </TableBody>
@@ -215,48 +239,62 @@ function Credential() {
 export const Profile = () => {
   const dispatch = useDispatch();
 
-  return <React.Fragment>
-  <div className="profile__wrapper">
+  return (
+    <React.Fragment>
+      <div className="profile__wrapper">
+        <div className="profile">
+          <div className="avatar">
+            <div className="avatar__img" />
+          </div>
+          <div className="person">
+            <div className="person__name">Сафонова Ирина Владимировна</div>
+            <div className="person__position">Руководитель направления обучения и развития</div>
+            <div className="person__department">
+              Департамент по управлению закупками и работе с партнерами; Блок по управлению персоналом.
+            </div>
+            <div className="person__director">
+              Руководитель:
+              <br />
+              Гурленов Андрей Владимирович
+            </div>
+          </div>
+          <div className="line" />
+          <div className="contact">
+            <div className="contact__item">
+              <IconPhone />
+              <div className="contact__info">(885) 2186</div>
+            </div>
+            <div className="contact__item">
+              <IconEmail />
+              <div className="contact__info">VVinokurov@nvg.ru</div>
+            </div>
+          </div>
+          <div className="line" />
+          <div className="buttons">
+            <Round
+              title="Отправить запрос о ПД"
+              icon={<IconArrowRight />}
+              style={{ marginBottom: 20 }}
+              onClick={() => dispatch(open("pd"))}
+            />
+            <Round
+              title="Скачать все файлы"
+              icon={<IconArrowDownload />}
+              onClick={() => saveFile({ title: "files.zip", url: "http://localhost:3000/file.zip" })}
+            />
+          </div>
+        </div>
 
-  <div className="profile">
-    <div className="avatar">
-        <div className="avatar__img"></div>
-    </div>
-    <div className="person">
-        <div className="person__name">Сафонова Ирина Владимировна</div>
-        <div className="person__position">Руководитель направления обучения и развития</div>
-        <div className="person__department">Департамент по управлению закупками и работе с партнерами; Блок по управлению персоналом.</div>
-        <div className="person__director">Руководитель:<br />Гурленов Андрей Владимирович</div>
-    </div>
-    <div className="line"></div>
-    <div className="contact">
-        <div className="contact__item">
-            <IconPhone />
-            <div className="contact__info">(885) 2186</div>
+        <div className="list">
+          <CollapseItem title="Сертификаты" content={<Cert />} />
+          <CollapseItem title="Дипломы" content={<Diploma />} />
+          <CollapseItem title="Учёные степени" content={<Degree />} />
+          <CollapseItem title="Удостоверения" content={<Credential />} />
         </div>
-        <div className="contact__item">
-            <IconEmail />
-            <div className="contact__info">VVinokurov@nvg.ru</div>
-        </div>
-    </div>
-      <div className="line"></div>
-      <div className="buttons">
-        <Round title="Отправить запрос о ПД" icon={<IconArrowRight />} style={{ marginBottom: 20 }} onClick={() => dispatch(open("pd"))} />
-        <Round title="Скачать все файлы" icon={<IconArrowDownload />} onClick={()=>saveFile({title: "files.zip", url: "http://localhost:3000/file.zip"})} />
       </div>
-  </div>
-
-  <div className="list">
-    <CollapseItem title="Сертификаты" content={<Cert />} />
-    <CollapseItem title="Дипломы" content={<Diploma />} />
-    <CollapseItem title="Учёные степени" content={<Degree />} />
-    <CollapseItem title="Удостоверения" content={<Credential />} />
-  </div>
-  
-  </div>
-  </React.Fragment>;
+    </React.Fragment>
+  );
 };
-
 
 function CollapseItem({ title, content }) {
   const [open, setOpen] = useState(false);
@@ -272,7 +310,7 @@ function CollapseItem({ title, content }) {
           <h3 className="title">{title}</h3>
           <div className="toggle" onClick={toggle}>
             <svg width="20" height="11" viewBox="0 0 20 11" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M2.35 11L10 4.20108L17.65 11L20 8.90688L10 0L0 8.90688L2.35 11Z" fill="#151515"/>
+              <path d="M2.35 11L10 4.20108L17.65 11L20 8.90688L10 0L0 8.90688L2.35 11Z" fill="#151515" />
             </svg>
           </div>
         </div>
@@ -283,5 +321,5 @@ function CollapseItem({ title, content }) {
         </div>
       </div>
     </React.Fragment>
-    );
-  }
+  );
+}
