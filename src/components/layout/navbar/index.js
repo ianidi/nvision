@@ -15,8 +15,13 @@ export const Navbar = ({ drawer }) => {
   const [title, setTitle] = useState(false);
 
   useLayoutEffect(() => {
-    if (pageTitle[location.pathname]) {
-      setTitle(pageTitle[location.pathname]);
+    const path = location.pathname
+      .split("/")
+      .slice(0, 2)
+      .join("/");
+
+    if (pageTitle[path]) {
+      setTitle(pageTitle[path]);
     } else {
       setTitle(false);
     }
