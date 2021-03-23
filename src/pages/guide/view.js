@@ -56,9 +56,10 @@ const rows = [
 ];
 
 const headCells = [
-  { id: "name", disablePadding: true, label: "№" },
-  { id: "title", disablePadding: false, label: "Вендор" },
-  { id: "vendor", disablePadding: false, label: "Оповещать об окончании сертификата" },
+  { id: "name", disablePadding: true, label: "№", props: { width: "25%" } },
+  { id: "title", disablePadding: false, label: "Вендор", props: { width: "25%" } },
+  { id: "vendor", disablePadding: false, label: "Оповещать об окончании сертификата", props: { width: "25%" } },
+  { id: "action", disablePadding: false, label: "", props: { width: "25%" } },
 ];
 
 function descendingComparator(a, b, orderBy) {
@@ -226,6 +227,7 @@ function TableEmployee() {
                 padding={headCell.disablePadding ? "none" : "default"}
                 sortDirection={orderBy === headCell.id ? order : false}
                 className={classes.tableKey}
+                {...headCell.props}
               >
                 <TableSortLabel
                   active={orderBy === headCell.id}
