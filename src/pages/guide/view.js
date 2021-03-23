@@ -18,8 +18,10 @@ import PaginationItem from "@material-ui/lab/PaginationItem";
 import { exportExcel, saveFile } from "../../service";
 
 import { ReactComponent as IconArrowDownloadExcel } from "../../assets/icons/arrow_download_excel.svg";
+import { ReactComponent as IconAttachment } from "../../assets/icons/attachment.svg";
 import { ReactComponent as IconView } from "../../assets/icons/view.svg";
 import { ReactComponent as IconDownload } from "../../assets/icons/download.svg";
+import { ReactComponent as IconRemove } from "../../assets/icons/remove.svg";
 
 import { TextInput } from "../../components/ui/input";
 import { Button, Small } from "../../components/ui/button";
@@ -48,14 +50,14 @@ function createData(name, title, vendor, type, startDate, endDate, status) {
 }
 
 const rows = [
-  createData("First Name", "Специалист по MS Excel", "Microsoft", "Type", "01.09.2020", "31.08.2020", "Действует"),
-  createData("Last Name", "Специалист по MS Excel", "Microsoft", "Type", "02.09.2020", "30.08.2020", "Действует"),
+  createData("1", "Bosch", "Microsoft", "Type", "01.09.2020", "31.08.2020", "Действует"),
+  createData("2", "Cisco", "Microsoft", "Type", "02.09.2020", "30.08.2020", "Действует"),
 ];
 
 const headCells = [
-  { id: "name", disablePadding: true, label: "ФИО сотрудника" },
-  { id: "title", disablePadding: false, label: "Реестровый номер тендера" },
-  { id: "vendor", disablePadding: false, label: "Согласие / отказ" },
+  { id: "name", disablePadding: true, label: "№" },
+  { id: "title", disablePadding: false, label: "Вендор" },
+  { id: "vendor", disablePadding: false, label: "Оповещать об окончании сертификата" },
 ];
 
 function descendingComparator(a, b, orderBy) {
@@ -86,10 +88,16 @@ function Action() {
   return (
     <div className="d-flex align-items-center">
       <div className="icon">
+        <IconAttachment />
+      </div>
+      <div className="icon">
         <IconView />
       </div>
       <div className="icon" onClick={() => saveFile({ title: "file.pdf", url: "http://localhost:3000/file.zip" })}>
         <IconDownload />
+      </div>
+      <div className="icon">
+        <IconRemove />
       </div>
     </div>
   );
@@ -210,15 +218,6 @@ function TableEmployee() {
       <Table className={classes.table} size="small" aria-label="таблица">
         <TableHead>
           <TableRow>
-            <TableCell padding="checkbox">
-              <Checkbox
-                indeterminate={selected.length > 0 && selected.length < rows.length}
-                checked={rows.length > 0 && selected.length === rows.length}
-                onChange={handleSelectAllClick}
-                inputProps={{ "aria-label": "выбрать все" }}
-              />
-            </TableCell>
-
             {headCells.map((headCell) => (
               <TableCell
                 key={headCell.id}
@@ -261,6 +260,10 @@ function TableEmployee() {
                   selected={isItemSelected}
                   className={classes.tableLine}
                 >
+                  <TableCell className={classes.tableCell} component="th" scope="row" padding="none">
+                    {row.name}
+                  </TableCell>
+                  <TableCell className={classes.tableCell}>{row.title}</TableCell>
                   <TableCell padding="checkbox">
                     <Checkbox
                       checked={isItemSelected}
@@ -268,12 +271,8 @@ function TableEmployee() {
                       onClick={(event) => handleClick(event, row.name)}
                     />
                   </TableCell>
-                  <TableCell className={classes.tableCell} component="th" scope="row" padding="none">
-                    {row.name}
-                  </TableCell>
-                  <TableCell className={classes.tableCell}>{row.title}</TableCell>
                   <TableCell className={classes.tableCell}>
-                    <Status value={row.vendor} />
+                    <Action />
                   </TableCell>
                 </TableRow>
               );
