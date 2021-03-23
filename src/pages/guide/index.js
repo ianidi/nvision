@@ -1,7 +1,7 @@
 import React, { useMemo } from "react";
 import { Link } from "react-router-dom";
 import { ReactComponent as IconArrow } from "../../assets/icons/arrow.svg";
-import "./style.scss";
+import "./style.scoped.scss";
 
 export const Guide = () => {
   const items = useMemo(

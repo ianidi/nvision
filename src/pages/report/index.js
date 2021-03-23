@@ -1,6 +1,4 @@
-import React, { useState } from "react";
-
-import { Popover } from "react-tiny-popover";
+import React from "react";
 
 import { makeStyles } from "@material-ui/core/styles";
 import Table from "@material-ui/core/Table";
@@ -20,14 +18,9 @@ import PaginationItem from "@material-ui/lab/PaginationItem";
 import { exportExcel, saveFile } from "../../service";
 
 import { ReactComponent as IconArrowDownloadExcel } from "../../assets/icons/arrow_download_excel.svg";
-import { ReactComponent as IconClear } from "../../assets/icons/clear.svg";
-import { ReactComponent as IconArrowDownloadBlack } from "../../assets/icons/arrow_download_black.svg";
-import { ReactComponent as IconArrowDown } from "../../assets/icons/arrow_down.svg";
-
 import { ReactComponent as IconView } from "../../assets/icons/view.svg";
 import { ReactComponent as IconDownload } from "../../assets/icons/download.svg";
 
-import { Datepicker } from "../../components/ui/date";
 import { TextInput } from "../../components/ui/input";
 import { Button, Small } from "../../components/ui/button";
 
@@ -103,11 +96,6 @@ function Action() {
 }
 
 export const Report = () => {
-  const [isPopover1Open, setIsPopover1Open] = useState(false);
-  const [isPopover2Open, setIsPopover2Open] = useState(false);
-  const [isPopover3Open, setIsPopover3Open] = useState(false);
-  const [isPopover4Open, setIsPopover4Open] = useState(false);
-
   return (
     <React.Fragment>
       <div className="area">

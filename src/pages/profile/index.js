@@ -14,7 +14,6 @@ import { Collapse } from "react-collapse";
 
 import { saveFile } from "../../service";
 
-// import { Dropzone } from '../../components/ui/upload';
 import { Round } from "../../components/ui/button";
 import { ReactComponent as IconArrowRight } from "../../assets/icons/arrow_right.svg";
 import { ReactComponent as IconArrowDownload } from "../../assets/icons/arrow_download.svg";
