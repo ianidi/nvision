@@ -3,40 +3,44 @@ import { useHistory, useRouteMatch } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { closeDrawer } from "../../../store/uiSlice";
 import { OverlayScrollbarsComponent } from "overlayscrollbars-react";
-import { ReactComponent as IconHome } from '../../../assets/icons/home.svg';
-import { ReactComponent as IconMember } from '../../../assets/icons/member.svg';
-import { ReactComponent as IconEmployee } from '../../../assets/icons/employee.svg';
-import { ReactComponent as IconCertificate } from '../../../assets/icons/certificate.svg';
-import { ReactComponent as IconGuide } from '../../../assets/icons/guide.svg';
-import { ReactComponent as IconDrawer } from '../../../assets/icons/drawer.svg';
+import { ReactComponent as IconHome } from "../../../assets/icons/home.svg";
+import { ReactComponent as IconMember } from "../../../assets/icons/member.svg";
+import { ReactComponent as IconEmployee } from "../../../assets/icons/employee.svg";
+import { ReactComponent as IconCertificate } from "../../../assets/icons/certificate.svg";
+import { ReactComponent as IconGuide } from "../../../assets/icons/guide.svg";
+import { ReactComponent as IconReport } from "../../../assets/icons/report.svg";
+import { ReactComponent as IconDrawer } from "../../../assets/icons/drawer.svg";
 import "./style.scoped.scss";
 
 var classNames = require("classnames");
 
 export const Sidebar = ({ drawer }) => {
-
   let menu = [
-          {
-            icon: <IconHome />,
-            to: `/`,
-          },
-          {
-            icon: <IconMember />,
-            to: `/profile`,
-          },
-          {
-            icon: <IconEmployee />,
-            to: `/employee/1`,
-          },
-          {
-            icon: <IconCertificate />,
-            to: `/cert/1`,
-          },
-          {
-            icon: <IconGuide />,
-            to: `/guide`,
-          },
-        ]
+    {
+      icon: <IconHome />,
+      to: `/`,
+    },
+    {
+      icon: <IconMember />,
+      to: `/profile`,
+    },
+    {
+      icon: <IconEmployee />,
+      to: `/employee/1`,
+    },
+    {
+      icon: <IconCertificate />,
+      to: `/cert/1`,
+    },
+    {
+      icon: <IconGuide />,
+      to: `/guide`,
+    },
+    {
+      icon: <IconReport />,
+      to: `/report`,
+    },
+  ];
 
   return (
     <React.Fragment>
@@ -63,7 +67,7 @@ export const Sidebar = ({ drawer }) => {
       </div>
     </React.Fragment>
   );
-}
+};
 
 function MenuLink({ icon, title, to, count }) {
   const history = useHistory();
@@ -86,13 +90,13 @@ function MenuLink({ icon, title, to, count }) {
       <div
         className={classNames({
           menuLink__container: true,
-          menuLink_active: isActive !== null
+          menuLink_active: isActive !== null,
         })}
         onClick={memuClickHandler}
       >
         <div
           className={classNames({
-            menuLink: true
+            menuLink: true,
           })}
         >
           <div className="icon">{icon}</div>
@@ -105,7 +109,6 @@ function MenuLink({ icon, title, to, count }) {
     </React.Fragment>
   );
 }
-
 
 // <OverlayScrollbarsComponent
 //               options={{

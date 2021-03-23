@@ -169,7 +169,7 @@ export const Employee = () => {
               positions={["right", "bottom"]}
               content={({ position, childRect, popoverRect }) => <div className="popover__container">Hi! I'm popover content.</div>}
             >
-              <div className="dropdown" onClick={() => setIsPopover1Open(!isPopover4Open)}>
+              <div className="dropdown" onClick={() => setIsPopover4Open(!isPopover4Open)}>
                 <div>Тип удостоверения</div>
                 <IconArrowDown />
               </div>
