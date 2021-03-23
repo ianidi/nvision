@@ -120,16 +120,13 @@ export const GuideView = () => {
           </div>
           <div className="d-flex align-items-center">
             <div className="icon">
-              <IconAttachment />
-            </div>
-            <div className="icon">
-              <IconView />
+              <IconEdit />
             </div>
             <div className="icon" onClick={() => saveFile({ title: "file.pdf", url: "http://localhost:3000/file.zip" })}>
-              <IconDownload />
+              <IconSave />
             </div>
             <div className="icon">
-              <IconRemove />
+              <IconCancel />
             </div>
           </div>
         </div>
