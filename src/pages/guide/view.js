@@ -25,6 +25,7 @@ import { ReactComponent as IconRemove } from "../../assets/icons/remove.svg";
 
 import { TextInput } from "../../components/ui/input";
 import { Button, Small } from "../../components/ui/button";
+import { pageTitle } from "../../config";
 
 import "./style.scoped.scss";
 
@@ -111,7 +112,7 @@ export const GuideView = () => {
       <div className="area">
         <div className="head">
           <div className="d-flex align-items-center">
-            <div className="title">Отчёт о предоставлении персональных данных {category}</div>
+            <div className="title">{pageTitle[category]}</div>
           </div>
           <div className="d-flex align-items-center">
             <Small
