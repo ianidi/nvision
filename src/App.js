@@ -8,11 +8,7 @@ import { close, selectOpen, selectTitle } from "./store/modalSlice";
 import { Modal } from "@yandex/ui/Modal/desktop";
 
 import { Navbar, Sidebar, Content } from "./components/layout";
-import { Cert } from "./pages";
-import { Profile } from "./pages";
-import { Employee } from "./pages";
-import { Guide } from "./pages";
-import { Report } from "./pages";
+import { Cert, Profile, Employee, Guide, GuideView, Report } from "./pages";
 import { ModalCert, ModalCredential, ModalDegree, ModalDiploma, ModalPD } from "./components/ui/modal";
 
 function App() {
@@ -46,6 +42,9 @@ function App() {
               </Route>
               <Route exact path="/guide">
                 <Guide />
+              </Route>
+              <Route path="/guide/:category">
+                <GuideView />
               </Route>
               <Route exact path="/report">
                 <Report />
