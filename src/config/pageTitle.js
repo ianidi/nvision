@@ -1,1 +1,12 @@
-export const pageTitle = { "/report": "s" };
+export const pageTitle = {
+  "/report": "Отчётность",
+  "/profile": "Мой профиль",
+  "/employee": "Сотрудники",
+  "/cert": "База сертификатов",
+  "/guide": "Справочники",
+  "/guide/vendor": "Справочник “Вендоры”",
+  "/guide/cert": "Справочник “Типы сертификатов”",
+  "/guide/specialty": "Справочник “Специальности”",
+  "/guide/credential": "Справочник “Виды удостоверений”",
+  "/guide/degree": "Справочник “Типы учёных степеней”",
+};

@@ -20,7 +20,7 @@ export const Guide = () => {
       },
       {
         title: "Справочник “Виды удостоверений”",
-        path: "cert",
+        path: "credential",
       },
       {
         title: "Справочник “Типы учёных степеней”",
