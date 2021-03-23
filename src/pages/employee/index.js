@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { open } from "../../store/modalSlice";
 
+import { Popover } from "react-tiny-popover";
+
 import { makeStyles } from "@material-ui/core/styles";
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
@@ -24,6 +26,7 @@ import { exportExcel } from "../../service";
 import { ReactComponent as IconArrowNav } from "../../assets/icons/arrow_nav.svg";
 import { ReactComponent as IconArrowDownloadExcel } from "../../assets/icons/arrow_download_excel.svg";
 import { ReactComponent as IconArrowRightSmall } from "../../assets/icons/arrow_right_small.svg";
+import { ReactComponent as IconArrowDown } from "../../assets/icons/arrow_down.svg";
 import "./style.scoped.scss";
 
 const useStyles = makeStyles((theme) => ({
@@ -49,15 +52,13 @@ function createData(title, vendor, type, startDate, endDate, status) {
 
 const rows = [createData("Специалист по MS Excel", "Microsoft", "Type", "Да", "01.09.2020", "Да", "31.08.2020", "Действует")];
 
-const json = {
-  squadName: "Super hero squad",
-  homeTown: "Metro City",
-  formed: 2016,
-  secretBase: "Super tower",
-};
-
 export const Employee = () => {
   const dispatch = useDispatch();
+  const [isPopover1Open, setIsPopover1Open] = useState(false);
+  const [isPopover2Open, setIsPopover2Open] = useState(false);
+  const [isPopover3Open, setIsPopover3Open] = useState(false);
+  const [isPopover4Open, setIsPopover4Open] = useState(false);
+  const [isPopover5Open, setIsPopover5Open] = useState(false);
 
   return (
     <React.Fragment>
@@ -92,7 +93,68 @@ export const Employee = () => {
         <div className="d-flex justify-content-space-between">
           <div className="d-flex flex-column filter">
             <Filter title="Фильтр" />
-            <div className="d-flex justify-content-center">
+
+            <Popover
+              isOpen={isPopover1Open}
+              onClickOutside={() => setIsPopover1Open(false)}
+              positions={["right", "bottom"]}
+              content={({ position, childRect, popoverRect }) => <div className="popover__container">Hi! I'm popover content.</div>}
+            >
+              <div className="dropdown" onClick={() => setIsPopover1Open(!isPopover1Open)}>
+                <div>Специальность</div>
+                <IconArrowDown />
+              </div>
+            </Popover>
+
+            <Popover
+              isOpen={isPopover2Open}
+              onClickOutside={() => setIsPopover2Open(false)}
+              positions={["right", "bottom"]}
+              content={({ position, childRect, popoverRect }) => <div className="popover__container">Hi! I'm popover content.</div>}
+            >
+              <div className="dropdown" onClick={() => setIsPopover2Open(!isPopover2Open)}>
+                <div>Сертификат</div>
+                <IconArrowDown />
+              </div>
+            </Popover>
+
+            <Popover
+              isOpen={isPopover3Open}
+              onClickOutside={() => setIsPopover3Open(false)}
+              positions={["right", "bottom"]}
+              content={({ position, childRect, popoverRect }) => <div className="popover__container">Hi! I'm popover content.</div>}
+            >
+              <div className="dropdown" onClick={() => setIsPopover3Open(!isPopover3Open)}>
+                <div>Вендор</div>
+                <IconArrowDown />
+              </div>
+            </Popover>
+
+            <Popover
+              isOpen={isPopover4Open}
+              onClickOutside={() => setIsPopover4Open(false)}
+              positions={["right", "bottom"]}
+              content={({ position, childRect, popoverRect }) => <div className="popover__container">Hi! I'm popover content.</div>}
+            >
+              <div className="dropdown" onClick={() => setIsPopover1Open(!isPopover4Open)}>
+                <div>Тип удостоверения</div>
+                <IconArrowDown />
+              </div>
+            </Popover>
+
+            <Popover
+              isOpen={isPopover5Open}
+              onClickOutside={() => setIsPopover5Open(false)}
+              positions={["right", "bottom"]}
+              content={({ position, childRect, popoverRect }) => <div className="popover__container">Hi! I'm popover content.</div>}
+            >
+              <div className="dropdown" onClick={() => setIsPopover5Open(!isPopover5Open)}>
+                <div>Ученая степень</div>
+                <IconArrowDown />
+              </div>
+            </Popover>
+
+            <div className="d-flex justify-content-center" style={{ marginTop: 10 }}>
               <Button title="Применить" />
             </div>
           </div>

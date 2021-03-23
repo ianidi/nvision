@@ -1,8 +1,6 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
-import { open } from "../../store/modalSlice";
 
-import { Popover, ArrowContainer } from "react-tiny-popover";
+import { Popover } from "react-tiny-popover";
 
 import { makeStyles } from "@material-ui/core/styles";
 import Table from "@material-ui/core/Table";
@@ -110,7 +108,6 @@ function Action() {
 }
 
 export const Cert = () => {
-  const dispatch = useDispatch();
   const [isPopover1Open, setIsPopover1Open] = useState(false);
   const [isPopover2Open, setIsPopover2Open] = useState(false);
   const [isPopover3Open, setIsPopover3Open] = useState(false);

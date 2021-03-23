@@ -16,7 +16,6 @@ import { saveFile } from "../../service";
 
 // import { Dropzone } from '../../components/ui/upload';
 import { Round } from "../../components/ui/button";
-import { ModalCert, ModalDiploma, ModalDegree, ModalCredential, ModalPD } from "../../components/ui/modal";
 import { ReactComponent as IconArrowRight } from "../../assets/icons/arrow_right.svg";
 import { ReactComponent as IconArrowDownload } from "../../assets/icons/arrow_download.svg";
 import { ReactComponent as IconPhone } from "../../assets/icons/phone.svg";
