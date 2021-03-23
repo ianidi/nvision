@@ -34,12 +34,10 @@ export const Guide = () => {
     <React.Fragment>
       <div className="items">
         {items.map((item, index) => (
-          <Link key={index} to={`/guide/${item.path}`}>
-            <div className="item">
-              <div>{item.title}</div>
-              <div>
-                <IconArrow />
-              </div>
+          <Link key={index} to={`/guide/${item.path}`} className="item">
+            <div>{item.title}</div>
+            <div>
+              <IconArrow />
             </div>
           </Link>
         ))}
