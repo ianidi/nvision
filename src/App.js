@@ -1,18 +1,19 @@
-import React from 'react';
-import { hot } from 'react-hot-loader/root';
+import React from "react";
+import { hot } from "react-hot-loader/root";
 import { useSelector, useDispatch } from "react-redux";
 import { Switch, Route } from "react-router-dom";
 import { PrivateRoute } from "./components/router";
 
 import { close, selectOpen, selectTitle } from "./store/modalSlice";
-import { Modal } from '@yandex/ui/Modal/desktop'
+import { Modal } from "@yandex/ui/Modal/desktop";
 
 import { Navbar, Sidebar, Content } from "./components/layout";
-import { Cert } from './pages';
-import { Profile } from './pages';
-import { Employee } from './pages';
-import { Guide } from './pages';
-import { ModalCert, ModalCredential, ModalDegree, ModalDiploma, ModalPD } from './components/ui/modal';
+import { Cert } from "./pages";
+import { Profile } from "./pages";
+import { Employee } from "./pages";
+import { Guide } from "./pages";
+import { Report } from "./pages";
+import { ModalCert, ModalCredential, ModalDegree, ModalDiploma, ModalPD } from "./components/ui/modal";
 
 function App() {
   const modalOpen = useSelector(selectOpen);
@@ -45,6 +46,9 @@ function App() {
               </Route>
               <Route exact path="/guide">
                 <Guide />
+              </Route>
+              <Route exact path="/report">
+                <Report />
               </Route>
               <PrivateRoute path="/overview" component={Cert} />
             </Switch>
