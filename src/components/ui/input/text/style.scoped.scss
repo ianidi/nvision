@@ -6,7 +6,7 @@
   border-radius: 4px;
   padding-left: 12px;
   padding-right: 12px;
-  color: #7F7F7F;
+  color: #7f7f7f;
   font-size: 14px;
   outline: none;
 }
@@ -14,9 +14,10 @@
   width: 100%;
   min-height: 42px;
   outline: none;
+  border: none;
 }
 .input__field::placeholder {
-  color: #7F7F7F;
+  color: #7f7f7f;
 }
 .icon {
   margin-right: 8px;

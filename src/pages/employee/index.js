@@ -1,29 +1,30 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { open } from "../../store/modalSlice";
 
-import { makeStyles } from '@material-ui/core/styles';
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableContainer from '@material-ui/core/TableContainer';
-import TableHead from '@material-ui/core/TableHead';
-import TableRow from '@material-ui/core/TableRow';
+import { makeStyles } from "@material-ui/core/styles";
+import Table from "@material-ui/core/Table";
+import TableBody from "@material-ui/core/TableBody";
+import TableCell from "@material-ui/core/TableCell";
+import TableContainer from "@material-ui/core/TableContainer";
+import TableHead from "@material-ui/core/TableHead";
+import TableRow from "@material-ui/core/TableRow";
 
 import Box from "@material-ui/core/Box";
 import { Link, useParams } from "react-router-dom";
 import Pagination from "@material-ui/lab/Pagination";
 import PaginationItem from "@material-ui/lab/PaginationItem";
 
-import { Filter, TextInput } from '../../components/ui/input';
-import { Button, Small } from '../../components/ui/button';
-import { ModalPD } from '../../components/ui/modal';
+import { Filter, TextInput } from "../../components/ui/input";
+import { Button, Small } from "../../components/ui/button";
+import { ModalPD } from "../../components/ui/modal";
 
-import { exportExcel } from '../../service';
+import { exportExcel } from "../../service";
 
-import { ReactComponent as IconArrowNav } from '../../assets/icons/arrow_nav.svg';
-import { ReactComponent as IconArrowDownloadExcel } from '../../assets/icons/arrow_download_excel.svg';
-import { ReactComponent as IconArrowRightSmall } from '../../assets/icons/arrow_right_small.svg';
-import './style.scoped.scss'
-
+import { ReactComponent as IconArrowNav } from "../../assets/icons/arrow_nav.svg";
+import { ReactComponent as IconArrowDownloadExcel } from "../../assets/icons/arrow_download_excel.svg";
+import { ReactComponent as IconArrowRightSmall } from "../../assets/icons/arrow_right_small.svg";
+import "./style.scoped.scss";
 
 const useStyles = makeStyles((theme) => ({
   table: {
@@ -46,54 +47,68 @@ function createData(title, vendor, type, startDate, endDate, status) {
   return { title, vendor, type, startDate, endDate, status };
 }
 
-const rows = [
-  createData("Специалист по MS Excel", "Microsoft", "Type", "Да", "01.09.2020", "Да", "31.08.2020", "Действует"),
-];
+const rows = [createData("Специалист по MS Excel", "Microsoft", "Type", "Да", "01.09.2020", "Да", "31.08.2020", "Действует")];
 
 const json = {
-  "squadName": "Super hero squad",
-  "homeTown": "Metro City",
-  "formed": 2016,
-  "secretBase": "Super tower"
-}
+  squadName: "Super hero squad",
+  homeTown: "Metro City",
+  formed: 2016,
+  secretBase: "Super tower",
+};
 
 export const Employee = () => {
-  const [visible, setVisible] = useState(false);
+  const dispatch = useDispatch();
 
-  return <React.Fragment>
-  <ModalPD visible={visible} setVisible={setVisible} />
-    <div className="area">
-      <div className="head">
-        <div className="d-flex align-items-center">
-          <div className="title">Мои сотрудники</div>
-          <div className="d-flex align-items-center navigation"><div className="icon"><IconArrowNav /></div>Все сотрудники</div>
-        </div>
-        <div className="d-flex align-items-center">
-          <Small title="Отправить запрос о ПД" icon={<IconArrowRightSmall />} color="#151515" style={{marginRight: 20}} onClick={()=>setVisible(true)} />
-          <Small title="Выгрузить в Excel" icon={<IconArrowDownloadExcel />} color="#009A50" onClick={()=>exportExcel({title: "employee", data: rows})} />
-        </div>
-      </div>
-
-      <div className="d-flex justify-content-space-between">
-        <div className="d-flex flex-column filter">
-          
-          <Filter title="Фильтр" />
-          <div className="d-flex justify-content-center">
-            <Button title="Применить" />
-          </div>
-        </div>
-        <div className="list">
+  return (
+    <React.Fragment>
+      <div className="area">
+        <div className="head">
           <div className="d-flex align-items-center">
-            <TextInput title="Поиск" search style={{marginRight: 20}} />
-            <Button title="Найти" />
+            <div className="title">Мои сотрудники</div>
+            <div className="d-flex align-items-center navigation">
+              <div className="icon">
+                <IconArrowNav />
+              </div>
+              Все сотрудники
+            </div>
           </div>
-          <div>
-            <TableEmployee />
+          <div className="d-flex align-items-center">
+            <Small
+              title="Отправить запрос о ПД"
+              icon={<IconArrowRightSmall />}
+              color="#151515"
+              style={{ marginRight: 20 }}
+              onClick={() => dispatch(open("cert"))}
+            />
+            <Small
+              title="Выгрузить в Excel"
+              icon={<IconArrowDownloadExcel />}
+              color="#009A50"
+              onClick={() => exportExcel({ title: "employee", data: rows })}
+            />
+          </div>
+        </div>
+
+        <div className="d-flex justify-content-space-between">
+          <div className="d-flex flex-column filter">
+            <Filter title="Фильтр" />
+            <div className="d-flex justify-content-center">
+              <Button title="Применить" />
+            </div>
+          </div>
+          <div className="list">
+            <div className="d-flex align-items-center">
+              <TextInput title="Поиск" search style={{ marginRight: 20 }} />
+              <Button title="Найти" />
+            </div>
+            <div>
+              <TableEmployee />
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </React.Fragment>;
+    </React.Fragment>
+  );
 };
 
 function TableEmployee() {
@@ -105,7 +120,7 @@ function TableEmployee() {
   const { pageNumber = 1 } = useParams();
 
   return (
-    <TableContainer style={{marginTop: "10px", marginBottom: "20px", userSelect: "none"}}>
+    <TableContainer style={{ marginTop: "10px", marginBottom: "20px", userSelect: "none" }}>
       <Table className={classes.table} size="small" aria-label="a dense table">
         <TableHead>
           <TableRow>
@@ -116,39 +131,27 @@ function TableEmployee() {
         <TableBody>
           {rows.map((row) => (
             <TableRow key={row.id} className={classes.tableLine}>
-              <TableCell className={classes.tableCell} component="th" scope="row">{row.title}</TableCell>
+              <TableCell className={classes.tableCell} component="th" scope="row">
+                {row.title}
+              </TableCell>
               <TableCell className={classes.tableCell}>{row.startDate}</TableCell>
             </TableRow>
           ))}
         </TableBody>
-        </Table>
-        
-        <Box
-          display="flex"
-          justifyContent="center"
-          flex={1}
-          padding={1}
-        >
-        <Pagination
-        page={Number(pageNumber)}
-        count={Math.ceil(rows.length / ROWS_PER_PAGE)}
-        shape="round"
-        color="#E6BE00"
-        showFirstButton
-        showLastButton
-        boundaryCount={2}
-        renderItem={(item) => (
-          <PaginationItem
-          type={"start-ellipsis"}
-            component={Link}
-            selected
-            to={`${PATH}/${item.page}`}
-            {...item}
-          />
-        )}
-      />
-      </Box>
+      </Table>
 
+      <Box display="flex" justifyContent="center" flex={1} padding={1}>
+        <Pagination
+          page={Number(pageNumber)}
+          count={Math.ceil(rows.length / ROWS_PER_PAGE)}
+          shape="round"
+          color="#E6BE00"
+          showFirstButton
+          showLastButton
+          boundaryCount={2}
+          renderItem={(item) => <PaginationItem type={"start-ellipsis"} component={Link} selected to={`${PATH}/${item.page}`} {...item} />}
+        />
+      </Box>
     </TableContainer>
   );
 }

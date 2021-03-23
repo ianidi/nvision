@@ -24,6 +24,7 @@ import { exportExcel, saveFile } from "../../service";
 import { ReactComponent as IconArrowDownloadExcel } from "../../assets/icons/arrow_download_excel.svg";
 import { ReactComponent as IconClear } from "../../assets/icons/clear.svg";
 import { ReactComponent as IconArrowDownloadBlack } from "../../assets/icons/arrow_download_black.svg";
+import { ReactComponent as IconArrowDown } from "../../assets/icons/arrow_down.svg";
 
 import { ReactComponent as IconView } from "../../assets/icons/view.svg";
 import { ReactComponent as IconDownload } from "../../assets/icons/download.svg";
@@ -110,7 +111,10 @@ function Action() {
 
 export const Cert = () => {
   const dispatch = useDispatch();
-  const [isPopoverOpen, setIsPopoverOpen] = useState(false);
+  const [isPopover1Open, setIsPopover1Open] = useState(false);
+  const [isPopover2Open, setIsPopover2Open] = useState(false);
+  const [isPopover3Open, setIsPopover3Open] = useState(false);
+  const [isPopover4Open, setIsPopover4Open] = useState(false);
 
   return (
     <React.Fragment>
@@ -140,44 +144,65 @@ export const Cert = () => {
           <div style={{ width: "25%" }}>
             <TextInput title="Введите ФИО сотрудника" search />
           </div>
-          <div style={{ width: "10%" }}>
+          <div style={{ width: "11%" }}>
             <Datepicker
               callback={() => {}}
               // value={birthday}
               placeholder="Дата начала"
             />
           </div>
-          <div style={{ width: "10%" }}>
+          <div style={{ width: "11%" }}>
             <Datepicker
               callback={() => {}}
               // value={birthday}
               placeholder="Дата конца"
             />
           </div>
-          <div className="d-flex align-items-center" style={{ width: "40%" }}>
+          <div className="d-flex align-items-center justify-content-between" style={{ width: "40%" }}>
             <Popover
-              isOpen={isPopoverOpen}
-              onClickOutside={() => setIsPopoverOpen(false)}
-              positions={["bottom", "left", "right"]} // preferred positions by priority
-              content={({ position, childRect, popoverRect }) => (
-                <div className="popover__container">Hi! I'm popover content.</div>
-                // <ArrowContainer // if you'd like an arrow, you can import the ArrowContainer!
-                //   position={position}
-                //   // childRect={targetRect}
-                //   popoverRect={popoverRect}
-                //   arrowColor={"blue"}
-                //   arrowSize={10}
-                //   arrowStyle={{ opacity: 0.7 }}
-                //   className="popover-arrow-container"
-                //   arrowClassName="popover-arrow"
-                // >
-
-                // </ArrowContainer>
-              )}
+              isOpen={isPopover1Open}
+              onClickOutside={() => setIsPopover1Open(false)}
+              positions={["bottom", "left", "right"]}
+              content={({ position, childRect, popoverRect }) => <div className="popover__container">Hi! I'm popover content.</div>}
             >
-              <div onClick={() => setIsPopoverOpen(!isPopoverOpen)}>Наименование</div>
+              <div className="dropdown" onClick={() => setIsPopover1Open(!isPopover1Open)}>
+                <div>Сертификат</div>
+                <IconArrowDown />
+              </div>
             </Popover>
-            Вендор Тип Статус
+            <Popover
+              isOpen={isPopover2Open}
+              onClickOutside={() => setIsPopover2Open(false)}
+              positions={["bottom", "left", "right"]}
+              content={({ position, childRect, popoverRect }) => <div className="popover__container">Hi! I'm popover content.</div>}
+            >
+              <div className="dropdown" onClick={() => setIsPopover2Open(!isPopover2Open)}>
+                <div>Вендор</div>
+                <IconArrowDown />
+              </div>
+            </Popover>
+            <Popover
+              isOpen={isPopover3Open}
+              onClickOutside={() => setIsPopover3Open(false)}
+              positions={["bottom", "left", "right"]}
+              content={({ position, childRect, popoverRect }) => <div className="popover__container">Hi! I'm popover content.</div>}
+            >
+              <div className="dropdown" onClick={() => setIsPopover3Open(!isPopover3Open)}>
+                <div>Тип</div>
+                <IconArrowDown />
+              </div>
+            </Popover>
+            <Popover
+              isOpen={isPopover4Open}
+              onClickOutside={() => setIsPopover4Open(false)}
+              positions={["bottom", "left", "right"]}
+              content={({ position, childRect, popoverRect }) => <div className="popover__container">Hi! I'm popover content.</div>}
+            >
+              <div className="dropdown" onClick={() => setIsPopover4Open(!isPopover4Open)}>
+                <div>Статус</div>
+                <IconArrowDown />
+              </div>
+            </Popover>
           </div>
           <div style={{ width: "10%" }}>
             <Button title="Найти" />
