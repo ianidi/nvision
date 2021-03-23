@@ -2,6 +2,7 @@ import React, { useState, useLayoutEffect } from "react";
 import { useHistory, useRouteMatch, useLocation } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { closeDrawer } from "../../../store/uiSlice";
+import { pageTitle } from "../../../config";
 import { ReactComponent as IconBack } from "../../../assets/icons/back.svg";
 import "./style.scoped.scss";
 
@@ -10,20 +11,25 @@ var classNames = require("classnames");
 export const Navbar = ({ drawer }) => {
   const location = useLocation();
 
-  const [title, setTitle] = useState("");
+  const [title, setTitle] = useState(false);
 
   useLayoutEffect(() => {
-    console.log(location.pathname);
-    setTitle(location.pathname);
+    if (pageTitle[location.pathname]) {
+      setTitle(pageTitle[location.pathname]);
+    } else {
+      setTitle(false);
+    }
   }, [location.pathname]);
 
   return (
     <React.Fragment>
       <div className="nav">
-        <div className="nav__back">
-          <IconBack style={{ width: 8, height: 14, marginRight: 10 }} />
-          <div>{title}</div>
-        </div>
+        {title && (
+          <div className="nav__back">
+            <IconBack style={{ width: 8, height: 14, marginRight: 10 }} />
+            <div>{title}</div>
+          </div>
+        )}
       </div>
     </React.Fragment>
   );
