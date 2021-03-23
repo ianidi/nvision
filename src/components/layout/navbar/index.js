@@ -10,6 +10,7 @@ var classNames = require("classnames");
 
 export const Navbar = ({ drawer }) => {
   const location = useLocation();
+  const history = useHistory();
 
   const [title, setTitle] = useState(false);
 
@@ -26,7 +27,9 @@ export const Navbar = ({ drawer }) => {
       <div className="nav">
         {title && (
           <div className="nav__back">
-            <IconBack style={{ width: 8, height: 14, marginRight: 10 }} />
+            <div onClick={() => history.goBack()}>
+              <IconBack style={{ width: 8, height: 14, marginRight: 10 }} />
+            </div>
             <div>{title}</div>
           </div>
         )}
