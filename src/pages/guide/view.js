@@ -22,6 +22,9 @@ import { ReactComponent as IconAttachment } from "../../assets/icons/attachment.
 import { ReactComponent as IconView } from "../../assets/icons/view.svg";
 import { ReactComponent as IconDownload } from "../../assets/icons/download.svg";
 import { ReactComponent as IconRemove } from "../../assets/icons/remove.svg";
+import { ReactComponent as IconEdit } from "../../assets/icons/edit.svg";
+import { ReactComponent as IconSave } from "../../assets/icons/save.svg";
+import { ReactComponent as IconCancel } from "../../assets/icons/cancel.svg";
 
 import { TextInput } from "../../components/ui/input";
 import { Button, Small } from "../../components/ui/button";
@@ -116,12 +119,18 @@ export const GuideView = () => {
             <div className="title">{pageTitle[category]}</div>
           </div>
           <div className="d-flex align-items-center">
-            <Small
-              title="Выгрузить в Excel"
-              icon={<IconArrowDownloadExcel />}
-              color="#009A50"
-              onClick={() => exportExcel({ title: "cert", data: rows })}
-            />
+            <div className="icon">
+              <IconAttachment />
+            </div>
+            <div className="icon">
+              <IconView />
+            </div>
+            <div className="icon" onClick={() => saveFile({ title: "file.pdf", url: "http://localhost:3000/file.zip" })}>
+              <IconDownload />
+            </div>
+            <div className="icon">
+              <IconRemove />
+            </div>
           </div>
         </div>
 
