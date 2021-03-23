@@ -1,8 +1,9 @@
-import React from 'react';
-import './style.scss'
+import React from "react";
+import { useParams } from "react-router-dom";
+import "./style.scss";
 
 export const GuideView = () => {
-  return <React.Fragment>
-  hi
-  </React.Fragment>;
+  const { category } = useParams();
+
+  return <React.Fragment>{category}</React.Fragment>;
 };
