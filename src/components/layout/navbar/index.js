@@ -26,10 +26,8 @@ export const Navbar = ({ drawer }) => {
     <React.Fragment>
       <div className="nav">
         {title && (
-          <div className="nav__back">
-            <div onClick={() => history.goBack()}>
-              <IconBack style={{ width: 8, height: 14, marginRight: 10 }} />
-            </div>
+          <div className="nav__back" onClick={() => history.goBack()}>
+            <IconBack style={{ width: 8, height: 14, marginRight: 10 }} />
             <div>{title}</div>
           </div>
         )}
