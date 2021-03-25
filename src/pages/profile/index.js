@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { open } from "../../store/modalSlice";
+import { fetchCert } from "../../store/dataSlice";
 
 import { makeStyles } from "@material-ui/core/styles";
 import Table from "@material-ui/core/Table";
@@ -104,6 +105,11 @@ function Cert() {
           </TableBody>
         </Table>
       </TableContainer>
+
+      <div className="upload" onClick={() => dispatch(fetchCert(1))}>
+        <IconUpload />
+        <div className="upload__text">Load</div>
+      </div>
 
       <div className="upload" onClick={() => dispatch(open("cert"))}>
         <IconUpload />
