@@ -4,12 +4,17 @@ import { api } from "./api";
 // First, create the thunk
 export const fetchCert = createAsyncThunk("cert/fetchCert", async (CertId, thunkAPI) => {
   const response = await api.fetchCert(CertId);
-  return response.result.result;
+  return response.result.result !== null ? response.result.result : [];
 });
 
 export const removeCert = createAsyncThunk("cert/removeCert", async (CertId, thunkAPI) => {
   const response = await api.removeCert(CertId);
-  return response.result.result;
+  return response.result.result !== null ? response.result.result : [];
+});
+
+export const addCert = createAsyncThunk("cert/addCert", async (CertId, thunkAPI) => {
+  const response = await api.addCert();
+  return response.result.result !== null ? response.result.result : [];
 });
 
 // Then, handle actions in your reducers:

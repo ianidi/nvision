@@ -44,4 +44,9 @@ const removeCert = async (CertID) => {
   return { result: res.data };
 };
 
-export const api = { fetchCert, removeCert };
+const addCert = async () => {
+  const res = await apia.post("/cert/add");
+  return { result: res.data };
+};
+
+export const api = { fetchCert, removeCert, addCert };
