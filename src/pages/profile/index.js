@@ -49,13 +49,13 @@ function createData(title, vendor, type, dateStart, dateEnd, status) {
   return { title, vendor, type, dateStart, dateEnd, status };
 }
 
-function Status() {
+function Status({ File }) {
   return (
     <div className="d-flex align-items-center">
       <div className="icon">
         <IconView />
       </div>
-      <div className="icon" onClick={() => saveFile({ title: "file.pdf", url: "http://localhost:3000/file.zip" })}>
+      <div className="icon" onClick={() => saveFile({ title: File, url: `http://localhost:4000/${File}` })}>
         <IconDownload />
       </div>
       <div className="icon">
@@ -101,7 +101,7 @@ function Cert() {
                 <TableCell className={classes.tableCell}>{row.DateEnd}</TableCell>
                 <TableCell className={classes.tableCell}>{row.Status}</TableCell>
                 <TableCell className={classes.tableCell}>
-                  <Status />
+                  <Status File={row.File} />
                 </TableCell>
               </TableRow>
             ))}
