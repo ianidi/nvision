@@ -72,7 +72,7 @@ function Cert() {
   const dispatch = useDispatch();
   const cert = useSelector(selectCert);
 
-  console.log(cert);
+  // console.log(cert);
 
   return (
     <React.Fragment>

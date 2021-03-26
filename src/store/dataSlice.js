@@ -4,6 +4,7 @@ import { api } from "./api";
 // First, create the thunk
 export const fetchCert = createAsyncThunk("users/fetchCert", async (certId, thunkAPI) => {
   const response = await api.fetchCert(certId);
+  console.log(response.result.result);
   return response.result.result;
 });
 
@@ -18,7 +19,7 @@ export const dataSlice = createSlice({
     // Add reducers for additional action types here, and handle loading state as needed
     [fetchCert.fulfilled]: (state, action) => {
       // Add user to the state array
-      state.cert.push(action.payload);
+      state.cert = action.payload;
     },
   },
 });
