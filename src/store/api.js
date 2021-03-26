@@ -35,7 +35,7 @@ const apia = create({
 const fetchCert = async (certID) => {
   const res = await apia.get("/cert");
 
-  console.log("fetch cert", certID, res);
+  console.log("fetch cert", certID, res.data);
   return { result: res.data };
 };
 
