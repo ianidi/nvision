@@ -2,9 +2,13 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { api } from "./api";
 
 // First, create the thunk
-export const fetchCert = createAsyncThunk("users/fetchCert", async (certId, thunkAPI) => {
-  const response = await api.fetchCert(certId);
-  console.log(response.result.result);
+export const fetchCert = createAsyncThunk("cert/fetchCert", async (CertId, thunkAPI) => {
+  const response = await api.fetchCert(CertId);
+  return response.result.result;
+});
+
+export const removeCert = createAsyncThunk("cert/removeCert", async (CertId, thunkAPI) => {
+  const response = await api.removeCert(CertId);
   return response.result.result;
 });
 
@@ -16,9 +20,10 @@ export const dataSlice = createSlice({
     // standard reducer logic, with auto-generated action types per reducer
   },
   extraReducers: {
-    // Add reducers for additional action types here, and handle loading state as needed
     [fetchCert.fulfilled]: (state, action) => {
-      // Add user to the state array
+      state.cert = action.payload;
+    },
+    [removeCert.fulfilled]: (state, action) => {
       state.cert = action.payload;
     },
   },

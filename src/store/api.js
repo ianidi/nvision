@@ -32,11 +32,16 @@ const apia = create({
 //   }
 // });
 
-const fetchCert = async (certID) => {
+const fetchCert = async () => {
   const res = await apia.get("/cert");
 
-  console.log("fetch cert", certID, res.data);
+  console.log("fetch cert", res.data);
   return { result: res.data };
 };
 
-export const api = { fetchCert };
+const removeCert = async (CertID) => {
+  const res = await apia.post("/cert/remove", { CertID });
+  return { result: res.data };
+};
+
+export const api = { fetchCert, removeCert };

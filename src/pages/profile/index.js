@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { open } from "../../store/modalSlice";
-import { fetchCert, selectCert } from "../../store/dataSlice";
+import { removeCert, fetchCert, selectCert } from "../../store/dataSlice";
 
 import { makeStyles } from "@material-ui/core/styles";
 import Table from "@material-ui/core/Table";
@@ -49,7 +49,9 @@ function createData(title, vendor, type, dateStart, dateEnd, status) {
   return { title, vendor, type, dateStart, dateEnd, status };
 }
 
-function Status({ File }) {
+function Status({ CertID, File }) {
+  const dispatch = useDispatch();
+
   return (
     <div className="d-flex align-items-center">
       <div className="icon">
@@ -58,7 +60,7 @@ function Status({ File }) {
       <div className="icon" onClick={() => saveFile({ title: File, url: `http://localhost:4000/${File}` })}>
         <IconDownload />
       </div>
-      <div className="icon">
+      <div className="icon" onClick={() => dispatch(removeCert(CertID))}>
         <IconRemove />
       </div>
     </div>
@@ -101,7 +103,7 @@ function Cert() {
                 <TableCell className={classes.tableCell}>{row.DateEnd}</TableCell>
                 <TableCell className={classes.tableCell}>{row.Status}</TableCell>
                 <TableCell className={classes.tableCell}>
-                  <Status File={row.File} />
+                  <Status CertID={row.CertID} File={row.File} />
                 </TableCell>
               </TableRow>
             ))}
