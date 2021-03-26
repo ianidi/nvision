@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { open } from "../../store/modalSlice";
-import { fetchCert } from "../../store/dataSlice";
+import { fetchCert, selectCert } from "../../store/dataSlice";
 
 import { makeStyles } from "@material-ui/core/styles";
 import Table from "@material-ui/core/Table";
@@ -70,9 +70,11 @@ const rows = [createData("Специалист по MS Excel", "Microsoft", "Typ
 function Cert() {
   const classes = useStyles();
   const dispatch = useDispatch();
+  const cert = useSelector(selectCert);
 
   return (
     <React.Fragment>
+      <div>{JSON.stringify(cert)}</div>
       <TableContainer style={{ marginTop: "10px", marginBottom: "20px", userSelect: "none" }}>
         <Table className={classes.table} size="small" aria-label="a dense table">
           <TableHead>

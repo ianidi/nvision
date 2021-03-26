@@ -25,7 +25,7 @@ export const dataSlice = createSlice({
 
 // export const {fetchCert} = dataSlice.actions;
 
-export const selectVerifyResendEmail = (state) => state.member.VerifyResendEmail;
+export const selectCert = (state) => state.data.cert;
 
 export default dataSlice.reducer;
 
