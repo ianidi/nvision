@@ -4,7 +4,7 @@ import { api } from "./api";
 // First, create the thunk
 export const fetchCert = createAsyncThunk("users/fetchCert", async (certId, thunkAPI) => {
   const response = await api.fetchCert(certId);
-  return response.result;
+  return response.result.result;
 });
 
 // Then, handle actions in your reducers:

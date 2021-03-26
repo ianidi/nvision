@@ -45,8 +45,8 @@ const useStyles = makeStyles({
   },
 });
 
-function createData(title, vendor, type, startDate, endDate, status) {
-  return { title, vendor, type, startDate, endDate, status };
+function createData(title, vendor, type, dateStart, dateEnd, status) {
+  return { title, vendor, type, dateStart, dateEnd, status };
 }
 
 function Status() {
@@ -65,16 +65,17 @@ function Status() {
   );
 }
 
-const rows = [createData("Специалист по MS Excel", "Microsoft", "Type", "Да", "01.09.2020", "Да", "31.08.2020", "Действует")];
-
 function Cert() {
+  const rows = [createData("Специалист по MS Excel", "Microsoft", "Type", "Да", "01.09.2020", "Да", "31.08.2020", "Действует")];
+
   const classes = useStyles();
   const dispatch = useDispatch();
   const cert = useSelector(selectCert);
 
+  console.log(cert);
+
   return (
     <React.Fragment>
-      <div>{JSON.stringify(cert)}</div>
       <TableContainer style={{ marginTop: "10px", marginBottom: "20px", userSelect: "none" }}>
         <Table className={classes.table} size="small" aria-label="a dense table">
           <TableHead>
@@ -89,16 +90,16 @@ function Cert() {
             </TableRow>
           </TableHead>
           <TableBody>
-            {rows.map((row) => (
+            {cert.map((row) => (
               <TableRow key={row.id} className={classes.tableLine}>
                 <TableCell className={classes.tableCell} component="th" scope="row">
-                  {row.title}
+                  {row.Title}
                 </TableCell>
-                <TableCell className={classes.tableCell}>{row.vendor}</TableCell>
-                <TableCell className={classes.tableCell}>{row.type}</TableCell>
-                <TableCell className={classes.tableCell}>{row.startDate}</TableCell>
-                <TableCell className={classes.tableCell}>{row.endDate}</TableCell>
-                <TableCell className={classes.tableCell}>{row.status}</TableCell>
+                <TableCell className={classes.tableCell}>{row.Vendor}</TableCell>
+                <TableCell className={classes.tableCell}>{row.Type}</TableCell>
+                <TableCell className={classes.tableCell}>{row.DateStart}</TableCell>
+                <TableCell className={classes.tableCell}>{row.DateEnd}</TableCell>
+                <TableCell className={classes.tableCell}>{row.Status}</TableCell>
                 <TableCell className={classes.tableCell}>
                   <Status />
                 </TableCell>
@@ -122,6 +123,8 @@ function Cert() {
 }
 
 function Diploma() {
+  const rows = [createData("Специалист по MS Excel", "Microsoft", "Type", "Да", "01.09.2020", "Да", "31.08.2020", "Действует")];
+
   const classes = useStyles();
   const dispatch = useDispatch();
 
@@ -159,6 +162,8 @@ function Diploma() {
 }
 
 function Degree() {
+  const rows = [createData("Специалист по MS Excel", "Microsoft", "Type", "Да", "01.09.2020", "Да", "31.08.2020", "Действует")];
+
   const classes = useStyles();
   const dispatch = useDispatch();
 
@@ -198,6 +203,8 @@ function Degree() {
 }
 
 function Credential() {
+  const rows = [createData("Специалист по MS Excel", "Microsoft", "Type", "Да", "01.09.2020", "Да", "31.08.2020", "Действует")];
+
   const classes = useStyles();
   const dispatch = useDispatch();
 
@@ -221,9 +228,9 @@ function Credential() {
                 <TableCell className={classes.tableCell} component="th" scope="row">
                   {row.title}
                 </TableCell>
-                <TableCell className={classes.tableCell}>{row.startDate}</TableCell>
+                <TableCell className={classes.tableCell}>{row.dateStart}</TableCell>
                 <TableCell className={classes.tableCell}>{row.vendor}</TableCell>
-                <TableCell className={classes.tableCell}>{row.endDate}</TableCell>
+                <TableCell className={classes.tableCell}>{row.dateEnd}</TableCell>
                 <TableCell className={classes.tableCell}>{row.status}</TableCell>
                 <TableCell className={classes.tableCell}>
                   <Status />
