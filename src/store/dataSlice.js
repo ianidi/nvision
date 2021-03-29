@@ -50,6 +50,12 @@ export const dataSlice = createSlice({
     [removeCert.fulfilled]: (state, action) => {
       state.cert = action.payload;
     },
+    [getDiploma.fulfilled]: (state, action) => {
+      state.diploma = action.payload;
+    },
+    [removeDiploma.fulfilled]: (state, action) => {
+      state.diploma = action.payload;
+    },
   },
 });
 

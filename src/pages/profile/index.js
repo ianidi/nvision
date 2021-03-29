@@ -144,7 +144,7 @@ function Diploma() {
               diploma.map((row) => (
                 <TableRow key={row.id} className={classes.tableLine}>
                   <TableCell className={classes.tableCell} component="th" scope="row">
-                    {row.title}
+                    {row.Specialty}
                   </TableCell>
                   <TableCell className={classes.tableCell}>
                     <Status />
