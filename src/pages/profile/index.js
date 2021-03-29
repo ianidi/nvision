@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { open } from "../../store/modalSlice";
-import { removeCert, fetchCert, selectCert } from "../../store/dataSlice";
+import { removeCert, getCert, selectCert } from "../../store/dataSlice";
 
 import { makeStyles } from "@material-ui/core/styles";
 import Table from "@material-ui/core/Table";
@@ -73,7 +73,7 @@ function Cert() {
   const cert = useSelector(selectCert);
 
   useEffect(() => {
-    dispatch(fetchCert());
+    dispatch(getCert());
   }, []);
 
   return (

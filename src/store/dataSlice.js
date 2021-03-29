@@ -2,8 +2,8 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { api } from "./api";
 import { close } from "./modalSlice";
 
-export const fetchCert = createAsyncThunk("cert/fetchCert", async (a, thunkAPI) => {
-  const response = await api.fetchCert();
+export const getCert = createAsyncThunk("cert/getCert", async (data, thunkAPI) => {
+  const response = await api.getCert();
   return response.result.result !== null ? response.result.result : [];
 });
 
@@ -26,7 +26,7 @@ export const dataSlice = createSlice({
     // standard reducer logic, with auto-generated action types per reducer
   },
   extraReducers: {
-    [fetchCert.fulfilled]: (state, action) => {
+    [getCert.fulfilled]: (state, action) => {
       state.cert = action.payload;
     },
     [removeCert.fulfilled]: (state, action) => {
@@ -35,11 +35,11 @@ export const dataSlice = createSlice({
   },
 });
 
-// export const {fetchCert} = dataSlice.actions;
+// export const {getCert} = dataSlice.actions;
 
 export const selectCert = (state) => state.data.cert;
 
 export default dataSlice.reducer;
 
 // Later, dispatch the thunk as needed in the app
-// dispatch(fetchCert(123))
+// dispatch(getCert(123))

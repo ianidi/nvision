@@ -32,7 +32,7 @@ const apia = create({
 //   }
 // });
 
-const fetchCert = async () => {
+const getCert = async () => {
   const res = await apia.get("/cert");
 
   console.log("fetch cert", res.data);
@@ -49,4 +49,4 @@ const addCert = async ({ Vendor, Type, Status, File, Title, DateStart, DateEnd }
   return { result: res.data };
 };
 
-export const api = { fetchCert, removeCert, addCert };
+export const api = { getCert, removeCert, addCert };
