@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { open } from "../../store/modalSlice";
 import { removeCert, fetchCert, selectCert } from "../../store/dataSlice";
@@ -74,6 +74,10 @@ function Cert() {
   const dispatch = useDispatch();
   const cert = useSelector(selectCert);
 
+  useEffect(() => {
+    dispatch(fetchCert(1));
+  }, []);
+
   // console.log(cert);
 
   return (
@@ -110,11 +114,6 @@ function Cert() {
           </TableBody>
         </Table>
       </TableContainer>
-
-      <div className="upload" onClick={() => dispatch(fetchCert(1))}>
-        <IconUpload />
-        <div className="upload__text">Load</div>
-      </div>
 
       <div className="upload" onClick={() => dispatch(open("cert"))}>
         <IconUpload />

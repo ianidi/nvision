@@ -44,8 +44,8 @@ const removeCert = async (CertID) => {
   return { result: res.data };
 };
 
-const addCert = async () => {
-  const res = await apia.post("/cert/add");
+const addCert = async ({ Vendor, Type, Status, File, Title }) => {
+  const res = await apia.post("/cert/add", { Vendor, Type, Status, File, Title });
   return { result: res.data };
 };
 
