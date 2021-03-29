@@ -2,7 +2,6 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { api } from "./api";
 import { close } from "./modalSlice";
 
-// First, create the thunk
 export const fetchCert = createAsyncThunk("cert/fetchCert", async (a, thunkAPI) => {
   const response = await api.fetchCert();
   return response.result.result !== null ? response.result.result : [];
@@ -13,8 +12,8 @@ export const removeCert = createAsyncThunk("cert/removeCert", async (CertId, thu
   return response.result.result !== null ? response.result.result : [];
 });
 
-export const addCert = createAsyncThunk("cert/addCert", async ({ Vendor, Type, Status, File, Title, DateStart, DateEnd }, thunkAPI) => {
-  const response = await api.addCert({ Vendor, Type, Status, File, Title, DateStart, DateEnd });
+export const addCert = createAsyncThunk("cert/addCert", async (data, thunkAPI) => {
+  const response = await api.addCert(data);
   thunkAPI.dispatch(close());
   return response.result.result !== null ? response.result.result : [];
 });
