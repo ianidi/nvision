@@ -79,7 +79,7 @@ export const ModalCert = () => {
 
         <div className="d-flex align-items-center justify-content-between" style={{ marginBottom: 20 }}>
           <Datepicker callback={(d) => setDateStart(`${d.day}-${d.month}-${d.year}`)} placeholder="Дата начала" style={{ width: "48%" }} />
-          <Datepicker callback={(d) => setDateEnd(d)} placeholder="Дата окончания" style={{ width: "48%" }} />
+          <Datepicker callback={(d) => setDateEnd(`${d.day}-${d.month}-${d.year}`)} placeholder="Дата окончания" style={{ width: "48%" }} />
         </div>
 
         <div className="d-flex align-items-center justify-content-between" style={{ marginBottom: 20 }}>
@@ -141,7 +141,12 @@ export const ModalCert = () => {
         </Uploady>
 
         <div className="d-flex justify-content-end" style={{ marginTop: 20 }}>
-          <Button title="Отправить" onClick={() => dispatch(addCert({ Vendor: vendor, Type: type, File: "d", Title: title }))} />
+          <Button
+            title="Отправить"
+            onClick={() =>
+              dispatch(addCert({ Vendor: vendor, Type: type, File: "d", Title: title, DateStart: dateStart, DateEnd: dateEnd }))
+            }
+          />
         </div>
       </div>
     </React.Fragment>
