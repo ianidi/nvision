@@ -1,13 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { close } from "../../../../store/modalSlice";
 import { addCert } from "../../../../store/dataSlice";
 
-import clsx from "clsx";
 import { makeStyles } from "@material-ui/core/styles";
-import FormGroup from "@material-ui/core/FormGroup";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
-import Checkbox from "@material-ui/core/Checkbox";
 
 import Uploady from "@rpldy/uploady";
 
@@ -56,8 +52,12 @@ const useStyles = makeStyles({
 const options = [{ label: "Значение 1", value: "a" }, { label: "Значение 2", value: "b" }];
 
 export const ModalCert = () => {
-  const classes = useStyles();
   const dispatch = useDispatch();
+  const [title, setTitle] = useState("");
+  const [vendor, setVendor] = useState("");
+  const [type, setType] = useState("");
+  const [dateStart, setDateStart] = useState("");
+  const [dateEnd, setDateEnd] = useState("");
 
   return (
     <React.Fragment>
@@ -72,24 +72,24 @@ export const ModalCert = () => {
           options={options}
           label="Выберите название"
           placeholder="Выберите название"
-          name="a"
-          setValue={() => {}}
+          name="title"
+          setValue={(v) => setTitle(v)}
           style={{ marginBottom: 20 }}
         />
 
         <div className="d-flex align-items-center justify-content-between" style={{ marginBottom: 20 }}>
-          <Datepicker callback={() => {}} placeholder="Дата начала" style={{ width: "48%" }} />
-          <Datepicker callback={() => {}} placeholder="Дата окончания" style={{ width: "48%" }} />
+          <Datepicker callback={(d) => setDateStart(d)} placeholder="Дата начала" style={{ width: "48%" }} />
+          <Datepicker callback={(d) => setDateEnd(d)} placeholder="Дата окончания" style={{ width: "48%" }} />
         </div>
 
-        <div className="d-flex align-items-center justify-content-between" style={{ marginBottom: 10 }}>
+        <div className="d-flex align-items-center justify-content-between" style={{ marginBottom: 20 }}>
           <Select
             // value={options[0].value}
             options={options}
             label="Вендор"
             placeholder="Вендор"
-            name="a"
-            setValue={() => {}}
+            name="vendor"
+            setValue={(v) => setVendor(v)}
             style={{ width: "48%" }}
           />
           <Select
@@ -97,8 +97,8 @@ export const ModalCert = () => {
             options={options}
             label="Выберите тип"
             placeholder="Выберите тип"
-            name="a"
-            setValue={() => {}}
+            name="type"
+            setValue={(v) => setType(v)}
             style={{ width: "48%" }}
           />
         </div>
@@ -141,7 +141,7 @@ export const ModalCert = () => {
         </Uploady>
 
         <div className="d-flex justify-content-end" style={{ marginTop: 20 }}>
-          <Button title="Отправить" onClick={() => dispatch(addCert({ Vendor: "a", Type: "b", Status: "c", File: "d", Title: "e" }))} />
+          <Button title="Отправить" onClick={() => dispatch(addCert({ Vendor: vendor, Type: type, File: "d", Title: title }))} />
         </div>
       </div>
     </React.Fragment>

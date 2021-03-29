@@ -1,0 +1,22 @@
+POST /cert/add - добавить сертификат
+POST /cert/remove - удалить сертификат
+
+POST /diploma/add - добавить диплом
+POST /diploma/remove - удалить диплом
+GET /diploma - список дипломом
+
+POST /degree/add - добавить ученую степень
+POST /degree/remove - удалить ученую степень
+GET /degree - список ученых степеней
+
+POST /credential/add - добавить удостоверение
+POST /credential/remove - удалить удостоверение
+GET /credential - список удостоверений
+
+POST /pd - список запросов о ПД
+POST /pd/add - отправить запрос о ПД
+
+GET /employee - список сотрудников
+GET /cert - список сертификатов
+
+GET /guide - список справочников
