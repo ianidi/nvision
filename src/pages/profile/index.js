@@ -1,7 +1,17 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { open } from "../../store/modalSlice";
-import { removeCert, getCert, selectCert, removeDiploma, getDiploma, selectDiploma } from "../../store/dataSlice";
+import {
+  getCert,
+  selectCert,
+  removeCert,
+  getDiploma,
+  selectDiploma,
+  removeDiploma,
+  getDegree,
+  selectDegree,
+  removeDegree,
+} from "../../store/dataSlice";
 
 import { makeStyles } from "@material-ui/core/styles";
 import Table from "@material-ui/core/Table";
@@ -200,10 +210,13 @@ function Diploma() {
 }
 
 function Degree() {
-  const rows = [createData("Специалист по MS Excel", "Microsoft", "Type", "Да", "01.09.2020", "Да", "31.08.2020", "Действует")];
-
   const classes = useStyles();
   const dispatch = useDispatch();
+  const degree = useSelector(selectDegree);
+
+  useEffect(() => {
+    dispatch(getDegree());
+  }, []);
 
   return (
     <React.Fragment>
@@ -217,17 +230,18 @@ function Degree() {
             </TableRow>
           </TableHead>
           <TableBody>
-            {rows.map((row) => (
-              <TableRow key={row.id} className={classes.tableLine}>
-                <TableCell className={classes.tableCell} component="th" scope="row">
-                  {row.title}
-                </TableCell>
-                <TableCell className={classes.tableCell}>{row.vendor}</TableCell>
-                <TableCell className={classes.tableCell}>
-                  <Status />
-                </TableCell>
-              </TableRow>
-            ))}
+            {degree &&
+              degree.map((row) => (
+                <TableRow key={row.id} className={classes.tableLine}>
+                  <TableCell className={classes.tableCell} component="th" scope="row">
+                    {row.title}
+                  </TableCell>
+                  <TableCell className={classes.tableCell}>{row.vendor}</TableCell>
+                  <TableCell className={classes.tableCell}>
+                    <Status />
+                  </TableCell>
+                </TableRow>
+              ))}
           </TableBody>
         </Table>
       </TableContainer>
