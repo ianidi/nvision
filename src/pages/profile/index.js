@@ -68,17 +68,13 @@ function Status({ CertID, File }) {
 }
 
 function Cert() {
-  const rows = [createData("Специалист по MS Excel", "Microsoft", "Type", "Да", "01.09.2020", "Да", "31.08.2020", "Действует")];
-
   const classes = useStyles();
   const dispatch = useDispatch();
   const cert = useSelector(selectCert);
 
   useEffect(() => {
-    dispatch(fetchCert(1));
+    dispatch(fetchCert());
   }, []);
-
-  // console.log(cert);
 
   return (
     <React.Fragment>
@@ -96,21 +92,22 @@ function Cert() {
             </TableRow>
           </TableHead>
           <TableBody>
-            {cert.map((row) => (
-              <TableRow key={row.id} className={classes.tableLine}>
-                <TableCell className={classes.tableCell} component="th" scope="row">
-                  {row.Title}
-                </TableCell>
-                <TableCell className={classes.tableCell}>{row.Vendor}</TableCell>
-                <TableCell className={classes.tableCell}>{row.Type}</TableCell>
-                <TableCell className={classes.tableCell}>{row.DateStart}</TableCell>
-                <TableCell className={classes.tableCell}>{row.DateEnd}</TableCell>
-                <TableCell className={classes.tableCell}>{row.Status}</TableCell>
-                <TableCell className={classes.tableCell}>
-                  <Status CertID={row.CertID} File={row.File} />
-                </TableCell>
-              </TableRow>
-            ))}
+            {cert &&
+              cert.map((row) => (
+                <TableRow key={row.id} className={classes.tableLine}>
+                  <TableCell className={classes.tableCell} component="th" scope="row">
+                    {row.Title}
+                  </TableCell>
+                  <TableCell className={classes.tableCell}>{row.Vendor}</TableCell>
+                  <TableCell className={classes.tableCell}>{row.Type}</TableCell>
+                  <TableCell className={classes.tableCell}>{row.Expenses}</TableCell>
+                  <TableCell className={classes.tableCell}>{row.DateStart}</TableCell>
+                  <TableCell className={classes.tableCell}>{row.DateEnd}</TableCell>
+                  <TableCell className={classes.tableCell}>
+                    <Status CertID={row.CertID} File={row.File} />
+                  </TableCell>
+                </TableRow>
+              ))}
           </TableBody>
         </Table>
       </TableContainer>
