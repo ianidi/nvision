@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { open } from "../../store/modalSlice";
-import { removeCert, getCert, selectCert } from "../../store/dataSlice";
+import { removeCert, getCert, selectCert, removeDiploma, getDiploma, selectDiploma } from "../../store/dataSlice";
 
 import { makeStyles } from "@material-ui/core/styles";
 import Table from "@material-ui/core/Table";
@@ -121,10 +121,13 @@ function Cert() {
 }
 
 function Diploma() {
-  const rows = [createData("Специалист по MS Excel", "Microsoft", "Type", "Да", "01.09.2020", "Да", "31.08.2020", "Действует")];
-
   const classes = useStyles();
   const dispatch = useDispatch();
+  const diploma = useSelector(selectDiploma);
+
+  useEffect(() => {
+    dispatch(getDiploma());
+  }, []);
 
   return (
     <React.Fragment>
@@ -137,16 +140,17 @@ function Diploma() {
             </TableRow>
           </TableHead>
           <TableBody>
-            {rows.map((row) => (
-              <TableRow key={row.id} className={classes.tableLine}>
-                <TableCell className={classes.tableCell} component="th" scope="row">
-                  {row.title}
-                </TableCell>
-                <TableCell className={classes.tableCell}>
-                  <Status />
-                </TableCell>
-              </TableRow>
-            ))}
+            {diploma &&
+              diploma.map((row) => (
+                <TableRow key={row.id} className={classes.tableLine}>
+                  <TableCell className={classes.tableCell} component="th" scope="row">
+                    {row.title}
+                  </TableCell>
+                  <TableCell className={classes.tableCell}>
+                    <Status />
+                  </TableCell>
+                </TableRow>
+              ))}
           </TableBody>
         </Table>
       </TableContainer>

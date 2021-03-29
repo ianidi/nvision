@@ -33,8 +33,6 @@ const apia = create({
 
 const getCert = async () => {
   const res = await apia.get("/cert");
-
-  console.log("fetch cert", res.data);
   return { result: res.data };
 };
 
@@ -48,4 +46,19 @@ const addCert = async ({ Vendor, Type, Status, File, Title, DateStart, DateEnd }
   return { result: res.data };
 };
 
-export const api = { getCert, removeCert, addCert };
+const getDiploma = async () => {
+  const res = await apia.get("/diploma");
+  return { result: res.data };
+};
+
+const removeDiploma = async (DiplomaID) => {
+  const res = await apia.post("/diploma/remove", { DiplomaID });
+  return { result: res.data };
+};
+
+const addDiploma = async ({ Vendor, Type, Status, File, Title, DateStart, DateEnd }) => {
+  const res = await apia.post("/diploma/add", { Vendor, Type, Status, File, Title, DateStart, DateEnd });
+  return { result: res.data };
+};
+
+export const api = { getCert, removeCert, addCert, getDiploma, removeDiploma, addDiploma };
