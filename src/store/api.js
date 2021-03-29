@@ -56,8 +56,8 @@ const removeDiploma = async (DiplomaID) => {
   return { result: res.data };
 };
 
-const addDiploma = async ({ Vendor, Type, Status, File, Title, DateStart, DateEnd }) => {
-  const res = await apia.post("/diploma/add", { Vendor, Type, Status, File, Title, DateStart, DateEnd });
+const addDiploma = async ({ Specialty }) => {
+  const res = await apia.post("/diploma/add", { Specialty });
   return { result: res.data };
 };
 
