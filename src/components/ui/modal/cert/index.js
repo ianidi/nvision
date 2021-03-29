@@ -103,7 +103,7 @@ export const ModalCert = () => {
           />
         </div>
 
-        <FormGroup aria-label="position" row>
+        {/*<FormGroup aria-label="position" row>
           <FormControlLabel
             value="end"
             control={
@@ -134,14 +134,14 @@ export const ModalCert = () => {
             label="Бессрочный"
             labelPlacement="end"
           />
-        </FormGroup>
+          </FormGroup>*/}
 
         <Uploady destination={{ url: "https://my-server/upload" }}>
           <Upload />
         </Uploady>
 
         <div className="d-flex justify-content-end" style={{ marginTop: 20 }}>
-          <Button title="Отправить" onClick={() => dispatch(addCert())} />
+          <Button title="Отправить" onClick={() => dispatch(addCert({ Vendor: "a", Type: "b", Status: "c", File: "d", Title: "e" }))} />
         </div>
       </div>
     </React.Fragment>
