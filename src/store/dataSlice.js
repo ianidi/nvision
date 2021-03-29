@@ -15,6 +15,7 @@ export const removeCert = createAsyncThunk("cert/removeCert", async (CertId, thu
 export const addCert = createAsyncThunk("cert/addCert", async (data, thunkAPI) => {
   const response = await api.addCert(data);
   thunkAPI.dispatch(close());
+  thunkAPI.dispatch(getCert());
   return response.result.result !== null ? response.result.result : [];
 });
 

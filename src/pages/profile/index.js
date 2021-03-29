@@ -85,7 +85,7 @@ function Cert() {
               <TableCell className={classes.tableKey}>Наименование</TableCell>
               <TableCell className={classes.tableKey}>Вендор</TableCell>
               <TableCell className={classes.tableKey}>Тип</TableCell>
-              <TableCell className={classes.tableKey}>Затраты</TableCell>
+              {/*<TableCell className={classes.tableKey}>Затраты</TableCell>*/}
               <TableCell className={classes.tableKey}>Дата начала</TableCell>
               <TableCell className={classes.tableKey}>Дата окончания</TableCell>
               <TableCell className={classes.tableKey} />
@@ -100,7 +100,7 @@ function Cert() {
                   </TableCell>
                   <TableCell className={classes.tableCell}>{row.Vendor}</TableCell>
                   <TableCell className={classes.tableCell}>{row.Type}</TableCell>
-                  <TableCell className={classes.tableCell}>{row.Expenses}</TableCell>
+                  {/*<TableCell className={classes.tableCell}>{row.Expenses}</TableCell>*/}
                   <TableCell className={classes.tableCell}>{row.DateStart}</TableCell>
                   <TableCell className={classes.tableCell}>{row.DateEnd}</TableCell>
                   <TableCell className={classes.tableCell}>
