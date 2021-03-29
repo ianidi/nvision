@@ -85,6 +85,24 @@ function DiplomaStatus({ DiplomaID, File }) {
   );
 }
 
+function Status({ DiplomaID, File }) {
+  const dispatch = useDispatch();
+
+  return (
+    <div className="d-flex align-items-center">
+      <div className="icon">
+        <IconView />
+      </div>
+      <div className="icon" onClick={() => saveFile({ title: File, url: `http://localhost:4000/${File}` })}>
+        <IconDownload />
+      </div>
+      <div className="icon" onClick={() => dispatch(removeDiploma(DiplomaID))}>
+        <IconRemove />
+      </div>
+    </div>
+  );
+}
+
 function Cert() {
   const classes = useStyles();
   const dispatch = useDispatch();
@@ -165,7 +183,7 @@ function Diploma() {
                     {row.Specialty}
                   </TableCell>
                   <TableCell className={classes.tableCell}>
-                    <DiplomaStatus />
+                    <DiplomaStatus DiplomaID={row.DiplomaID} File={row.File} />
                   </TableCell>
                 </TableRow>
               ))}
