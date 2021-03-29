@@ -49,7 +49,7 @@ function createData(title, vendor, type, dateStart, dateEnd, status) {
   return { title, vendor, type, dateStart, dateEnd, status };
 }
 
-function Status({ CertID, File }) {
+function CertStatus({ CertID, File }) {
   const dispatch = useDispatch();
 
   return (
@@ -61,6 +61,24 @@ function Status({ CertID, File }) {
         <IconDownload />
       </div>
       <div className="icon" onClick={() => dispatch(removeCert(CertID))}>
+        <IconRemove />
+      </div>
+    </div>
+  );
+}
+
+function DiplomaStatus({ DiplomaID, File }) {
+  const dispatch = useDispatch();
+
+  return (
+    <div className="d-flex align-items-center">
+      <div className="icon">
+        <IconView />
+      </div>
+      <div className="icon" onClick={() => saveFile({ title: File, url: `http://localhost:4000/${File}` })}>
+        <IconDownload />
+      </div>
+      <div className="icon" onClick={() => dispatch(removeDiploma(DiplomaID))}>
         <IconRemove />
       </div>
     </div>
@@ -104,7 +122,7 @@ function Cert() {
                   <TableCell className={classes.tableCell}>{row.DateStart}</TableCell>
                   <TableCell className={classes.tableCell}>{row.DateEnd}</TableCell>
                   <TableCell className={classes.tableCell}>
-                    <Status CertID={row.CertID} File={row.File} />
+                    <CertStatus CertID={row.CertID} File={row.File} />
                   </TableCell>
                 </TableRow>
               ))}
@@ -147,7 +165,7 @@ function Diploma() {
                     {row.Specialty}
                   </TableCell>
                   <TableCell className={classes.tableCell}>
-                    <Status />
+                    <DiplomaStatus />
                   </TableCell>
                 </TableRow>
               ))}
