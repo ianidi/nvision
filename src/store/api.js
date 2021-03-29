@@ -1,7 +1,6 @@
 import { create } from "apisauce";
 // import Cookies from "js-cookie";
-
-const API_URL = "http://localhost:4000";
+import { API_URL } from "../config";
 
 const apia = create({
   baseURL: API_URL,

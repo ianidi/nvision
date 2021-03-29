@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
+import { API_URL } from "../../../../config";
 import { close } from "../../../../store/modalSlice";
 import { addCert } from "../../../../store/dataSlice";
 
@@ -136,7 +137,7 @@ export const ModalCert = () => {
           />
           </FormGroup>*/}
 
-        <Uploady destination={{ url: "https://my-server/upload" }}>
+        <Uploady destination={{ url: `${API_URL}/upload` }}>
           <Upload />
         </Uploady>
 
