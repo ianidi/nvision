@@ -1,21 +1,21 @@
-import 'react-hot-loader'
-import React from 'react';
-import ReactDOM from 'react-dom';
-import 'normalize.css';
-import './assets/fonts/nunito/style.css';
-import './index.scss';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import "react-hot-loader";
+import React from "react";
+import ReactDOM from "react-dom";
+import "normalize.css";
+import "./assets/fonts/nunito/style.css";
+import "./index.scss";
+import App from "./App";
+import reportWebVitals from "./reportWebVitals";
 
-import { AppContainer } from 'react-hot-loader';
-import { Provider } from 'react-redux';
+import { AppContainer } from "react-hot-loader";
+import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
 
-import { createMuiTheme, ThemeProvider as ThemeProviderMaterial } from '@material-ui/core/styles';
-import { ToastContainer } from 'react-toastify';
-import { PersistGate } from 'redux-persist/integration/react';
+import { createMuiTheme, ThemeProvider as ThemeProviderMaterial } from "@material-ui/core/styles";
+import { ToastContainer } from "react-toastify";
+import { PersistGate } from "redux-persist/integration/react";
 
-import { store, persistor } from './store';
+import { store, persistor } from "./store";
 
 import { configureRootTheme } from "@yandex/ui/Theme";
 import { theme as YandexUITheme } from "@yandex/ui/Theme/presets/default";
@@ -26,15 +26,15 @@ const themeMaterial = createMuiTheme({
   palette: {
     primary: {
       // light: will be calculated from palette.primary.main,
-      main: '#0E6FE2',
+      main: "#0E6FE2",
       // dark: will be calculated from palette.primary.main,
       // contrastText: will be calculated to contrast with palette.primary.main
     },
     secondary: {
-      light: '#000',
-      main: '#0E6FE2',
+      light: "#000",
+      main: "#0E6FE2",
       // dark: will be calculated from palette.secondary.main,
-      contrastText: '#000',
+      contrastText: "#000",
     },
     // Used by `getContrastText()` to maximize the contrast between
     // the background and the text.
@@ -50,27 +50,27 @@ ReactDOM.render(
   <AppContainer>
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
-      <BrowserRouter>
-            <ThemeProviderMaterial theme={themeMaterial}>
-              <ToastContainer
-                position="top-right"
-                autoClose={3000}
-                hideProgressBar
-                newestOnTop={false}
-                closeOnClick={false}
-                rtl={false}
-                pauseOnFocusLoss
-                draggable={false}
-                pauseOnHover
-                closeButton={false}
-              />
-              <App />
-            </ThemeProviderMaterial>
+        <BrowserRouter>
+          <ThemeProviderMaterial theme={themeMaterial}>
+            <ToastContainer
+              position="top-right"
+              autoClose={3000}
+              hideProgressBar
+              newestOnTop={false}
+              closeOnClick={false}
+              rtl={false}
+              pauseOnFocusLoss
+              draggable={false}
+              pauseOnHover
+              closeButton={false}
+            />
+            <App />
+          </ThemeProviderMaterial>
         </BrowserRouter>
       </PersistGate>
     </Provider>
   </AppContainer>,
-  document.getElementById('root')
+  document.getElementById("root")
 );
 
 // If you want to start measuring performance in your app, pass a function

@@ -91,8 +91,8 @@ const removeCredential = async (CredentialID) => {
   return { result: res.data };
 };
 
-const getGuide = async ({ Type }) => {
-  const res = await apia.post("/guide", { Type });
+const getGuide = async ({ Category }) => {
+  const res = await apia.post("/guide", { Category });
   return { result: res.data };
 };
 
