@@ -27,7 +27,7 @@ import { ReactComponent as IconRemove } from "../../assets/icons/remove.svg";
 import { ReactComponent as IconEdit } from "../../assets/icons/edit.svg";
 
 import { TextInput } from "../../components/ui/input";
-import { Button } from "../../components/ui/button";
+import { Button, Small } from "../../components/ui/button";
 import { pageTitle } from "../../config";
 
 import "./style.scoped.scss";
@@ -60,7 +60,7 @@ const rows = [
 
 const headCells = [
   { id: "name", disablePadding: true, label: "№", props: { width: "25%" } },
-  { id: "title", disablePadding: false, label: "Вендор", props: { width: "25%" } },
+  { id: "title", disablePadding: false, label: "Название", props: { width: "25%" } },
   { id: "vendor", disablePadding: false, label: "Оповещать об окончании сертификата", props: { width: "25%" } },
   { id: "action", disablePadding: false, label: "", props: { width: "25%" } },
 ];
@@ -112,6 +112,14 @@ export const GuideView = () => {
           <div className="d-flex align-items-center">
             <div className="title">{pageTitle[category]}</div>
           </div>
+          <div className="d-flex align-items-center">
+            <Small
+              title="Добавить запись"
+              // icon={<IconArrowRightSmall />}
+              color="#151515"
+              // onClick={() => dispatch(open("cert"))}
+            />
+          </div>
         </div>
 
         <div className="d-flex align-items-center justify-content-between table__search">
@@ -136,7 +144,7 @@ function TableGuide() {
   const { category } = useParams();
 
   const dispatch = useDispatch();
-  const guide = useSelector(selectGuide);
+  const rows = useSelector(selectGuide);
 
   useEffect(() => {
     dispatch(getGuide({ Type: category }));
@@ -157,45 +165,6 @@ function TableGuide() {
 
   const createSortHandler = (property) => (event) => {
     handleRequestSort(event, property);
-  };
-
-  const handleSelectAllClick = (event) => {
-    if (event.target.checked) {
-      const newSelecteds = rows.map((n) => n.name);
-      setSelected(newSelecteds);
-      return;
-    }
-    setSelected([]);
-  };
-
-  const handleClick = (event, name) => {
-    const selectedIndex = selected.indexOf(name);
-    let newSelected = [];
-
-    if (selectedIndex === -1) {
-      newSelected = newSelected.concat(selected, name);
-    } else if (selectedIndex === 0) {
-      newSelected = newSelected.concat(selected.slice(1));
-    } else if (selectedIndex === selected.length - 1) {
-      newSelected = newSelected.concat(selected.slice(0, -1));
-    } else if (selectedIndex > 0) {
-      newSelected = newSelected.concat(selected.slice(0, selectedIndex), selected.slice(selectedIndex + 1));
-    }
-
-    setSelected(newSelected);
-  };
-
-  const handleChangePage = (event, newPage) => {
-    setPage(newPage);
-  };
-
-  const handleChangeRowsPerPage = (event) => {
-    setRowsPerPage(parseInt(event.target.value, 10));
-    setPage(0);
-  };
-
-  const handleChangeDense = (event) => {
-    setDense(event.target.checked);
   };
 
   const isSelected = (name) => selected.indexOf(name) !== -1;
@@ -238,8 +207,8 @@ function TableGuide() {
           </TableRow>
         </TableHead>
         <TableBody>
-          {guide &&
-            stableSort(guide, getComparator(order, orderBy))
+          {rows &&
+            stableSort(rows, getComparator(order, orderBy))
               .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
               .map((row, index) => {
                 const isItemSelected = isSelected(row.name);
@@ -264,7 +233,7 @@ function TableGuide() {
                       <Checkbox
                         checked={isItemSelected}
                         inputProps={{ "aria-labelledby": labelId }}
-                        onClick={(event) => handleClick(event, row.name)}
+                        // onClick={(event) => handleClick(event, row.name)}
                       />
                     </TableCell>
                     <TableCell className={classes.tableCell}>
