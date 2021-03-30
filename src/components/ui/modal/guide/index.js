@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { close } from "../../../../store/modalSlice";
 import { selectGuideCategory, selectGuideID } from "../../../../store/uiSlice";
-import { addGuide } from "../../../../store/dataSlice";
+import { addGuide, editGuide } from "../../../../store/dataSlice";
 
 import { TextInput } from "../../../ui/input";
 import { Button } from "../../../ui/button";
@@ -42,11 +42,11 @@ export const ModalGuideEdit = () => {
         <div className="modal__close" onClick={() => dispatch(close())}>
           <IconModalClose />
         </div>
-        <div className="modal__title">Добавить справочник</div>
+        <div className="modal__title">Изменить справочник</div>
         <TextInput title="Название" style={{ marginBottom: 20 }} value={title} onChange={(e) => setTitle(e.target.value)} />
 
         <div className="d-flex justify-content-center">
-          <Button title="Отправить" onClick={() => dispatch(addGuide({ Title: title, GuideID: guideID }))} />
+          <Button title="Отправить" onClick={() => dispatch(editGuide({ Title: title, GuideID: guideID }))} />
         </div>
       </div>
     </React.Fragment>

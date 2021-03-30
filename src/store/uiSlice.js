@@ -30,7 +30,7 @@ export const uiSlice = createSlice({
   },
 });
 
-export const { toggleMenu, closeMenu, toggleDrawer, closeDrawer, setGuideCategory } = uiSlice.actions;
+export const { toggleMenu, closeMenu, toggleDrawer, closeDrawer, setGuideCategory, setGuideID } = uiSlice.actions;
 
 export const selectMenuOpen = (state) => state.ui.menuOpen;
 export const selectDrawerOpen = (state) => state.ui.drawerOpen;
