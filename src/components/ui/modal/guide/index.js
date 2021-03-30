@@ -33,6 +33,7 @@ export const ModalGuideCreate = () => {
 
 export const ModalGuideEdit = () => {
   const dispatch = useDispatch();
+  const category = useSelector(selectGuideCategory);
   const guideID = useSelector(selectGuideID);
   const [title, setTitle] = useState("");
 
@@ -46,7 +47,7 @@ export const ModalGuideEdit = () => {
         <TextInput title="Название" style={{ marginBottom: 20 }} value={title} onChange={(e) => setTitle(e.target.value)} />
 
         <div className="d-flex justify-content-center">
-          <Button title="Отправить" onClick={() => dispatch(editGuide({ Title: title, GuideID: guideID }))} />
+          <Button title="Отправить" onClick={() => dispatch(editGuide({ Category: category, GuideID: guideID, Title: title }))} />
         </div>
       </div>
     </React.Fragment>
