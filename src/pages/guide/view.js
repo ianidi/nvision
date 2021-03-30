@@ -15,9 +15,8 @@ import { Link, useParams } from "react-router-dom";
 import Pagination from "@material-ui/lab/Pagination";
 import PaginationItem from "@material-ui/lab/PaginationItem";
 
-import { exportExcel, saveFile } from "../../service";
+import { saveFile } from "../../service";
 
-import { ReactComponent as IconArrowDownloadExcel } from "../../assets/icons/arrow_download_excel.svg";
 import { ReactComponent as IconAttachment } from "../../assets/icons/attachment.svg";
 import { ReactComponent as IconView } from "../../assets/icons/view.svg";
 import { ReactComponent as IconDownload } from "../../assets/icons/download.svg";
@@ -27,7 +26,7 @@ import { ReactComponent as IconSave } from "../../assets/icons/save.svg";
 import { ReactComponent as IconCancel } from "../../assets/icons/cancel.svg";
 
 import { TextInput } from "../../components/ui/input";
-import { Button, Small } from "../../components/ui/button";
+import { Button } from "../../components/ui/button";
 import { pageTitle } from "../../config";
 
 import "./style.scoped.scss";
@@ -118,22 +117,11 @@ export const GuideView = () => {
           <div className="d-flex align-items-center">
             <div className="title">{pageTitle[category]}</div>
           </div>
-          <div className="d-flex align-items-center">
-            <div className="icon">
-              <IconEdit />
-            </div>
-            <div className="icon" onClick={() => saveFile({ title: "file.pdf", url: "http://localhost:3000/file.zip" })}>
-              <IconSave />
-            </div>
-            <div className="icon">
-              <IconCancel />
-            </div>
-          </div>
         </div>
 
         <div className="d-flex align-items-center justify-content-between table__search">
           <div style={{ width: "89%" }}>
-            <TextInput title="Введите ФИО сотрудника или номер телефона" search />
+            <TextInput title="Введите название" search />
           </div>
           <div style={{ width: "10%" }}>
             <Button title="Найти" />
@@ -141,18 +129,14 @@ export const GuideView = () => {
         </div>
 
         <div className="d-flex">
-          <TableEmployee />
+          <TableGuide />
         </div>
       </div>
     </React.Fragment>
   );
 };
 
-const Status = ({ value }) => {
-  return <div className="status__true">Согласен</div>;
-};
-
-function TableEmployee() {
+function TableGuide() {
   const classes = useStyles();
   const { category } = useParams();
 
