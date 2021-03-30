@@ -101,6 +101,11 @@ const addGuide = async ({ Title, Category }) => {
   return { result: res.data };
 };
 
+const editGuide = async ({ GuideID, Title, Category }) => {
+  const res = await apia.post("/guide/add", { GuideID, Title, Category });
+  return { result: res.data };
+};
+
 const removeGuide = async ({ GuideID }) => {
   const res = await apia.post("/guide/remove", { GuideID });
   return { result: res.data };
@@ -121,5 +126,6 @@ export const api = {
   removeCredential,
   getGuide,
   addGuide,
+  editGuide,
   removeGuide,
 };

@@ -9,7 +9,7 @@ import { Modal } from "@yandex/ui/Modal/desktop";
 
 import { Navbar, Sidebar, Content } from "./components/layout";
 import { Cert, Profile, Employee, Guide, GuideView, Report } from "./pages";
-import { ModalCert, ModalCredential, ModalDegree, ModalDiploma, ModalPD, ModalGuideCreate } from "./components/ui/modal";
+import { ModalCert, ModalCredential, ModalDegree, ModalDiploma, ModalPD, ModalGuideCreate, ModalGuideEdit } from "./components/ui/modal";
 
 function App() {
   const modalOpen = useSelector(selectOpen);
@@ -26,6 +26,7 @@ function App() {
           {modalTitle === "credential" && <ModalCredential />}
           {modalTitle === "pd" && <ModalPD />}
           {modalTitle === "guide/create" && <ModalGuideCreate />}
+          {modalTitle === "guide/edit" && <ModalGuideEdit />}
         </Modal>
         <div className="layout">
           <Navbar />

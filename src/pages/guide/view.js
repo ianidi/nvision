@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { open } from "../../store/modalSlice";
 import { getGuide, selectGuide, removeGuide } from "../../store/dataSlice";
-import { setGuideCategory } from "../../store/uiSlice";
+import { setGuideCategory, setGuideID } from "../../store/uiSlice";
 
 import { makeStyles } from "@material-ui/core/styles";
 import Table from "@material-ui/core/Table";
@@ -85,7 +85,14 @@ function Action({ GuideID }) {
 
   return (
     <div className="d-flex align-items-center">
-      <div className="icon">
+      <div
+        className="icon"
+        onClick={() => {
+          dispatch(setGuideCategory(category));
+          dispatch(setGuideID(GuideID));
+          dispatch(open("guide/edit"));
+        }}
+      >
         <IconEdit />
       </div>
       <div className="icon" onClick={() => dispatch(removeGuide({ GuideID, Category: category }))}>
