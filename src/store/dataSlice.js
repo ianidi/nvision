@@ -82,8 +82,9 @@ export const addGuide = createAsyncThunk("guide/addGuide", async (data, thunkAPI
   return response.result.result !== null ? response.result.result : [];
 });
 
-export const removeGuide = createAsyncThunk("guide/removeGuide", async (GuideId, thunkAPI) => {
-  const response = await api.removeGuide(GuideId);
+export const removeGuide = createAsyncThunk("guide/removeGuide", async (data, thunkAPI) => {
+  const response = await api.removeGuide(data);
+  thunkAPI.dispatch(getGuide(data));
   return response.result.result !== null ? response.result.result : [];
 });
 

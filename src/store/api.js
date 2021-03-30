@@ -101,7 +101,7 @@ const addGuide = async ({ Title, Category }) => {
   return { result: res.data };
 };
 
-const removeGuide = async (GuideID) => {
+const removeGuide = async ({ GuideID }) => {
   const res = await apia.post("/guide/remove", { GuideID });
   return { result: res.data };
 };
