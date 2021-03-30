@@ -20,9 +20,7 @@ import PaginationItem from "@material-ui/lab/PaginationItem";
 
 import { saveFile } from "../../service";
 
-import { ReactComponent as IconAttachment } from "../../assets/icons/attachment.svg";
-import { ReactComponent as IconView } from "../../assets/icons/view.svg";
-import { ReactComponent as IconDownload } from "../../assets/icons/download.svg";
+import { ReactComponent as IconAdd } from "../../assets/icons/add.svg";
 import { ReactComponent as IconRemove } from "../../assets/icons/remove.svg";
 import { ReactComponent as IconEdit } from "../../assets/icons/edit.svg";
 
@@ -48,15 +46,6 @@ const useStyles = makeStyles((theme) => ({
     textAlign: "left",
   },
 }));
-
-function createData(name, title, vendor, type, startDate, endDate, status) {
-  return { name, title, vendor, type, startDate, endDate, status };
-}
-
-const rows = [
-  createData("1", "Bosch", "Microsoft", "Type", "01.09.2020", "31.08.2020", "Действует"),
-  createData("2", "Cisco", "Microsoft", "Type", "02.09.2020", "30.08.2020", "Действует"),
-];
 
 const headCells = [
   { id: "name", disablePadding: true, label: "№", props: { width: "25%" } },
@@ -103,6 +92,7 @@ function Action({ GuideID }) {
 }
 
 export const GuideView = () => {
+  const dispatch = useDispatch();
   const { category } = useParams();
 
   return (
@@ -113,12 +103,7 @@ export const GuideView = () => {
             <div className="title">{pageTitle[category]}</div>
           </div>
           <div className="d-flex align-items-center">
-            <Small
-              title="Добавить запись"
-              // icon={<IconArrowRightSmall />}
-              color="#151515"
-              // onClick={() => dispatch(open("cert"))}
-            />
+            <Small title="Добавить запись" icon={<IconAdd />} color="#151515" onClick={() => dispatch(open("guide/createGuide"))} />
           </div>
         </div>
 
