@@ -89,17 +89,11 @@ function stableSort(array, comparator) {
   return stabilizedThis.map((el) => el[0]);
 }
 
-function Action() {
+function Action({ GuideID }) {
   return (
     <div className="d-flex align-items-center">
       <div className="icon">
-        <IconAttachment />
-      </div>
-      <div className="icon">
-        <IconView />
-      </div>
-      <div className="icon" onClick={() => saveFile({ title: "file.pdf", url: "http://localhost:3000/file.zip" })}>
-        <IconDownload />
+        <IconEdit />
       </div>
       <div className="icon">
         <IconRemove />
@@ -274,7 +268,7 @@ function TableGuide() {
                       />
                     </TableCell>
                     <TableCell className={classes.tableCell}>
-                      <Action />
+                      <Action GuideID={row.GuideID} />
                     </TableCell>
                   </TableRow>
                 );
