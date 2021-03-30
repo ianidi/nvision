@@ -71,8 +71,8 @@ const removeDegree = async (DegreeID) => {
   return { result: res.data };
 };
 
-const addDegree = async ({ Specialty }) => {
-  const res = await apia.post("/degree/add", { Specialty });
+const addDegree = async ({ Title, Field }) => {
+  const res = await apia.post("/degree/add", { Title, Field });
   return { result: res.data };
 };
 
