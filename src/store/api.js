@@ -71,9 +71,37 @@ const removeDegree = async (DegreeID) => {
   return { result: res.data };
 };
 
-const addDiegree = async ({ Specialty }) => {
+const addDegree = async ({ Specialty }) => {
   const res = await apia.post("/degree/add", { Specialty });
   return { result: res.data };
 };
 
-export const api = { getCert, removeCert, addCert, getDiploma, removeDiploma, addDiploma, getDegree, removeDegree, addDiegree };
+const getCredential = async () => {
+  const res = await apia.get("/credential");
+  return { result: res.data };
+};
+
+const removeCredential = async (CredentialID) => {
+  const res = await apia.post("/credential/remove", { CredentialID });
+  return { result: res.data };
+};
+
+const addCredential = async ({ Specialty }) => {
+  const res = await apia.post("/credential/add", { Specialty });
+  return { result: res.data };
+};
+
+export const api = {
+  getCert,
+  removeCert,
+  addCert,
+  getDiploma,
+  removeDiploma,
+  addDiploma,
+  getDegree,
+  removeDegree,
+  addDegree,
+  getCredential,
+  removeCredential,
+  addCredential,
+};

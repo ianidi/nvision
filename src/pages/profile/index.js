@@ -11,6 +11,9 @@ import {
   getDegree,
   selectDegree,
   removeDegree,
+  getCredential,
+  selectCredential,
+  removeCredential,
 } from "../../store/dataSlice";
 
 import { makeStyles } from "@material-ui/core/styles";
@@ -95,7 +98,7 @@ function DiplomaStatus({ DiplomaID, File }) {
   );
 }
 
-function Status({ DiplomaID, File }) {
+function DegreeStatus({ DegreeID, File }) {
   const dispatch = useDispatch();
 
   return (
@@ -106,7 +109,25 @@ function Status({ DiplomaID, File }) {
       <div className="icon" onClick={() => saveFile({ title: File, url: `http://localhost:4000/${File}` })}>
         <IconDownload />
       </div>
-      <div className="icon" onClick={() => dispatch(removeDiploma(DiplomaID))}>
+      <div className="icon" onClick={() => dispatch(removeDegree(DegreeID))}>
+        <IconRemove />
+      </div>
+    </div>
+  );
+}
+
+function CredentialStatus({ CredentialID, File }) {
+  const dispatch = useDispatch();
+
+  return (
+    <div className="d-flex align-items-center">
+      <div className="icon">
+        <IconView />
+      </div>
+      <div className="icon" onClick={() => saveFile({ title: File, url: `http://localhost:4000/${File}` })}>
+        <IconDownload />
+      </div>
+      <div className="icon" onClick={() => dispatch(removeCredential(CredentialID))}>
         <IconRemove />
       </div>
     </div>
@@ -234,11 +255,11 @@ function Degree() {
               degree.map((row) => (
                 <TableRow key={row.id} className={classes.tableLine}>
                   <TableCell className={classes.tableCell} component="th" scope="row">
-                    {row.title}
+                    {row.Title}
                   </TableCell>
-                  <TableCell className={classes.tableCell}>{row.vendor}</TableCell>
+                  <TableCell className={classes.tableCell}>{row.Field}</TableCell>
                   <TableCell className={classes.tableCell}>
-                    <Status />
+                    <DegreeStatus DegreeID={row.DegreeID} File={row.File} />
                   </TableCell>
                 </TableRow>
               ))}
@@ -255,10 +276,13 @@ function Degree() {
 }
 
 function Credential() {
-  const rows = [createData("Специалист по MS Excel", "Microsoft", "Type", "Да", "01.09.2020", "Да", "31.08.2020", "Действует")];
-
   const classes = useStyles();
   const dispatch = useDispatch();
+  const credential = useSelector(selectCredential);
+
+  useEffect(() => {
+    dispatch(getCredential());
+  }, []);
 
   return (
     <React.Fragment>
@@ -268,27 +292,28 @@ function Credential() {
             <TableRow>
               <TableCell className={classes.tableKey}>Вид</TableCell>
               <TableCell className={classes.tableKey}>Дата начала</TableCell>
-              <TableCell className={classes.tableKey}>Бессрочный</TableCell>
               <TableCell className={classes.tableKey}>Дата окончания</TableCell>
+              <TableCell className={classes.tableKey}>Бессрочный</TableCell>
               <TableCell className={classes.tableKey}>Статус</TableCell>
               <TableCell className={classes.tableKey} />
             </TableRow>
           </TableHead>
           <TableBody>
-            {rows.map((row) => (
-              <TableRow key={row.id} className={classes.tableLine}>
-                <TableCell className={classes.tableCell} component="th" scope="row">
-                  {row.title}
-                </TableCell>
-                <TableCell className={classes.tableCell}>{row.dateStart}</TableCell>
-                <TableCell className={classes.tableCell}>{row.vendor}</TableCell>
-                <TableCell className={classes.tableCell}>{row.dateEnd}</TableCell>
-                <TableCell className={classes.tableCell}>{row.status}</TableCell>
-                <TableCell className={classes.tableCell}>
-                  <Status />
-                </TableCell>
-              </TableRow>
-            ))}
+            {credential &&
+              credential.map((row) => (
+                <TableRow key={row.id} className={classes.tableLine}>
+                  <TableCell className={classes.tableCell} component="th" scope="row">
+                    {row.Type}
+                  </TableCell>
+                  <TableCell className={classes.tableCell}>{row.DateStart}</TableCell>
+                  <TableCell className={classes.tableCell}>{row.DateEnd}</TableCell>
+                  <TableCell className={classes.tableCell}>{row.Endleess}</TableCell>
+                  <TableCell className={classes.tableCell}>{row.Status}</TableCell>
+                  <TableCell className={classes.tableCell}>
+                    <CredentialStatus CredentialID={row.CredentialID} File={row.File} />
+                  </TableCell>
+                </TableRow>
+              ))}
           </TableBody>
         </Table>
       </TableContainer>

@@ -53,10 +53,27 @@ export const addDegree = createAsyncThunk("degree/addDegree", async (data, thunk
   return response.result.result !== null ? response.result.result : [];
 });
 
+export const getCredential = createAsyncThunk("credential/getCredential", async (data, thunkAPI) => {
+  const response = await api.getCredential();
+  return response.result.result !== null ? response.result.result : [];
+});
+
+export const removeCredential = createAsyncThunk("credential/removeCredential", async (CredentialId, thunkAPI) => {
+  const response = await api.removeCredential(CredentialId);
+  return response.result.result !== null ? response.result.result : [];
+});
+
+export const addCredential = createAsyncThunk("credential/addCredential", async (data, thunkAPI) => {
+  const response = await api.addCredential(data);
+  thunkAPI.dispatch(close());
+  thunkAPI.dispatch(getCredential());
+  return response.result.result !== null ? response.result.result : [];
+});
+
 // Then, handle actions in your reducers:
 export const dataSlice = createSlice({
   name: "data",
-  initialState: { cert: [], diploma: [], degree: [], loading: "idle" },
+  initialState: { cert: [], diploma: [], degree: [], credential: [], loading: "idle" },
   reducers: {
     // standard reducer logic, with auto-generated action types per reducer
   },
@@ -78,6 +95,12 @@ export const dataSlice = createSlice({
     },
     [removeDegree.fulfilled]: (state, action) => {
       state.degree = action.payload;
+    },
+    [getCredential.fulfilled]: (state, action) => {
+      state.credential = action.payload;
+    },
+    [removeCredential.fulfilled]: (state, action) => {
+      state.credential = action.payload;
     },
   },
 });
