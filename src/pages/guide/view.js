@@ -1,4 +1,7 @@
 import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { open } from "../../store/modalSlice";
+import { getGuide, selectGuide, removeGuide } from "../../store/dataSlice";
 
 import { makeStyles } from "@material-ui/core/styles";
 import Table from "@material-ui/core/Table";
@@ -22,8 +25,6 @@ import { ReactComponent as IconView } from "../../assets/icons/view.svg";
 import { ReactComponent as IconDownload } from "../../assets/icons/download.svg";
 import { ReactComponent as IconRemove } from "../../assets/icons/remove.svg";
 import { ReactComponent as IconEdit } from "../../assets/icons/edit.svg";
-import { ReactComponent as IconSave } from "../../assets/icons/save.svg";
-import { ReactComponent as IconCancel } from "../../assets/icons/cancel.svg";
 
 import { TextInput } from "../../components/ui/input";
 import { Button } from "../../components/ui/button";
@@ -139,6 +140,13 @@ export const GuideView = () => {
 function TableGuide() {
   const classes = useStyles();
   const { category } = useParams();
+
+  const dispatch = useDispatch();
+  // const credential = useSelector(selectCredential);
+
+  useEffect(() => {
+    // dispatch(getCredential());
+  }, []);
 
   const [order, setOrder] = React.useState("asc");
   const [orderBy, setOrderBy] = React.useState("calories");

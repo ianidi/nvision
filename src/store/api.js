@@ -36,13 +36,13 @@ const getCert = async () => {
   return { result: res.data };
 };
 
-const removeCert = async (CertID) => {
-  const res = await apia.post("/cert/remove", { CertID });
+const addCert = async ({ Vendor, Type, Status, File, Title, DateStart, DateEnd }) => {
+  const res = await apia.post("/cert/add", { Vendor, Type, Status, File, Title, DateStart, DateEnd });
   return { result: res.data };
 };
 
-const addCert = async ({ Vendor, Type, Status, File, Title, DateStart, DateEnd }) => {
-  const res = await apia.post("/cert/add", { Vendor, Type, Status, File, Title, DateStart, DateEnd });
+const removeCert = async (CertID) => {
+  const res = await apia.post("/cert/remove", { CertID });
   return { result: res.data };
 };
 
@@ -51,13 +51,13 @@ const getDiploma = async () => {
   return { result: res.data };
 };
 
-const removeDiploma = async (DiplomaID) => {
-  const res = await apia.post("/diploma/remove", { DiplomaID });
+const addDiploma = async ({ Specialty }) => {
+  const res = await apia.post("/diploma/add", { Specialty });
   return { result: res.data };
 };
 
-const addDiploma = async ({ Specialty }) => {
-  const res = await apia.post("/diploma/add", { Specialty });
+const removeDiploma = async (DiplomaID) => {
+  const res = await apia.post("/diploma/remove", { DiplomaID });
   return { result: res.data };
 };
 
@@ -66,13 +66,13 @@ const getDegree = async () => {
   return { result: res.data };
 };
 
-const removeDegree = async (DegreeID) => {
-  const res = await apia.post("/degree/remove", { DegreeID });
+const addDegree = async ({ Title, Field }) => {
+  const res = await apia.post("/degree/add", { Title, Field });
   return { result: res.data };
 };
 
-const addDegree = async ({ Title, Field }) => {
-  const res = await apia.post("/degree/add", { Title, Field });
+const removeDegree = async (DegreeID) => {
+  const res = await apia.post("/degree/remove", { DegreeID });
   return { result: res.data };
 };
 
@@ -81,27 +81,27 @@ const getCredential = async () => {
   return { result: res.data };
 };
 
-const removeCredential = async (CredentialID) => {
-  const res = await apia.post("/credential/remove", { CredentialID });
-  return { result: res.data };
-};
-
 const addCredential = async ({ Specialty }) => {
   const res = await apia.post("/credential/add", { Specialty });
   return { result: res.data };
 };
 
+const removeCredential = async (CredentialID) => {
+  const res = await apia.post("/credential/remove", { CredentialID });
+  return { result: res.data };
+};
+
 export const api = {
   getCert,
-  removeCert,
   addCert,
+  removeCert,
   getDiploma,
-  removeDiploma,
   addDiploma,
+  removeDiploma,
   getDegree,
-  removeDegree,
   addDegree,
+  removeDegree,
   getCredential,
-  removeCredential,
   addCredential,
+  removeCredential,
 };
