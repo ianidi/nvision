@@ -101,8 +101,8 @@ const addGuide = async ({ Title, Category }) => {
   return { result: res.data };
 };
 
-const editGuide = async ({ GuideID, Title, Category }) => {
-  const res = await apia.post("/guide/add", { GuideID, Title, Category });
+const editGuide = async ({ GuideID, Title }) => {
+  const res = await apia.post("/guide/edit", { GuideID, Title });
   return { result: res.data };
 };
 
