@@ -20,7 +20,7 @@ export const ModalGuideCreate = () => {
         <div className="modal__close" onClick={() => dispatch(close())}>
           <IconModalClose />
         </div>
-        <div className="modal__title">Добавить справочник {category}</div>
+        <div className="modal__title">Добавить справочник</div>
         <TextInput title="Название" style={{ marginBottom: 20 }} value={title} onChange={(e) => setTitle(e.target.value)} />
 
         <div className="d-flex justify-content-center">
