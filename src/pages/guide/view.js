@@ -103,7 +103,7 @@ export const GuideView = () => {
             <div className="title">{pageTitle[category]}</div>
           </div>
           <div className="d-flex align-items-center">
-            <Small title="Добавить запись" icon={<IconAdd />} color="#151515" onClick={() => dispatch(open("guide/createGuide"))} />
+            <Small title="Добавить запись" icon={<IconAdd />} color="#151515" onClick={() => dispatch(open("guide/create"))} />
           </div>
         </div>
 
