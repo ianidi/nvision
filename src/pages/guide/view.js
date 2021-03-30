@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { open } from "../../store/modalSlice";
 import { getGuide, selectGuide, removeGuide } from "../../store/dataSlice";
+import { setGuideCategory } from "../../store/uiSlice";
 
 import { makeStyles } from "@material-ui/core/styles";
 import Table from "@material-ui/core/Table";
@@ -103,7 +104,15 @@ export const GuideView = () => {
             <div className="title">{pageTitle[category]}</div>
           </div>
           <div className="d-flex align-items-center">
-            <Small title="Добавить запись" icon={<IconAdd />} color="#151515" onClick={() => dispatch(open("guide/create"))} />
+            <Small
+              title="Добавить запись"
+              icon={<IconAdd />}
+              color="#151515"
+              onClick={() => {
+                dispatch(setGuideCategory(category));
+                dispatch(open("guide/create"));
+              }}
+            />
           </div>
         </div>
 
@@ -154,7 +163,7 @@ function TableGuide() {
 
   const isSelected = (name) => selected.indexOf(name) !== -1;
 
-  const emptyRows = rowsPerPage - Math.min(rowsPerPage, rows.length - page * rowsPerPage);
+  // const emptyRows = rowsPerPage - Math.min(rowsPerPage, rows.length - page * rowsPerPage);
 
   const PATH = `/guide/${category}`;
   const ROWS_PER_PAGE = 15;
@@ -227,15 +236,15 @@ function TableGuide() {
                   </TableRow>
                 );
               })}
-          {emptyRows > 0 && (
+          {/*emptyRows > 0 && (
             <TableRow style={{ height: (dense ? 33 : 53) * emptyRows }}>
               <TableCell colSpan={9} />
             </TableRow>
-          )}
+          )*/}
         </TableBody>
       </Table>
 
-      <Box display="flex" justifyContent="center" flex={1} padding={1}>
+      {/*<Box display="flex" justifyContent="center" flex={1} padding={1}>
         <Pagination
           page={Number(pageNumber)}
           count={Math.ceil(rows.length / ROWS_PER_PAGE)}
@@ -246,7 +255,7 @@ function TableGuide() {
           boundaryCount={2}
           renderItem={(item) => <PaginationItem type={"start-ellipsis"} component={Link} selected to={`${PATH}/${item.page}`} {...item} />}
         />
-      </Box>
+        </Box>*/}
     </TableContainer>
   );
 }

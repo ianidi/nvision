@@ -5,6 +5,7 @@ export const uiSlice = createSlice({
   initialState: {
     menuOpen: false,
     drawerOpen: false,
+    guideCategory: null,
   },
   reducers: {
     toggleMenu: (state) => {
@@ -19,12 +20,16 @@ export const uiSlice = createSlice({
     closeDrawer: (state) => {
       state.drawerOpen = false;
     },
+    setGuideCategory: (state, action) => {
+      state.guideCategory = action.payload;
+    },
   },
 });
 
-export const { toggleMenu, closeMenu, toggleDrawer, closeDrawer } = uiSlice.actions;
+export const { toggleMenu, closeMenu, toggleDrawer, closeDrawer, setGuideCategory } = uiSlice.actions;
 
 export const selectMenuOpen = (state) => state.ui.menuOpen;
 export const selectDrawerOpen = (state) => state.ui.drawerOpen;
+export const selectGuideCategory = (state) => state.ui.guideCategory;
 
 export default uiSlice.reducer;
