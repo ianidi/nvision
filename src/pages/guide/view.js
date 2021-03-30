@@ -145,7 +145,7 @@ function TableGuide() {
   const guide = useSelector(selectGuide);
 
   useEffect(() => {
-    dispatch(getGuide());
+    dispatch(getGuide({ Type: category }));
   }, []);
 
   const [order, setOrder] = React.useState("asc");
