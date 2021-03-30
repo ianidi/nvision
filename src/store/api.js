@@ -91,6 +91,21 @@ const removeCredential = async (CredentialID) => {
   return { result: res.data };
 };
 
+const getGuide = async () => {
+  const res = await apia.get("/guide");
+  return { result: res.data };
+};
+
+const addGuide = async ({ Specialty }) => {
+  const res = await apia.post("/guide/add", { Specialty });
+  return { result: res.data };
+};
+
+const removeGuide = async (GuideID) => {
+  const res = await apia.post("/guide/remove", { GuideID });
+  return { result: res.data };
+};
+
 export const api = {
   getCert,
   addCert,
@@ -104,4 +119,7 @@ export const api = {
   getCredential,
   addCredential,
   removeCredential,
+  getGuide,
+  addGuide,
+  removeGuide,
 };

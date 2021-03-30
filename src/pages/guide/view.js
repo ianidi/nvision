@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { open } from "../../store/modalSlice";
 import { getGuide, selectGuide, removeGuide } from "../../store/dataSlice";
@@ -142,10 +142,10 @@ function TableGuide() {
   const { category } = useParams();
 
   const dispatch = useDispatch();
-  // const credential = useSelector(selectCredential);
+  const guide = useSelector(selectGuide);
 
   useEffect(() => {
-    // dispatch(getCredential());
+    dispatch(getGuide());
   }, []);
 
   const [order, setOrder] = React.useState("asc");
@@ -244,7 +244,7 @@ function TableGuide() {
           </TableRow>
         </TableHead>
         <TableBody>
-          {stableSort(rows, getComparator(order, orderBy))
+          {stableSort(guide, getComparator(order, orderBy))
             .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
             .map((row, index) => {
               const isItemSelected = isSelected(row.name);

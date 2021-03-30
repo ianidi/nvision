@@ -70,6 +70,23 @@ export const removeCredential = createAsyncThunk("credential/removeCredential", 
   return response.result.result !== null ? response.result.result : [];
 });
 
+export const getGuide = createAsyncThunk("guide/getGuide", async (data, thunkAPI) => {
+  const response = await api.getGuide();
+  return response.result.result !== null ? response.result.result : [];
+});
+
+export const addGuide = createAsyncThunk("guide/addGuide", async (data, thunkAPI) => {
+  const response = await api.addGuide(data);
+  thunkAPI.dispatch(close());
+  thunkAPI.dispatch(getGuide());
+  return response.result.result !== null ? response.result.result : [];
+});
+
+export const removeGuide = createAsyncThunk("guide/removeGuide", async (GuideId, thunkAPI) => {
+  const response = await api.removeGuide(GuideId);
+  return response.result.result !== null ? response.result.result : [];
+});
+
 // Then, handle actions in your reducers:
 export const dataSlice = createSlice({
   name: "data",
@@ -102,6 +119,12 @@ export const dataSlice = createSlice({
     [removeCredential.fulfilled]: (state, action) => {
       state.credential = action.payload;
     },
+    [getGuide.fulfilled]: (state, action) => {
+      state.guide = action.payload;
+    },
+    [removeGuide.fulfilled]: (state, action) => {
+      state.guide = action.payload;
+    },
   },
 });
 
@@ -111,6 +134,7 @@ export const selectCert = (state) => state.data.cert;
 export const selectDiploma = (state) => state.data.diploma;
 export const selectDegree = (state) => state.data.degree;
 export const selectCredential = (state) => state.data.credential;
+export const selectGuide = (state) => state.data.guide;
 
 export default dataSlice.reducer;
 
