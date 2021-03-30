@@ -244,40 +244,41 @@ function TableGuide() {
           </TableRow>
         </TableHead>
         <TableBody>
-          {stableSort(guide, getComparator(order, orderBy))
-            .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-            .map((row, index) => {
-              const isItemSelected = isSelected(row.name);
-              const labelId = `enhanced-table-checkbox-${index}`;
+          {guide &&
+            stableSort(guide, getComparator(order, orderBy))
+              .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+              .map((row, index) => {
+                const isItemSelected = isSelected(row.name);
+                const labelId = `enhanced-table-checkbox-${index}`;
 
-              return (
-                <TableRow
-                  // hover
-                  // onClick={(event) => handleClick(event, row.name)}
-                  role="checkbox"
-                  aria-checked={isItemSelected}
-                  tabIndex={-1}
-                  key={row.name}
-                  selected={isItemSelected}
-                  className={classes.tableLine}
-                >
-                  <TableCell className={classes.tableCell} component="th" scope="row" padding="none">
-                    {row.name}
-                  </TableCell>
-                  <TableCell className={classes.tableCell}>{row.title}</TableCell>
-                  <TableCell padding="checkbox">
-                    <Checkbox
-                      checked={isItemSelected}
-                      inputProps={{ "aria-labelledby": labelId }}
-                      onClick={(event) => handleClick(event, row.name)}
-                    />
-                  </TableCell>
-                  <TableCell className={classes.tableCell}>
-                    <Action />
-                  </TableCell>
-                </TableRow>
-              );
-            })}
+                return (
+                  <TableRow
+                    // hover
+                    // onClick={(event) => handleClick(event, row.name)}
+                    role="checkbox"
+                    aria-checked={isItemSelected}
+                    tabIndex={-1}
+                    key={row.GuideID}
+                    selected={isItemSelected}
+                    className={classes.tableLine}
+                  >
+                    <TableCell className={classes.tableCell} component="th" scope="row" padding="none">
+                      {row.GuideID}
+                    </TableCell>
+                    <TableCell className={classes.tableCell}>{row.Title}</TableCell>
+                    <TableCell padding="checkbox">
+                      <Checkbox
+                        checked={isItemSelected}
+                        inputProps={{ "aria-labelledby": labelId }}
+                        onClick={(event) => handleClick(event, row.name)}
+                      />
+                    </TableCell>
+                    <TableCell className={classes.tableCell}>
+                      <Action />
+                    </TableCell>
+                  </TableRow>
+                );
+              })}
           {emptyRows > 0 && (
             <TableRow style={{ height: (dense ? 33 : 53) * emptyRows }}>
               <TableCell colSpan={9} />

@@ -92,7 +92,7 @@ const removeCredential = async (CredentialID) => {
 };
 
 const getGuide = async ({ Type }) => {
-  const res = await apia.get("/guide", { Type });
+  const res = await apia.post("/guide", { Type });
   return { result: res.data };
 };
 
