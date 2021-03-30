@@ -110,6 +110,7 @@ export const dataSlice = createSlice({
 export const selectCert = (state) => state.data.cert;
 export const selectDiploma = (state) => state.data.diploma;
 export const selectDegree = (state) => state.data.degree;
+export const selectCredential = (state) => state.data.credential;
 
 export default dataSlice.reducer;
 
