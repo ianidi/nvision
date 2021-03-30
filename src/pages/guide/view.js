@@ -80,12 +80,14 @@ function stableSort(array, comparator) {
 }
 
 function Action({ GuideID }) {
+  const dispatch = useDispatch();
+
   return (
     <div className="d-flex align-items-center">
       <div className="icon">
         <IconEdit />
       </div>
-      <div className="icon">
+      <div className="icon" onClick={() => dispatch(removeGuide(GuideID))}>
         <IconRemove />
       </div>
     </div>
