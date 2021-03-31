@@ -100,7 +100,7 @@ function Action(row) {
       </div>
       <div
         className="icon"
-        onClick={loading.removeGuide === false ? () => dispatch(removeGuide({ GuideID: row.GuideID, Category: category })) : undefined}
+        onClick={loading.removeGuide ? undefined : () => dispatch(removeGuide({ GuideID: row.GuideID, Category: category }))}
       >
         <IconRemove />
       </div>
