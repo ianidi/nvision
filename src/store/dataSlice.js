@@ -90,7 +90,7 @@ export const editGuide = createAsyncThunk("guide/editGuide", async (data, thunkA
 
 export const removeGuide = createAsyncThunk("guide/removeGuide", async (data, thunkAPI) => {
   let state = thunkAPI.getState();
-  if (state.loading.removeGuide) {
+  if (state.data.loading.removeGuide) {
     return false;
   }
 
@@ -170,6 +170,8 @@ export const dataSlice = createSlice({
     },
     [removeGuide.fulfilled]: (state, action) => {
       state.loading.removeGuide = false;
+      // console.log(action.meta.arg.GuideID);
+      // console.log(action.payload);
 
       if (!action.payload) {
         return;
