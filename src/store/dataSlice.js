@@ -86,7 +86,7 @@ export const editGuide = createAsyncThunk("guide/editGuide", async (data, thunkA
   const response = await api.editGuide(data);
   thunkAPI.dispatch(close());
   thunkAPI.dispatch(getGuide(data));
-  return response.result.result !== null ? response.result.result : [];
+  return response.result.status;
 });
 
 export const removeGuide = createAsyncThunk("guide/removeGuide", async (data, thunkAPI) => {
@@ -129,6 +129,27 @@ export const dataSlice = createSlice({
     },
     [getGuide.fulfilled]: (state, action) => {
       state.guide = action.payload;
+    },
+    [addGuide.fulfilled]: (state, action) => {
+      // state.guide = action.payload;
+    },
+    [editGuide.fulfilled]: (state, action) => {
+      if (!action.payload) {
+        return;
+      }
+
+      state.guide = state.guide.map((item, index) => {
+        if (item.GuideID !== action.meta.arg.GuideID) {
+          // This isn't the item we care about - keep it as-is
+          return item;
+        }
+
+        // Otherwise, this is the one we want - return an updated value
+        return {
+          ...item,
+          Title: action.meta.arg.Title,
+        };
+      });
     },
     [removeGuide.fulfilled]: (state, action) => {
       state.guide = action.payload;
