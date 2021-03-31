@@ -2,7 +2,7 @@ import { create } from "apisauce";
 // import Cookies from "js-cookie";
 import { API_URL } from "../config";
 
-const apia = create({
+const client = create({
   baseURL: API_URL,
   headers: {
     "Content-Type": "application/json",
@@ -32,82 +32,82 @@ const apia = create({
 // });
 
 const getCert = async () => {
-  const res = await apia.get("/cert");
+  const res = await client.get("/cert");
   return { result: res.data };
 };
 
 const addCert = async ({ Vendor, Type, Status, File, Title, DateStart, DateEnd }) => {
-  const res = await apia.post("/cert/add", { Vendor, Type, Status, File, Title, DateStart, DateEnd });
+  const res = await client.post("/cert/add", { Vendor, Type, Status, File, Title, DateStart, DateEnd });
   return { result: res.data };
 };
 
 const removeCert = async (CertID) => {
-  const res = await apia.post("/cert/remove", { CertID });
+  const res = await client.post("/cert/remove", { CertID });
   return { result: res.data };
 };
 
 const getDiploma = async () => {
-  const res = await apia.get("/diploma");
+  const res = await client.get("/diploma");
   return { result: res.data };
 };
 
 const addDiploma = async ({ Specialty }) => {
-  const res = await apia.post("/diploma/add", { Specialty });
+  const res = await client.post("/diploma/add", { Specialty });
   return { result: res.data };
 };
 
 const removeDiploma = async (DiplomaID) => {
-  const res = await apia.post("/diploma/remove", { DiplomaID });
+  const res = await client.post("/diploma/remove", { DiplomaID });
   return { result: res.data };
 };
 
 const getDegree = async () => {
-  const res = await apia.get("/degree");
+  const res = await client.get("/degree");
   return { result: res.data };
 };
 
 const addDegree = async ({ Title, Field }) => {
-  const res = await apia.post("/degree/add", { Title, Field });
+  const res = await client.post("/degree/add", { Title, Field });
   return { result: res.data };
 };
 
 const removeDegree = async (DegreeID) => {
-  const res = await apia.post("/degree/remove", { DegreeID });
+  const res = await client.post("/degree/remove", { DegreeID });
   return { result: res.data };
 };
 
 const getCredential = async () => {
-  const res = await apia.get("/credential");
+  const res = await client.get("/credential");
   return { result: res.data };
 };
 
 const addCredential = async ({ Specialty }) => {
-  const res = await apia.post("/credential/add", { Specialty });
+  const res = await client.post("/credential/add", { Specialty });
   return { result: res.data };
 };
 
 const removeCredential = async (CredentialID) => {
-  const res = await apia.post("/credential/remove", { CredentialID });
+  const res = await client.post("/credential/remove", { CredentialID });
   return { result: res.data };
 };
 
 const getGuide = async ({ Category }) => {
-  const res = await apia.post("/guide", { Category });
+  const res = await client.post("/guide", { Category });
   return { result: res.data };
 };
 
 const addGuide = async ({ Title, Category }) => {
-  const res = await apia.post("/guide/add", { Title, Category });
+  const res = await client.post("/guide/add", { Title, Category });
   return { result: res.data };
 };
 
 const editGuide = async ({ GuideID, Title }) => {
-  const res = await apia.post("/guide/edit", { GuideID, Title });
+  const res = await client.post("/guide/edit", { GuideID, Title });
   return { result: res.data };
 };
 
 const removeGuide = async ({ GuideID }) => {
-  const res = await apia.post("/guide/remove", { GuideID });
+  const res = await client.post("/guide/remove", { GuideID });
   return { result: res.data };
 };
 
