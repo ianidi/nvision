@@ -89,11 +89,6 @@ export const editGuide = createAsyncThunk("guide/editGuide", async (data, thunkA
 });
 
 export const removeGuide = createAsyncThunk("guide/removeGuide", async (data, thunkAPI) => {
-  let state = thunkAPI.getState();
-  if (state.data.loading.removeGuide) {
-    return false;
-  }
-
   const response = await api.removeGuide(data);
   return response.result.status;
 });
@@ -177,7 +172,7 @@ export const dataSlice = createSlice({
         return;
       }
 
-      state.guide = state.guide.filter((item, index) => item !== action.meta.arg.GuideID);
+      state.guide = state.guide.filter((item, index) => item.GuideID !== action.meta.arg.GuideID);
     },
     [removeGuide.pending]: (state, action) => {
       state.loading.removeGuide = true;
