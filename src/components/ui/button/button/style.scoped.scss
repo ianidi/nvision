@@ -8,7 +8,7 @@
   font-size: 14px;
   font-weight: 500;
   color: #151515;
-  background: #E6BE00;
+  background: #e6be00;
   box-shadow: 0px 0px 5px rgba(19, 19, 19, 0.25);
   border-radius: 4px;
   padding-left: 10px;
@@ -21,6 +21,9 @@
 }
 .button:hover {
   box-shadow: 0px 0px 7px rgba(19, 19, 19, 0.3);
+}
+.button_loading {
+  //
 }
 .icon {
   margin-left: 20px;

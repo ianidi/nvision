@@ -41,7 +41,6 @@ export const ModalGuideEdit = () => {
   return (
     <React.Fragment>
       <div className="modal__content">
-        {loading.editGuide ? "load" : "no"}
         <div className="modal__close" onClick={() => dispatch(close())}>
           <IconModalClose />
         </div>
@@ -49,7 +48,11 @@ export const ModalGuideEdit = () => {
         <TextInput title="Название" style={{ marginBottom: 20 }} value={title} onChange={(e) => setTitle(e.target.value)} />
 
         <div className="d-flex justify-content-center">
-          <Button title="Отправить" onClick={() => dispatch(editGuide({ Category: category, GuideID: guideID, Title: title }))} />
+          <Button
+            title="Отправить"
+            loading={loading.editGuide}
+            onClick={() => dispatch(editGuide({ Category: category, GuideID: guideID, Title: title }))}
+          />
         </div>
       </div>
     </React.Fragment>
