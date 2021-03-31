@@ -1,8 +1,8 @@
-import { createSlice } from '@reduxjs/toolkit';
-import { enablePageScroll, disablePageScroll, clearQueueScrollLocks } from 'scroll-lock';
+import { createSlice } from "@reduxjs/toolkit";
+import { enablePageScroll, disablePageScroll, clearQueueScrollLocks } from "scroll-lock";
 
 export const modalSlice = createSlice({
-  name: 'modal',
+  name: "modal",
   initialState: {
     open: false,
     title: null,
@@ -16,6 +16,7 @@ export const modalSlice = createSlice({
     },
     close: (state) => {
       state.open = false;
+      state.title = null;
       // state.title = null; had to preserve the old title to make modal disappear animation work
 
       // enablePageScroll();
