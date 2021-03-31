@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { close } from "../../../../store/modalSlice";
-import { selectGuide } from "../../../../store/uiSlice";
+import { selectGuide, selectGuideCategory } from "../../../../store/uiSlice";
 import { selectLoading, addGuide, editGuide } from "../../../../store/dataSlice";
 
 import { TextInput } from "../../../ui/input";
@@ -11,8 +11,8 @@ import "./style.scoped.scss";
 
 export const ModalGuideCreate = () => {
   const dispatch = useDispatch();
-  const guide = useSelector(selectGuide);
-  const [title, setTitle] = useState(guide.Title);
+  const category = useSelector(selectGuideCategory);
+  const [title, setTitle] = useState("");
 
   return (
     <React.Fragment>
@@ -24,7 +24,7 @@ export const ModalGuideCreate = () => {
         <TextInput title="Название" style={{ marginBottom: 20 }} value={title} onChange={(e) => setTitle(e.target.value)} />
 
         <div className="d-flex justify-content-center">
-          <Button title="Отправить" onClick={() => dispatch(addGuide({ Title: title, Category: guide.category }))} />
+          <Button title="Отправить" onClick={() => dispatch(addGuide({ Title: title, Category: category }))} />
         </div>
       </div>
     </React.Fragment>
