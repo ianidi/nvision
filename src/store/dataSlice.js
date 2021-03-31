@@ -78,8 +78,7 @@ export const getGuide = createAsyncThunk("guide/getGuide", async (data, thunkAPI
 export const addGuide = createAsyncThunk("guide/addGuide", async (data, thunkAPI) => {
   const response = await api.addGuide(data);
   thunkAPI.dispatch(close());
-  thunkAPI.dispatch(getGuide(data));
-  return response.result.result !== null ? response.result.result : [];
+  return response.result.status;
 });
 
 export const editGuide = createAsyncThunk("guide/editGuide", async (data, thunkAPI) => {
@@ -91,14 +90,13 @@ export const editGuide = createAsyncThunk("guide/editGuide", async (data, thunkA
 
 export const removeGuide = createAsyncThunk("guide/removeGuide", async (data, thunkAPI) => {
   const response = await api.removeGuide(data);
-  thunkAPI.dispatch(getGuide(data));
-  return response.result.result !== null ? response.result.result : [];
+  return response.result.status;
 });
 
 // Then, handle actions in your reducers:
 export const dataSlice = createSlice({
   name: "data",
-  initialState: { cert: [], diploma: [], degree: [], credential: [], guide: [], loading: { editGuide: false } },
+  initialState: { cert: [], diploma: [], degree: [], credential: [], guide: [], loading: {} },
   reducers: {
     // standard reducer logic, with auto-generated action types per reducer
   },
@@ -133,6 +131,12 @@ export const dataSlice = createSlice({
     [addGuide.fulfilled]: (state, action) => {
       // state.guide = action.payload;
       state.loading.addGuide = false;
+
+      if (!action.payload) {
+        return;
+      }
+
+      // state.guide = state.guide.filter((item, index) => item !== action.meta.arg.GuideID);
     },
     [addGuide.pending]: (state, action) => {
       state.loading.addGuide = true;
@@ -160,7 +164,16 @@ export const dataSlice = createSlice({
       state.loading.editGuide = true;
     },
     [removeGuide.fulfilled]: (state, action) => {
-      state.guide = action.payload;
+      state.loading.removeGuide = false;
+
+      if (!action.payload) {
+        return;
+      }
+
+      state.guide = state.guide.filter((item, index) => item !== action.meta.arg.GuideID);
+    },
+    [removeGuide.pending]: (state, action) => {
+      state.loading.removeGuide = true;
     },
   },
 });

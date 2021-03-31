@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { open } from "../../store/modalSlice";
-import { getGuide, selectGuide, removeGuide } from "../../store/dataSlice";
+import { selectLoading, getGuide, selectGuide, removeGuide } from "../../store/dataSlice";
 import { setGuideCategory, setGuide } from "../../store/uiSlice";
 
 import { makeStyles } from "@material-ui/core/styles";
@@ -30,6 +30,8 @@ import { Button, Small } from "../../components/ui/button";
 import { pageTitle } from "../../config";
 
 import "./style.scoped.scss";
+
+var classNames = require("classnames");
 
 const useStyles = makeStyles((theme) => ({
   table: {
@@ -81,6 +83,7 @@ function stableSort(array, comparator) {
 
 function Action(row) {
   const dispatch = useDispatch();
+  const loading = useSelector(selectLoading);
   const { category } = useParams();
 
   return (
@@ -95,7 +98,10 @@ function Action(row) {
       >
         <IconEdit />
       </div>
-      <div className="icon" onClick={() => dispatch(removeGuide({ GuideID: row.GuideID, Category: category }))}>
+      <div
+        className="icon"
+        onClick={loading.removeGuide === false ? () => dispatch(removeGuide({ GuideID: row.GuideID, Category: category })) : undefined}
+      >
         <IconRemove />
       </div>
     </div>
