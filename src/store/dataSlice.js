@@ -78,7 +78,7 @@ export const getGuide = createAsyncThunk("guide/getGuide", async (data, thunkAPI
 export const addGuide = createAsyncThunk("guide/addGuide", async (data, thunkAPI) => {
   const response = await api.addGuide(data);
   thunkAPI.dispatch(close());
-  return response.result.status;
+  return response.result;
 });
 
 export const editGuide = createAsyncThunk("guide/editGuide", async (data, thunkAPI) => {
@@ -131,11 +131,11 @@ export const dataSlice = createSlice({
     [addGuide.fulfilled]: (state, action) => {
       state.loading.addGuide = false;
 
-      if (!action.payload) {
+      if (!action.payload.result) {
         return;
       }
-      //action.meta.arg
-      state.guide.push({ GuideID: 1, Title: "b", Inform: false, Category: "vendor" });
+
+      state.guide.push(action.payload.result);
     },
     [addGuide.pending]: (state, action) => {
       state.loading.addGuide = true;
