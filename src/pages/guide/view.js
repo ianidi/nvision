@@ -83,7 +83,7 @@ function stableSort(array, comparator) {
 
 function Action(row) {
   const dispatch = useDispatch();
-  const loading = useSelector(selectLoading);
+  // const loading = useSelector(selectLoading);
   const { category } = useParams();
 
   return (
@@ -98,10 +98,7 @@ function Action(row) {
       >
         <IconEdit />
       </div>
-      <div
-        className="icon"
-        onClick={loading.removeGuide ? undefined : () => dispatch(removeGuide({ GuideID: row.GuideID, Category: category }))}
-      >
+      <div className="icon" onClick={() => dispatch(removeGuide({ GuideID: row.GuideID, Category: category }))}>
         <IconRemove />
       </div>
     </div>

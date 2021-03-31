@@ -89,6 +89,11 @@ export const editGuide = createAsyncThunk("guide/editGuide", async (data, thunkA
 });
 
 export const removeGuide = createAsyncThunk("guide/removeGuide", async (data, thunkAPI) => {
+  let state = thunkAPI.getState();
+  if (state.loading.removeGuide) {
+    return false;
+  }
+
   const response = await api.removeGuide(data);
   return response.result.status;
 });
