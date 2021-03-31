@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { open } from "../../store/modalSlice";
 import { getGuide, selectGuide, removeGuide } from "../../store/dataSlice";
-import { setGuideCategory, setGuideID } from "../../store/uiSlice";
+import { setGuideCategory, setGuide } from "../../store/uiSlice";
 
 import { makeStyles } from "@material-ui/core/styles";
 import Table from "@material-ui/core/Table";
@@ -79,7 +79,7 @@ function stableSort(array, comparator) {
   return stabilizedThis.map((el) => el[0]);
 }
 
-function Action({ GuideID }) {
+function Action(row) {
   const dispatch = useDispatch();
   const { category } = useParams();
 
@@ -89,13 +89,13 @@ function Action({ GuideID }) {
         className="icon"
         onClick={() => {
           dispatch(setGuideCategory(category));
-          dispatch(setGuideID(GuideID));
+          dispatch(setGuide(row));
           dispatch(open("guide/edit"));
         }}
       >
         <IconEdit />
       </div>
-      <div className="icon" onClick={() => dispatch(removeGuide({ GuideID, Category: category }))}>
+      <div className="icon" onClick={() => dispatch(removeGuide({ GuideID: row.GuideID, Category: category }))}>
         <IconRemove />
       </div>
     </div>
@@ -241,7 +241,7 @@ function TableGuide() {
                       />
                     </TableCell>
                     <TableCell className={classes.tableCell}>
-                      <Action GuideID={row.GuideID} />
+                      <Action {...row} />
                     </TableCell>
                   </TableRow>
                 );
