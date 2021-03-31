@@ -132,9 +132,10 @@ export const dataSlice = createSlice({
     },
     [addGuide.fulfilled]: (state, action) => {
       // state.guide = action.payload;
+      state.loading.addGuide = false;
     },
-    [editGuide.pending]: (state, action) => {
-      state.loading.editGuide = true;
+    [addGuide.pending]: (state, action) => {
+      state.loading.addGuide = true;
     },
     [editGuide.fulfilled]: (state, action) => {
       state.loading.editGuide = false;
@@ -154,6 +155,9 @@ export const dataSlice = createSlice({
           Title: action.meta.arg.Title,
         };
       });
+    },
+    [editGuide.pending]: (state, action) => {
+      state.loading.editGuide = true;
     },
     [removeGuide.fulfilled]: (state, action) => {
       state.guide = action.payload;

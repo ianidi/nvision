@@ -11,6 +11,7 @@ import "./style.scoped.scss";
 
 export const ModalGuideCreate = () => {
   const dispatch = useDispatch();
+  const loading = useSelector(selectLoading);
   const category = useSelector(selectGuideCategory);
   const [title, setTitle] = useState("");
 
@@ -24,7 +25,7 @@ export const ModalGuideCreate = () => {
         <TextInput title="Название" style={{ marginBottom: 20 }} value={title} onChange={(e) => setTitle(e.target.value)} />
 
         <div className="d-flex justify-content-center">
-          <Button title="Отправить" onClick={() => dispatch(addGuide({ Title: title, Category: category }))} />
+          <Button title="Отправить" loading={loading.addGuide} onClick={() => dispatch(addGuide({ Title: title, Category: category }))} />
         </div>
       </div>
     </React.Fragment>
