@@ -104,39 +104,6 @@ export const ModalCert = () => {
           />
         </div>
 
-        {/*<FormGroup aria-label="position" row>
-          <FormControlLabel
-            value="end"
-            control={
-              <Checkbox
-                className={classes.root}
-                disableRipple
-                color="default"
-                checkedIcon={<span className={clsx(classes.icon, classes.checkedIcon)} />}
-                icon={<span className={classes.icon} />}
-                inputProps={{ "aria-label": "decorative checkbox" }}
-              />
-            }
-            label="Затраты на сертификат"
-            labelPlacement="end"
-          />
-          <FormControlLabel
-            value="end"
-            control={
-              <Checkbox
-                className={classes.root}
-                disableRipple
-                color="default"
-                checkedIcon={<span className={clsx(classes.icon, classes.checkedIcon)} />}
-                icon={<span className={classes.icon} />}
-                inputProps={{ "aria-label": "decorative checkbox" }}
-              />
-            }
-            label="Бессрочный"
-            labelPlacement="end"
-          />
-          </FormGroup>*/}
-
         <Uploady destination={{ url: `${API_URL}/upload` }}>
           <Upload />
         </Uploady>
