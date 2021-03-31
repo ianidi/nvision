@@ -180,7 +180,6 @@ function TableGuide() {
 
   const { pageNumber = 1 } = useParams();
 
-  return null;
   return (
     <TableContainer style={{ marginTop: "10px", marginBottom: "20px", userSelect: "none" }}>
       <Table className={classes.table} size="small" aria-label="таблица">
