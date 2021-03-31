@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { close } from "../../../../store/modalSlice";
 import { selectGuideCategory, selectGuideID } from "../../../../store/uiSlice";
-import { addGuide, editGuide } from "../../../../store/dataSlice";
+import { selectLoading, addGuide, editGuide } from "../../../../store/dataSlice";
 
 import { TextInput } from "../../../ui/input";
 import { Button } from "../../../ui/button";
@@ -33,6 +33,7 @@ export const ModalGuideCreate = () => {
 
 export const ModalGuideEdit = () => {
   const dispatch = useDispatch();
+  const loading = useSelector(selectLoading);
   const category = useSelector(selectGuideCategory);
   const guideID = useSelector(selectGuideID);
   const [title, setTitle] = useState("");
@@ -40,6 +41,7 @@ export const ModalGuideEdit = () => {
   return (
     <React.Fragment>
       <div className="modal__content">
+        {loading.editGuide ? "load" : "no"}
         <div className="modal__close" onClick={() => dispatch(close())}>
           <IconModalClose />
         </div>

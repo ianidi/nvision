@@ -98,7 +98,7 @@ export const removeGuide = createAsyncThunk("guide/removeGuide", async (data, th
 // Then, handle actions in your reducers:
 export const dataSlice = createSlice({
   name: "data",
-  initialState: { cert: [], diploma: [], degree: [], credential: [], guide: [], loading: "idle" },
+  initialState: { cert: [], diploma: [], degree: [], credential: [], guide: [], loading: { editGuide: false } },
   reducers: {
     // standard reducer logic, with auto-generated action types per reducer
   },
@@ -133,7 +133,12 @@ export const dataSlice = createSlice({
     [addGuide.fulfilled]: (state, action) => {
       // state.guide = action.payload;
     },
+    [editGuide.pending]: (state, action) => {
+      state.loading.editGuide = true;
+    },
     [editGuide.fulfilled]: (state, action) => {
+      state.loading.editGuide = false;
+
       if (!action.payload) {
         return;
       }
@@ -158,6 +163,7 @@ export const dataSlice = createSlice({
 
 // export const {getCert} = dataSlice.actions;
 
+export const selectLoading = (state) => state.data.loading;
 export const selectCert = (state) => state.data.cert;
 export const selectDiploma = (state) => state.data.diploma;
 export const selectDegree = (state) => state.data.degree;
