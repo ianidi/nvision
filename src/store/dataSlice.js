@@ -135,7 +135,7 @@ export const dataSlice = createSlice({
         return;
       }
       //action.meta.arg
-      // state.guide = state.guide.push({ GuideID: 1, Title: "b", Inform: false, Category: "vendor" });
+      state.guide.push({ GuideID: 1, Title: "b", Inform: false, Category: "vendor" });
     },
     [addGuide.pending]: (state, action) => {
       state.loading.addGuide = true;
