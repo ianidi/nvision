@@ -41,7 +41,7 @@ const addCert = async ({ Vendor, Type, Status, File, Title, DateStart, DateEnd }
   return { result: res.data };
 };
 
-const removeCert = async (CertID) => {
+const removeCert = async ({ CertID }) => {
   const res = await client.post("/cert/remove", { CertID });
   return { result: res.data };
 };
