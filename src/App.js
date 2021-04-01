@@ -12,9 +12,12 @@ import { Cert, Profile, Employee, Guide, GuideView, Report } from "./pages";
 import {
   ModalCert,
   ModalCertRemove,
-  ModalCredential,
-  ModalDegree,
   ModalDiploma,
+  ModalDiplomaRemove,
+  ModalDegree,
+  ModalDegreeRemove,
+  ModalCredential,
+  ModalCredentialRemove,
   ModalPD,
   ModalGuideCreate,
   ModalGuideEdit,
@@ -32,8 +35,11 @@ function App() {
           {modalTitle === "cert" && <ModalCert />}
           {modalTitle === "cert/remove" && <ModalCertRemove />}
           {modalTitle === "diploma" && <ModalDiploma />}
+          {modalTitle === "diploma/remove" && <ModalDiplomaRemove />}
           {modalTitle === "degree" && <ModalDegree />}
+          {modalTitle === "degree/remove" && <ModalDegreeRemove />}
           {modalTitle === "credential" && <ModalCredential />}
+          {modalTitle === "credential/remove" && <ModalCredentialRemove />}
           {modalTitle === "pd" && <ModalPD />}
           {modalTitle === "guide/create" && <ModalGuideCreate />}
           {modalTitle === "guide/edit" && <ModalGuideEdit />}

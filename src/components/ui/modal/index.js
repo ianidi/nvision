@@ -1,8 +1,11 @@
 export { ModalCert } from "./cert";
 export { ModalCertRemove } from "./cert";
 export { ModalDiploma } from "./diploma";
+export { ModalDiplomaRemove } from "./diploma";
 export { ModalDegree } from "./degree";
+export { ModalDegreeRemove } from "./degree";
 export { ModalCredential } from "./credential";
+export { ModalCredentialRemove } from "./credential";
 export { ModalPD } from "./pd";
 export { ModalGuideCreate } from "./guide";
 export { ModalGuideEdit } from "./guide";

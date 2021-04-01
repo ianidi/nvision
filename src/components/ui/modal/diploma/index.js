@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { API_URL } from "../../../../config";
 import { close } from "../../../../store/modalSlice";
-import { addDiploma } from "../../../../store/dataSlice";
+import { selectLoading, addDiploma, removeDiploma } from "../../../../store/dataSlice";
+import { selectDiploma } from "../../../../store/uiSlice";
 
 import Uploady from "@rpldy/uploady";
 
@@ -41,6 +42,27 @@ export const ModalDiploma = () => {
 
         <div className="d-flex justify-content-end" style={{ marginTop: 20 }}>
           <Button title="Отправить" onClick={() => dispatch(addDiploma({ Specialty: specialty }))} />
+        </div>
+      </div>
+    </React.Fragment>
+  );
+};
+
+export const ModalDiplomaRemove = () => {
+  const dispatch = useDispatch();
+  const loading = useSelector(selectLoading);
+  const diploma = useSelector(selectDiploma);
+
+  return (
+    <React.Fragment>
+      <div className="modal__content">
+        <div className="modal__close" onClick={() => dispatch(close())}>
+          <IconModalClose />
+        </div>
+        <div className="modal__title">Удалить запись</div>
+
+        <div className="d-flex justify-content-center">
+          <Button title="Удалить" loading={loading.removeDiploma} onClick={() => dispatch(removeDiploma(diploma))} />
         </div>
       </div>
     </React.Fragment>

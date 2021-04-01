@@ -5,8 +5,6 @@ import { close } from "../../../../store/modalSlice";
 import { selectLoading, addCert, removeCert } from "../../../../store/dataSlice";
 import { selectCert } from "../../../../store/uiSlice";
 
-import { makeStyles } from "@material-ui/core/styles";
-
 import Uploady from "@rpldy/uploady";
 
 import { Select } from "../../../ui/input";
@@ -75,7 +73,7 @@ export const ModalCert = () => {
           <Button
             title="Отправить"
             onClick={() =>
-              dispatch(addCert({ Vendor: vendor, Type: type, File: file, Title: title, DateStart: dateStart, DateEnd: dateEnd }))
+              dispatch(addCert({ Vendor: vendor, Type: type, Title: title, DateStart: dateStart, DateEnd: dateEnd, File: file }))
             }
           />
         </div>

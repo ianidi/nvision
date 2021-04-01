@@ -4,18 +4,14 @@ import { open } from "../../store/modalSlice";
 import {
   getCert,
   selectCert,
-  removeCert,
   getDiploma,
   selectDiploma,
-  removeDiploma,
   getDegree,
   selectDegree,
-  removeDegree,
   getCredential,
   selectCredential,
-  removeCredential,
 } from "../../store/dataSlice";
-import { setCert, setDiploma } from "../../store/uiSlice";
+import { setCert, setDiploma, setDegree, setCredential } from "../../store/uiSlice";
 
 import { makeStyles } from "@material-ui/core/styles";
 import Table from "@material-ui/core/Table";
@@ -163,7 +159,13 @@ function Diploma() {
                       <div className="icon" onClick={() => saveFile({ title: row.File, url: `${API_URL}/static/${row.File}` })}>
                         <IconDownload />
                       </div>
-                      <div className="icon" onClick={() => dispatch(removeDiploma(row))}>
+                      <div
+                        className="icon"
+                        onClick={() => {
+                          dispatch(setDiploma(row));
+                          dispatch(open("diploma/remove"));
+                        }}
+                      >
                         <IconRemove />
                       </div>
                     </div>
@@ -218,7 +220,13 @@ function Degree() {
                       <div className="icon" onClick={() => saveFile({ title: row.File, url: `${API_URL}/static/${row.File}` })}>
                         <IconDownload />
                       </div>
-                      <div className="icon" onClick={() => dispatch(removeDegree(row))}>
+                      <div
+                        className="icon"
+                        onClick={() => {
+                          dispatch(setDegree(row));
+                          dispatch(open("degree/remove"));
+                        }}
+                      >
                         <IconRemove />
                       </div>
                     </div>
@@ -279,7 +287,13 @@ function Credential() {
                       <div className="icon" onClick={() => saveFile({ title: row.File, url: `${API_URL}/static/${row.File}` })}>
                         <IconDownload />
                       </div>
-                      <div className="icon" onClick={() => dispatch(removeCredential(row))}>
+                      <div
+                        className="icon"
+                        onClick={() => {
+                          dispatch(setCredential(row));
+                          dispatch(open("credential/remove"));
+                        }}
+                      >
                         <IconRemove />
                       </div>
                     </div>

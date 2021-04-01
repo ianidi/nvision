@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { API_URL } from "../../../../config";
 import { close } from "../../../../store/modalSlice";
-import { addDegree } from "../../../../store/dataSlice";
+import { selectLoading, addDegree, removeDegree } from "../../../../store/dataSlice";
+import { selectDegree } from "../../../../store/uiSlice";
 
 import Uploady from "@rpldy/uploady";
 
@@ -46,6 +47,27 @@ export const ModalDegree = () => {
 
         <div className="d-flex justify-content-end" style={{ marginTop: 20 }}>
           <Button title="Отправить" onClick={() => dispatch(addDegree({ Title: title, Field: field }))} />
+        </div>
+      </div>
+    </React.Fragment>
+  );
+};
+
+export const ModalDegreeRemove = () => {
+  const dispatch = useDispatch();
+  const loading = useSelector(selectLoading);
+  const degree = useSelector(selectDegree);
+
+  return (
+    <React.Fragment>
+      <div className="modal__content">
+        <div className="modal__close" onClick={() => dispatch(close())}>
+          <IconModalClose />
+        </div>
+        <div className="modal__title">Удалить запись</div>
+
+        <div className="d-flex justify-content-center">
+          <Button title="Удалить" loading={loading.removeDegree} onClick={() => dispatch(removeDegree(degree))} />
         </div>
       </div>
     </React.Fragment>
