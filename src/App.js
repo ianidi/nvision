@@ -9,7 +9,16 @@ import { Modal } from "@yandex/ui/Modal/desktop";
 
 import { Navbar, Sidebar, Content } from "./components/layout";
 import { Cert, Profile, Employee, Guide, GuideView, Report } from "./pages";
-import { ModalCert, ModalCredential, ModalDegree, ModalDiploma, ModalPD, ModalGuideCreate, ModalGuideEdit } from "./components/ui/modal";
+import {
+  ModalCert,
+  ModalCertRemove,
+  ModalCredential,
+  ModalDegree,
+  ModalDiploma,
+  ModalPD,
+  ModalGuideCreate,
+  ModalGuideEdit,
+} from "./components/ui/modal";
 
 function App() {
   const modalOpen = useSelector(selectOpen);
@@ -21,6 +30,7 @@ function App() {
       <div data-scroll-lock-scrollable>
         <Modal theme="normal" onClose={() => dispatch(close())} visible={modalOpen} zindexgrouplevel={20}>
           {modalTitle === "cert" && <ModalCert />}
+          {modalTitle === "cert/remove" && <ModalCertRemove />}
           {modalTitle === "diploma" && <ModalDiploma />}
           {modalTitle === "degree" && <ModalDegree />}
           {modalTitle === "credential" && <ModalCredential />}

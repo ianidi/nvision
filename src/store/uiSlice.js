@@ -5,6 +5,7 @@ export const uiSlice = createSlice({
   initialState: {
     menuOpen: false,
     drawerOpen: false,
+    cert: null,
     guideCategory: null,
     guide: null,
   },
@@ -21,6 +22,9 @@ export const uiSlice = createSlice({
     closeDrawer: (state) => {
       state.drawerOpen = false;
     },
+    setCert: (state, action) => {
+      state.cert = action.payload;
+    },
     setGuideCategory: (state, action) => {
       state.guideCategory = action.payload;
     },
@@ -30,10 +34,11 @@ export const uiSlice = createSlice({
   },
 });
 
-export const { toggleMenu, closeMenu, toggleDrawer, closeDrawer, setGuideCategory, setGuide } = uiSlice.actions;
+export const { toggleMenu, closeMenu, toggleDrawer, closeDrawer, setCert, setGuideCategory, setGuide } = uiSlice.actions;
 
 export const selectMenuOpen = (state) => state.ui.menuOpen;
 export const selectDrawerOpen = (state) => state.ui.drawerOpen;
+export const selectCert = (state) => state.ui.cert;
 export const selectGuideCategory = (state) => state.ui.guideCategory;
 export const selectGuide = (state) => state.ui.guide;
 

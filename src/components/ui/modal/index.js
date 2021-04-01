@@ -1,4 +1,5 @@
 export { ModalCert } from "./cert";
+export { ModalCertRemove } from "./cert";
 export { ModalDiploma } from "./diploma";
 export { ModalDegree } from "./degree";
 export { ModalCredential } from "./credential";
