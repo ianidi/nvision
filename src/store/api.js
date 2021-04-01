@@ -81,8 +81,8 @@ const getCredential = async () => {
   return { result: res.data };
 };
 
-const addCredential = async ({ Specialty, File }) => {
-  const res = await client.post("/credential/add", { Specialty, File });
+const addCredential = async ({ Type, DateStart, DateEnd, File }) => {
+  const res = await client.post("/credential/add", { Type, DateStart, DateEnd, File });
   return { result: res.data };
 };
 
