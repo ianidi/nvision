@@ -95,7 +95,13 @@ function Action(row) {
       >
         <IconEdit />
       </div>
-      <div className="icon" onClick={() => dispatch(removeGuide({ GuideID: row.GuideID, Category: category }))}>
+      <div
+        className="icon"
+        onClick={() => {
+          dispatch(setGuide(row));
+          dispatch(open("guide/remove"));
+        }}
+      >
         <IconRemove />
       </div>
     </div>

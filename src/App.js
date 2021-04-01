@@ -21,6 +21,7 @@ import {
   ModalPD,
   ModalGuideCreate,
   ModalGuideEdit,
+  ModalGuideRemove,
 } from "./components/ui/modal";
 
 function App() {
@@ -43,6 +44,7 @@ function App() {
           {modalTitle === "pd" && <ModalPD />}
           {modalTitle === "guide/create" && <ModalGuideCreate />}
           {modalTitle === "guide/edit" && <ModalGuideEdit />}
+          {modalTitle === "guide/remove" && <ModalGuideRemove />}
         </Modal>
         <div className="layout">
           <Navbar />

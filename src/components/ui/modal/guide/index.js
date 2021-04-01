@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { close } from "../../../../store/modalSlice";
 import { selectGuide, selectGuideCategory } from "../../../../store/uiSlice";
-import { selectLoading, addGuide, editGuide } from "../../../../store/dataSlice";
+import { selectLoading, addGuide, editGuide, removeGuide } from "../../../../store/dataSlice";
 
 import { TextInput } from "../../../ui/input";
 import { Button } from "../../../ui/button";
@@ -53,6 +53,27 @@ export const ModalGuideEdit = () => {
             loading={loading.editGuide}
             onClick={() => dispatch(editGuide({ Category: guide.Category, GuideID: guide.GuideID, Title: title }))}
           />
+        </div>
+      </div>
+    </React.Fragment>
+  );
+};
+
+export const ModalGuideRemove = () => {
+  const dispatch = useDispatch();
+  const loading = useSelector(selectLoading);
+  const guide = useSelector(selectGuide);
+
+  return (
+    <React.Fragment>
+      <div className="modal__content">
+        <div className="modal__close" onClick={() => dispatch(close())}>
+          <IconModalClose />
+        </div>
+        <div className="modal__title">Удалить запись</div>
+
+        <div className="d-flex justify-content-center">
+          <Button title="Удалить" loading={loading.removeGuide} onClick={() => dispatch(removeGuide(guide))} />
         </div>
       </div>
     </React.Fragment>
