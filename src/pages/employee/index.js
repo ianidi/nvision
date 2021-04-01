@@ -93,6 +93,73 @@ export const Employee = () => {
   const [isPopover4Open, setIsPopover4Open] = useState(false);
   const [isPopover5Open, setIsPopover5Open] = useState(false);
 
+  const classes = useStyles();
+
+  const [order, setOrder] = React.useState("asc");
+  const [orderBy, setOrderBy] = React.useState("calories");
+  const [selected, setSelected] = React.useState([]);
+  const [page, setPage] = React.useState(0);
+  const [dense, setDense] = React.useState(false);
+  const [rowsPerPage, setRowsPerPage] = React.useState(5);
+
+  const handleRequestSort = (event, property) => {
+    const isAsc = orderBy === property && order === "asc";
+    setOrder(isAsc ? "desc" : "asc");
+    setOrderBy(property);
+  };
+
+  const createSortHandler = (property) => (event) => {
+    handleRequestSort(event, property);
+  };
+
+  const handleSelectAllClick = (event) => {
+    if (event.target.checked) {
+      const newSelecteds = rows.map((n) => n.name);
+      setSelected(newSelecteds);
+      return;
+    }
+    setSelected([]);
+  };
+
+  const handleClick = (event, name) => {
+    const selectedIndex = selected.indexOf(name);
+    let newSelected = [];
+
+    if (selectedIndex === -1) {
+      newSelected = newSelected.concat(selected, name);
+    } else if (selectedIndex === 0) {
+      newSelected = newSelected.concat(selected.slice(1));
+    } else if (selectedIndex === selected.length - 1) {
+      newSelected = newSelected.concat(selected.slice(0, -1));
+    } else if (selectedIndex > 0) {
+      newSelected = newSelected.concat(selected.slice(0, selectedIndex), selected.slice(selectedIndex + 1));
+    }
+
+    setSelected(newSelected);
+  };
+
+  const handleChangePage = (event, newPage) => {
+    setPage(newPage);
+  };
+
+  const handleChangeRowsPerPage = (event) => {
+    setRowsPerPage(parseInt(event.target.value, 10));
+    setPage(0);
+  };
+
+  const handleChangeDense = (event) => {
+    setDense(event.target.checked);
+  };
+
+  const isSelected = (name) => selected.indexOf(name) !== -1;
+
+  const emptyRows = rowsPerPage - Math.min(rowsPerPage, rows.length - page * rowsPerPage);
+
+  const PATH = "/employee";
+  const ROWS_PER_PAGE = 15;
+
+  const { pageNumber = 1 } = useParams();
+
   return (
     <React.Fragment>
       <div className="area">
@@ -197,7 +264,98 @@ export const Employee = () => {
               <Button title="Найти" />
             </div>
             <div>
-              <TableEmployee />
+              <TableContainer style={{ marginTop: "10px", marginBottom: "20px", userSelect: "none" }}>
+                <Table className={classes.table} size="small" aria-label="таблица">
+                  <TableHead>
+                    <TableRow>
+                      <TableCell padding="checkbox">
+                        <Checkbox
+                          indeterminate={selected.length > 0 && selected.length < rows.length}
+                          checked={rows.length > 0 && selected.length === rows.length}
+                          onChange={handleSelectAllClick}
+                          inputProps={{ "aria-label": "выбрать все" }}
+                        />
+                      </TableCell>
+
+                      {headCells.map((headCell) => (
+                        <TableCell
+                          key={headCell.id}
+                          align={"left"}
+                          padding={headCell.disablePadding ? "none" : "default"}
+                          sortDirection={orderBy === headCell.id ? order : false}
+                          className={classes.tableKey}
+                        >
+                          <TableSortLabel
+                            active={orderBy === headCell.id}
+                            direction={orderBy === headCell.id ? order : "asc"}
+                            onClick={createSortHandler(headCell.id)}
+                          >
+                            {headCell.label}
+                            {/*orderBy === headCell.id ? (
+                          <span className={classes.visuallyHidden}>
+                            {order === 'desc' ? 'sorted descending' : 'sorted ascending'}
+                          </span>
+                        ) : null*/}
+                          </TableSortLabel>
+                        </TableCell>
+                      ))}
+                    </TableRow>
+                  </TableHead>
+                  <TableBody>
+                    {stableSort(rows, getComparator(order, orderBy))
+                      .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                      .map((row, index) => {
+                        const isItemSelected = isSelected(row.name);
+                        const labelId = `enhanced-table-checkbox-${index}`;
+
+                        return (
+                          <TableRow
+                            // hover
+                            // onClick={(event) => handleClick(event, row.name)}
+                            role="checkbox"
+                            aria-checked={isItemSelected}
+                            tabIndex={-1}
+                            key={row.name}
+                            selected={isItemSelected}
+                            className={classes.tableLine}
+                          >
+                            <TableCell padding="checkbox">
+                              <Checkbox
+                                checked={isItemSelected}
+                                inputProps={{ "aria-labelledby": labelId }}
+                                onClick={(event) => handleClick(event, row.name)}
+                              />
+                            </TableCell>
+                            <TableCell className={classes.tableCell} component="th" scope="row" padding="none">
+                              {row.name}
+                            </TableCell>
+                            <TableCell className={classes.tableCell}>{row.title}</TableCell>
+                          </TableRow>
+                        );
+                      })}
+                    {emptyRows > 0 && (
+                      <TableRow style={{ height: (dense ? 33 : 53) * emptyRows }}>
+                        <TableCell colSpan={9} />
+                      </TableRow>
+                    )}
+                  </TableBody>
+                </Table>
+
+                <Box display="flex" justifyContent="center" flex={1} padding={1}>
+                  <Pagination
+                    page={Number(pageNumber)}
+                    count={Math.ceil(rows.length / ROWS_PER_PAGE)}
+                    shape="round"
+                    color="#E6BE00"
+                    showFirstButton
+                    showLastButton
+                    boundaryCount={2}
+                    renderItem={(item) => (
+                      <PaginationItem type={"start-ellipsis"} component={Link} selected to={`${PATH}/${item.page}`} {...item} />
+                    )}
+                  />
+                </Box>
+              </TableContainer>
             </div>
           </div>
         </div>
@@ -205,210 +363,3 @@ export const Employee = () => {
     </React.Fragment>
   );
 };
-
-function TableEmployee() {
-  const classes = useStyles();
-
-  const [order, setOrder] = React.useState("asc");
-  const [orderBy, setOrderBy] = React.useState("calories");
-  const [selected, setSelected] = React.useState([]);
-  const [page, setPage] = React.useState(0);
-  const [dense, setDense] = React.useState(false);
-  const [rowsPerPage, setRowsPerPage] = React.useState(5);
-
-  const handleRequestSort = (event, property) => {
-    const isAsc = orderBy === property && order === "asc";
-    setOrder(isAsc ? "desc" : "asc");
-    setOrderBy(property);
-  };
-
-  const createSortHandler = (property) => (event) => {
-    handleRequestSort(event, property);
-  };
-
-  const handleSelectAllClick = (event) => {
-    if (event.target.checked) {
-      const newSelecteds = rows.map((n) => n.name);
-      setSelected(newSelecteds);
-      return;
-    }
-    setSelected([]);
-  };
-
-  const handleClick = (event, name) => {
-    const selectedIndex = selected.indexOf(name);
-    let newSelected = [];
-
-    if (selectedIndex === -1) {
-      newSelected = newSelected.concat(selected, name);
-    } else if (selectedIndex === 0) {
-      newSelected = newSelected.concat(selected.slice(1));
-    } else if (selectedIndex === selected.length - 1) {
-      newSelected = newSelected.concat(selected.slice(0, -1));
-    } else if (selectedIndex > 0) {
-      newSelected = newSelected.concat(selected.slice(0, selectedIndex), selected.slice(selectedIndex + 1));
-    }
-
-    setSelected(newSelected);
-  };
-
-  const handleChangePage = (event, newPage) => {
-    setPage(newPage);
-  };
-
-  const handleChangeRowsPerPage = (event) => {
-    setRowsPerPage(parseInt(event.target.value, 10));
-    setPage(0);
-  };
-
-  const handleChangeDense = (event) => {
-    setDense(event.target.checked);
-  };
-
-  const isSelected = (name) => selected.indexOf(name) !== -1;
-
-  const emptyRows = rowsPerPage - Math.min(rowsPerPage, rows.length - page * rowsPerPage);
-
-  const PATH = "/employee";
-  const ROWS_PER_PAGE = 15;
-
-  const { pageNumber = 1 } = useParams();
-
-  return (
-    <TableContainer style={{ marginTop: "10px", marginBottom: "20px", userSelect: "none" }}>
-      <Table className={classes.table} size="small" aria-label="таблица">
-        <TableHead>
-          <TableRow>
-            <TableCell padding="checkbox">
-              <Checkbox
-                indeterminate={selected.length > 0 && selected.length < rows.length}
-                checked={rows.length > 0 && selected.length === rows.length}
-                onChange={handleSelectAllClick}
-                inputProps={{ "aria-label": "выбрать все" }}
-              />
-            </TableCell>
-
-            {headCells.map((headCell) => (
-              <TableCell
-                key={headCell.id}
-                align={"left"}
-                padding={headCell.disablePadding ? "none" : "default"}
-                sortDirection={orderBy === headCell.id ? order : false}
-                className={classes.tableKey}
-              >
-                <TableSortLabel
-                  active={orderBy === headCell.id}
-                  direction={orderBy === headCell.id ? order : "asc"}
-                  onClick={createSortHandler(headCell.id)}
-                >
-                  {headCell.label}
-                  {/*orderBy === headCell.id ? (
-                    <span className={classes.visuallyHidden}>
-                      {order === 'desc' ? 'sorted descending' : 'sorted ascending'}
-                    </span>
-                  ) : null*/}
-                </TableSortLabel>
-              </TableCell>
-            ))}
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {stableSort(rows, getComparator(order, orderBy))
-            .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-            .map((row, index) => {
-              const isItemSelected = isSelected(row.name);
-              const labelId = `enhanced-table-checkbox-${index}`;
-
-              return (
-                <TableRow
-                  // hover
-                  // onClick={(event) => handleClick(event, row.name)}
-                  role="checkbox"
-                  aria-checked={isItemSelected}
-                  tabIndex={-1}
-                  key={row.name}
-                  selected={isItemSelected}
-                  className={classes.tableLine}
-                >
-                  <TableCell padding="checkbox">
-                    <Checkbox
-                      checked={isItemSelected}
-                      inputProps={{ "aria-labelledby": labelId }}
-                      onClick={(event) => handleClick(event, row.name)}
-                    />
-                  </TableCell>
-                  <TableCell className={classes.tableCell} component="th" scope="row" padding="none">
-                    {row.name}
-                  </TableCell>
-                  <TableCell className={classes.tableCell}>{row.title}</TableCell>
-                </TableRow>
-              );
-            })}
-          {emptyRows > 0 && (
-            <TableRow style={{ height: (dense ? 33 : 53) * emptyRows }}>
-              <TableCell colSpan={9} />
-            </TableRow>
-          )}
-        </TableBody>
-      </Table>
-
-      <Box display="flex" justifyContent="center" flex={1} padding={1}>
-        <Pagination
-          page={Number(pageNumber)}
-          count={Math.ceil(rows.length / ROWS_PER_PAGE)}
-          shape="round"
-          color="#E6BE00"
-          showFirstButton
-          showLastButton
-          boundaryCount={2}
-          renderItem={(item) => <PaginationItem type={"start-ellipsis"} component={Link} selected to={`${PATH}/${item.page}`} {...item} />}
-        />
-      </Box>
-    </TableContainer>
-  );
-}
-
-function TableEmployee2() {
-  const classes = useStyles();
-
-  const PATH = "/employee";
-  const ROWS_PER_PAGE = 15;
-
-  const { pageNumber = 1 } = useParams();
-
-  return (
-    <TableContainer style={{ marginTop: "10px", marginBottom: "20px", userSelect: "none" }}>
-      <Table className={classes.table} size="small" aria-label="a dense table">
-        <TableHead>
-          <TableRow>
-            <TableCell className={classes.tableKey}>Фамилия, Имя, Отчество сотрудника</TableCell>
-            <TableCell className={classes.tableKey}>Подразделение</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {rows.map((row) => (
-            <TableRow key={row.id} className={classes.tableLine}>
-              <TableCell className={classes.tableCell} component="th" scope="row">
-                {row.title}
-              </TableCell>
-              <TableCell className={classes.tableCell}>{row.startDate}</TableCell>
-            </TableRow>
-          ))}
-        </TableBody>
-      </Table>
-
-      <Box display="flex" justifyContent="center" flex={1} padding={1}>
-        <Pagination
-          page={Number(pageNumber)}
-          count={Math.ceil(rows.length / ROWS_PER_PAGE)}
-          shape="round"
-          color="#E6BE00"
-          showFirstButton
-          showLastButton
-          boundaryCount={2}
-          renderItem={(item) => <PaginationItem type={"start-ellipsis"} component={Link} selected to={`${PATH}/${item.page}`} {...item} />}
-        />
-      </Box>
-    </TableContainer>
-  );
-}
