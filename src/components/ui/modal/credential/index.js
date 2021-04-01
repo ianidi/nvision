@@ -78,7 +78,7 @@ export const ModalCredential = () => {
           style={{ marginBottom: 20 }}
         />
 
-        <div className="d-flex align-items-center justify-content-between" style={{ marginBottom: 10 }}>
+        <div className="d-flex align-items-center justify-content-between" style={{ marginBottom: 20 }}>
           <Datepicker callback={(d) => setDateStart(`${d.day}-${d.month}-${d.year}`)} placeholder="Дата начала" style={{ width: "48%" }} />
           <Datepicker callback={(d) => setDateEnd(`${d.day}-${d.month}-${d.year}`)} placeholder="Дата окончания" style={{ width: "48%" }} />
         </div>
