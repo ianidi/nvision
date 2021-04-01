@@ -15,6 +15,7 @@ import {
   selectCredential,
   removeCredential,
 } from "../../store/dataSlice";
+import { setCert } from "../../store/uiSlice";
 
 import { makeStyles } from "@material-ui/core/styles";
 import Table from "@material-ui/core/Table";
@@ -103,7 +104,13 @@ function Cert() {
                       <div className="icon" onClick={() => saveFile({ title: row.File, url: `${API_URL}/static/${row.File}` })}>
                         <IconDownload />
                       </div>
-                      <div className="icon" onClick={() => dispatch(removeCert(row))}>
+                      <div
+                        className="icon"
+                        onClick={() => {
+                          dispatch(setCert(row));
+                          dispatch(open("cert/remove"));
+                        }}
+                      >
                         <IconRemove />
                       </div>
                     </div>
