@@ -17,6 +17,7 @@ const options = [{ label: "Значение 1", value: "a" }, { label: "Знач
 
 export const ModalCert = () => {
   const dispatch = useDispatch();
+  const loading = useSelector(selectLoading);
   const [title, setTitle] = useState("");
   const [vendor, setVendor] = useState("");
   const [type, setType] = useState("");
@@ -72,6 +73,7 @@ export const ModalCert = () => {
         <div className="d-flex justify-content-end" style={{ marginTop: 20 }}>
           <Button
             title="Отправить"
+            loading={loading.addCert}
             onClick={() =>
               dispatch(addCert({ Vendor: vendor, Type: type, Title: title, DateStart: dateStart, DateEnd: dateEnd, File: file }))
             }

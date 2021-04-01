@@ -55,6 +55,7 @@ const options = [{ label: "Значение 1", value: "a" }, { label: "Знач
 
 export const ModalCredential = () => {
   const dispatch = useDispatch();
+  const loading = useSelector(selectLoading);
   const [type, setType] = useState("");
   const [dateStart, setDateStart] = useState("");
   const [dateEnd, setDateEnd] = useState("");
@@ -101,6 +102,7 @@ export const ModalCredential = () => {
         <div className="d-flex justify-content-end" style={{ marginTop: 20 }}>
           <Button
             title="Отправить"
+            loading={loading.addCredential}
             onClick={() => dispatch(addCredential({ Type: type, DateStart: dateStart, DateEnd: dateEnd, File: file }))}
           />
         </div>

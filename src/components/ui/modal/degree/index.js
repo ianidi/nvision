@@ -16,8 +16,10 @@ const options = [{ label: "Значение 1", value: "a" }, { label: "Знач
 
 export const ModalDegree = () => {
   const dispatch = useDispatch();
+  const loading = useSelector(selectLoading);
   const [title, setTitle] = useState("");
   const [field, setField] = useState("");
+  const [file, setFile] = useState("");
 
   return (
     <React.Fragment>
@@ -38,15 +40,19 @@ export const ModalDegree = () => {
         />
 
         <div className="d-flex align-items-center justify-content-between" style={{ marginBottom: 10 }}>
-          <TextInput title="Укажите научную область" style={{ marginBottom: 20 }} name="field" />
+          <TextInput title="Укажите научную область" style={{ marginBottom: 20 }} name="field" onChange={(e) => setField(e.target.value)} />
         </div>
 
         <Uploady destination={{ url: `${API_URL}/upload` }}>
-          <Upload />
+          <Upload extraProps={{ onComplete: (res) => setFile(res) }} />
         </Uploady>
 
         <div className="d-flex justify-content-end" style={{ marginTop: 20 }}>
-          <Button title="Отправить" onClick={() => dispatch(addDegree({ Title: title, Field: field }))} />
+          <Button
+            title="Отправить"
+            loading={loading.addDegree}
+            onClick={() => dispatch(addDegree({ Title: title, Field: field, File: file }))}
+          />
         </div>
       </div>
     </React.Fragment>

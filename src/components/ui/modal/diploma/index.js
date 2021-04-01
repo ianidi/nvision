@@ -16,6 +16,7 @@ const options = [{ label: "Значение 1", value: "a" }, { label: "Знач
 
 export const ModalDiploma = () => {
   const dispatch = useDispatch();
+  const loading = useSelector(selectLoading);
   const [specialty, setSpecialty] = useState("");
 
   return (
@@ -41,7 +42,7 @@ export const ModalDiploma = () => {
         </Uploady>
 
         <div className="d-flex justify-content-end" style={{ marginTop: 20 }}>
-          <Button title="Отправить" onClick={() => dispatch(addDiploma({ Specialty: specialty }))} />
+          <Button title="Отправить" loading={loading.addDiploma} onClick={() => dispatch(addDiploma({ Specialty: specialty }))} />
         </div>
       </div>
     </React.Fragment>
