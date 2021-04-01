@@ -25,8 +25,7 @@ import { ReactComponent as IconAdd } from "../../assets/icons/add.svg";
 import { ReactComponent as IconRemove } from "../../assets/icons/remove.svg";
 import { ReactComponent as IconEdit } from "../../assets/icons/edit.svg";
 
-import { TextInput } from "../../components/ui/input";
-import { Button, Small } from "../../components/ui/button";
+import { Small } from "../../components/ui/button";
 import { pageTitle } from "../../config";
 
 import "./style.scoped.scss";
@@ -129,15 +128,6 @@ export const GuideView = () => {
                 dispatch(open("guide/create"));
               }}
             />
-          </div>
-        </div>
-
-        <div className="d-flex align-items-center justify-content-between table__search">
-          <div style={{ width: "89%" }}>
-            <TextInput title="Введите название" search />
-          </div>
-          <div style={{ width: "10%" }}>
-            <Button title="Найти" />
           </div>
         </div>
 
