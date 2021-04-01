@@ -84,7 +84,7 @@ export const addGuide = createAsyncThunk("guide/addGuide", async (data, thunkAPI
 export const editGuide = createAsyncThunk("guide/editGuide", async (data, thunkAPI) => {
   const response = await api.editGuide(data);
   thunkAPI.dispatch(close());
-  thunkAPI.dispatch(getGuide(data));
+  // thunkAPI.dispatch(getGuide(data));
   return response.result.status;
 });
 
