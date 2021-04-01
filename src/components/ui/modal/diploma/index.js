@@ -18,6 +18,7 @@ export const ModalDiploma = () => {
   const dispatch = useDispatch();
   const loading = useSelector(selectLoading);
   const [specialty, setSpecialty] = useState("");
+  const [file, setFile] = useState("");
 
   return (
     <React.Fragment>
@@ -38,11 +39,15 @@ export const ModalDiploma = () => {
         />
 
         <Uploady destination={{ url: `${API_URL}/upload` }}>
-          <Upload />
+          <Upload extraProps={{ onComplete: (res) => setFile(res) }} />
         </Uploady>
 
         <div className="d-flex justify-content-end" style={{ marginTop: 20 }}>
-          <Button title="Отправить" loading={loading.addDiploma} onClick={() => dispatch(addDiploma({ Specialty: specialty }))} />
+          <Button
+            title="Отправить"
+            loading={loading.addDiploma}
+            onClick={() => dispatch(addDiploma({ Specialty: specialty, File: file }))}
+          />
         </div>
       </div>
     </React.Fragment>

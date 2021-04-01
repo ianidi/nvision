@@ -10,8 +10,7 @@ export const getCert = createAsyncThunk("cert/getCert", async (data, thunkAPI) =
 export const addCert = createAsyncThunk("cert/addCert", async (data, thunkAPI) => {
   const response = await api.addCert(data);
   thunkAPI.dispatch(close());
-  thunkAPI.dispatch(getCert());
-  return response.result.result !== null ? response.result.result : [];
+  return response.result;
 });
 
 export const removeCert = createAsyncThunk("cert/removeCert", async (data, thunkAPI) => {
@@ -28,8 +27,7 @@ export const getDiploma = createAsyncThunk("diploma/getDiploma", async (data, th
 export const addDiploma = createAsyncThunk("diploma/addDiploma", async (data, thunkAPI) => {
   const response = await api.addDiploma(data);
   thunkAPI.dispatch(close());
-  thunkAPI.dispatch(getDiploma());
-  return response.result.result !== null ? response.result.result : [];
+  return response.result;
 });
 
 export const removeDiploma = createAsyncThunk("diploma/removeDiploma", async (data, thunkAPI) => {
@@ -46,8 +44,7 @@ export const getDegree = createAsyncThunk("degree/getDegree", async (data, thunk
 export const addDegree = createAsyncThunk("degree/addDegree", async (data, thunkAPI) => {
   const response = await api.addDegree(data);
   thunkAPI.dispatch(close());
-  thunkAPI.dispatch(getDegree());
-  return response.result.result !== null ? response.result.result : [];
+  return response.result;
 });
 
 export const removeDegree = createAsyncThunk("degree/removeDegree", async (data, thunkAPI) => {
@@ -64,8 +61,7 @@ export const getCredential = createAsyncThunk("credential/getCredential", async 
 export const addCredential = createAsyncThunk("credential/addCredential", async (data, thunkAPI) => {
   const response = await api.addCredential(data);
   thunkAPI.dispatch(close());
-  thunkAPI.dispatch(getCredential());
-  return response.result.result !== null ? response.result.result : [];
+  return response.result;
 });
 
 export const removeCredential = createAsyncThunk("credential/removeCredential", async (data, thunkAPI) => {
@@ -108,6 +104,18 @@ export const dataSlice = createSlice({
     [getCert.fulfilled]: (state, action) => {
       state.cert = action.payload;
     },
+    [addCert.fulfilled]: (state, action) => {
+      state.loading.addCert = false;
+
+      if (!action.payload.result) {
+        return;
+      }
+
+      state.cert.push(action.payload.result);
+    },
+    [addCert.pending]: (state, action) => {
+      state.loading.addCert = true;
+    },
     [removeCert.fulfilled]: (state, action) => {
       state.loading.removeCert = false;
 
@@ -122,6 +130,18 @@ export const dataSlice = createSlice({
     },
     [getDiploma.fulfilled]: (state, action) => {
       state.diploma = action.payload;
+    },
+    [addDiploma.fulfilled]: (state, action) => {
+      state.loading.addDiploma = false;
+
+      if (!action.payload.result) {
+        return;
+      }
+
+      state.diploma.push(action.payload.result);
+    },
+    [addDiploma.pending]: (state, action) => {
+      state.loading.addDiploma = true;
     },
     [removeDiploma.fulfilled]: (state, action) => {
       state.loading.removeDiploma = false;
@@ -138,6 +158,18 @@ export const dataSlice = createSlice({
     [getDegree.fulfilled]: (state, action) => {
       state.degree = action.payload;
     },
+    [addDegree.fulfilled]: (state, action) => {
+      state.loading.addDegree = false;
+
+      if (!action.payload.result) {
+        return;
+      }
+
+      state.degree.push(action.payload.result);
+    },
+    [addDegree.pending]: (state, action) => {
+      state.loading.addDegree = true;
+    },
     [removeDegree.fulfilled]: (state, action) => {
       state.loading.removeDegree = false;
 
@@ -152,6 +184,18 @@ export const dataSlice = createSlice({
     },
     [getCredential.fulfilled]: (state, action) => {
       state.credential = action.payload;
+    },
+    [addCredential.fulfilled]: (state, action) => {
+      state.loading.addCredential = false;
+
+      if (!action.payload.result) {
+        return;
+      }
+
+      state.credential.push(action.payload.result);
+    },
+    [addCredential.pending]: (state, action) => {
+      state.loading.addCredential = true;
     },
     [removeCredential.fulfilled]: (state, action) => {
       state.loading.removeCredential = false;
