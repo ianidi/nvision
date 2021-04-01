@@ -356,7 +356,7 @@ export const Profile = () => {
             <Round
               title="Скачать все файлы"
               icon={<IconArrowDownload />}
-              onClick={() => saveFile({ title: "files.zip", url: "http://localhost:3000/file.zip" })}
+              onClick={() => saveFile({ title: "files.zip", url: `${API_URL}/download` })}
             />
           </div>
         </div>
