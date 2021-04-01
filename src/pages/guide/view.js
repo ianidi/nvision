@@ -47,13 +47,6 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const headCells = [
-  { id: "name", disablePadding: true, label: "№", props: { width: "25%" } },
-  { id: "title", disablePadding: false, label: "Название", props: { width: "25%" } },
-  { id: "vendor", disablePadding: false, label: "Оповещать об окончании сертификата", props: { width: "25%" } },
-  { id: "action", disablePadding: false, label: "", props: { width: "25%" } },
-];
-
 function descendingComparator(a, b, orderBy) {
   if (b[orderBy] < a[orderBy]) {
     return -1;
@@ -139,6 +132,13 @@ export const GuideView = () => {
   );
 };
 
+const headCells = [
+  { id: "name", disablePadding: true, label: "№", props: { width: "25%" } },
+  { id: "title", disablePadding: false, label: "Название", props: { width: "25%" } },
+  { id: "inform", disablePadding: false, label: "Оповещать об окончании сертификата", props: { width: "25%" } },
+  { id: "action", disablePadding: false, label: "", props: { width: "25%" } },
+];
+
 function TableGuide() {
   const classes = useStyles();
   const { category } = useParams();
@@ -181,29 +181,35 @@ function TableGuide() {
       <Table className={classes.table} size="small" aria-label="таблица">
         <TableHead>
           <TableRow>
-            {headCells.map((headCell) => (
-              <TableCell
-                key={headCell.id}
-                align={"left"}
-                padding={headCell.disablePadding ? "none" : "default"}
-                sortDirection={orderBy === headCell.id ? order : false}
-                className={classes.tableKey}
-                {...headCell.props}
-              >
-                <TableSortLabel
-                  active={orderBy === headCell.id}
-                  direction={orderBy === headCell.id ? order : "asc"}
-                  onClick={createSortHandler(headCell.id)}
+            {headCells.map((headCell) => {
+              if (category !== "vendor" && headCell.id === "inform") {
+                return;
+              }
+
+              return (
+                <TableCell
+                  key={headCell.id}
+                  align={"left"}
+                  padding={headCell.disablePadding ? "none" : "default"}
+                  sortDirection={orderBy === headCell.id ? order : false}
+                  className={classes.tableKey}
+                  {...headCell.props}
                 >
-                  {headCell.label}
-                  {/*orderBy === headCell.id ? (
+                  <TableSortLabel
+                    active={orderBy === headCell.id}
+                    direction={orderBy === headCell.id ? order : "asc"}
+                    onClick={createSortHandler(headCell.id)}
+                  >
+                    {headCell.label}
+                    {/*orderBy === headCell.id ? (
                     <span className={classes.visuallyHidden}>
                       {order === 'desc' ? 'sorted descending' : 'sorted ascending'}
                     </span>
                   ) : null*/}
-                </TableSortLabel>
-              </TableCell>
-            ))}
+                  </TableSortLabel>
+                </TableCell>
+              );
+            })}
           </TableRow>
         </TableHead>
         <TableBody>
@@ -229,13 +235,15 @@ function TableGuide() {
                       {row.GuideID}
                     </TableCell>
                     <TableCell className={classes.tableCell}>{row.Title}</TableCell>
-                    <TableCell padding="checkbox">
-                      <Checkbox
-                        checked={isItemSelected}
-                        inputProps={{ "aria-labelledby": labelId }}
-                        // onClick={(event) => handleClick(event, row.name)}
-                      />
-                    </TableCell>
+                    {category === "vendor" && (
+                      <TableCell padding="checkbox">
+                        <Checkbox
+                          checked={isItemSelected}
+                          inputProps={{ "aria-labelledby": labelId }}
+                          // onClick={(event) => handleClick(event, row.name)}
+                        />
+                      </TableCell>
+                    )}
                     <TableCell className={classes.tableCell}>
                       <Action {...row} />
                     </TableCell>
