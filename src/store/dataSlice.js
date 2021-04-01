@@ -16,7 +16,8 @@ export const addCert = createAsyncThunk("cert/addCert", async (data, thunkAPI) =
 
 export const removeCert = createAsyncThunk("cert/removeCert", async (data, thunkAPI) => {
   const response = await api.removeCert(data);
-  return response.result.result !== null ? response.result.result : [];
+  thunkAPI.dispatch(close());
+  return response.result.status;
 });
 
 export const getDiploma = createAsyncThunk("diploma/getDiploma", async (data, thunkAPI) => {
@@ -33,7 +34,8 @@ export const addDiploma = createAsyncThunk("diploma/addDiploma", async (data, th
 
 export const removeDiploma = createAsyncThunk("diploma/removeDiploma", async (data, thunkAPI) => {
   const response = await api.removeDiploma(data);
-  return response.result.result !== null ? response.result.result : [];
+  thunkAPI.dispatch(close());
+  return response.result.status;
 });
 
 export const getDegree = createAsyncThunk("degree/getDegree", async (data, thunkAPI) => {
@@ -50,7 +52,8 @@ export const addDegree = createAsyncThunk("degree/addDegree", async (data, thunk
 
 export const removeDegree = createAsyncThunk("degree/removeDegree", async (data, thunkAPI) => {
   const response = await api.removeDegree(data);
-  return response.result.result !== null ? response.result.result : [];
+  thunkAPI.dispatch(close());
+  return response.result.status;
 });
 
 export const getCredential = createAsyncThunk("credential/getCredential", async (data, thunkAPI) => {
@@ -67,7 +70,8 @@ export const addCredential = createAsyncThunk("credential/addCredential", async 
 
 export const removeCredential = createAsyncThunk("credential/removeCredential", async (data, thunkAPI) => {
   const response = await api.removeCredential(data);
-  return response.result.result !== null ? response.result.result : [];
+  thunkAPI.dispatch(close());
+  return response.result.status;
 });
 
 export const getGuide = createAsyncThunk("guide/getGuide", async (data, thunkAPI) => {
@@ -105,25 +109,61 @@ export const dataSlice = createSlice({
       state.cert = action.payload;
     },
     [removeCert.fulfilled]: (state, action) => {
-      state.cert = action.payload;
+      state.loading.removeCert = false;
+
+      if (!action.payload) {
+        return;
+      }
+
+      state.cert = state.cert.filter((item, index) => item.CertID !== action.meta.arg.CertID);
+    },
+    [removeCert.pending]: (state, action) => {
+      state.loading.removeCert = true;
     },
     [getDiploma.fulfilled]: (state, action) => {
       state.diploma = action.payload;
     },
     [removeDiploma.fulfilled]: (state, action) => {
-      state.diploma = action.payload;
+      state.loading.removeDiploma = false;
+
+      if (!action.payload) {
+        return;
+      }
+
+      state.diploma = state.diploma.filter((item, index) => item.DiplomaID !== action.meta.arg.DiplomaID);
+    },
+    [removeDiploma.pending]: (state, action) => {
+      state.loading.removeDiploma = true;
     },
     [getDegree.fulfilled]: (state, action) => {
       state.degree = action.payload;
     },
     [removeDegree.fulfilled]: (state, action) => {
-      state.degree = action.payload;
+      state.loading.removeDegree = false;
+
+      if (!action.payload) {
+        return;
+      }
+
+      state.degree = state.degree.filter((item, index) => item.DegreeID !== action.meta.arg.DegreeID);
+    },
+    [removeDegree.pending]: (state, action) => {
+      state.loading.removeDegree = true;
     },
     [getCredential.fulfilled]: (state, action) => {
       state.credential = action.payload;
     },
     [removeCredential.fulfilled]: (state, action) => {
-      state.credential = action.payload;
+      state.loading.removeCredential = false;
+
+      if (!action.payload) {
+        return;
+      }
+
+      state.credential = state.credential.filter((item, index) => item.CredentialID !== action.meta.arg.CredentialID);
+    },
+    [removeCredential.pending]: (state, action) => {
+      state.loading.removeCredential = true;
     },
     [getGuide.fulfilled]: (state, action) => {
       state.guide = action.payload;
