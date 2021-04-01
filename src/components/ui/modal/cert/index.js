@@ -59,6 +59,7 @@ export const ModalCert = () => {
   const [type, setType] = useState("");
   const [dateStart, setDateStart] = useState("");
   const [dateEnd, setDateEnd] = useState("");
+  const [file, setFile] = useState("");
 
   return (
     <React.Fragment>
@@ -104,15 +105,17 @@ export const ModalCert = () => {
           />
         </div>
 
-        <Uploady destination={{ url: `${API_URL}/upload` }}>
-          <Upload />
+        <Uploady
+          destination={{ url: `${API_URL}/upload` }} //enhancer={{ uploader: {} }}
+        >
+          <Upload extraProps={{ onComplete: (res) => setFile(res) }} />
         </Uploady>
 
         <div className="d-flex justify-content-end" style={{ marginTop: 20 }}>
           <Button
             title="Отправить"
             onClick={() =>
-              dispatch(addCert({ Vendor: vendor, Type: type, File: "d", Title: title, DateStart: dateStart, DateEnd: dateEnd }))
+              dispatch(addCert({ Vendor: vendor, Type: type, File: file, Title: title, DateStart: dateStart, DateEnd: dateEnd }))
             }
           />
         </div>

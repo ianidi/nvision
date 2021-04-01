@@ -1,4 +1,5 @@
 import React, { forwardRef } from "react";
+import { useItemFinishListener } from "@rpldy/uploady";
 import { asUploadButton } from "@rpldy/upload-button";
 import "./style.scoped.scss";
 
@@ -6,6 +7,11 @@ import { ReactComponent as IconAttachment } from "../../../../assets/icons/attac
 
 export const Upload = asUploadButton(
   forwardRef((props, ref) => {
+    useItemFinishListener((item) => {
+      // console.log(`item ${item.id} finished uploading, response was: `, item.uploadResponse, item.uploadStatus);
+      props.onComplete(item.uploadResponse.data.file);
+    });
+
     return (
       <React.Fragment>
         <div {...props}>

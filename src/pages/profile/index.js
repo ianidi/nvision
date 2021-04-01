@@ -27,6 +27,7 @@ import TableRow from "@material-ui/core/TableRow";
 import { Collapse } from "react-collapse";
 
 import { saveFile } from "../../service";
+import { API_URL } from "../../config";
 
 import { Round } from "../../components/ui/button";
 import { ReactComponent as IconArrowRight } from "../../assets/icons/arrow_right.svg";
@@ -67,10 +68,10 @@ function CertStatus({ CertID, File }) {
 
   return (
     <div className="d-flex align-items-center">
-      <div className="icon">
+      <a className="icon" href={`${API_URL}/static/${File}`} target="_blank" rel="nofollow noreferrer noopener">
         <IconView />
-      </div>
-      <div className="icon" onClick={() => saveFile({ title: File, url: `http://localhost:4000/${File}` })}>
+      </a>
+      <div className="icon" onClick={() => saveFile({ title: File, url: `${API_URL}/static/${File}` })}>
         <IconDownload />
       </div>
       <div className="icon" onClick={() => dispatch(removeCert(CertID))}>
@@ -88,7 +89,7 @@ function DiplomaStatus({ DiplomaID, File }) {
       <div className="icon">
         <IconView />
       </div>
-      <div className="icon" onClick={() => saveFile({ title: File, url: `http://localhost:4000/${File}` })}>
+      <div className="icon" onClick={() => saveFile({ title: File, url: `${API_URL}/static/${File}` })}>
         <IconDownload />
       </div>
       <div className="icon" onClick={() => dispatch(removeDiploma(DiplomaID))}>
@@ -106,7 +107,7 @@ function DegreeStatus({ DegreeID, File }) {
       <div className="icon">
         <IconView />
       </div>
-      <div className="icon" onClick={() => saveFile({ title: File, url: `http://localhost:4000/${File}` })}>
+      <div className="icon" onClick={() => saveFile({ title: File, url: `${API_URL}/static/${File}` })}>
         <IconDownload />
       </div>
       <div className="icon" onClick={() => dispatch(removeDegree(DegreeID))}>
@@ -124,7 +125,7 @@ function CredentialStatus({ CredentialID, File }) {
       <div className="icon">
         <IconView />
       </div>
-      <div className="icon" onClick={() => saveFile({ title: File, url: `http://localhost:4000/${File}` })}>
+      <div className="icon" onClick={() => saveFile({ title: File, url: `${API_URL}/static/${File}` })}>
         <IconDownload />
       </div>
       <div className="icon" onClick={() => dispatch(removeCredential(CredentialID))}>
