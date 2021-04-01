@@ -36,8 +36,8 @@ const getCert = async () => {
   return { result: res.data };
 };
 
-const addCert = async ({ Vendor, Type, Status, File, Title, DateStart, DateEnd }) => {
-  const res = await client.post("/cert/add", { Vendor, Type, Status, File, Title, DateStart, DateEnd });
+const addCert = async ({ Vendor, Type, Status, Title, DateStart, DateEnd, File }) => {
+  const res = await client.post("/cert/add", { Vendor, Type, Status, Title, DateStart, DateEnd, File });
   return { result: res.data };
 };
 
@@ -51,8 +51,8 @@ const getDiploma = async () => {
   return { result: res.data };
 };
 
-const addDiploma = async ({ Specialty }) => {
-  const res = await client.post("/diploma/add", { Specialty });
+const addDiploma = async ({ Specialty, File }) => {
+  const res = await client.post("/diploma/add", { Specialty, File });
   return { result: res.data };
 };
 
@@ -66,8 +66,8 @@ const getDegree = async () => {
   return { result: res.data };
 };
 
-const addDegree = async ({ Title, Field }) => {
-  const res = await client.post("/degree/add", { Title, Field });
+const addDegree = async ({ Title, Field, File }) => {
+  const res = await client.post("/degree/add", { Title, Field, File });
   return { result: res.data };
 };
 
@@ -81,8 +81,8 @@ const getCredential = async () => {
   return { result: res.data };
 };
 
-const addCredential = async ({ Specialty }) => {
-  const res = await client.post("/credential/add", { Specialty });
+const addCredential = async ({ Specialty, File }) => {
+  const res = await client.post("/credential/add", { Specialty, File });
   return { result: res.data };
 };
 
