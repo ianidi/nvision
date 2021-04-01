@@ -31,8 +31,8 @@ export const addDiploma = createAsyncThunk("diploma/addDiploma", async (data, th
   return response.result.result !== null ? response.result.result : [];
 });
 
-export const removeDiploma = createAsyncThunk("diploma/removeDiploma", async (DiplomaId, thunkAPI) => {
-  const response = await api.removeDiploma(DiplomaId);
+export const removeDiploma = createAsyncThunk("diploma/removeDiploma", async (data, thunkAPI) => {
+  const response = await api.removeDiploma(data);
   return response.result.result !== null ? response.result.result : [];
 });
 
@@ -48,8 +48,8 @@ export const addDegree = createAsyncThunk("degree/addDegree", async (data, thunk
   return response.result.result !== null ? response.result.result : [];
 });
 
-export const removeDegree = createAsyncThunk("degree/removeDegree", async (DegreeId, thunkAPI) => {
-  const response = await api.removeDegree(DegreeId);
+export const removeDegree = createAsyncThunk("degree/removeDegree", async (data, thunkAPI) => {
+  const response = await api.removeDegree(data);
   return response.result.result !== null ? response.result.result : [];
 });
 
@@ -65,8 +65,8 @@ export const addCredential = createAsyncThunk("credential/addCredential", async 
   return response.result.result !== null ? response.result.result : [];
 });
 
-export const removeCredential = createAsyncThunk("credential/removeCredential", async (CredentialId, thunkAPI) => {
-  const response = await api.removeCredential(CredentialId);
+export const removeCredential = createAsyncThunk("credential/removeCredential", async (data, thunkAPI) => {
+  const response = await api.removeCredential(data);
   return response.result.result !== null ? response.result.result : [];
 });
 

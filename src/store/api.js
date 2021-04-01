@@ -56,7 +56,7 @@ const addDiploma = async ({ Specialty }) => {
   return { result: res.data };
 };
 
-const removeDiploma = async (DiplomaID) => {
+const removeDiploma = async ({ DiplomaID }) => {
   const res = await client.post("/diploma/remove", { DiplomaID });
   return { result: res.data };
 };
@@ -71,7 +71,7 @@ const addDegree = async ({ Title, Field }) => {
   return { result: res.data };
 };
 
-const removeDegree = async (DegreeID) => {
+const removeDegree = async ({ DegreeID }) => {
   const res = await client.post("/degree/remove", { DegreeID });
   return { result: res.data };
 };
@@ -86,7 +86,7 @@ const addCredential = async ({ Specialty }) => {
   return { result: res.data };
 };
 
-const removeCredential = async (CredentialID) => {
+const removeCredential = async ({ CredentialID }) => {
   const res = await client.post("/credential/remove", { CredentialID });
   return { result: res.data };
 };
