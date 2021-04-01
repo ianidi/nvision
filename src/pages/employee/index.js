@@ -47,17 +47,17 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function createData(name, title, vendor, type, startDate, endDate, status) {
-  return { name, title, vendor, type, startDate, endDate, status };
+function createData(EmployeeID, firstName, title, vendor, type, startDate, endDate, status) {
+  return { EmployeeID, firstName, title, vendor, type, startDate, endDate, status };
 }
 
 const rows = [
-  createData("First Name", "Специалист по MS Excel", "Microsoft", "Type", "01.09.2020", "31.08.2020", "Действует"),
-  createData("Last Name", "Специалист по MS Excel", "Microsoft", "Type", "02.09.2020", "30.08.2020", "Действует"),
+  createData(1, "First Name", "Специалист по MS Excel", "Microsoft", "Type", "01.09.2020", "31.08.2020", "Действует"),
+  createData(2, "Last Name", "Специалист по MS Excel", "Microsoft", "Type", "02.09.2020", "30.08.2020", "Действует"),
 ];
 
 const headCells = [
-  { id: "name", disablePadding: true, label: "ФИО сотрудника" },
+  { id: "firstName", disablePadding: true, label: "ФИО сотрудника" },
   { id: "title", disablePadding: false, label: "Подразделение" },
 ];
 
@@ -114,7 +114,7 @@ export const Employee = () => {
 
   const handleSelectAllClick = (event) => {
     if (event.target.checked) {
-      const newSelecteds = rows.map((n) => n.name);
+      const newSelecteds = rows.map((n) => n.EmployeeID);
       setSelected(newSelecteds);
       return;
     }
@@ -160,6 +160,18 @@ export const Employee = () => {
 
   const { pageNumber = 1 } = useParams();
 
+  const prepareExcel = () => {
+    let data = rows;
+
+    if (selected.length > 0) {
+      data = data.filter((item) => selected.includes(item.EmployeeID));
+    }
+
+    exportExcel({ title: "employee", data });
+  };
+
+  console.log(selected);
+
   return (
     <React.Fragment>
       <div className="area">
@@ -181,12 +193,7 @@ export const Employee = () => {
               style={{ marginRight: 20 }}
               onClick={() => dispatch(open("cert"))}
             />
-            <Small
-              title="Выгрузить в Excel"
-              icon={<IconArrowDownloadExcel />}
-              color="#009A50"
-              onClick={() => exportExcel({ title: "employee", data: rows })}
-            />
+            <Small title="Выгрузить в Excel" icon={<IconArrowDownloadExcel />} color="#009A50" onClick={prepareExcel} />
           </div>
         </div>
 
@@ -305,17 +312,17 @@ export const Employee = () => {
                     {stableSort(rows, getComparator(order, orderBy))
                       .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                       .map((row, index) => {
-                        const isItemSelected = isSelected(row.name);
+                        const isItemSelected = isSelected(row.EmployeeID);
                         const labelId = `enhanced-table-checkbox-${index}`;
 
                         return (
                           <TableRow
                             // hover
-                            // onClick={(event) => handleClick(event, row.name)}
+                            // onClick={(event) => handleClick(event, row.EmployeeID)}
                             role="checkbox"
                             aria-checked={isItemSelected}
                             tabIndex={-1}
-                            key={row.name}
+                            key={row.EmployeeID}
                             selected={isItemSelected}
                             className={classes.tableLine}
                           >
@@ -323,11 +330,11 @@ export const Employee = () => {
                               <Checkbox
                                 checked={isItemSelected}
                                 inputProps={{ "aria-labelledby": labelId }}
-                                onClick={(event) => handleClick(event, row.name)}
+                                onClick={(event) => handleClick(event, row.EmployeeID)}
                               />
                             </TableCell>
                             <TableCell className={classes.tableCell} component="th" scope="row" padding="none">
-                              {row.name}
+                              {row.firstName}
                             </TableCell>
                             <TableCell className={classes.tableCell}>{row.title}</TableCell>
                           </TableRow>
