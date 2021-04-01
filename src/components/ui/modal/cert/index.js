@@ -98,7 +98,7 @@ export const ModalCertRemove = () => {
         <div className="modal__title">Удалить запись</div>
 
         <div className="d-flex justify-content-center">
-          <Button title="Удалить" loading={loading.removeGuide} onClick={() => dispatch(removeCert(cert))} />
+          <Button title="Удалить" loading={loading.removeCert} onClick={() => dispatch(removeCert(cert))} />
         </div>
       </div>
     </React.Fragment>

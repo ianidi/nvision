@@ -15,7 +15,7 @@ import {
   selectCredential,
   removeCredential,
 } from "../../store/dataSlice";
-import { setCert } from "../../store/uiSlice";
+import { setCert, setDiploma } from "../../store/uiSlice";
 
 import { makeStyles } from "@material-ui/core/styles";
 import Table from "@material-ui/core/Table";
