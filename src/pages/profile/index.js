@@ -263,7 +263,6 @@ function Credential() {
               <TableCell className={classes.tableKey}>Вид</TableCell>
               <TableCell className={classes.tableKey}>Дата начала</TableCell>
               <TableCell className={classes.tableKey}>Дата окончания</TableCell>
-              <TableCell className={classes.tableKey}>Бессрочный</TableCell>
               <TableCell className={classes.tableKey}>Статус</TableCell>
               <TableCell className={classes.tableKey} />
             </TableRow>
@@ -277,7 +276,6 @@ function Credential() {
                   </TableCell>
                   <TableCell className={classes.tableCell}>{row.DateStart}</TableCell>
                   <TableCell className={classes.tableCell}>{row.DateEnd}</TableCell>
-                  <TableCell className={classes.tableCell}>{row.Endleess}</TableCell>
                   <TableCell className={classes.tableCell}>{row.Status}</TableCell>
                   <TableCell className={classes.tableCell}>
                     <div className="d-flex align-items-center">
