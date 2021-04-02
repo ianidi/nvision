@@ -91,8 +91,8 @@ const removeCredential = async ({ CredentialID }) => {
   return { result: res.data };
 };
 
-const getGuide = async ({ Category }) => {
-  const res = await client.post("/guide", { Category });
+const getGuide = async (data) => {
+  const res = await client.post("/guide", data);
   return { result: res.data };
 };
 

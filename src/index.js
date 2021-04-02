@@ -3,6 +3,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "normalize.css";
 import "./assets/fonts/nunito/style.css";
+import "overlayscrollbars/css/OverlayScrollbars.css";
 import "./index.scss";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";

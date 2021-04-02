@@ -72,6 +72,7 @@ export const removeCredential = createAsyncThunk("credential/removeCredential", 
 
 export const getGuide = createAsyncThunk("guide/getGuide", async (data, thunkAPI) => {
   const response = await api.getGuide(data);
+  console.log(response);
   return response.result.result !== null ? response.result.result : [];
 });
 

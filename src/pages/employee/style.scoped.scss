@@ -29,6 +29,7 @@
   max-width: 240px;
   width: 100%;
   margin-right: 40px;
+  user-select: none;
 }
 .list {
   width: 100%;
@@ -49,4 +50,22 @@
   font-size: 14px;
   cursor: pointer;
   outline: none;
+}
+.filter__clear {
+  // margin-right: 10px;
+  margin-bottom: 10px;
+  color: #aaaaaa;
+  font-size: 14px;
+  text-decoration: underline;
+  cursor: pointer;
+  user-select: none;
+}
+.filter__row {
+  color: #aaaaaa;
+  font-size: 14px;
+  cursor: pointer;
+  user-select: none;
+}
+.filter__row.selected {
+  color: #151515;
 }

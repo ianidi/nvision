@@ -1,6 +1,9 @@
-import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { open } from "../../store/modalSlice";
+import { getGuide, selectGuide } from "../../store/dataSlice";
+
+import { OverlayScrollbarsComponent } from "overlayscrollbars-react";
 
 import { Popover, ArrowContainer } from "react-tiny-popover";
 
@@ -31,6 +34,39 @@ import { ReactComponent as IconArrowDown } from "../../assets/icons/arrow_down.s
 import "./style.scoped.scss";
 
 const useStyles = makeStyles((theme) => ({
+  root: {
+    "&:hover": {
+      backgroundColor: "transparent",
+    },
+  },
+  icon: {
+    borderRadius: 4,
+    width: 20,
+    height: 20,
+    boxShadow: "0px 0px 5px rgba(19, 19, 19, 0.25)",
+    backgroundColor: "#f5f8fa",
+    "$root.Mui-focusVisible &": {
+      outline: "2px auto rgba(19,124,189,.6)",
+      outlineOffset: 2,
+    },
+    "input:disabled ~ &": {
+      boxShadow: "none",
+      background: "rgba(206,217,224,.5)",
+    },
+  },
+  checkedIcon: {
+    backgroundColor: "#E6BE00",
+    "&:before": {
+      display: "block",
+      width: 20,
+      height: 20,
+      backgroundImage:
+        "url(\"data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath" +
+        " fill-rule='evenodd' clip-rule='evenodd' d='M12 5c-.28 0-.53.11-.71.29L7 9.59l-2.29-2.3a1.003 " +
+        "1.003 0 00-1.42 1.42l3 3c.18.18.43.29.71.29s.53-.11.71-.29l5-5A1.003 1.003 0 0012 5z' fill='%23000'/%3E%3C/svg%3E\")",
+      content: '""',
+    },
+  },
   table: {
     minWidth: 650,
   },
@@ -47,14 +83,11 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function createData(EmployeeID, firstName, title, vendor, type, startDate, endDate, status) {
-  return { EmployeeID, firstName, title, vendor, type, startDate, endDate, status };
+function createData(EmployeeID, firstName, title) {
+  return { EmployeeID, firstName, title };
 }
 
-const rows = [
-  createData(1, "First Name", "Специалист по MS Excel", "Microsoft", "Type", "01.09.2020", "31.08.2020", "Действует"),
-  createData(2, "Last Name", "Специалист по MS Excel", "Microsoft", "Type", "02.09.2020", "30.08.2020", "Действует"),
-];
+const rows = [createData(1, "First Name", "Специалист по MS Excel"), createData(2, "Last Name", "Специалист по MS Excel")];
 
 const headCells = [
   { id: "firstName", disablePadding: true, label: "ФИО сотрудника" },
@@ -85,9 +118,67 @@ function stableSort(array, comparator) {
   return stabilizedThis.map((el) => el[0]);
 }
 
+const FilterSpeciality = ({ open, setState }) => {
+  const guide = useSelector(selectGuide);
+  const isItemSelected = false;
+
+  return (
+    <Popover
+      isOpen={open}
+      onClickOutside={() => setState(false)}
+      positions={["bottom", "right"]}
+      content={({ position, childRect, popoverRect }) => (
+        <div className="popover__container">
+          <div className="d-flex align-items-center justify-content-end">
+            <div className="filter__clear">Очистить все</div>
+          </div>
+          <OverlayScrollbarsComponent
+            options={{
+              scrollbars: { autoHide: "never" },
+            }}
+            style={{ maxHeight: "300px" }}
+            className="os-theme-thin-dark"
+          >
+            {guide &&
+              guide.map((item, index) => {
+                if (item.Category !== "specialty") {
+                  return;
+                }
+
+                return (
+                  <div key={index} className="d-flex justify-content-start">
+                    <div className="d-flex align-items-center filter__row">
+                      <Checkbox
+                        checked={isItemSelected}
+                        // inputProps={{ "aria-labelledby": labelId }}
+                        // onClick={(event) => handleClick(event, row.EmployeeID)}
+                      />
+                      <div>{item.Title}</div>
+                    </div>
+                  </div>
+                );
+              })}
+          </OverlayScrollbarsComponent>
+          <TextInput title="Поиск" search style={{ marginTop: 10 }} />
+        </div>
+      )}
+    >
+      <div className="dropdown" onClick={() => setState(!open)}>
+        <div>Специальность</div>
+        <IconArrowDown />
+      </div>
+    </Popover>
+  );
+};
+
 export const Employee = () => {
   const dispatch = useDispatch();
-  const [isPopover1Open, setIsPopover1Open] = useState(false);
+
+  useEffect(() => {
+    dispatch(getGuide());
+  }, []);
+
+  const [isPopoverSpecialtyOpen, setIsPopoverSpecialtyOpen] = useState(false);
   const [isPopover2Open, setIsPopover2Open] = useState(false);
   const [isPopover3Open, setIsPopover3Open] = useState(false);
   const [isPopover4Open, setIsPopover4Open] = useState(false);
@@ -170,8 +261,6 @@ export const Employee = () => {
     exportExcel({ title: "employee", data });
   };
 
-  console.log(selected);
-
   return (
     <React.Fragment>
       <div className="area">
@@ -201,30 +290,7 @@ export const Employee = () => {
           <div className="d-flex flex-column filter">
             <Filter title="Фильтр" />
 
-            <Popover
-              isOpen={isPopover1Open}
-              onClickOutside={() => setIsPopover1Open(false)}
-              positions={["bottom", "right"]}
-              content={({ position, childRect, popoverRect }) => (
-                <ArrowContainer // if you'd like an arrow, you can import the ArrowContainer!
-                  position={position}
-                  childRect={{ width: 300, height: 200, top: 0, left: 120, right: 0, bottom: 0 }}
-                  popoverRect={popoverRect}
-                  arrowColor={"white"}
-                  arrowSize={10}
-                  arrowStyle={{ opacity: 1 }}
-                  className="popover-arrow-container"
-                  arrowClassName="popover-arrow"
-                >
-                  <div className="popover__container">Hi! I'm popover content. Here's my position: {position}.</div>
-                </ArrowContainer>
-              )}
-            >
-              <div className="dropdown" onClick={() => setIsPopover1Open(!isPopover1Open)}>
-                <div>Специальность</div>
-                <IconArrowDown />
-              </div>
-            </Popover>
+            <FilterSpeciality open={isPopoverSpecialtyOpen} setState={setIsPopoverSpecialtyOpen} />
 
             <Popover
               isOpen={isPopover2Open}
