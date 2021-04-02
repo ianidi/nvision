@@ -269,6 +269,12 @@ export const selectDiploma = (state) => state.data.diploma;
 export const selectDegree = (state) => state.data.degree;
 export const selectCredential = (state) => state.data.credential;
 export const selectGuide = (state) => state.data.guide;
+export const selectGuideVendor = (state) => {
+  const options = state.data.guide.map((item) => {
+    return { label: item.Title, value: item.GiudeID };
+  });
+  return options;
+};
 
 export default dataSlice.reducer;
 
