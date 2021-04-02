@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { open } from "../../store/modalSlice";
 
-import { Popover } from "react-tiny-popover";
+import { Popover, ArrowContainer } from "react-tiny-popover";
 
 import { makeStyles } from "@material-ui/core/styles";
 import Table from "@material-ui/core/Table";
@@ -204,8 +204,21 @@ export const Employee = () => {
             <Popover
               isOpen={isPopover1Open}
               onClickOutside={() => setIsPopover1Open(false)}
-              positions={["right", "bottom"]}
-              content={({ position, childRect, popoverRect }) => <div className="popover__container">Hi! I'm popover content.</div>}
+              positions={["bottom", "right"]}
+              content={({ position, childRect, popoverRect }) => (
+                <ArrowContainer // if you'd like an arrow, you can import the ArrowContainer!
+                  position={position}
+                  childRect={{ width: 300, height: 200, top: 0, left: 120, right: 0, bottom: 0 }}
+                  popoverRect={popoverRect}
+                  arrowColor={"white"}
+                  arrowSize={10}
+                  arrowStyle={{ opacity: 1 }}
+                  className="popover-arrow-container"
+                  arrowClassName="popover-arrow"
+                >
+                  <div className="popover__container">Hi! I'm popover content. Here's my position: {position}.</div>
+                </ArrowContainer>
+              )}
             >
               <div className="dropdown" onClick={() => setIsPopover1Open(!isPopover1Open)}>
                 <div>Специальность</div>
@@ -216,7 +229,7 @@ export const Employee = () => {
             <Popover
               isOpen={isPopover2Open}
               onClickOutside={() => setIsPopover2Open(false)}
-              positions={["right", "bottom"]}
+              positions={["bottom", "right"]}
               content={({ position, childRect, popoverRect }) => <div className="popover__container">Hi! I'm popover content.</div>}
             >
               <div className="dropdown" onClick={() => setIsPopover2Open(!isPopover2Open)}>
@@ -228,7 +241,7 @@ export const Employee = () => {
             <Popover
               isOpen={isPopover3Open}
               onClickOutside={() => setIsPopover3Open(false)}
-              positions={["right", "bottom"]}
+              positions={["bottom", "right"]}
               content={({ position, childRect, popoverRect }) => <div className="popover__container">Hi! I'm popover content.</div>}
             >
               <div className="dropdown" onClick={() => setIsPopover3Open(!isPopover3Open)}>
@@ -240,7 +253,7 @@ export const Employee = () => {
             <Popover
               isOpen={isPopover4Open}
               onClickOutside={() => setIsPopover4Open(false)}
-              positions={["right", "bottom"]}
+              positions={["bottom", "right"]}
               content={({ position, childRect, popoverRect }) => <div className="popover__container">Hi! I'm popover content.</div>}
             >
               <div className="dropdown" onClick={() => setIsPopover4Open(!isPopover4Open)}>
@@ -252,7 +265,7 @@ export const Employee = () => {
             <Popover
               isOpen={isPopover5Open}
               onClickOutside={() => setIsPopover5Open(false)}
-              positions={["right", "bottom"]}
+              positions={["bottom", "right"]}
               content={({ position, childRect, popoverRect }) => <div className="popover__container">Hi! I'm popover content.</div>}
             >
               <div className="dropdown" onClick={() => setIsPopover5Open(!isPopover5Open)}>
