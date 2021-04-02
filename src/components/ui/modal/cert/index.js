@@ -27,10 +27,6 @@ export const ModalCert = () => {
 
   const guideVendor = useSelector(selectGuideVendor);
 
-  useEffect(() => {
-    dispatch(getGuide());
-  }, []);
-
   return (
     <React.Fragment>
       <div className="modal__content">
@@ -46,6 +42,8 @@ export const ModalCert = () => {
           name="title"
           setValue={(v) => setTitle(v)}
           style={{ marginBottom: 20 }}
+          // async
+          // query={() => dispatch(getGuide())}
         />
 
         <div className="d-flex align-items-center justify-content-between" style={{ marginBottom: 20 }}>
