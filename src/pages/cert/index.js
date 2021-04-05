@@ -50,8 +50,8 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function createData(name, title, vendor, type, startDate, endDate, status) {
-  return { name, title, vendor, type, startDate, endDate, status };
+function createData(CertID, title, vendor, type, startDate, endDate, status) {
+  return { CertID, title, vendor, type, startDate, endDate, status };
 }
 
 const rows = [
@@ -307,7 +307,7 @@ export const Cert = () => {
                 {stableSort(rows, getComparator(order, orderBy))
                   .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                   .map((row, index) => {
-                    const isItemSelected = isSelected(row.name);
+                    const isItemSelected = isSelected(row.CertID);
                     const labelId = `enhanced-table-checkbox-${index}`;
 
                     return (
@@ -317,7 +317,7 @@ export const Cert = () => {
                         role="checkbox"
                         aria-checked={isItemSelected}
                         tabIndex={-1}
-                        key={row.name}
+                        key={row.CertID}
                         selected={isItemSelected}
                         className={classes.tableLine}
                       >
@@ -325,11 +325,11 @@ export const Cert = () => {
                           <Checkbox
                             checked={isItemSelected}
                             inputProps={{ "aria-labelledby": labelId }}
-                            onClick={(event) => handleClick(event, row.name)}
+                            onClick={(event) => handleClick(event, row.CertID)}
                           />
                         </TableCell>
                         <TableCell className={classes.tableCell} component="th" scope="row" padding="none">
-                          {row.name}
+                          {row.CertID}
                         </TableCell>
                         <TableCell className={classes.tableCell}>{row.title}</TableCell>
                         <TableCell className={classes.tableCell}>{row.vendor}</TableCell>

@@ -43,8 +43,8 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function createData(name, title, vendor, type, startDate, endDate, status) {
-  return { name, title, vendor, type, startDate, endDate, status };
+function createData(ReportID, title, vendor, type, startDate, endDate, status) {
+  return { ReportID, title, vendor, type, startDate, endDate, status };
 }
 
 const rows = [
@@ -82,59 +82,7 @@ function stableSort(array, comparator) {
   return stabilizedThis.map((el) => el[0]);
 }
 
-function Action() {
-  return (
-    <div className="d-flex align-items-center">
-      <div className="icon">
-        <IconView />
-      </div>
-      <div className="icon" onClick={() => saveFile({ title: "file.pdf", url: "http://localhost:3000/file.zip" })}>
-        <IconDownload />
-      </div>
-    </div>
-  );
-}
-
 export const Report = () => {
-  return (
-    <React.Fragment>
-      <div className="area">
-        <div className="head">
-          <div className="d-flex align-items-center">
-            <div className="title">Отчёт о предоставлении персональных данных</div>
-          </div>
-          <div className="d-flex align-items-center">
-            <Small
-              title="Выгрузить в Excel"
-              icon={<IconArrowDownloadExcel />}
-              color="#009A50"
-              onClick={() => exportExcel({ title: "cert", data: rows })}
-            />
-          </div>
-        </div>
-
-        <div className="d-flex align-items-center justify-content-between table__search">
-          <div style={{ width: "89%" }}>
-            <TextInput title="Введите ФИО сотрудника или номер телефона" search />
-          </div>
-          <div style={{ width: "10%" }}>
-            <Button title="Найти" />
-          </div>
-        </div>
-
-        <div className="d-flex">
-          <TableEmployee />
-        </div>
-      </div>
-    </React.Fragment>
-  );
-};
-
-const Status = ({ value }) => {
-  return <div className="status__true">Согласен</div>;
-};
-
-function TableEmployee() {
   const classes = useStyles();
 
   const [order, setOrder] = React.useState("asc");
@@ -197,104 +145,140 @@ function TableEmployee() {
 
   const emptyRows = rowsPerPage - Math.min(rowsPerPage, rows.length - page * rowsPerPage);
 
-  const PATH = "/cert";
+  const PATH = "/report";
   const ROWS_PER_PAGE = 15;
 
   const { pageNumber = 1 } = useParams();
 
+  const prepareExcel = () => {
+    let data = rows;
+
+    if (selected.length > 0) {
+      data = data.filter((item) => selected.includes(item.ReportID));
+    }
+
+    exportExcel({ title: "report", data });
+  };
+
   return (
-    <TableContainer style={{ marginTop: "10px", marginBottom: "20px", userSelect: "none" }}>
-      <Table className={classes.table} size="small" aria-label="таблица">
-        <TableHead>
-          <TableRow>
-            <TableCell padding="checkbox">
-              <Checkbox
-                indeterminate={selected.length > 0 && selected.length < rows.length}
-                checked={rows.length > 0 && selected.length === rows.length}
-                onChange={handleSelectAllClick}
-                inputProps={{ "aria-label": "выбрать все" }}
-              />
-            </TableCell>
+    <React.Fragment>
+      <div className="area">
+        <div className="head">
+          <div className="d-flex align-items-center">
+            <div className="title">Отчёт о предоставлении персональных данных</div>
+          </div>
+          <div className="d-flex align-items-center">
+            <Small title="Выгрузить в Excel" icon={<IconArrowDownloadExcel />} color="#009A50" onClick={prepareExcel} />
+          </div>
+        </div>
 
-            {headCells.map((headCell) => (
-              <TableCell
-                key={headCell.id}
-                align={"left"}
-                padding={headCell.disablePadding ? "none" : "default"}
-                sortDirection={orderBy === headCell.id ? order : false}
-                className={classes.tableKey}
-              >
-                <TableSortLabel
-                  active={orderBy === headCell.id}
-                  direction={orderBy === headCell.id ? order : "asc"}
-                  onClick={createSortHandler(headCell.id)}
-                >
-                  {headCell.label}
-                  {/*orderBy === headCell.id ? (
-                    <span className={classes.visuallyHidden}>
-                      {order === 'desc' ? 'sorted descending' : 'sorted ascending'}
-                    </span>
-                  ) : null*/}
-                </TableSortLabel>
-              </TableCell>
-            ))}
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {stableSort(rows, getComparator(order, orderBy))
-            .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-            .map((row, index) => {
-              const isItemSelected = isSelected(row.name);
-              const labelId = `enhanced-table-checkbox-${index}`;
+        <div className="d-flex align-items-center justify-content-between table__search">
+          <div style={{ width: "89%" }}>
+            <TextInput title="Введите ФИО сотрудника или номер телефона" search />
+          </div>
+          <div style={{ width: "10%" }}>
+            <Button title="Найти" />
+          </div>
+        </div>
 
-              return (
-                <TableRow
-                  // hover
-                  // onClick={(event) => handleClick(event, row.name)}
-                  role="checkbox"
-                  aria-checked={isItemSelected}
-                  tabIndex={-1}
-                  key={row.name}
-                  selected={isItemSelected}
-                  className={classes.tableLine}
-                >
+        <div className="d-flex">
+          <TableContainer style={{ marginTop: "10px", marginBottom: "20px", userSelect: "none" }}>
+            <Table className={classes.table} size="small" aria-label="таблица">
+              <TableHead>
+                <TableRow>
                   <TableCell padding="checkbox">
                     <Checkbox
-                      checked={isItemSelected}
-                      inputProps={{ "aria-labelledby": labelId }}
-                      onClick={(event) => handleClick(event, row.name)}
+                      indeterminate={selected.length > 0 && selected.length < rows.length}
+                      checked={rows.length > 0 && selected.length === rows.length}
+                      onChange={handleSelectAllClick}
+                      inputProps={{ "aria-label": "выбрать все" }}
                     />
                   </TableCell>
-                  <TableCell className={classes.tableCell} component="th" scope="row" padding="none">
-                    {row.name}
-                  </TableCell>
-                  <TableCell className={classes.tableCell}>{row.title}</TableCell>
-                  <TableCell className={classes.tableCell}>
-                    <Status value={row.vendor} />
-                  </TableCell>
-                </TableRow>
-              );
-            })}
-          {emptyRows > 0 && (
-            <TableRow style={{ height: (dense ? 33 : 53) * emptyRows }}>
-              <TableCell colSpan={9} />
-            </TableRow>
-          )}
-        </TableBody>
-      </Table>
 
-      <Box display="flex" justifyContent="center" flex={1} padding={1}>
-        <Pagination
-          page={Number(pageNumber)}
-          count={Math.ceil(rows.length / ROWS_PER_PAGE)}
-          shape="round"
-          color="#E6BE00"
-          showFirstButton
-          showLastButton
-          boundaryCount={2}
-          renderItem={(item) => <PaginationItem type={"start-ellipsis"} component={Link} selected to={`${PATH}/${item.page}`} {...item} />}
-        />
-      </Box>
-    </TableContainer>
+                  {headCells.map((headCell) => (
+                    <TableCell
+                      key={headCell.id}
+                      align={"left"}
+                      padding={headCell.disablePadding ? "none" : "default"}
+                      sortDirection={orderBy === headCell.id ? order : false}
+                      className={classes.tableKey}
+                    >
+                      <TableSortLabel
+                        active={orderBy === headCell.id}
+                        direction={orderBy === headCell.id ? order : "asc"}
+                        onClick={createSortHandler(headCell.id)}
+                      >
+                        {headCell.label}
+                        {/*orderBy === headCell.id ? (
+                      <span className={classes.visuallyHidden}>
+                        {order === 'desc' ? 'sorted descending' : 'sorted ascending'}
+                      </span>
+                    ) : null*/}
+                      </TableSortLabel>
+                    </TableCell>
+                  ))}
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                {stableSort(rows, getComparator(order, orderBy))
+                  .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                  .map((row, index) => {
+                    const isItemSelected = isSelected(row.ReportID);
+                    const labelId = `enhanced-table-checkbox-${index}`;
+
+                    return (
+                      <TableRow
+                        // hover
+                        // onClick={(event) => handleClick(event, row.name)}
+                        role="checkbox"
+                        aria-checked={isItemSelected}
+                        tabIndex={-1}
+                        key={row.ReportID}
+                        selected={isItemSelected}
+                        className={classes.tableLine}
+                      >
+                        <TableCell padding="checkbox">
+                          <Checkbox
+                            checked={isItemSelected}
+                            inputProps={{ "aria-labelledby": labelId }}
+                            onClick={(event) => handleClick(event, row.ReportID)}
+                          />
+                        </TableCell>
+                        <TableCell className={classes.tableCell} component="th" scope="row" padding="none">
+                          {row.ReportID}
+                        </TableCell>
+                        <TableCell className={classes.tableCell}>{row.title}</TableCell>
+                        <TableCell className={classes.tableCell}>
+                          <div className="status__true">Согласен</div>
+                        </TableCell>
+                      </TableRow>
+                    );
+                  })}
+                {emptyRows > 0 && (
+                  <TableRow style={{ height: (dense ? 33 : 53) * emptyRows }}>
+                    <TableCell colSpan={9} />
+                  </TableRow>
+                )}
+              </TableBody>
+            </Table>
+
+            <Box display="flex" justifyContent="center" flex={1} padding={1}>
+              <Pagination
+                page={Number(pageNumber)}
+                count={Math.ceil(rows.length / ROWS_PER_PAGE)}
+                shape="round"
+                color="#E6BE00"
+                showFirstButton
+                showLastButton
+                boundaryCount={2}
+                renderItem={(item) => (
+                  <PaginationItem type={"start-ellipsis"} component={Link} selected to={`${PATH}/${item.page}`} {...item} />
+                )}
+              />
+            </Box>
+          </TableContainer>
+        </div>
+      </div>
+    </React.Fragment>
   );
-}
+};
