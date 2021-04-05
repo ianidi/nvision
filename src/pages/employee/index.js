@@ -5,7 +5,7 @@ import { getGuide, selectGuide } from "../../store/dataSlice";
 
 import { OverlayScrollbarsComponent } from "overlayscrollbars-react";
 
-import { Popover, ArrowContainer } from "react-tiny-popover";
+import { Popover } from "react-tiny-popover";
 
 import { makeStyles } from "@material-ui/core/styles";
 import Table from "@material-ui/core/Table";
