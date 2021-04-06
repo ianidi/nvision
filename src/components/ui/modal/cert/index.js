@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { API_URL } from "../../../../config";
 import { close } from "../../../../store/modalSlice";
-import { selectLoading, addCert, removeCert, getGuide, selectGuideVendor } from "../../../../store/dataSlice";
+import { selectLoading, addCert, removeCert, selectGuideVendor, selectGuideType } from "../../../../store/dataSlice";
 import { selectCert } from "../../../../store/uiSlice";
 
 import Uploady from "@rpldy/uploady";
@@ -26,6 +26,7 @@ export const ModalCert = () => {
   const [file, setFile] = useState("");
 
   const guideVendor = useSelector(selectGuideVendor);
+  const guideType = useSelector(selectGuideType);
 
   return (
     <React.Fragment>
@@ -61,11 +62,14 @@ export const ModalCert = () => {
             style={{ width: "48%" }}
           />
           <Select
-            options={options}
+            options={guideType}
             label="Выберите тип"
             placeholder="Выберите тип"
             name="type"
-            setValue={(v) => setType(v)}
+            setValue={(v) => {
+              console.log(v);
+              setType(v);
+            }}
             style={{ width: "48%" }}
           />
         </div>

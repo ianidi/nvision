@@ -273,7 +273,12 @@ export const selectGuide = (state) => state.data.guide;
 export const selectGuideVendor = (state) => {
   return state.data.guide.map((item) => {
     //if (item.Category === "vendor") {
-    return { label: item.Title, value: item.GiudeID };
+    return { label: item.Title, value: item.Title }; //item.GuideID
+  });
+};
+export const selectGuideType = (state) => {
+  return state.data.guide.map((item) => {
+    return { label: item.Title, value: item.Title }; //item.GuideID
   });
 };
 
