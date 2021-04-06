@@ -68,6 +68,8 @@ function Cert() {
     dispatch(getCert());
   }, []);
 
+  console.log(guide);
+
   return (
     <React.Fragment>
       <TableContainer style={{ marginTop: "10px", marginBottom: "20px", userSelect: "none" }}>
