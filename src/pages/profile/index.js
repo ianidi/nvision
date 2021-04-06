@@ -10,6 +10,8 @@ import {
   selectDegree,
   getCredential,
   selectCredential,
+  getGuide,
+  selectGuide,
 } from "../../store/dataSlice";
 import { setCert, setDiploma, setDegree, setCredential } from "../../store/uiSlice";
 
@@ -60,6 +62,7 @@ function Cert() {
   const classes = useStyles();
   const dispatch = useDispatch();
   const cert = useSelector(selectCert);
+  const guide = useSelector(selectGuide);
 
   useEffect(() => {
     dispatch(getCert());
@@ -312,6 +315,10 @@ function Credential() {
 
 export const Profile = () => {
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getGuide());
+  }, []);
 
   return (
     <React.Fragment>
