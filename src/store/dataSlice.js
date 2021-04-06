@@ -291,6 +291,11 @@ export const selectGuideDegree = (state) => {
     return { label: item.Title, value: item.Title };
   });
 };
+export const selectGuideCredential = (state) => {
+  return state.data.guide.map((item) => {
+    return { label: item.Title, value: item.Title };
+  });
+};
 
 export default dataSlice.reducer;
 

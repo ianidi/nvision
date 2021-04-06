@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { API_URL } from "../../../../config";
 import { close } from "../../../../store/modalSlice";
-import { selectLoading, addCredential, removeCredential } from "../../../../store/dataSlice";
+import { selectLoading, addCredential, removeCredential, selectGuideCredential } from "../../../../store/dataSlice";
 import { selectCredential } from "../../../../store/uiSlice";
 
 import { makeStyles } from "@material-ui/core/styles";
@@ -51,8 +51,6 @@ import "./style.scoped.scss";
 //   },
 // });
 
-const options = [{ label: "Значение 1", value: "a" }, { label: "Значение 2", value: "b" }];
-
 export const ModalCredential = () => {
   const dispatch = useDispatch();
   const loading = useSelector(selectLoading);
@@ -60,6 +58,8 @@ export const ModalCredential = () => {
   const [dateStart, setDateStart] = useState("");
   const [dateEnd, setDateEnd] = useState("");
   const [file, setFile] = useState("");
+
+  const guideCredential = useSelector(selectGuideCredential);
 
   return (
     <React.Fragment>
@@ -70,7 +70,7 @@ export const ModalCredential = () => {
         <div className="modal__title">Добавить удостоверение</div>
 
         <Select
-          options={options}
+          options={guideCredential}
           label="Выберите вид"
           placeholder="Выберите вид"
           name="type"
