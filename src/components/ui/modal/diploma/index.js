@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { API_URL } from "../../../../config";
 import { close } from "../../../../store/modalSlice";
-import { selectLoading, addDiploma, removeDiploma } from "../../../../store/dataSlice";
+import { selectLoading, addDiploma, removeDiploma, selectGuideSpecialty } from "../../../../store/dataSlice";
 import { selectDiploma } from "../../../../store/uiSlice";
 
 import Uploady from "@rpldy/uploady";
@@ -12,13 +12,13 @@ import { Button, Upload } from "../../../ui/button";
 import { ReactComponent as IconModalClose } from "../../../../assets/icons/modal_close.svg";
 import "./style.scoped.scss";
 
-const options = [{ label: "Значение 1", value: "a" }, { label: "Значение 2", value: "b" }];
-
 export const ModalDiploma = () => {
   const dispatch = useDispatch();
   const loading = useSelector(selectLoading);
   const [specialty, setSpecialty] = useState("");
   const [file, setFile] = useState("");
+
+  const guideSpecialty = useSelector(selectGuideSpecialty);
 
   return (
     <React.Fragment>
@@ -29,11 +29,10 @@ export const ModalDiploma = () => {
         <div className="modal__title">Добавить диплом</div>
 
         <Select
-          // value={options[0].value}
-          options={options}
+          options={guideSpecialty}
           label="Выберите специальность"
           placeholder="Выберите специальность"
-          name="a"
+          name="specialty"
           setValue={(v) => setSpecialty(v)}
           style={{ marginBottom: 20 }}
         />

@@ -278,7 +278,17 @@ export const selectGuideVendor = (state) => {
 };
 export const selectGuideCert = (state) => {
   return state.data.guide.map((item) => {
-    return { label: item.Title, value: item.Title }; //item.GuideID
+    return { label: item.Title, value: item.Title };
+  });
+};
+export const selectGuideSpecialty = (state) => {
+  return state.data.guide.map((item) => {
+    return { label: item.Title, value: item.Title };
+  });
+};
+export const selectGuideDegree = (state) => {
+  return state.data.guide.map((item) => {
+    return { label: item.Title, value: item.Title };
   });
 };
 

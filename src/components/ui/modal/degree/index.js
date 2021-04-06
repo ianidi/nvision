@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { API_URL } from "../../../../config";
 import { close } from "../../../../store/modalSlice";
-import { selectLoading, addDegree, removeDegree } from "../../../../store/dataSlice";
+import { selectLoading, addDegree, removeDegree, selectGuideDegree } from "../../../../store/dataSlice";
 import { selectDegree } from "../../../../store/uiSlice";
 
 import Uploady from "@rpldy/uploady";
@@ -12,14 +12,14 @@ import { Button, Upload } from "../../../ui/button";
 import { ReactComponent as IconModalClose } from "../../../../assets/icons/modal_close.svg";
 import "./style.scoped.scss";
 
-const options = [{ label: "Значение 1", value: "a" }, { label: "Значение 2", value: "b" }];
-
 export const ModalDegree = () => {
   const dispatch = useDispatch();
   const loading = useSelector(selectLoading);
   const [title, setTitle] = useState("");
   const [field, setField] = useState("");
   const [file, setFile] = useState("");
+
+  const guideDegree = useSelector(selectGuideDegree);
 
   return (
     <React.Fragment>
@@ -30,8 +30,7 @@ export const ModalDegree = () => {
         <div className="modal__title">Добавить ученую степень</div>
 
         <Select
-          // value={options[0].value}
-          options={options}
+          options={guideDegree}
           label="Выберите учёную степень"
           placeholder="Выберите учёную степень"
           name="title"

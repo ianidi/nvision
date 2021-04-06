@@ -82,7 +82,7 @@ function Cert() {
               {/*<TableCell className={classes.tableKey}>Затраты</TableCell>*/}
               <TableCell className={classes.tableKey}>Дата начала</TableCell>
               <TableCell className={classes.tableKey}>Дата окончания</TableCell>
-              <TableCell className={classes.tableKey} />
+              <TableCell className={classes.tableKey} width="300px" />
             </TableRow>
           </TableHead>
           <TableBody>
@@ -146,7 +146,7 @@ function Diploma() {
           <TableHead>
             <TableRow>
               <TableCell className={classes.tableKey}>Специальность</TableCell>
-              <TableCell className={classes.tableKey} />
+              <TableCell className={classes.tableKey} width="300px" />
             </TableRow>
           </TableHead>
           <TableBody>
@@ -206,7 +206,7 @@ function Degree() {
             <TableRow>
               <TableCell className={classes.tableKey}>Ученая степень</TableCell>
               <TableCell className={classes.tableKey}>Научная область</TableCell>
-              <TableCell className={classes.tableKey} />
+              <TableCell className={classes.tableKey} width="300px" />
             </TableRow>
           </TableHead>
           <TableBody>
@@ -269,7 +269,7 @@ function Credential() {
               <TableCell className={classes.tableKey}>Дата начала</TableCell>
               <TableCell className={classes.tableKey}>Дата окончания</TableCell>
               <TableCell className={classes.tableKey}>Статус</TableCell>
-              <TableCell className={classes.tableKey} />
+              <TableCell className={classes.tableKey} width="300px" />
             </TableRow>
           </TableHead>
           <TableBody>
