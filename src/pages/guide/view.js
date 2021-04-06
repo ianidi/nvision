@@ -232,7 +232,7 @@ function TableGuide() {
                     className={classes.tableLine}
                   >
                     <TableCell className={classes.tableCell} component="th" scope="row" padding="none">
-                      {row.GuideID}
+                      {index + 1}
                     </TableCell>
                     <TableCell className={classes.tableCell}>{row.Title}</TableCell>
                     {category === "vendor" && (

@@ -271,30 +271,40 @@ export const selectDegree = (state) => state.data.degree;
 export const selectCredential = (state) => state.data.credential;
 export const selectGuide = (state) => state.data.guide;
 export const selectGuideVendor = (state) => {
-  return state.data.guide.map((item) => {
-    //if (item.Category === "vendor") {
-    return { label: item.Title, value: item.Title }; //item.GuideID
-  });
+  return state.data.guide
+    .filter((item) => item.Category === "vendor")
+    .map((item) => {
+      //if (item.Category === "vendor") {
+      return { label: item.Title, value: item.Title }; //item.GuideID
+    });
 };
 export const selectGuideCert = (state) => {
-  return state.data.guide.map((item) => {
-    return { label: item.Title, value: item.Title };
-  });
+  return state.data.guide
+    .filter((item) => item.Category === "cert")
+    .map((item) => {
+      return { label: item.Title, value: item.Title };
+    });
 };
 export const selectGuideSpecialty = (state) => {
-  return state.data.guide.map((item) => {
-    return { label: item.Title, value: item.Title };
-  });
+  return state.data.guide
+    .filter((item) => item.Category === "specialty")
+    .map((item) => {
+      return { label: item.Title, value: item.Title };
+    });
 };
 export const selectGuideDegree = (state) => {
-  return state.data.guide.map((item) => {
-    return { label: item.Title, value: item.Title };
-  });
+  return state.data.guide
+    .filter((item) => item.Category === "degree")
+    .map((item) => {
+      return { label: item.Title, value: item.Title };
+    });
 };
 export const selectGuideCredential = (state) => {
-  return state.data.guide.map((item) => {
-    return { label: item.Title, value: item.Title };
-  });
+  return state.data.guide
+    .filter((item) => item.Category === "credential")
+    .map((item) => {
+      return { label: item.Title, value: item.Title };
+    });
 };
 
 export default dataSlice.reducer;
