@@ -2,18 +2,16 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { API_URL } from "../../../../config";
 import { close } from "../../../../store/modalSlice";
-import { selectLoading, addCert, removeCert, selectGuideVendor, selectGuideType } from "../../../../store/dataSlice";
+import { selectLoading, addCert, removeCert, selectGuideVendor, selectGuideCert } from "../../../../store/dataSlice";
 import { selectCert } from "../../../../store/uiSlice";
 
 import Uploady from "@rpldy/uploady";
 
-import { Select } from "../../../ui/input";
+import { Select, TextInput } from "../../../ui/input";
 import { Button, Upload } from "../../button";
 import { Datepicker } from "../../../ui/date";
 import { ReactComponent as IconModalClose } from "../../../../assets/icons/modal_close.svg";
 import "./style.scoped.scss";
-
-const options = [{ label: "Значение 1", value: "a" }, { label: "Значение 2", value: "b" }];
 
 export const ModalCert = () => {
   const dispatch = useDispatch();
@@ -26,7 +24,7 @@ export const ModalCert = () => {
   const [file, setFile] = useState("");
 
   const guideVendor = useSelector(selectGuideVendor);
-  const guideType = useSelector(selectGuideType);
+  const guideCert = useSelector(selectGuideCert);
 
   return (
     <React.Fragment>
@@ -36,16 +34,9 @@ export const ModalCert = () => {
         </div>
         <div className="modal__title">Добавить сертификат</div>
 
-        <Select
-          options={options}
-          label="Выберите название"
-          placeholder="Выберите название"
-          name="title"
-          setValue={(v) => setTitle(v)}
-          style={{ marginBottom: 20 }}
-          // async
-          // query={() => dispatch(getGuide())}
-        />
+        <div className="d-flex align-items-center" style={{ marginBottom: 20 }}>
+          <TextInput title="Введите название" name="title" onChange={(e) => setTitle(e.target.value)} />
+        </div>
 
         <div className="d-flex align-items-center justify-content-between" style={{ marginBottom: 20 }}>
           <Datepicker callback={(d) => setDateStart(`${d.day}-${d.month}-${d.year}`)} placeholder="Дата начала" style={{ width: "48%" }} />
@@ -62,14 +53,11 @@ export const ModalCert = () => {
             style={{ width: "48%" }}
           />
           <Select
-            options={guideType}
+            options={guideCert}
             label="Выберите тип"
             placeholder="Выберите тип"
             name="type"
-            setValue={(v) => {
-              console.log(v);
-              setType(v);
-            }}
+            setValue={(v) => setType(v)}
             style={{ width: "48%" }}
           />
         </div>

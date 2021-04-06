@@ -276,7 +276,7 @@ export const selectGuideVendor = (state) => {
     return { label: item.Title, value: item.Title }; //item.GuideID
   });
 };
-export const selectGuideType = (state) => {
+export const selectGuideCert = (state) => {
   return state.data.guide.map((item) => {
     return { label: item.Title, value: item.Title }; //item.GuideID
   });
