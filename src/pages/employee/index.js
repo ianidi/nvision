@@ -3,8 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { open } from "../../store/modalSlice";
 import { getGuide, selectGuide } from "../../store/dataSlice";
 
-import { OverlayScrollbarsComponent } from "overlayscrollbars-react";
-
 import { Popover } from "react-tiny-popover";
 
 import { makeStyles } from "@material-ui/core/styles";
@@ -24,6 +22,7 @@ import PaginationItem from "@material-ui/lab/PaginationItem";
 
 import { Filter, TextInput } from "../../components/ui/input";
 import { Button, Small } from "../../components/ui/button";
+import { FilterCert, FilterSpeciality, FilterDegree, FilterType, FilterVendor } from "../../components/ui/filter";
 
 import { exportExcel } from "../../service";
 
@@ -117,59 +116,6 @@ function stableSort(array, comparator) {
   });
   return stabilizedThis.map((el) => el[0]);
 }
-
-const FilterSpeciality = ({ open, setState }) => {
-  const guide = useSelector(selectGuide);
-  const isItemSelected = false;
-
-  return (
-    <Popover
-      isOpen={open}
-      onClickOutside={() => setState(false)}
-      positions={["bottom", "right"]}
-      content={({ position, childRect, popoverRect }) => (
-        <div className="popover__container">
-          <div className="d-flex align-items-center justify-content-end">
-            <div className="filter__clear">Очистить все</div>
-          </div>
-          <OverlayScrollbarsComponent
-            options={{
-              scrollbars: { autoHide: "never" },
-            }}
-            style={{ maxHeight: "300px" }}
-            className="os-theme-thin-dark"
-          >
-            {guide &&
-              guide.map((item, index) => {
-                if (item.Category !== "specialty") {
-                  return;
-                }
-
-                return (
-                  <div key={index} className="d-flex justify-content-start">
-                    <div className="d-flex align-items-center filter__row">
-                      <Checkbox
-                        checked={isItemSelected}
-                        // inputProps={{ "aria-labelledby": labelId }}
-                        // onClick={(event) => handleClick(event, row.EmployeeID)}
-                      />
-                      <div>{item.Title}</div>
-                    </div>
-                  </div>
-                );
-              })}
-          </OverlayScrollbarsComponent>
-          <TextInput title="Поиск" search style={{ marginTop: 10 }} />
-        </div>
-      )}
-    >
-      <div className="dropdown" onClick={() => setState(!open)}>
-        <div>Специальность</div>
-        <IconArrowDown />
-      </div>
-    </Popover>
-  );
-};
 
 export const Employee = () => {
   const dispatch = useDispatch();
@@ -291,54 +237,10 @@ export const Employee = () => {
             <Filter title="Фильтр" />
 
             <FilterSpeciality open={isPopoverSpecialtyOpen} setState={setIsPopoverSpecialtyOpen} />
-
-            <Popover
-              isOpen={isPopover2Open}
-              onClickOutside={() => setIsPopover2Open(false)}
-              positions={["bottom", "right"]}
-              content={({ position, childRect, popoverRect }) => <div className="popover__container">Hi! I'm popover content.</div>}
-            >
-              <div className="dropdown" onClick={() => setIsPopover2Open(!isPopover2Open)}>
-                <div>Сертификат</div>
-                <IconArrowDown />
-              </div>
-            </Popover>
-
-            <Popover
-              isOpen={isPopover3Open}
-              onClickOutside={() => setIsPopover3Open(false)}
-              positions={["bottom", "right"]}
-              content={({ position, childRect, popoverRect }) => <div className="popover__container">Hi! I'm popover content.</div>}
-            >
-              <div className="dropdown" onClick={() => setIsPopover3Open(!isPopover3Open)}>
-                <div>Вендор</div>
-                <IconArrowDown />
-              </div>
-            </Popover>
-
-            <Popover
-              isOpen={isPopover4Open}
-              onClickOutside={() => setIsPopover4Open(false)}
-              positions={["bottom", "right"]}
-              content={({ position, childRect, popoverRect }) => <div className="popover__container">Hi! I'm popover content.</div>}
-            >
-              <div className="dropdown" onClick={() => setIsPopover4Open(!isPopover4Open)}>
-                <div>Тип удостоверения</div>
-                <IconArrowDown />
-              </div>
-            </Popover>
-
-            <Popover
-              isOpen={isPopover5Open}
-              onClickOutside={() => setIsPopover5Open(false)}
-              positions={["bottom", "right"]}
-              content={({ position, childRect, popoverRect }) => <div className="popover__container">Hi! I'm popover content.</div>}
-            >
-              <div className="dropdown" onClick={() => setIsPopover5Open(!isPopover5Open)}>
-                <div>Ученая степень</div>
-                <IconArrowDown />
-              </div>
-            </Popover>
+            <FilterCert open={isPopover2Open} setState={setIsPopover2Open} />
+            <FilterVendor open={isPopover3Open} setState={setIsPopover3Open} />
+            <FilterType open={isPopover4Open} setState={setIsPopover4Open} />
+            <FilterDegree open={isPopover5Open} setState={setIsPopover5Open} />
 
             <div className="d-flex justify-content-center" style={{ marginTop: 10 }}>
               <Button title="Применить" />

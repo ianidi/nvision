@@ -1,0 +1,15 @@
+version: '3.3'
+
+services:
+  wc-concept:
+    container_name: wc-auth-concept
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - '.:/app'
+      - '/app/node_modules'
+    ports:
+      - 3001:3000
+    environment:
+      - CHOKIDAR_USEPOLLING=true
