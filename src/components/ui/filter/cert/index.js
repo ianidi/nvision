@@ -10,7 +10,7 @@ import { getGuide, selectGuide } from "../../../../store/dataSlice";
 import { ReactComponent as IconArrowDown } from "../../../../assets/icons/arrow_down.svg";
 import "./style.scoped.scss"
 
-export const FilterCert = ({ open, setState }) => {
+export const FilterCert = ({ open, setState, style }) => {
     const guide = useSelector(selectGuide);
     const isItemSelected = false;
   
@@ -22,7 +22,7 @@ export const FilterCert = ({ open, setState }) => {
         content={({ position, childRect, popoverRect }) => (
           <div className="popover__container">
             <div className="d-flex align-items-center justify-content-end">
-              <div className="filter__clear">Очистить все</div>
+              <div className="cert__filter__clear">Очистить все</div>
             </div>
             <OverlayScrollbarsComponent
               options={{
@@ -55,7 +55,7 @@ export const FilterCert = ({ open, setState }) => {
           </div>
         )}
       >
-        <div className="dropdown" onClick={() => setState(!open)}>
+        <div className="cert__dropdown" onClick={() => setState(!open)} style={{ ...style }}>
           <div>Сертификат</div>
           <IconArrowDown />
         </div>

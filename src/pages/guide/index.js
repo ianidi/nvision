@@ -7,9 +7,9 @@ import "./style.scoped.scss";
 export const Guide = () => {
   return (
     <React.Fragment>
-      <div className="items">
+      <div className="guide__items">
         {guide.map((item, index) => (
-          <Link key={index} to={`/guide/${item.path}`} className="item">
+          <Link key={index} to={`/guide/${item.path}`} className="guide__item">
             <div>{item.title}</div>
             <div>
               <IconArrow />

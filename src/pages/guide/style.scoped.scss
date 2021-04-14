@@ -1,9 +1,9 @@
-.items {
+.guide__items {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
 }
-.item {
+.guide__item {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -17,7 +17,7 @@
   width: 100%;
   cursor: pointer;
 }
-.area {
+.guide__area {
   background: #ffffff;
   border-radius: 16px;
   padding-left: 20px;
@@ -25,34 +25,34 @@
   padding-top: 20px;
   padding-bottom: 60px;
 }
-.head {
+.guide__head {
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin-bottom: 20px;
 }
-.icon {
+.guide__icon {
   margin-right: 20px;
   cursor: pointer;
 }
-.title {
+.guide__title {
   font-size: 24px;
   font-weight: 700;
 }
-.navigation {
+.guide__navigation {
   margin-left: 20px;
   font-size: 16px;
   color: #7f7f7f;
 }
-.filter {
+.guide__filter {
   max-width: 170px;
   width: 100%;
   margin-right: 40px;
 }
-.list {
+.guide__list {
   width: 100%;
 }
-.dropdown {
+.guide__dropdown {
   display: flex;
   align-items: center;
   justify-content: space-between;

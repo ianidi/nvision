@@ -16,13 +16,13 @@ export const Upload = asUploadButton(
       <React.Fragment>
         <div {...props}>
           <div className="d-flex align-items-center">
-            <div className="button">
-              <div className="icon">
+            <div className="u__button">
+              <div className="u__icon">
                 <IconAttachment />
               </div>
               Прикрепить файл*
             </div>
-            <div className="extensions">*jpg, pdf, doc, docx</div>
+            <div className="u__extensions">*jpg, pdf, doc, docx</div>
           </div>
         </div>
       </React.Fragment>

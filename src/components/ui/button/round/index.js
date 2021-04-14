@@ -5,9 +5,9 @@ export const Round = ({title, icon, style, onClick}) => {
 
   return (
     <React.Fragment>
-      <div className="button" style={{...style}} onClick={onClick}>
+      <div className="round__button" style={{...style}} onClick={onClick}>
         {title}
-        {icon ? <div className="icon">{icon}</div> : ""}
+        {icon ? <div className="round__icon">{icon}</div> : ""}
       </div>
 
       <style jsx>{`

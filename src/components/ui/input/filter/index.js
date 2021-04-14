@@ -7,9 +7,9 @@ import { ReactComponent as IconFilterClear } from '../../../../assets/icons/filt
 export const Filter = ({title, icon, style}) => {
   return (
     <React.Fragment>
-      <div className="d-flex align-items-center filter" style={{...style}}>
+      <div className="d-flex align-items-center f__filter" style={{...style}}>
         <div className="d-flex align-items-center">
-          <div className="icon"><IconFilter /></div>
+          <div className="f__icon"><IconFilter /></div>
           <div>{title}</div>
         </div>
         <IconFilterClear />

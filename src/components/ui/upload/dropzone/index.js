@@ -13,10 +13,10 @@ export const Dropzone = () => {
   } = useDropzone({accept: 'image/*'});
   
   return (
-      <div className="dropzone" {...getRootProps({isDragActive, isDragAccept, isDragReject})}>
+      <div className="d__dropzone" {...getRootProps({isDragActive, isDragAccept, isDragReject})}>
         <input {...getInputProps()} />
         <IconUpload />
-        <div className="dropzone__text">Добавьте сертификат или перетащите сюда скан документа (pdf, jpg, doc, docx)</div>
+        <div className="d__dropzone__text">Добавьте сертификат или перетащите сюда скан документа (pdf, jpg, doc, docx)</div>
       </div>
   );
 }

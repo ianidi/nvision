@@ -1,4 +1,4 @@
-.area {
+.pcert__area {
   background: #ffffff;
   border-radius: 16px;
   padding-left: 20px;
@@ -6,34 +6,34 @@
   padding-top: 20px;
   padding-bottom: 60px;
 }
-.head {
+.pcert__head {
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin-bottom: 20px;
 }
-.icon {
+.pcert__icon {
   margin-right: 20px;
   cursor: pointer;
 }
-.title {
+.pcert__title {
   font-size: 24px;
   font-weight: 700;
 }
-.navigation {
+.pcert__navigation {
   margin-left: 20px;
   font-size: 16px;
   color: #7f7f7f;
 }
-.filter {
+.pcert__filter {
   max-width: 170px;
   width: 100%;
   margin-right: 40px;
 }
-.list {
+.pcert__list {
   width: 100%;
 }
-.dropdown {
+.pcert__dropdown {
   display: flex;
   align-items: center;
   justify-content: space-between;

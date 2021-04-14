@@ -1,4 +1,4 @@
-.area {
+.r__area {
   background: #ffffff;
   border-radius: 16px;
   padding-left: 20px;
@@ -6,34 +6,34 @@
   padding-top: 20px;
   padding-bottom: 60px;
 }
-.head {
+.r__head {
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin-bottom: 20px;
 }
-.icon {
+.r__icon {
   margin-right: 20px;
   cursor: pointer;
 }
-.title {
+.r__title {
   font-size: 24px;
   font-weight: 700;
 }
-.navigation {
+.r__navigation {
   margin-left: 20px;
   font-size: 16px;
   color: #7f7f7f;
 }
-.filter {
+.r__filter {
   max-width: 170px;
   width: 100%;
   margin-right: 40px;
 }
-.list {
+.r__list {
   width: 100%;
 }
-.dropdown {
+.r__dropdown {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -49,9 +49,9 @@
   cursor: pointer;
   outline: none;
 }
-.status__true {
+.r__status__true {
   color: #009a50;
 }
-.status__false {
+.r__status__false {
   color: #ee262a;
 }

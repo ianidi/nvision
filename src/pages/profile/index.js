@@ -68,8 +68,6 @@ function Cert() {
     dispatch(getCert());
   }, []);
 
-  console.log(guide);
-
   return (
     <React.Fragment>
       <TableContainer style={{ marginTop: "10px", marginBottom: "20px", userSelect: "none" }}>
@@ -99,14 +97,14 @@ function Cert() {
                   <TableCell className={classes.tableCell}>{row.DateEnd}</TableCell>
                   <TableCell className={classes.tableCell}>
                     <div className="d-flex align-items-center">
-                      <a className="icon" href={`${API_URL}/static/${row.File}`} target="_blank" rel="nofollow noreferrer noopener">
+                      <a className="p__icon" href={`${API_URL}/static/${row.File}`} target="_blank" rel="nofollow noreferrer noopener">
                         <IconView />
                       </a>
-                      <div className="icon" onClick={() => saveFile({ title: row.File, url: `${API_URL}/static/${row.File}` })}>
+                      <div className="p__icon" onClick={() => saveFile({ title: row.File, url: `${API_URL}/static/${row.File}` })}>
                         <IconDownload />
                       </div>
                       <div
-                        className="icon"
+                        className="p__icon"
                         onClick={() => {
                           dispatch(setCert(row));
                           dispatch(open("cert/remove"));
@@ -122,9 +120,9 @@ function Cert() {
         </Table>
       </TableContainer>
 
-      <div className="upload" onClick={() => dispatch(open("cert"))}>
+      <div className="p__upload" onClick={() => dispatch(open("cert"))}>
         <IconUpload />
-        <div className="upload__text">Добавьте сертификат</div>
+        <div className="p__upload__text">Добавьте сертификат</div>
       </div>
     </React.Fragment>
   );
@@ -158,14 +156,14 @@ function Diploma() {
                   </TableCell>
                   <TableCell className={classes.tableCell}>
                     <div className="d-flex align-items-center">
-                      <a className="icon" href={`${API_URL}/static/${row.File}`} target="_blank" rel="nofollow noreferrer noopener">
+                      <a className="p__icon" href={`${API_URL}/static/${row.File}`} target="_blank" rel="nofollow noreferrer noopener">
                         <IconView />
                       </a>
-                      <div className="icon" onClick={() => saveFile({ title: row.File, url: `${API_URL}/static/${row.File}` })}>
+                      <div className="p__icon" onClick={() => saveFile({ title: row.File, url: `${API_URL}/static/${row.File}` })}>
                         <IconDownload />
                       </div>
                       <div
-                        className="icon"
+                        className="p__icon"
                         onClick={() => {
                           dispatch(setDiploma(row));
                           dispatch(open("diploma/remove"));
@@ -181,9 +179,9 @@ function Diploma() {
         </Table>
       </TableContainer>
 
-      <div className="upload" onClick={() => dispatch(open("diploma"))}>
+      <div className="p__upload" onClick={() => dispatch(open("diploma"))}>
         <IconUpload />
-        <div className="upload__text">Добавьте диплом</div>
+        <div className="p__upload__text">Добавьте диплом</div>
       </div>
     </React.Fragment>
   );
@@ -219,14 +217,14 @@ function Degree() {
                   <TableCell className={classes.tableCell}>{row.Field}</TableCell>
                   <TableCell className={classes.tableCell}>
                     <div className="d-flex align-items-center">
-                      <a className="icon" href={`${API_URL}/static/${row.File}`} target="_blank" rel="nofollow noreferrer noopener">
+                      <a className="p__icon" href={`${API_URL}/static/${row.File}`} target="_blank" rel="nofollow noreferrer noopener">
                         <IconView />
                       </a>
-                      <div className="icon" onClick={() => saveFile({ title: row.File, url: `${API_URL}/static/${row.File}` })}>
+                      <div className="p__icon" onClick={() => saveFile({ title: row.File, url: `${API_URL}/static/${row.File}` })}>
                         <IconDownload />
                       </div>
                       <div
-                        className="icon"
+                        className="p__icon"
                         onClick={() => {
                           dispatch(setDegree(row));
                           dispatch(open("degree/remove"));
@@ -242,9 +240,9 @@ function Degree() {
         </Table>
       </TableContainer>
 
-      <div className="upload" onClick={() => dispatch(open("degree"))}>
+      <div className="p__upload" onClick={() => dispatch(open("degree"))}>
         <IconUpload />
-        <div className="upload__text">Добавьте ученую степень</div>
+        <div className="p__upload__text">Добавьте ученую степень</div>
       </div>
     </React.Fragment>
   );
@@ -284,14 +282,14 @@ function Credential() {
                   <TableCell className={classes.tableCell}>{row.Status}</TableCell>
                   <TableCell className={classes.tableCell}>
                     <div className="d-flex align-items-center">
-                      <a className="icon" href={`${API_URL}/static/${row.File}`} target="_blank" rel="nofollow noreferrer noopener">
+                      <a className="p__icon" href={`${API_URL}/static/${row.File}`} target="_blank" rel="nofollow noreferrer noopener">
                         <IconView />
                       </a>
-                      <div className="icon" onClick={() => saveFile({ title: row.File, url: `${API_URL}/static/${row.File}` })}>
+                      <div className="p__icon" onClick={() => saveFile({ title: row.File, url: `${API_URL}/static/${row.File}` })}>
                         <IconDownload />
                       </div>
                       <div
-                        className="icon"
+                        className="p__icon"
                         onClick={() => {
                           dispatch(setCredential(row));
                           dispatch(open("credential/remove"));
@@ -307,9 +305,9 @@ function Credential() {
         </Table>
       </TableContainer>
 
-      <div className="upload" onClick={() => dispatch(open("credential"))}>
+      <div className="p__upload" onClick={() => dispatch(open("credential"))}>
         <IconUpload />
-        <div className="upload__text">Добавьте удостоверение</div>
+        <div className="p__upload__text">Добавьте удостоверение</div>
       </div>
     </React.Fragment>
   );
@@ -324,36 +322,36 @@ export const Profile = () => {
 
   return (
     <React.Fragment>
-      <div className="profile__wrapper">
-        <div className="profile">
-          <div className="avatar">
-            <div className="avatar__img" />
+      <div className="p__profile__wrapper">
+        <div className="p__profile">
+          <div className="p__avatar">
+            <div className="p__avatar__img" />
           </div>
-          <div className="person">
-            <div className="person__name">Сафонова Ирина Владимировна</div>
-            <div className="person__position">Руководитель направления обучения и развития</div>
-            <div className="person__department">
+          <div className="p__person">
+            <div className="p__person__name">Сафонова Ирина Владимировна</div>
+            <div className="p__person__position">Руководитель направления обучения и развития</div>
+            <div className="p__person__department">
               Департамент по управлению закупками и работе с партнерами; Блок по управлению персоналом.
             </div>
-            <div className="person__director">
+            <div className="p__person__director">
               Руководитель:
               <br />
               Гурленов Андрей Владимирович
             </div>
           </div>
-          <div className="line" />
-          <div className="contact">
-            <div className="contact__item">
+          <div className="p__line" />
+          <div className="p__contact">
+            <div className="p__contact__item">
               <IconPhone />
-              <div className="contact__info">(885) 2186</div>
+              <div className="p__contact__info">(885) 2186</div>
             </div>
-            <div className="contact__item">
+            <div className="p__contact__item">
               <IconEmail />
-              <div className="contact__info">VVinokurov@nvg.ru</div>
+              <div className="p__contact__info">VVinokurov@nvg.ru</div>
             </div>
           </div>
-          <div className="line" />
-          <div className="buttons">
+          <div className="p__line" />
+          <div className="p__buttons">
             <Round
               title="Отправить запрос о ПД"
               icon={<IconArrowRight />}
@@ -368,7 +366,7 @@ export const Profile = () => {
           </div>
         </div>
 
-        <div className="list">
+        <div className="p__list">
           <CollapseItem title="Сертификаты" content={<Cert />} />
           <CollapseItem title="Дипломы" content={<Diploma />} />
           <CollapseItem title="Учёные степени" content={<Degree />} />
@@ -388,10 +386,10 @@ function CollapseItem({ title, content }) {
 
   return (
     <React.Fragment>
-      <div className="area">
-        <div className={classNames({ card_open: open, card_closed: !open })}>
-          <h3 className="title">{title}</h3>
-          <div className="toggle" onClick={toggle}>
+      <div className="p__area">
+        <div className={classNames({ p__card_open: open, p__card_closed: !open })}>
+          <h3 className="p__title">{title}</h3>
+          <div className="p__toggle" onClick={toggle}>
             <svg width="20" height="11" viewBox="0 0 20 11" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M2.35 11L10 4.20108L17.65 11L20 8.90688L10 0L0 8.90688L2.35 11Z" fill="#151515" />
             </svg>

@@ -162,10 +162,10 @@ export const Report = () => {
 
   return (
     <React.Fragment>
-      <div className="area">
-        <div className="head">
+      <div className="r__area">
+        <div className="r__head">
           <div className="d-flex align-items-center">
-            <div className="title">Отчёт о предоставлении персональных данных</div>
+            <div className="r__title">Отчёт о предоставлении персональных данных</div>
           </div>
           <div className="d-flex align-items-center">
             <Small title="Выгрузить в Excel" icon={<IconArrowDownloadExcel />} color="#009A50" onClick={prepareExcel} />
@@ -249,7 +249,7 @@ export const Report = () => {
                         </TableCell>
                         <TableCell className={classes.tableCell}>{row.title}</TableCell>
                         <TableCell className={classes.tableCell}>
-                          <div className="status__true">Согласен</div>
+                          <div className="r__status__true">Согласен</div>
                         </TableCell>
                       </TableRow>
                     );

@@ -1,4 +1,4 @@
-.area {
+.employee__area {
   background: #ffffff;
   border-radius: 16px;
   padding-left: 20px;
@@ -6,35 +6,35 @@
   padding-top: 20px;
   padding-bottom: 60px;
 }
-.head {
+.employee__head {
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin-bottom: 20px;
 }
-.icon {
+.employee__icon {
   margin-right: 20px;
   cursor: pointer;
 }
-.title {
+.employee__title {
   font-size: 24px;
   font-weight: 700;
 }
-.navigation {
+.employee__navigation {
   margin-left: 50px;
   font-size: 16px;
   color: #7f7f7f;
 }
-.filter {
+.employee__filter {
   max-width: 240px;
   width: 100%;
   margin-right: 40px;
   user-select: none;
 }
-.list {
+.employee__list {
   width: 100%;
 }
-.dropdown {
+.employee__dropdown {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -51,7 +51,7 @@
   cursor: pointer;
   outline: none;
 }
-.filter__clear {
+.employee__filter__clear {
   // margin-right: 10px;
   margin-bottom: 10px;
   color: #aaaaaa;
@@ -60,12 +60,12 @@
   cursor: pointer;
   user-select: none;
 }
-.filter__row {
+.employee__filter__row {
   color: #aaaaaa;
   font-size: 14px;
   cursor: pointer;
   user-select: none;
 }
-.filter__row.selected {
+.employee__filter__row.selected {
   color: #151515;
 }

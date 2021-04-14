@@ -18,6 +18,7 @@ import Pagination from "@material-ui/lab/Pagination";
 import PaginationItem from "@material-ui/lab/PaginationItem";
 
 import { exportExcel, saveFile } from "../../service";
+import { FilterCert, FilterSpeciality, FilterDegree, FilterType, FilterVendor } from "../../components/ui/filter";
 
 import { ReactComponent as IconArrowDownloadExcel } from "../../assets/icons/arrow_download_excel.svg";
 import { ReactComponent as IconClear } from "../../assets/icons/clear.svg";
@@ -95,10 +96,10 @@ function stableSort(array, comparator) {
 }
 
 export const Cert = () => {
-  const [isPopover1Open, setIsPopover1Open] = useState(false);
-  const [isPopover2Open, setIsPopover2Open] = useState(false);
-  const [isPopover3Open, setIsPopover3Open] = useState(false);
-  const [isPopover4Open, setIsPopover4Open] = useState(false);
+  const [isPopoverCertOpen, setIsPopoverCertOpen] = useState(false);
+  const [isPopoverVendorOpen, setIsPopoverVendorOpen] = useState(false);
+  const [isPopoverTypeOpen, setIsPopoverTypeOpen] = useState(false);
+  const [isPopoverDegreeOpen, setIsPopoverDegreeOpen] = useState(false);
 
   const classes = useStyles();
 
@@ -179,10 +180,10 @@ export const Cert = () => {
 
   return (
     <React.Fragment>
-      <div className="area">
-        <div className="head">
+      <div className="pcert__area">
+        <div className="pcert__head">
           <div className="d-flex align-items-center">
-            <div className="title">Сертификаты</div>
+            <div className="pcert__title">Сертификаты</div>
           </div>
           <div className="d-flex align-items-center">
             <Small title="Выгрузить в Excel" icon={<IconArrowDownloadExcel />} color="#009A50" onClick={prepareExcel} />
@@ -215,50 +216,10 @@ export const Cert = () => {
             />
           </div>
           <div className="d-flex align-items-center justify-content-between" style={{ width: "40%" }}>
-            <Popover
-              isOpen={isPopover1Open}
-              onClickOutside={() => setIsPopover1Open(false)}
-              positions={["bottom", "left", "right"]}
-              content={({ position, childRect, popoverRect }) => <div className="popover__container">Hi! I'm popover content.</div>}
-            >
-              <div className="dropdown" onClick={() => setIsPopover1Open(!isPopover1Open)}>
-                <div>Сертификат</div>
-                <IconArrowDown />
-              </div>
-            </Popover>
-            <Popover
-              isOpen={isPopover2Open}
-              onClickOutside={() => setIsPopover2Open(false)}
-              positions={["bottom", "left", "right"]}
-              content={({ position, childRect, popoverRect }) => <div className="popover__container">Hi! I'm popover content.</div>}
-            >
-              <div className="dropdown" onClick={() => setIsPopover2Open(!isPopover2Open)}>
-                <div>Вендор</div>
-                <IconArrowDown />
-              </div>
-            </Popover>
-            <Popover
-              isOpen={isPopover3Open}
-              onClickOutside={() => setIsPopover3Open(false)}
-              positions={["bottom", "left", "right"]}
-              content={({ position, childRect, popoverRect }) => <div className="popover__container">Hi! I'm popover content.</div>}
-            >
-              <div className="dropdown" onClick={() => setIsPopover3Open(!isPopover3Open)}>
-                <div>Тип</div>
-                <IconArrowDown />
-              </div>
-            </Popover>
-            <Popover
-              isOpen={isPopover4Open}
-              onClickOutside={() => setIsPopover4Open(false)}
-              positions={["bottom", "left", "right"]}
-              content={({ position, childRect, popoverRect }) => <div className="popover__container">Hi! I'm popover content.</div>}
-            >
-              <div className="dropdown" onClick={() => setIsPopover4Open(!isPopover4Open)}>
-                <div>Статус</div>
-                <IconArrowDown />
-              </div>
-            </Popover>
+            <FilterCert open={isPopoverCertOpen} setState={setIsPopoverCertOpen} style={{ marginRight: 10 }} />
+            <FilterVendor open={isPopoverVendorOpen} setState={setIsPopoverVendorOpen} style={{ marginRight: 10 }} />
+            <FilterType open={isPopoverTypeOpen} setState={setIsPopoverTypeOpen} style={{ marginRight: 10 }} />
+            <FilterDegree open={isPopoverDegreeOpen} setState={setIsPopoverDegreeOpen} />
           </div>
           <div style={{ width: "10%" }}>
             <Button title="Найти" />

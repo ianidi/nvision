@@ -1,4 +1,4 @@
-.button {
+.small__button {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -18,9 +18,9 @@
   cursor: pointer;
   user-select: none;
 }
-.button:hover {
+.small__button:hover {
   box-shadow: 0px 0px 7px rgba(19, 19, 19, 0.3);
 }
-.button__icon {
+.small__button__icon {
   margin-left: 20px;
 }

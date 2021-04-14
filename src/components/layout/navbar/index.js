@@ -29,9 +29,9 @@ export const Navbar = ({ drawer }) => {
 
   return (
     <React.Fragment>
-      <div className="nav">
+      <div className="n__nav">
         {title && (
-          <div className="nav__back" onClick={() => history.goBack()}>
+          <div className="n__nav__back" onClick={() => history.goBack()}>
             <IconBack style={{ width: 8, height: 14, marginRight: 10 }} />
             <div>{title}</div>
           </div>
@@ -40,42 +40,3 @@ export const Navbar = ({ drawer }) => {
     </React.Fragment>
   );
 };
-
-function MenuLink({ icon, title, to, count }) {
-  const history = useHistory();
-  const dispatch = useDispatch();
-
-  const isActive = useRouteMatch({
-    path: to,
-    exact: true,
-    strict: false,
-  });
-
-  const memuClickHandler = () => {
-    dispatch(closeDrawer());
-
-    history.push(to);
-  };
-
-  return (
-    <React.Fragment>
-      <div
-        className={classNames({
-          menuLink__container: true,
-          menuLink_active: isActive !== null,
-        })}
-        onClick={memuClickHandler}
-      >
-        <div
-          className={classNames({
-            menuLink: true,
-          })}
-        >
-          <div className="icon">{icon}</div>
-          <div className="menu__title">{title}</div>
-          {count && <div className="count">{count}</div>}
-        </div>
-      </div>
-    </React.Fragment>
-  );
-}

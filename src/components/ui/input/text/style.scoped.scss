@@ -1,4 +1,4 @@
-.input {
+.text__input {
   background: #fff;
   flex-grow: 1;
   min-height: 42px;
@@ -10,15 +10,15 @@
   font-size: 14px;
   outline: none;
 }
-.input__field {
+.text__input__field {
   width: 100%;
   min-height: 42px;
   outline: none;
   border: none;
 }
-.input__field::placeholder {
+.text__input__field::placeholder {
   color: #7f7f7f;
 }
-.icon {
+.text__icon {
   margin-right: 8px;
 }

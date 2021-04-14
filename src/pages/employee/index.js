@@ -125,10 +125,10 @@ export const Employee = () => {
   }, []);
 
   const [isPopoverSpecialtyOpen, setIsPopoverSpecialtyOpen] = useState(false);
-  const [isPopover2Open, setIsPopover2Open] = useState(false);
-  const [isPopover3Open, setIsPopover3Open] = useState(false);
-  const [isPopover4Open, setIsPopover4Open] = useState(false);
-  const [isPopover5Open, setIsPopover5Open] = useState(false);
+  const [isPopoverCertOpen, setIsPopoverCertOpen] = useState(false);
+  const [isPopoverVendorOpen, setIsPopoverVendorOpen] = useState(false);
+  const [isPopoverTypeOpen, setIsPopoverTypeOpen] = useState(false);
+  const [isPopoverDegreeOpen, setIsPopoverDegreeOpen] = useState(false);
 
   const classes = useStyles();
 
@@ -209,12 +209,12 @@ export const Employee = () => {
 
   return (
     <React.Fragment>
-      <div className="area">
-        <div className="head">
+      <div className="employee__area">
+        <div className="employee__head">
           <div className="d-flex align-items-center">
-            <div className="title">Мои сотрудники</div>
-            <div className="d-flex align-items-center navigation">
-              <div className="icon">
+            <div className="employee__title">Мои сотрудники</div>
+            <div className="d-flex align-items-center employee__navigation">
+              <div className="employee__icon">
                 <IconArrowNav />
               </div>
               Все сотрудники
@@ -233,20 +233,20 @@ export const Employee = () => {
         </div>
 
         <div className="d-flex justify-content-space-between">
-          <div className="d-flex flex-column filter">
+          <div className="d-flex flex-column employee__filter">
             <Filter title="Фильтр" />
 
-            <FilterSpeciality open={isPopoverSpecialtyOpen} setState={setIsPopoverSpecialtyOpen} />
-            <FilterCert open={isPopover2Open} setState={setIsPopover2Open} />
-            <FilterVendor open={isPopover3Open} setState={setIsPopover3Open} />
-            <FilterType open={isPopover4Open} setState={setIsPopover4Open} />
-            <FilterDegree open={isPopover5Open} setState={setIsPopover5Open} />
+            <FilterSpeciality open={isPopoverSpecialtyOpen} setState={setIsPopoverSpecialtyOpen} style={{ marginBottom: 10 }} />
+            <FilterCert open={isPopoverCertOpen} setState={setIsPopoverCertOpen} style={{ marginBottom: 10 }} />
+            <FilterVendor open={isPopoverVendorOpen} setState={setIsPopoverVendorOpen} style={{ marginBottom: 10 }} />
+            <FilterType open={isPopoverTypeOpen} setState={setIsPopoverTypeOpen} style={{ marginBottom: 10 }} />
+            <FilterDegree open={isPopoverDegreeOpen} setState={setIsPopoverDegreeOpen} style={{ marginBottom: 10 }} />
 
             <div className="d-flex justify-content-center" style={{ marginTop: 10 }}>
               <Button title="Применить" />
             </div>
           </div>
-          <div className="list">
+          <div className="employee__list">
             <div className="d-flex align-items-center">
               <TextInput title="Поиск" search style={{ marginRight: 20 }} />
               <Button title="Найти" />

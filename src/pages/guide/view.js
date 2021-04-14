@@ -78,7 +78,7 @@ function Action(row) {
   return (
     <div className="d-flex align-items-center">
       <div
-        className="icon"
+        className="guide__icon"
         onClick={() => {
           dispatch(setGuideCategory(category));
           dispatch(setGuide(row));
@@ -88,7 +88,7 @@ function Action(row) {
         <IconEdit />
       </div>
       <div
-        className="icon"
+        className="guide__icon"
         onClick={() => {
           dispatch(setGuide(row));
           dispatch(open("guide/remove"));
@@ -106,10 +106,10 @@ export const GuideView = () => {
 
   return (
     <React.Fragment>
-      <div className="area">
-        <div className="head">
+      <div className="guide__area">
+        <div className="guide__head">
           <div className="d-flex align-items-center">
-            <div className="title">{pageTitle[category]}</div>
+            <div className="guide__title">{pageTitle[category]}</div>
           </div>
           <div className="d-flex align-items-center">
             <Small
