@@ -1,4 +1,4 @@
-export const API_URL = "http://localhost:4000";
+export const API_URL = "http://213.108.129.250:4000";
 
 export const pageTitle = {
   "/report": "Отчётность",
