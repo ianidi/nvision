@@ -1,5 +1,4 @@
 import React from "react";
-import { hot } from "react-hot-loader/root";
 import { useSelector, useDispatch } from "react-redux";
 import { Switch, Route } from "react-router-dom";
 import { PrivateRoute } from "./components/router";
@@ -78,4 +77,4 @@ function App() {
   );
 }
 
-export default hot(App);
+export default App;

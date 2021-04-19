@@ -1,4 +1,3 @@
-import "react-hot-loader";
 import React from "react";
 import ReactDOM from "react-dom";
 import "normalize.css";
@@ -8,7 +7,6 @@ import "./index.scss";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 
-import { AppContainer } from "react-hot-loader";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
 
@@ -48,7 +46,6 @@ const themeMaterial = createMuiTheme({
 });
 
 ReactDOM.render(
-  <AppContainer>
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
         <BrowserRouter>
@@ -69,8 +66,7 @@ ReactDOM.render(
           </ThemeProviderMaterial>
         </BrowserRouter>
       </PersistGate>
-    </Provider>
-  </AppContainer>,
+    </Provider>,
   document.getElementById("root")
 );
 

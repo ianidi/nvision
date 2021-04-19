@@ -1,18 +1,22 @@
-#FROM node:current-alpine3.10
+# pull official base image
 FROM node:10
 
+# set working directory
 WORKDIR /app
 
+# add `/app/node_modules/.bin` to $PATH
 ENV PATH /app/node_modules/.bin:$PATH
 
+# install app dependencies
 COPY package.json ./
-COPY yarn.lock ./
+COPY package-lock.json ./
+RUN npm install --silent
+RUN npm install react-scripts@3.4.1 -g --silent
 
-#RUN apk add --update python make g++\
-#   && rm -rf /var/cache/apk/*
-
-RUN yarn install
+# add app
+COPY . ./
 
 EXPOSE 3000
 
-CMD ["yarn", "start"]
+# start app
+CMD ["npm", "start"]
